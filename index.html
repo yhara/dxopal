@@ -9,6 +9,19 @@
     <h1><a href="https://github.com/yhara/dxopal">DXOpal</a> demo</h1>
     <canvas id="canvas"></canvas>
     <script type="text/javascript" src="app/hello_world.js"></script>
+
+    <h2>Source code</h2>
+    <pre style='font-family: Monaco, monospace'>
+x = 0
+dx = 5
+Window.loop do
+  x += dx
+  dx = -dx if x < 0 || x > Window.width
+
+  Window.draw_circle(x, 100, 20, [128, 255, 255, 255])
+  Window.draw_circle_fill(100, 100, 10, [10, 100, 30])
+end
+    </pre>
   </body>
 </html>
 
