@@ -44,11 +44,11 @@
 
 ## module Window
 
-- [ ] loop
+- [x] loop
 - [ ] close
 - [ ] created?
 - [ ] closed?
-- [ ] draw
+- [x] draw
 - [ ] draw_scale
 - [ ] draw_rot
 - [ ] draw_alpha
