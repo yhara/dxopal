@@ -76,6 +76,26 @@ module DXOpal
       return raw_img
     end
 
+    def self._load_remote_sound(path_or_url)
+      promise = %x{
+        new Promise(function(resolve, reject) {
+          var request = new XMLHttpRequest();
+          request.open('GET', #{path_or_url}, true);
+          request.responseType = 'arraybuffer';
+          request.onload = function() {
+            var audioData = request.response;
+            var context = #{Sound.audio_context};
+            context.decodeAudioData(audioData, function(decoded) {
+              resolve(decoded);
+            });
+          };
+          request.send();
+        });
+      }
+      @@remote_resources << promise
+      return promise
+    end
+
     def self._init_ctx(w, h)
       canvas = `document.getElementById("canvas")`
       `canvas.width = w;
@@ -155,18 +175,44 @@ module DXOpal
     end
     attr_reader :raw_img
   end
+
+  class Sound
+    def self.audio_context
+      @@audio_context ||= %x{
+        new (window.AudioContext||window.webkitAudioContext)
+      }
+    end
+
+    def initialize(path_or_url)
+      @snd_promise = Window._load_remote_sound(path_or_url)
+    end
+
+    def play
+      `#{@snd_promise}.then(function(decoded){
+        var context = #{Sound.audio_context};
+        var source = context.createBufferSource();
+        source.buffer = decoded;
+        source.connect(context.destination);
+        source.start(0); 
+      });`
+    end
+  end
 end
 
 include DXOpal
 x = 0
 y = 150
-dx = 1
+dx = 10
 
 image = Image.load('app/ringo.png')
+sound = Sound.new('app/get.wav')
 
 Window.loop do
+  if x < 0 || x > Window.width
+    dx = -dx
+    sound.play
+  end
   x += dx
-  dx = -dx if x < 0 || x > Window.width
 
   Window.draw_circle(x, 100, 20, [128, 255, 255, 255])
   Window.draw_circle_fill(100, 100, 10, [10, 100, 30])
