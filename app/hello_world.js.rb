@@ -2,6 +2,47 @@ require 'opal'
 #require 'native'
 
 module DXOpal
+  module Input
+    def self.key_down?(code)
+      return `#{@@pressing_keys}[code]`
+    end
+
+    def self.key_push?(code)
+      return `#{@@pressing_keys}[code] == #{@@tick}-1`
+    end
+
+    def self.key_release?(code)
+      return `#{@@pressing_keys}[code] == -(#{@@tick}-1)`
+    end
+
+    def self._init
+      @@tick = 0
+      @@pressing_keys = pressing_keys = `new Object()`
+      %x{
+        document.addEventListener('keydown', function(ev){
+          pressing_keys[ev.key] = #{@@tick};
+          ev.preventDefault();
+          ev.stopPropagation();
+        });
+        document.addEventListener('keyup', function(ev){
+          pressing_keys[ev.key] = -#{@@tick};
+          ev.preventDefault();
+          ev.stopPropagation();
+        });
+      }
+    end
+    
+    def self._on_tick
+      @@tick += 1
+    end
+
+    module KeyCodes
+      K_SPACE = " "
+      K_X = "x"
+    end
+  end
+  include Input::KeyCodes
+
   module Window
     @@fps = 60
     @@width = 640
@@ -21,6 +62,7 @@ module DXOpal
     def self._loop(&block)
       @@ctx ||= _init_ctx(@@width, @@height)
       t0 = Time.now
+      Input._on_tick
 
       @@draw_queue = []
       block.call
@@ -197,6 +239,8 @@ module DXOpal
       });`
     end
   end
+
+  Input._init
 end
 
 include DXOpal
@@ -210,13 +254,15 @@ sound = Sound.new('app/get.wav')
 Window.loop do
   if x < 0 || x > Window.width
     dx = -dx
+  end
+  if Input.key_push?(K_SPACE)
+    x += dx
     sound.play
   end
-  x += dx
+  #x += dx
 
   Window.draw_circle(x, 100, 20, [128, 255, 255, 255])
   Window.draw_circle_fill(100, 100, 10, [10, 100, 30])
 
   Window.draw(x, y, image)
-    #  break if Input.keyPush?(K_ESCAPE)
 end
