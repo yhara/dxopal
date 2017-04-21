@@ -13,5 +13,6 @@ file "dxopal-game/dxopal.min.js" => "dxopal-game/dxopal.js" do |t|
 end
 
 file "dxopal-game/dxopal.js" => "opal/dxopal.rb" do |t|
-  File.write(t.name, Opal::Builder.build(t.source).to_s)
+  Opal.append_path("opal")
+  File.write(t.name, Opal::Builder.build("dxopal.rb").to_s)
 end
