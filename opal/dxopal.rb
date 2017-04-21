@@ -1,4 +1,5 @@
 require 'opal'
+require 'dxopal/constants/colors'
 require 'dxopal/input'
 require 'dxopal/input/key_codes'
 require 'dxopal/image'
@@ -11,7 +12,8 @@ require 'opal-parser'
 require 'pp'
 
 module DXOpal
-  include Input::KeyCodes
+  include DXOpal::Constants::Colors
+  include DXOpal::Input::KeyCodes
 
   Input._init
 end
