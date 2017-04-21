@@ -1,2 +1,1 @@
-gem 'rack'
-gem 'opal'
+gemspec

@@ -1,6 +1,13 @@
+PATH
+  remote: .
+  specs:
+    dxopal (0.0.1)
+      opal (~> 0.10.3)
+
 GEM
   specs:
     concurrent-ruby (1.0.2)
+    execjs (2.0.2)
     hike (1.2.3)
     opal (0.10.3)
       hike (~> 1.2)
@@ -8,18 +15,24 @@ GEM
       sprockets (~> 3.1)
       tilt (>= 1.4)
     rack (2.0.1)
+    rake (10.5.0)
     sourcemap (0.1.1)
     sprockets (3.7.1)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
     tilt (2.0.6)
+    uglifier (3.2.0)
+      execjs (>= 0.3.0, < 3)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  opal
-  rack
+  bundler (~> 1.14)
+  dxopal!
+  rack (~> 2.0.1)
+  rake (~> 10.0)
+  uglifier (~> 3.2.0)
 
 BUNDLED WITH
    1.14.3
