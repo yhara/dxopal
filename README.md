@@ -11,11 +11,19 @@ https://yhara.github.io/dxopal/
 
 POC (just started)
 
-## How to run demo
+## Demo
 
-1. git clone
-1. bundle install
-1. bundle exec rackup
+See [dxopal-game](https://github.com/yhara/dxopal-game)
+
+## Development
+
+```
+$ git clone https://github.com/yhara/dxopal
+$ cd dxopal
+$ git clone https://github.com/yhara/dxopal-game
+$ rake build  # Updates dxopal-game/scripts/dxopal.js
+$ open dxopal-game/index.html
+```
 
 ## License
 
