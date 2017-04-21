@@ -5,15 +5,13 @@ API compatible to [DXRuby](http://dxruby.osdn.jp/)
 
 ## Demo
 
-https://yhara.github.io/dxopal/
+See [dxopal-game](https://github.com/yhara/dxopal-game)
+
+https://yhara.github.io/dxopal-game/
 
 ## Status
 
 POC (just started)
-
-## Demo
-
-See [dxopal-game](https://github.com/yhara/dxopal-game)
 
 ## Development
 
