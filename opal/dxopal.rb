@@ -1,4 +1,9 @@
 require 'opal'
+# Enable runtime compilation of Opal code (so that you can make games
+# without even install Ruby)
+require 'opal-parser'
+# These libraries will be included in dxopal.js:
+require 'pp'
 
 module DXOpal
   module Input
