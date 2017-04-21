@@ -242,3 +242,6 @@ module DXOpal
   Input._init
 end
 
+# `require 'dxopal'` will automatically import names like `Window` to the
+# toplevel (as `require 'dxruby'` does)
+include DXOpal
