@@ -16,19 +16,19 @@ module DXOpal
     end
 
     def self._loop(&block)
-      @@ctx ||= _init_ctx(@@width, @@height)
+      @@img ||= _init_img(@@width, @@height)
       t0 = Time.now
       Input._on_tick
 
       @@draw_queue = []
       block.call
 
-      _draw_box_fill(0, 0, @@width, @@height, [0, 0, 0])
+      @@img.box_fill(0, 0, @@width, @@height, [0, 0, 0])
       @@draw_queue.sort_by(&:first).each do |item|
         case item[1]
-        when :image then _draw_image(*item.drop(2))
-        when :circle then _draw_circle(*item.drop(2))
-        when :circle_fill then _draw_circle_fill(*item.drop(2))
+        when :image then @@img.draw(*item.drop(2))
+        when :circle then @@img.circle(*item.drop(2))
+        when :circle_fill then @@img.circle_fill(*item.drop(2))
         end
       end
 
@@ -94,70 +94,10 @@ module DXOpal
       return promise
     end
 
-    def self._init_ctx(w, h)
+    def self._init_img(w, h)
       canvas = `document.getElementById("canvas")`
-      `canvas.width = w;
-       canvas.height = h;`
-      return `canvas.getContext('2d')`
-    end
-
-    def self._draw_image(x, y, image)
-      %x{
-        #{@@ctx}.putImageData(#{image._image_data}, x, y);
-      }
-    end
-
-    def self._draw_box_fill(x1, y1, x2, y2, color)
-      ctx = @@ctx
-      %x{
-        ctx.beginPath();
-        ctx.fillStyle = #{_rgb(color)};
-        ctx.fillRect(x1, y1, x2-x1, y2-y1); 
-      }
-    end
-
-    def self._draw_circle(x, y, r, color)
-      ctx = @@ctx
-      %x{
-        ctx.beginPath();
-        ctx.strokeStyle = #{_rgb(color)};
-        ctx.arc(x, y, r, 0, Math.PI*2, false)
-        ctx.stroke();
-      }
-    end
-
-    def self._draw_circle_fill(x, y, r, color)
-      ctx = @@ctx
-      %x{
-        ctx.beginPath();
-        ctx.fillStyle = #{_rgb(color)};
-        ctx.arc(x, y, r, 0, Math.PI*2, false)
-        ctx.fill();
-      }
-    end
-
-    def self._rgb(color)
-      case color.length
-      when 4
-        rgb = color[1, 3]
-      when 3
-        rgb = color
-      else
-        raise "invalid color: #{color.inspect}"
-      end
-      return "rgb(" + rgb.join(', ') + ")";
-    end
-
-    def self._rgba(color)
-      case color.length
-      when 4
-        rgba = color[3] + color[1, 3]
-      when 3
-        rgba = color + [255]
-      else
-        raise "invalid color: #{color.inspect}"
-      end
-      return "rgba(" + rgba.join(', ') + ")"
+      img = Image.new(w, h, canvas: canvas)
+      return img
     end
   end
 end
