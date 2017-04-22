@@ -1,4 +1,6 @@
 require 'opal'
+require 'console'
+
 require 'dxopal/constants/colors'
 require 'dxopal/input'
 require 'dxopal/input/key_codes'
