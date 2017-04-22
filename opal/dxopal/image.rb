@@ -32,6 +32,7 @@ module DXOpal
       %x{
         #{@ctx}.putImageData(#{image._image_data}, x, y);
       }
+      return self
     end
 
     def box_fill(x1, y1, x2, y2, color)
@@ -41,6 +42,7 @@ module DXOpal
         ctx.fillStyle = #{_rgb(color)};
         ctx.fillRect(x1, y1, x2-x1, y2-y1); 
       }
+      return self
     end
 
     def circle(x, y, r, color)
@@ -51,6 +53,7 @@ module DXOpal
         ctx.arc(x, y, r, 0, Math.PI*2, false)
         ctx.stroke();
       }
+      return self
     end
 
     def circle_fill(x, y, r, color)
@@ -61,6 +64,7 @@ module DXOpal
         ctx.arc(x, y, r, 0, Math.PI*2, false)
         ctx.fill();
       }
+      return self
     end
 
     def _draw_raw_image(x, y, raw_img)
