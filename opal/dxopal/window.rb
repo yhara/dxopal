@@ -65,13 +65,13 @@ module DXOpal
       promise = %x{
         new Promise(function(resolve, reject) {
           raw_img.onload = function() {
-            resolve();
+            resolve(raw_img);
           };
           raw_img.src = path_or_url;
         });
       }
       @@remote_resources << promise
-      return raw_img
+      return promise
     end
 
     def self._load_remote_sound(path_or_url)
@@ -102,9 +102,8 @@ module DXOpal
     end
 
     def self._draw_image(x, y, image)
-      ctx = @@ctx
       %x{
-        ctx.drawImage(#{image.raw_img}, x, y);
+        #{@@ctx}.putImageData(#{image._image_data}, x, y);
       }
     end
 
