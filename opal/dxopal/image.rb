@@ -15,8 +15,9 @@ module DXOpal
     def initialize(width, height, color=C_DEFAULT, canvas: nil)
       @width, @height = width, height
       @canvas = canvas || `document.createElement("canvas")`
-      _resize(@width, @height)
       @ctx = `#{@canvas}.getContext('2d')`
+      _resize(@width, @height)
+      box_fill(0, 0, @width, @height, color)
     end
     attr_reader :ctx
 
