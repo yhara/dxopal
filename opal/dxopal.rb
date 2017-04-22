@@ -1,5 +1,5 @@
 require 'opal'
-require 'console'
+require 'console'; def console; $console; end
 
 require 'dxopal/constants/colors'
 require 'dxopal/input'
