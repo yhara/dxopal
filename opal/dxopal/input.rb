@@ -1,5 +1,19 @@
 module DXOpal
   module Input
+    def self.x(pad_number=0)
+      ret = 0
+      ret += 1 if key_down?(K_RIGHT)
+      ret -= 1 if key_down?(K_LEFT)
+      ret
+    end
+
+    def self.y(pad_number=0)
+      ret = 0
+      ret += 1 if key_down?(K_DOWN)
+      ret -= 1 if key_down?(K_UP)
+      ret
+    end
+
     def self.key_down?(code)
       return `#{@@pressing_keys}[code] > 0`
     end
