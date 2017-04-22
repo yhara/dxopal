@@ -6,6 +6,7 @@ require 'dxopal/input'
 require 'dxopal/input/key_codes'
 require 'dxopal/image'
 require 'dxopal/sound'
+require 'dxopal/sprite'
 require 'dxopal/window'
 # Enable runtime compilation of Opal code (so that you can make games
 # without even install Ruby)
