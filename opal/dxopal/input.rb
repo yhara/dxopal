@@ -17,12 +17,12 @@ module DXOpal
       @@pressing_keys = pressing_keys = `new Object()`
       %x{
         document.addEventListener('keydown', function(ev){
-          pressing_keys[ev.key] = #{@@tick};
+          pressing_keys[ev.keyCode] = #{@@tick};
           ev.preventDefault();
           ev.stopPropagation();
         });
         document.addEventListener('keyup', function(ev){
-          pressing_keys[ev.key] = -#{@@tick};
+          pressing_keys[ev.keyCode] = -#{@@tick};
           ev.preventDefault();
           ev.stopPropagation();
         });
