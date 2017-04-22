@@ -1,7 +1,7 @@
 module DXOpal
   module Input
     def self.key_down?(code)
-      return `#{@@pressing_keys}[code]`
+      return `#{@@pressing_keys}[code] > 0`
     end
 
     def self.key_push?(code)
