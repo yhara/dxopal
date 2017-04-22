@@ -2,11 +2,11 @@
 
 ## module Input
 
-- [ ] x
-- [ ] y
-- [ ] key_down?
-- [ ] key_push?
-- [ ] key_release?
+- [x] x - TODO: pad support
+- [x] y - TODO: pad support
+- [x] key_down?
+- [x] key_push?
+- [x] key_release?
 - [ ] pad_down?
 - [ ] pad_push?
 - [ ] pad_release?
@@ -118,10 +118,132 @@
 - [ ] after_call
 
 ## class Font
+
+- [ ] new
+- [ ] install
+- [ ] default
+- [ ] default=
+- [ ] dispose
+- [ ] disposed?
+- [ ] get_width
+- [ ] size
+- [ ] fontname
+- [ ] name
+- [ ] italic
+- [ ] weight
+- [ ] auto_fitting
+- [ ] info
+
 ## class Image
+
+- [ ] new
+- [ ] load
+- [ ] load_tiles
+- [ ] create_from_array
+- [ ] load_from_file_in_memory
+- [ ] perlin_noise
+- [ ] octave_perlin_noise
+- [ ] custom_perlin_noise
+- [ ] perlin_seed
+- [ ] dispose
+- [ ] delayed_dispose
+- [ ] disposed?
+- [ ] `[]`
+- [ ] `[]=`
+- [ ] compare
+- [ ] line
+- [ ] box
+- [x] box_fill
+- [x] circle
+- [x] circle_fill
+- [ ] triangle
+- [ ] triangle_fill
+- [ ] fill
+- [ ] clear
+- [ ] copy_rect
+- [ ] draw
+- [ ] draw_font
+- [ ] draw_font_ex
+- [ ] save
+- [ ] slice
+- [ ] slice_tiles
+- [ ] dup
+- [ ] clone
+- [ ] set_color_key
+- [ ] width
+- [ ] height
+- [ ] flush
+- [ ] effect_image_font
+- [ ] change_hls
+
 ## class RenderTarget
 ## class Shader
 ## class Shader::Core
 ## class Sound
+
+- [ ] new
+- [ ] load_from_memory
+- [ ] dispose
+- [ ] disposed?
+- [ ] play
+- [ ] start=
+- [ ] loop_start=
+- [ ] loop_end=
+- [ ] loop_count=
+- [ ] stop
+- [ ] set_volume
+- [ ] pan
+- [ ] pan=
+- [ ] frequency
+- [ ] frequency=
+
 ## class SoundEffect
 ## class Sprite
+
+- [ ] new
+- [ ] check
+- [ ] update
+- [ ] draw
+- [ ] clean
+- [ ] draw
+- [ ] `===`
+- [ ] check
+- [ ] x
+- [ ] x=
+- [ ] y
+- [ ] y=
+- [ ] z
+- [ ] z=
+- [ ] angle
+- [ ] angle=
+- [ ] scale_x
+- [ ] scale_x=
+- [ ] scale_y
+- [ ] scale_y=
+- [ ] center_x
+- [ ] center_x=
+- [ ] center_y
+- [ ] center_y=
+- [ ] alpha
+- [ ] alpha=
+- [ ] blend
+- [ ] blend=
+- [ ] shader
+- [ ] shader=
+- [ ] image
+- [ ] image=
+- [ ] target
+- [ ] target=
+- [ ] collision
+- [ ] collision=
+- [ ] collision_enable
+- [ ] collision_enable=
+- [ ] collision_sync
+- [ ] collision_sync=
+- [ ] visible
+- [ ] visible=
+- [ ] vanish
+- [ ] vanished?
+- [ ] param_hash
+- [ ] offset_sync
+- [ ] offset_sync=
