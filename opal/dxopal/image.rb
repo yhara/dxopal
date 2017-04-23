@@ -19,7 +19,7 @@ module DXOpal
       _resize(@width, @height)
       box_fill(0, 0, @width, @height, color)
     end
-    attr_reader :ctx
+    attr_reader :ctx, :width, :height
 
     def _resize(w, h)
       @width, @height = w, h
