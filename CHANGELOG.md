@@ -1,3 +1,8 @@
+## v0.1.0 (2017/04/24)
+
+- new: Sprite.new, collision detection
+- new: Input.mouse_pos_x, mouse_pos_y
+
 ## v0.0.3 (2017/04/23)
 
 - fix: Input.key_down? return true after key is released

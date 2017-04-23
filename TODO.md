@@ -14,10 +14,10 @@
 - [ ] set_key_repeat
 - [ ] set_pad_repeat
 - [ ] set_config
-- [ ] mouse_x
-- [ ] mouse_y
-- [ ] mouse_pos_x
-- [ ] mouse_pos_y
+- [x] mouse_x
+- [x] mouse_y
+- [x] mouse_pos_x
+- [x] mouse_pos_y
 - [ ] set_mouse_pos
 - [ ] mouse_down?
 - [ ] mouse_push?
@@ -203,17 +203,17 @@
 - [ ] new
 - [ ] check
 - [ ] update
-- [ ] draw
+- [x] draw
 - [ ] clean
-- [ ] draw
-- [ ] `===`
-- [ ] check
-- [ ] x
-- [ ] x=
-- [ ] y
-- [ ] y=
-- [ ] z
-- [ ] z=
+- [x] draw
+- [x] `===`
+- [x] check
+- [x] x
+- [x] x=
+- [x] y
+- [x] y=
+- [x] z
+- [x] z=
 - [ ] angle
 - [ ] angle=
 - [ ] scale_x
@@ -230,20 +230,20 @@
 - [ ] blend=
 - [ ] shader
 - [ ] shader=
-- [ ] image
-- [ ] image=
+- [x] image
+- [x] image=
 - [ ] target
 - [ ] target=
-- [ ] collision
-- [ ] collision=
-- [ ] collision_enable
-- [ ] collision_enable=
+- [x] collision
+- [x] collision=
+- [x] collision_enable
+- [x] collision_enable=
 - [ ] collision_sync
 - [ ] collision_sync=
-- [ ] visible
-- [ ] visible=
-- [ ] vanish
-- [ ] vanished?
+- [x] visible
+- [x] visible=
+- [x] vanish
+- [x] vanished?
 - [ ] param_hash
 - [ ] offset_sync
 - [ ] offset_sync=
