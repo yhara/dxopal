@@ -16,7 +16,7 @@ module DXOpal
     end
 
     def self._loop(&block)
-      @@img ||= _init_img(@@width, @@height)
+      @@img ||= _init(@@width, @@height)
       t0 = Time.now
       Input._on_tick
 
@@ -35,6 +35,13 @@ module DXOpal
       dt = `new Date() - t0` / 1000
       wait = (1000 / @@fps) - dt
       `setTimeout(function(){ #{loop(&block)} }, #{wait})`
+    end
+
+    def self._init(w, h)
+      canvas = `document.getElementById("canvas")`
+      img = Image.new(w, h, canvas: canvas)
+      Input._init(canvas)
+      return img
     end
 
     def self.fps; @@fps; end
@@ -92,12 +99,6 @@ module DXOpal
       }
       @@remote_resources << promise
       return promise
-    end
-
-    def self._init_img(w, h)
-      canvas = `document.getElementById("canvas")`
-      img = Image.new(w, h, canvas: canvas)
-      return img
     end
   end
 end

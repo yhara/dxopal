@@ -17,8 +17,6 @@ require 'pp'
 module DXOpal
   include DXOpal::Constants::Colors
   include DXOpal::Input::KeyCodes
-
-  Input._init
 end
 
 # `require 'dxopal'` will automatically import names like `Window` to the
