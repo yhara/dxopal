@@ -46,14 +46,21 @@ module DXOpal
         return sprites.select{|sprite| _collides?(sprite)}
       end
 
+      # Return true when this sprite collides with `sprite`
       def _collides?(sprite)
         raise "Sprite image not set" if @_collision_areas.nil?
+        return false if !self._collidable? || !sprite._collidable?
         return @_collision_areas.any?{|area1|
           sprite._collision_areas.any?{|area2|
             CollisionCheck.collides?(area1, @x, @y,
                                      area2, sprite.x, sprite.y)
           }
         }
+      end
+
+      # Return true when this sprite may collide
+      def _collidable?
+        return !@vanished && @collision_enable
       end
 
       # Return true when two areas collide with each other
