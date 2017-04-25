@@ -7,7 +7,22 @@ module DXOpal
     end
 
     def initialize(path_or_url)
-      @snd_promise = Window._load_remote_sound(path_or_url)
+      @snd_promise = %x{
+        new Promise(function(resolve, reject) {
+          var request = new XMLHttpRequest();
+          request.open('GET', #{path_or_url}, true);
+          request.responseType = 'arraybuffer';
+          request.onload = function() {
+            var audioData = request.response;
+            var context = #{Sound.audio_context};
+            context.decodeAudioData(audioData, function(decoded) {
+              resolve(decoded);
+            });
+          };
+          request.send();
+        });
+      }
+      Window._add_remote_resource(@snd_promise)
     end
 
     def play

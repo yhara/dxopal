@@ -7,6 +7,10 @@ module DXOpal
     # List of Promise
     @@remote_resources = []
 
+    def self._add_remote_resource(promise)
+      @@remote_resources << promise
+    end
+
     def self.loop(&block)
       %x{
         Promise.all(#{@@remote_resources}).then(function() {
@@ -61,44 +65,6 @@ module DXOpal
 
     def self.draw_circle_fill(x, y, r, color, z=0)
       @@draw_queue.push([z, :circle_fill, x, y, r, color])
-    end
-
-    # 
-    # private functions
-    #
-    
-    def self._load_remote_image(path_or_url)
-      raw_img = `new Image()`
-      promise = %x{
-        new Promise(function(resolve, reject) {
-          raw_img.onload = function() {
-            resolve(raw_img);
-          };
-          raw_img.src = path_or_url;
-        });
-      }
-      @@remote_resources << promise
-      return promise
-    end
-
-    def self._load_remote_sound(path_or_url)
-      promise = %x{
-        new Promise(function(resolve, reject) {
-          var request = new XMLHttpRequest();
-          request.open('GET', #{path_or_url}, true);
-          request.responseType = 'arraybuffer';
-          request.onload = function() {
-            var audioData = request.response;
-            var context = #{Sound.audio_context};
-            context.decodeAudioData(audioData, function(decoded) {
-              resolve(decoded);
-            });
-          };
-          request.send();
-        });
-      }
-      @@remote_resources << promise
-      return promise
     end
   end
 end

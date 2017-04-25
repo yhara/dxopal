@@ -1,7 +1,17 @@
 module DXOpal
   class Image
     def self.load(path_or_url)
-      img_promise = Window._load_remote_image(path_or_url)
+      raw_img = `new Image()`
+      img_promise = %x{
+        new Promise(function(resolve, reject) {
+          raw_img.onload = function() {
+            resolve(raw_img);
+          };
+          raw_img.src = path_or_url;
+        });
+      }
+      Window._add_remote_resource(img_promise)
+
       img = new(0, 0)
       %x{
         #{img_promise}.then(function(raw_img){
