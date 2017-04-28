@@ -4,6 +4,7 @@ module DXOpal
   class Sprite
     include DXOpal::Sprite::CollisionCheck
 
+    # Draw each of the given sprites (unless it is vanished)
     def self.draw(sprites)
       sprites.flatten.sort_by(&:z).each do |sprite|
         next if sprite.respond_to?(:vanished?) && sprite.vanished?
@@ -32,6 +33,7 @@ module DXOpal
     def vanish; @vanished = true; end
     def vanished?; @vanished; end
 
+    # Draw this sprite to Window
     def draw
       raise "image not set to Sprite" if @image.nil?
       return if !@visible

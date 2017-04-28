@@ -1,5 +1,9 @@
 module DXOpal
   class Image
+    # Load remote image
+    # Instance of Image is returned immediately, but Window.loop will
+    # wait until image is load
+    # Image#width, #height will return 0 until image is load
     def self.load(path_or_url)
       raw_img = `new Image()`
       img_promise = %x{
@@ -22,6 +26,7 @@ module DXOpal
       return img
     end
 
+    # Create an instance of Image
     def initialize(width, height, color=C_DEFAULT, canvas: nil)
       @width, @height = width, height
       @canvas = canvas || `document.createElement("canvas")`
@@ -31,6 +36,7 @@ module DXOpal
     end
     attr_reader :ctx, :width, :height
 
+    # Set size of this image
     def _resize(w, h)
       @width, @height = w, h
       %x{
@@ -39,6 +45,7 @@ module DXOpal
       }
     end
 
+    # Draw this image on Window
     def draw(x, y, image)
       %x{
         #{@ctx}.putImageData(#{image._image_data}, x, y);
@@ -46,6 +53,7 @@ module DXOpal
       return self
     end
 
+    # Draw a filled box on this image
     def box_fill(x1, y1, x2, y2, color)
       ctx = @ctx
       %x{
@@ -56,6 +64,7 @@ module DXOpal
       return self
     end
 
+    # Draw a circle on this image
     def circle(x, y, r, color)
       ctx = @ctx
       %x{
@@ -67,6 +76,7 @@ module DXOpal
       return self
     end
 
+    # Draw a filled circle on this image
     def circle_fill(x, y, r, color)
       ctx = @ctx
       %x{
@@ -78,19 +88,24 @@ module DXOpal
       return self
     end
 
+    # Copy an <img> onto this image
     def _draw_raw_image(x, y, raw_img)
       %x{
         #{@ctx}.drawImage(#{raw_img}, x, y)
       }
     end
 
+    # Return .getImageData
     def _image_data(x=0, y=0, w=@width, h=@height)
       return `#{@ctx}.getImageData(x, y, w, h)`
     end
 
+    # Return a string like 'rgb(255, 255, 255)'
+    # `color` is 3 or 4 numbers
     def _rgb(color)
       case color.length
       when 4
+        # Just ignore alpha
         rgb = color[1, 3]
       when 3
         rgb = color
@@ -100,11 +115,14 @@ module DXOpal
       return "rgb(" + rgb.join(', ') + ")";
     end
 
+    # Return a string like 'rgb(255, 255, 255, 128)'
+    # `color` is 3 or 4 numbers
     def _rgba(color)
       case color.length
       when 4
         rgba = color[3] + color[1, 3]
       when 3
+        # Complement 255 as alpha 
         rgba = color + [255]
       else
         raise "invalid color: #{color.inspect}"

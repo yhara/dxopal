@@ -1,5 +1,6 @@
 module DXOpal
   module Input
+    # Return 1 if 'right', -1 if 'left'
     def self.x(pad_number=0)
       ret = 0
       ret += 1 if key_down?(K_RIGHT)
@@ -7,6 +8,7 @@ module DXOpal
       ret
     end
 
+    # Return 1 if 'down', -1 if 'up'
     def self.y(pad_number=0)
       ret = 0
       ret += 1 if key_down?(K_DOWN)
@@ -14,14 +16,17 @@ module DXOpal
       ret
     end
 
+    # Return true if the key is being pressed
     def self.key_down?(code)
       return `#{@@pressing_keys}[code] > 0`
     end
 
+    # Return true if the key is just pressed
     def self.key_push?(code)
       return `#{@@pressing_keys}[code] == #{@@tick}-1`
     end
 
+    # Return true if the key is just released
     def self.key_release?(code)
       return `#{@@pressing_keys}[code] == -(#{@@tick}-1)`
     end
@@ -34,9 +39,12 @@ module DXOpal
     def self.mouse_y
       return `#{@@mouse_info}.y`
     end
-    def self.mouse_pos_x; mouse_x; end
-    def self.mouse_pos_y; mouse_y; end
+    class << self
+      alias mouse_pos_x mouse_x
+      alias mouse_pos_y mouse_y
+    end
 
+    # Internal setup for Input class
     def self._init(canvas)
       @@tick = 0
       @@pressing_keys = pressing_keys = `new Object()`
@@ -64,6 +72,7 @@ module DXOpal
       }
     end
     
+    # Called on every frame from Window
     def self._on_tick
       @@tick += 1
     end

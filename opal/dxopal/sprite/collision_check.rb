@@ -2,6 +2,7 @@ module DXOpal
   class Sprite
     # Methods of Sprite related to collision checking
     module CollisionCheck
+      # Classes for collision areas
       Point = Struct.new(:x, :y)
       Circle = Struct.new(:x, :y, :r)
       class Rect < Struct.new(:x1, :y1, :x2, :y2)
@@ -20,6 +21,7 @@ module DXOpal
       attr_accessor :collision_enable
       attr_reader :collision, :_collision_areas
 
+      # Set collision area of this sprite
       def collision=(arg)
         areas = (arg[0] === Array) ? arg : [arg]
         @_collision_areas = areas.map{|x|

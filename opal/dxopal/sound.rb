@@ -1,11 +1,15 @@
 module DXOpal
   class Sound
+    # Return AudioContext
     def self.audio_context
       @@audio_context ||= %x{
         new (window.AudioContext||window.webkitAudioContext)
       }
     end
 
+    # Load remote sound
+    # Instance of Sound is returned immediately, but Window.loop will
+    # wait until sound is load
     def initialize(path_or_url)
       @snd_promise = %x{
         new Promise(function(resolve, reject) {
@@ -25,6 +29,7 @@ module DXOpal
       Window._add_remote_resource(@snd_promise)
     end
 
+    # Play this sound once
     def play
       `#{@snd_promise}.then(function(decoded){
         var context = #{Sound.audio_context};
