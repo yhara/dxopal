@@ -34,7 +34,7 @@ module DXOpal
       _resize(@width, @height)
       box_fill(0, 0, @width, @height, color)
     end
-    attr_reader :ctx, :width, :height
+    attr_reader :ctx, :canvas, :width, :height
 
     # Set size of this image
     def _resize(w, h)
@@ -45,10 +45,10 @@ module DXOpal
       }
     end
 
-    # Draw this image on Window
+    # Draw an Image on this image
     def draw(x, y, image)
       %x{
-        #{@ctx}.putImageData(#{image._image_data}, x, y);
+        #{@ctx}.drawImage(#{image.canvas}, x, y);
       }
       return self
     end
