@@ -88,6 +88,25 @@ module DXOpal
       return self
     end
 
+    # Return an Image which is a copy of the specified area
+    def slice(x, y, width, height)
+      newimg = Image.new(width, height)
+      data = _image_data(x, y, width, height)
+      newimg._put_image_data(data, 0, 0)
+      return newimg
+    end
+
+    # Slice this image into xcount*ycount tiles
+    def slice_tiles(xcount, ycount)
+      tile_w = @width / xcount
+      tile_h = @height / ycount
+      return (0...ycount).flat_map{|v|
+        (0...xcount).map{|u|
+          slice(tile_w * u, tile_h * v, tile_w, tile_h)
+        }
+      }
+    end
+
     # Copy an <img> onto this image
     def _draw_raw_image(x, y, raw_img)
       %x{
@@ -98,6 +117,11 @@ module DXOpal
     # Return .getImageData
     def _image_data(x=0, y=0, w=@width, h=@height)
       return `#{@ctx}.getImageData(x, y, w, h)`
+    end
+
+    # Call .putImageData
+    def _put_image_data(image_data, x, y)
+      `#{@ctx}.putImageData(image_data, x, y)`
     end
 
     # Return a string like 'rgb(255, 255, 255)'
