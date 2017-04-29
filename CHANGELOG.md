@@ -1,3 +1,9 @@
+## v0.1.1 (2017/04/30)
+
+- fix: Image#draw now respects alpha channel
+- fix: Vanished sprites have no collision
+- new: Image#slice
+
 ## v0.1.0 (2017/04/24)
 
 - new: Sprite.new, collision detection

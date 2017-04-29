@@ -165,8 +165,8 @@
 - [ ] draw_font
 - [ ] draw_font_ex
 - [ ] save
-- [ ] slice
-- [ ] slice_tiles
+- [x] slice
+- [x] slice_tiles
 - [ ] dup
 - [ ] clone
 - [ ] set_color_key
