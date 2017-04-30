@@ -2,6 +2,7 @@ require 'opal'
 require 'console'; def console; $console; end
 
 require 'dxopal/constants/colors'
+require 'dxopal/font'
 require 'dxopal/input'
 require 'dxopal/input/key_codes'
 require 'dxopal/image'

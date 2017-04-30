@@ -53,6 +53,18 @@ module DXOpal
       return self
     end
 
+    # Draw some text on this image
+    def draw_font(x, y, string, font, color=[255,255,255])
+      ctx = @ctx
+      %x{
+        ctx.font = #{font._spec_str};
+        ctx.textBaseline = 'top';
+        ctx.fillStyle = #{_rgb(color)};
+        ctx.fillText(string, x, y);
+      }
+      return self
+    end
+
     # Draw a filled box on this image
     def box_fill(x1, y1, x2, y2, color)
       ctx = @ctx
