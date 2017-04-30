@@ -56,14 +56,14 @@
 - [ ] draw_sub
 - [ ] draw_shader
 - [ ] draw_ex
-- [ ] draw_font
+- [ ] draw_font - partially
 - [ ] draw_font_ex
 - [ ] draw_morph
 - [ ] draw_tile
 - [ ] draw_pixel
 - [ ] draw_line
 - [ ] draw_box
-- [ ] draw_box_fill
+- [x] draw_box_fill
 - [x] draw_circle
 - [x] draw_circle_fill
 - [ ] ox
@@ -119,15 +119,15 @@
 
 ## class Font
 
-- [ ] new
+- [ ] new - partially
 - [ ] install
-- [ ] default
-- [ ] default=
+- [x] default
+- [x] default=
 - [ ] dispose
 - [ ] disposed?
 - [ ] get_width
-- [ ] size
-- [ ] fontname
+- [x] size
+- [x] fontname
 - [ ] name
 - [ ] italic
 - [ ] weight
@@ -162,7 +162,7 @@
 - [ ] clear
 - [ ] copy_rect
 - [ ] draw
-- [ ] draw_font
+- [ ] draw_font - partially
 - [ ] draw_font_ex
 - [ ] save
 - [x] slice
@@ -202,9 +202,9 @@
 
 - [ ] new
 - [ ] check
-- [ ] update
+- [x] update
 - [x] draw
-- [ ] clean
+- [x] clean
 - [x] draw
 - [x] `===`
 - [x] check

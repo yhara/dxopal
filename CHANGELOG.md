@@ -1,3 +1,9 @@
+## v0.1.2 (2017/05/01)
+
+- new: Window.pause, .resume
+- new: Window.draw_box_fill
+- new: Sprite.update, Sprite.clean
+
 ## v0.1.1 (2017/04/30)
 
 - fix: Image#draw now respects alpha channel
