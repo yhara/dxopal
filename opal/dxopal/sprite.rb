@@ -4,6 +4,22 @@ module DXOpal
   class Sprite
     include DXOpal::Sprite::CollisionCheck
 
+    # Call #update on each sprite (unless it is vanished or do not have #update)
+    def self.update(sprites)
+      sprites.each do |sprite|
+        next if !sprite.respond_to?(:update)
+        next if sprite.respond_to?(:vanished?) && sprite.vanished?
+        sprite.update
+      end
+    end
+
+    # Remove vanished sprites (and nils) from the array
+    def self.clean(sprites)
+      return sprites.reject{|sprite|
+        sprite.nil? || sprite.vanished?
+      }
+    end
+
     # Draw each of the given sprites (unless it is vanished)
     def self.draw(sprites)
       sprites.flatten.sort_by(&:z).each do |sprite|
