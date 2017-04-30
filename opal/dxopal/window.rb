@@ -3,6 +3,8 @@ module DXOpal
     @@fps = 60
     @@width = 640
     @@height = 480
+    @@block = nil
+    @@paused = false
 
     # List of Promise
     @@remote_resources = []
@@ -12,11 +14,28 @@ module DXOpal
     end
 
     def self.loop(&block)
+      @@block = block
       %x{
         Promise.all(#{@@remote_resources}).then(function() {
           #{_loop(&block)}
         });
       }
+    end
+
+    # (DXOpal original) Pause & resume
+    def self.pause
+      @@paused = true
+      @@draw_queue.clear
+      draw_pause_screen
+    end
+    def self.paused?; @@paused; end
+    def self.resume
+      raise "Window.resume is called before Window.loop" if @@block.nil?
+      @@paused = false; Window.loop(&@@block)
+    end
+    def self.draw_pause_screen
+      Window.draw_box_fill(0, 0, Window.width, Window.height, C_BLACK)
+      Window.draw_font(0, 0, "...PAUSE...", Font.default, color: C_WHITE)
     end
 
     def self._loop(&block)
@@ -25,7 +44,11 @@ module DXOpal
       Input._on_tick
 
       @@draw_queue = []
-      block.call
+      if @@paused
+        Window.draw_pause_screen
+      else
+        block.call
+      end
 
       @@img.box_fill(0, 0, @@width, @@height, [0, 0, 0])
       @@draw_queue.sort_by(&:first).each do |item|
@@ -38,9 +61,11 @@ module DXOpal
         end
       end
 
-      dt = `new Date() - t0` / 1000
-      wait = (1000 / @@fps) - dt
-      `setTimeout(function(){ #{loop(&block)} }, #{wait})`
+      unless @@paused
+        dt = `new Date() - t0` / 1000
+        wait = (1000 / @@fps) - dt
+        `setTimeout(function(){ #{loop(&block)} }, #{wait})`
+      end
     end
 
     def self._init(w, h)
