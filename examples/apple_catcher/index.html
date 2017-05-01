@@ -9,8 +9,22 @@
 
   <body>
     <h1><a href="https://yhara.github.io/dxopal/">DXOpal</a> demo</h1>
-    <canvas id="canvas"></canvas>
+    <canvas id="canvas"></canvas><br>
     <input type='button' id='pause' value='Pause/Resume'>
+
+    <h2>Source code</h2>
+    <div id="editor" style='width: 640px; height: 600px;'></div>
+        
+    <script type="text/javascript" src="../_vendor/ace/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="../_vendor/jquery-3.2.1.js"></script>
+    <script>
+      var editor = ace.edit("editor");
+      editor.setTheme("ace/theme/github");
+      editor.getSession().setMode("ace/mode/ruby");
+      $.get("main.rb", function(rb) {
+        editor.setValue(rb, -1); // -1: set cursor to document start
+      });
+    </script>
   </body>
 </html>
 
