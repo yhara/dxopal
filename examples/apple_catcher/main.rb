@@ -1,5 +1,4 @@
 include DXOpal
-#Window.fps = 0.1
 
 module AppleCatcher
   class GameInfo
