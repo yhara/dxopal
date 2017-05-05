@@ -1,0 +1,3 @@
+# Ignore file for ripgrep
+/build/
+/examples/_vendor/
