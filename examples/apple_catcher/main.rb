@@ -22,7 +22,7 @@ module AppleCatcher
   class Background < Sprite
     def initialize
       image = Image.new(640, 480, [128, 255, 255])
-image.box_fill(0, 0,   640, 480, [128, 255, 255])
+      image.box_fill(0, 0,   640, 480, [128, 255, 255])
       image.box_fill(0, 400, 640, 480, [0, 128, 0])
       super(0, 0, image)
     end
