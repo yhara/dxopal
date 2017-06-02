@@ -1,3 +1,29 @@
+## v0.2.0 ()
+
+- new: Add example (apple_catcher)
+
+### Breaking Change: resource loading
+
+Image.load and Sound.new are removed. They look like a synchronous API
+but actually were not. It was fun to emulate DXRuby APIs with JS Promise,
+but I found it 
+very confusing while implementing the AppleCatcher example.
+
+Since v0.2, resource loading look like this.
+
+```rb
+Image.register(:player, 'images/player.png')
+Sound.register(:game_over, 'sounds/game_over.wav')
+
+Window.load_resources do
+  Window.loop do
+    # ... Window.draw(0, 0, Image[:player]) ...
+    
+    # ... Sound[:game_over].play ...
+  end
+end
+```
+
 ## v0.1.2 (2017/05/01)
 
 - new: Window.pause, .resume

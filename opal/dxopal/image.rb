@@ -1,10 +1,9 @@
+require 'dxopal/remote_resource'
+
 module DXOpal
-  class Image
-    # Load remote image
-    # Instance of Image is returned immediately, but Window.loop will
-    # wait until image is load
-    # Image#width, #height will return 0 until image is load
-    def self.load(path_or_url)
+  class Image < RemoteResource
+    # Load remote image (called via Window.load_resources)
+    def self._load(path_or_url)
       raw_img = `new Image()`
       img_promise = %x{
         new Promise(function(resolve, reject) {
@@ -14,7 +13,6 @@ module DXOpal
           raw_img.src = path_or_url;
         });
       }
-      Window._add_remote_resource(img_promise)
 
       img = new(0, 0)
       %x{
@@ -23,7 +21,7 @@ module DXOpal
           img.$_draw_raw_image(0, 0, raw_img);
         });
       }
-      return img
+      return img, img_promise
     end
 
     # Create an instance of Image

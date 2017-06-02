@@ -6,20 +6,15 @@ module DXOpal
     @@block = nil
     @@paused = false
 
-    # List of Promise
-    @@remote_resources = []
-
-    def self._add_remote_resource(promise)
-      @@remote_resources << promise
+    # Load resources specified with Image.register or Sound.register
+    # Call block when loaded
+    def self.load_resources(&block)
+      RemoteResource._load_resources(&block)
     end
 
     def self.loop(&block)
       @@block = block
-      %x{
-        Promise.all(#{@@remote_resources}).then(function() {
-          #{_loop(&block)}
-        });
-      }
+      _loop(&block)
     end
 
     # (DXOpal original) Pause & resume
