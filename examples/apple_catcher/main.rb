@@ -1,5 +1,12 @@
 include DXOpal
 
+Image.register(:player, 'images/noschar.png') 
+Image.register(:apple, 'images/ringo.png') 
+Image.register(:bomb, 'images/bomb.png') 
+
+Sound.register(:point, 'sounds/get.wav')
+Sound.register(:bomb, 'sounds/Explosion2.wav')
+
 module AppleCatcher
   class GameInfo
     def initialize(player)
@@ -28,8 +35,6 @@ module AppleCatcher
   end
 
   class Player < Sprite
-    IMG_PLAYER = Image.load('images/noschar.png') 
-
     def initialize
       @anim_idx = 0
       @anim_ct = 0
@@ -38,7 +43,7 @@ module AppleCatcher
 
     def update
       # We cannot call .slice_tiles outside Window.loop :-( Now I'm sure current API design is wrong
-      @tile_images ||= IMG_PLAYER.slice_tiles(4, 4)  # 4x4
+      @tile_images ||= Image[:player].slice_tiles(4, 4)  # 4x4
       @char_images ||= @tile_images.first(4)
 
       @anim_ct += 1
@@ -67,32 +72,26 @@ module AppleCatcher
     end
 
     class Apple < Item
-      IMG_APPLE = Image.load('images/ringo.png') 
-      SOUND_GET = Sound.new('sounds/get.wav')
-
       def initialize
-        super(IMG_APPLE)
+        super(Image[:apple])
         self.collision = [0, 15, 75, 80]
       end
 
       def hit(info)
-        SOUND_GET.play
+        Sound[:point].play
         info.score += 10
         self.vanish
       end
     end
 
     class Bomb < Item
-      IMG_BOMB = Image.load('images/bomb.png') 
-      SOUND_BOMB = Sound.new('sounds/Explosion2.wav')
-
       def initialize
-        super(IMG_BOMB)
+        super(Image[:bomb])
         self.collision = [15, 31, 61, 76]
       end
 
       def hit(info)
-        SOUND_BOMB.play
+        Sound[:bomb].play
         info.game_over = true
       end
     end
@@ -121,51 +120,53 @@ module AppleCatcher
   end
 end
 
-background = AppleCatcher::Background.new
-player = AppleCatcher::Player.new
-items = AppleCatcher::Items.new
-info = AppleCatcher::GameInfo.new(player)
-AppleCatcher.scene = :title
+Window.load_resources do
+  background = AppleCatcher::Background.new
+  player = AppleCatcher::Player.new
+  items = AppleCatcher::Items.new
+  info = AppleCatcher::GameInfo.new(player)
+  AppleCatcher.scene = :title
 
-Window.loop do
-  case AppleCatcher.scene
-  when :title
-    if Input.key_push?(K_SPACE)
-      AppleCatcher.scene = :playing
+  Window.loop do
+    case AppleCatcher.scene
+    when :title
+      if Input.key_push?(K_SPACE)
+        AppleCatcher.scene = :playing
+      end
+
+      background.draw
+      Window.draw_font(0, 0, "SCORE: #{info.score}", Font.default)
+      Window.draw_font(0, 30, "PRESS SPACE TO START", Font.default)
+    when :playing
+      player.update
+      items.update(info)
+      if info.game_over
+        AppleCatcher.scene = :game_over
+      end
+
+      background.draw
+      items.draw
+      player.draw
+      Window.draw_font(0, 0, "SCORE: #{info.score}", Font.default)
+    when :game_over
+      if Input.key_push?(K_SPACE)
+        player = AppleCatcher::Player.new; player.update
+        items = AppleCatcher::Items.new
+        info = AppleCatcher::GameInfo.new(player)
+        AppleCatcher.scene = :playing
+      end
+
+      background.draw
+      items.draw
+      player.draw
+      Window.draw_font(0, 0, "SCORE: #{info.score}", Font.default)
+      Window.draw_font(0, 30, "PRESS SPACE TO RESTART", Font.default)
     end
-
-    background.draw
-    Window.draw_font(0, 0, "SCORE: #{info.score}", Font.default)
-    Window.draw_font(0, 30, "PRESS SPACE TO START", Font.default)
-  when :playing
-    player.update
-    items.update(info)
-    if info.game_over
-      AppleCatcher.scene = :game_over
-    end
-
-    background.draw
-    items.draw
-    player.draw
-    Window.draw_font(0, 0, "SCORE: #{info.score}", Font.default)
-  when :game_over
-    if Input.key_push?(K_SPACE)
-      player = AppleCatcher::Player.new; player.update
-      items = AppleCatcher::Items.new
-      info = AppleCatcher::GameInfo.new(player)
-      AppleCatcher.scene = :playing
-    end
-
-    background.draw
-    items.draw
-    player.draw
-    Window.draw_font(0, 0, "SCORE: #{info.score}", Font.default)
-    Window.draw_font(0, 30, "PRESS SPACE TO RESTART", Font.default)
   end
-end
 
-%x{
-  document.getElementById('pause').addEventListener('click', function(){
-    #{Window.paused? ? Window.resume : Window.pause}
-  });
-}
+  %x{
+    document.getElementById('pause').addEventListener('click', function(){
+      #{Window.paused? ? Window.resume : Window.pause}
+    });
+  }
+end
