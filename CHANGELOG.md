@@ -1,4 +1,4 @@
-## v0.2.0 ()
+## v0.2.0 (2017-06-02)
 
 - new: Add example (apple_catcher)
 

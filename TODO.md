@@ -97,8 +97,8 @@
 - [ ] full_screen?
 - [ ] full_screen=
 - [ ] real_fps
-- [ ] fps
-- [ ] fps=
+- [x] fps
+- [x] fps=
 - [ ] frameskip?
 - [ ] frameskip=
 - [ ] bgcolor
