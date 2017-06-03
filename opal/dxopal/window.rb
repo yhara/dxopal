@@ -1,6 +1,9 @@
 module DXOpal
   module Window
     @@fps = 60
+    @@real_fps = 0
+    @@real_fps_ct = 0
+    @@real_fps_t = Time.now
     @@width = 640
     @@height = 480
     @@block = nil
@@ -36,8 +39,20 @@ module DXOpal
     def self._loop(&block)
       @@img ||= _init(@@width, @@height)
       t0 = Time.now
+
+      # Calculate fps
+      if t0 - @@real_fps_t >= 1.0
+        @@real_fps = @@real_fps_ct
+        @@real_fps_ct = 0
+        @@real_fps_t = t0
+      else
+        @@real_fps_ct += 1
+      end
+
+      # Detect inputs
       Input._on_tick
 
+      # Call user code
       @@draw_queue = []
       if @@paused
         Window.draw_pause_screen
@@ -45,6 +60,7 @@ module DXOpal
         block.call
       end
 
+      # Draw
       @@img.box_fill(0, 0, @@width, @@height, [0, 0, 0])
       @@draw_queue.sort_by(&:first).each do |item|
         case item[1]
@@ -56,6 +72,7 @@ module DXOpal
         end
       end
 
+      # Call next loop
       unless @@paused
         dt = `new Date() - t0` / 1000
         wait = (1000 / @@fps) - dt
@@ -72,6 +89,7 @@ module DXOpal
 
     def self.fps; @@fps; end
     def self.fps=(w); @@fps = w; end
+    def self.real_fps; @@real_fps; end
     def self.width; @@width; end
     def self.width=(w); @@width = w; end
     def self.height; @@height; end
