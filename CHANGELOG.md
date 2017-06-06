@@ -1,6 +1,7 @@
 ## v0.2.1 ()
 
 - new: Window.real_fps
+- improve: Better fps stabillity (use requestAnimationFrame)
 
 ## v0.2.0 (2017-06-02)
 

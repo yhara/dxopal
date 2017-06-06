@@ -2,7 +2,7 @@ module DXOpal
   module Window
     @@fps = 60
     @@real_fps = 0
-    @@real_fps_ct = 0
+    @@real_fps_ct = 1
     @@real_fps_t = Time.now
     @@width = 640
     @@height = 480
@@ -17,7 +17,7 @@ module DXOpal
 
     def self.loop(&block)
       @@block = block
-      _loop(&block)
+      `window`.JS.requestAnimationFrame{ _loop(&block) }
     end
 
     # (DXOpal original) Pause & resume
@@ -43,7 +43,7 @@ module DXOpal
       # Calculate fps
       if t0 - @@real_fps_t >= 1.0
         @@real_fps = @@real_fps_ct
-        @@real_fps_ct = 0
+        @@real_fps_ct = 1
         @@real_fps_t = t0
       else
         @@real_fps_ct += 1
@@ -72,12 +72,7 @@ module DXOpal
         end
       end
 
-      # Call next loop
-      unless @@paused
-        dt = `new Date() - t0` / 1000
-        wait = (1000 / @@fps) - dt
-        `setTimeout(function(){ #{loop(&block)} }, #{wait})`
-      end
+      `window`.JS.requestAnimationFrame{ _loop(&block) }
     end
 
     def self._init(w, h)
