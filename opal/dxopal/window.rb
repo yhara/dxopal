@@ -62,15 +62,15 @@ module DXOpal
 
       # Draw
       @@img.box_fill(0, 0, @@width, @@height, [0, 0, 0])
-      @@draw_queue.sort_by(&:first).each do |item|
-        case item[1]
-        when :image then @@img.draw(*item.drop(2))
-        when :font then @@img.draw_font(*item.drop(2)) 
-        when :line then @@img.line(*item.drop(2))
-        when :box then @@img.box(*item.drop(2))
-        when :box_fill then @@img.box_fill(*item.drop(2))
-        when :circle then @@img.circle(*item.drop(2))
-        when :circle_fill then @@img.circle_fill(*item.drop(2))
+      @@draw_queue.sort.each do |item|
+        case item[2]
+        when :image then @@img.draw(*item.drop(3))
+        when :font then @@img.draw_font(*item.drop(3)) 
+        when :line then @@img.line(*item.drop(3))
+        when :box then @@img.box(*item.drop(3))
+        when :box_fill then @@img.box_fill(*item.drop(3))
+        when :circle then @@img.circle(*item.drop(3))
+        when :circle_fill then @@img.circle_fill(*item.drop(3))
         end
       end
 
@@ -93,33 +93,37 @@ module DXOpal
     def self.height=(h); @@height = h; end
 
     def self.draw(x, y, image, z=0)
-      @@draw_queue.push([z, :image, x, y, image])
+      enqueue_draw(z, :image, x, y, image)
     end
 
     def self.draw_font(x, y, string, font, option={})
       z = option[:z] || 0
       color = option[:color] || [255, 255, 255]
-      @@draw_queue.push([z, :font, x, y, string, font, color])
+      enqueue_draw(z, :font, x, y, string, font, color)
     end
 
     def self.draw_line(x1, y1, x2, y2, color, z=0)
-      @@draw_queue.push([z, :line, x1, y1, x2, y2, color])
+      enqueue_draw(z, :line, x1, y1, x2, y2, color)
     end
 
     def self.draw_box(x1, y1, x2, y2, color, z=0)
-      @@draw_queue.push([z, :box, x1, y1, x2, y2, color])
+      enqueue_draw(z, :box, x1, y1, x2, y2, color)
     end
 
     def self.draw_box_fill(x1, y1, x2, y2, color, z=0)
-      @@draw_queue.push([z, :box_fill, x1, y1, x2, y2, color])
+      enqueue_draw(z, :box_fill, x1, y1, x2, y2, color)
     end
 
     def self.draw_circle(x, y, r, color, z=0)
-      @@draw_queue.push([z, :circle, x, y, r, color])
+      enqueue_draw(z, :circle, x, y, r, color)
     end
 
     def self.draw_circle_fill(x, y, r, color, z=0)
-      @@draw_queue.push([z, :circle_fill, x, y, r, color])
+      enqueue_draw(z, :circle_fill, x, y, r, color)
+    end
+
+    def self.enqueue_draw(z, *args)
+      @@draw_queue.push([z, @@draw_queue.length, *args])
     end
   end
 end
