@@ -57,7 +57,7 @@ module DXOpal
       %x{
         ctx.font = #{font._spec_str};
         ctx.textBaseline = 'top';
-        ctx.fillStyle = #{_rgb(color)};
+        ctx.fillStyle = #{_rgba(color)};
         ctx.fillText(string, x, y);
       }
       return self
@@ -68,7 +68,7 @@ module DXOpal
       ctx = @ctx
       %x{
         ctx.beginPath();
-        ctx.fillStyle = #{_rgb(color)};
+        ctx.fillStyle = #{_rgba(color)};
         ctx.fillRect(x1, y1, x2-x1, y2-y1); 
       }
       return self
@@ -79,7 +79,7 @@ module DXOpal
       ctx = @ctx
       %x{
         ctx.beginPath();
-        ctx.strokeStyle = #{_rgb(color)};
+        ctx.strokeStyle = #{_rgba(color)};
         ctx.arc(x, y, r, 0, Math.PI*2, false)
         ctx.stroke();
       }
@@ -91,7 +91,7 @@ module DXOpal
       ctx = @ctx
       %x{
         ctx.beginPath();
-        ctx.fillStyle = #{_rgb(color)};
+        ctx.fillStyle = #{_rgba(color)};
         ctx.arc(x, y, r, 0, Math.PI*2, false)
         ctx.fill();
       }
