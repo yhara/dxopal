@@ -5,6 +5,7 @@ PATH
       opal (~> 0.10.3)
 
 GEM
+  remote: https://rubygems.org/
   specs:
     concurrent-ruby (1.0.2)
     execjs (2.0.2)
@@ -35,4 +36,4 @@ DEPENDENCIES
   uglifier (~> 3.2.0)
 
 BUNDLED WITH
-   1.14.3
+   1.15.1
