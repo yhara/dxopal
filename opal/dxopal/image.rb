@@ -184,12 +184,13 @@ module DXOpal
       return "rgb(" + rgb.join(', ') + ")";
     end
 
-    # Return a string like 'rgb(255, 255, 255, 128)'
+    # Return a string like 'rgba(255, 255, 255, 128)'
     # `color` is 3 or 4 numbers
     def _rgba(color)
       case color.length
       when 4
-        rgba = color[3] + color[1, 3]
+        # color is ARGB in DXRuby, so move A to the last
+        rgba = color[1, 3] + [color[0]]
       when 3
         # Complement 255 as alpha 
         rgba = color + [255]
