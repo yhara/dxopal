@@ -66,6 +66,8 @@ module DXOpal
         case item[1]
         when :image then @@img.draw(*item.drop(2))
         when :font then @@img.draw_font(*item.drop(2)) 
+        when :line then @@img.line(*item.drop(2))
+        when :box then @@img.box(*item.drop(2))
         when :box_fill then @@img.box_fill(*item.drop(2))
         when :circle then @@img.circle(*item.drop(2))
         when :circle_fill then @@img.circle_fill(*item.drop(2))
@@ -98,6 +100,14 @@ module DXOpal
       z = option[:z] || 0
       color = option[:color] || [255, 255, 255]
       @@draw_queue.push([z, :font, x, y, string, font, color])
+    end
+
+    def self.draw_line(x1, y1, x2, y2, color, z=0)
+      @@draw_queue.push([z, :line, x1, y1, x2, y2, color])
+    end
+
+    def self.draw_box(x1, y1, x2, y2, color, z=0)
+      @@draw_queue.push([z, :box, x1, y1, x2, y2, color])
     end
 
     def self.draw_box_fill(x1, y1, x2, y2, color, z=0)

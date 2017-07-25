@@ -61,8 +61,8 @@
 - [ ] draw_morph
 - [ ] draw_tile
 - [ ] draw_pixel
-- [ ] draw_line
-- [ ] draw_box
+- [x] draw_line
+- [x] draw_box
 - [x] draw_box_fill
 - [x] draw_circle
 - [x] draw_circle_fill
@@ -148,18 +148,18 @@
 - [ ] dispose
 - [ ] delayed_dispose
 - [ ] disposed?
+- [x] line
+- [x] box
 - [ ] `[]`
 - [ ] `[]=`
 - [ ] compare
-- [ ] line
-- [ ] box
 - [x] box_fill
 - [x] circle
 - [x] circle_fill
 - [ ] triangle
 - [ ] triangle_fill
-- [ ] fill
-- [ ] clear
+- [x] fill
+- [x] clear
 - [ ] copy_rect
 - [ ] draw
 - [ ] draw_font - partially

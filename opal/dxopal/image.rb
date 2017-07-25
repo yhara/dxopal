@@ -63,6 +63,31 @@ module DXOpal
       return self
     end
 
+    # Draw a line on this image
+    def line(x1, y1, x2, y2, color)
+      ctx = @ctx
+      %x{
+        ctx.beginPath();
+        ctx.strokeStyle = #{_rgba(color)};
+        ctx.moveTo(x1, y1); 
+        ctx.lineTo(x2, y2); 
+        ctx.stroke(); 
+      }
+      return self
+    end
+
+    # Draw a rectangle on this image
+    def box(x1, y1, x2, y2, color)
+      ctx = @ctx
+      %x{
+        ctx.beginPath();
+        ctx.strokeStyle = #{_rgba(color)};
+        ctx.rect(x1, y1, x2-x1, y2-y1); 
+        ctx.stroke(); 
+      }
+      return self
+    end
+
     # Draw a filled box on this image
     def box_fill(x1, y1, x2, y2, color)
       ctx = @ctx
@@ -96,6 +121,16 @@ module DXOpal
         ctx.fill();
       }
       return self
+    end
+
+    # Fill this image with `color`
+    def fill(color)
+      box_fill(0, 0, @width-1, @height-1, color)
+    end
+
+    # Clear this image (i.e. fill with `[0,0,0,0]`)
+    def clear
+      fill([0, 0, 0, 0])
     end
 
     # Return an Image which is a copy of the specified area
