@@ -150,9 +150,9 @@
 - [ ] disposed?
 - [x] `[]`
 - [x] `[]=`
+- [x] compare
 - [x] line
 - [x] box
-- [ ] compare
 - [x] box_fill
 - [x] circle
 - [x] circle_fill

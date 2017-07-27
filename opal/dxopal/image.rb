@@ -80,6 +80,24 @@ module DXOpal
       box_fill(x, y, x, y, color)
     end
 
+    # Return true if the pixel at `(x, y)` has the `color`
+    def compare(x, y, color)
+      ctx = @ctx
+      rgba1 = _rgba_ary(color)
+      rgba2 = nil
+      ret = nil
+      %x{
+        var pixel = ctx.getImageData(x, y, 1, 1);
+        rgba2 = pixel.data;
+        // TODO: what is the right way to compare an Array and an Uint8ClampedArray?
+        ret = rgba1[0] == rgba2[0] &&
+              rgba1[1] == rgba2[1] &&
+              rgba1[2] == rgba2[2] &&
+              rgba1[3] == rgba2[3]
+      }
+      return ret
+    end
+
     # Draw a line on this image
     def line(x1, y1, x2, y2, color)
       ctx = @ctx
