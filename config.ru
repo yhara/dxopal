@@ -12,14 +12,16 @@ opal_server = Opal::Server.new{|s|
   s.use_index = false
 }
 
-# Compile dxopal.js dynamically to avoid manual recompiling
-map '/examples/apple_catcher/index.html' do
-  index = Opal::Server::Index.new(nil, opal_server)
-  s = File.read('examples/apple_catcher/index.html')
-          .gsub(%r{<script (.*)dxopal.js"></script>}){
-            index.javascript_include_tag(opal_server.main)
-          }
-  run lambda{|env| [200, {}, [s]] }
+Dir["examples/*"].reject{|x| x =~ /_vendor/}.each do |proj|
+  # Compile dxopal.js dynamically to avoid manual recompiling
+  map "/#{proj}/index.html" do
+    index = Opal::Server::Index.new(nil, opal_server)
+    s = File.read("#{proj}/index.html")
+            .gsub(%r{<script (.*)dxopal.js"></script>}){
+              index.javascript_include_tag(opal_server.main)
+            }
+    run lambda{|env| [200, {}, [s]] }
+  end
 end
 
 run lambda{|env|
