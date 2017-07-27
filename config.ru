@@ -22,4 +22,10 @@ map '/examples/apple_catcher/index.html' do
   run lambda{|env| [200, {}, [s]] }
 end
 
-run opal_server
+run lambda{|env|
+  if env["PATH_INFO"] == '/'
+    [301, {"Location" => '/index.html'}, [""]]
+  else
+    opal_server.call(env)
+  end
+}
