@@ -117,7 +117,7 @@ module DXOpal
       %x{
         ctx.beginPath();
         ctx.strokeStyle = #{_rgba(color)};
-        ctx.rect(x1, y1, x2-x1, y2-y1); 
+        ctx.rect(x1, y1, x2-x1+1, y2-y1+1); 
         ctx.stroke(); 
       }
       return self
@@ -129,7 +129,7 @@ module DXOpal
       %x{
         ctx.beginPath();
         ctx.fillStyle = #{_rgba(color)};
-        ctx.fillRect(x1, y1, x2-x1, y2-y1); 
+        ctx.fillRect(x1, y1, x2-x1+1, y2-y1+1); 
       }
       return self
     end
