@@ -18,6 +18,19 @@ require 'pp'
 module DXOpal
   include DXOpal::Constants::Colors
   include DXOpal::Input::KeyCodes
+
+  # Like `Kernel.p`, but prints only limited times for each `key`
+  # This is useful for debugging your game without flooding the
+  # developer console.
+  #
+  # Example:
+  #   p_ :player_x, @player.x, 20
+  P_CT = Hash.new{|h, k| h[k] = 0}
+  def p_(key, obj, n=10)
+    return if P_CT[key] >= n
+    `console.log(#{key}+":", #{obj.inspect})`
+    P_CT[key] += 1
+  end
 end
 
 # `require 'dxopal'` will automatically import names like `Window` to the
