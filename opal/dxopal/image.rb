@@ -63,6 +63,23 @@ module DXOpal
       return self
     end
 
+    # Get a pixel as ARGB array
+    def [](x, y)
+      ctx = @ctx
+      ret = nil
+      %x{
+        var pixel = ctx.getImageData(x, y, 1, 1);
+        var rgba = pixel.data;
+        ret = [rgba[3], rgba[0], rgba[1], rgba[2]];
+      }
+      return ret
+    end
+
+    # Put a pixel on this image
+    def []=(x, y, color)
+      box_fill(x, y, x, y, color)
+    end
+
     # Draw a line on this image
     def line(x1, y1, x2, y2, color)
       ctx = @ctx
@@ -187,17 +204,21 @@ module DXOpal
     # Return a string like 'rgba(255, 255, 255, 128)'
     # `color` is 3 or 4 numbers
     def _rgba(color)
+      return "rgba(" + _rgba_ary(color).join(', ') + ")"
+    end
+
+    # Return an array like `[255, 255, 255, 128]`
+    def _rgba_ary(color)
       case color.length
       when 4
         # color is ARGB in DXRuby, so move A to the last
-        rgba = color[1, 3] + [color[0]]
+        color[1, 3] + [color[0]]
       when 3
         # Complement 255 as alpha 
-        rgba = color + [255]
+        color + [255]
       else
         raise "invalid color: #{color.inspect}"
       end
-      return "rgba(" + rgba.join(', ') + ")"
     end
   end
 end

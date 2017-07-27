@@ -60,7 +60,7 @@
 - [ ] draw_font_ex
 - [ ] draw_morph
 - [ ] draw_tile
-- [ ] draw_pixel
+- [x] draw_pixel
 - [x] draw_line
 - [x] draw_box
 - [x] draw_box_fill
@@ -148,10 +148,10 @@
 - [ ] dispose
 - [ ] delayed_dispose
 - [ ] disposed?
+- [x] `[]`
+- [x] `[]=`
 - [x] line
 - [x] box
-- [ ] `[]`
-- [ ] `[]=`
 - [ ] compare
 - [x] box_fill
 - [x] circle
