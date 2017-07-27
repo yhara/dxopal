@@ -85,6 +85,9 @@ module DXOpal
       return img
     end
 
+    # Return internal DXOpal::Image object (for experimental/hacking use)
+    def self._img; @@img; end
+
     def self.fps; @@fps; end
     def self.fps=(w); @@fps = w; end
     def self.real_fps; @@real_fps; end
