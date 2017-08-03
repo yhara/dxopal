@@ -1,7 +1,8 @@
-## v0.2.1 ()
+## v0.3.0 (2017-08-03)
 
 - new: Window.real_fps
 - new: Some more drawing methods
+- new: SoundEffect class
 - improve: Better fps stabillity (use requestAnimationFrame)
 
 ## v0.2.0 (2017-06-02)
