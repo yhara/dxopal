@@ -45,9 +45,6 @@
 ## module Window
 
 - [x] loop
-- [ ] close
-- [ ] created?
-- [ ] closed?
 - [x] draw
 - [ ] draw_scale
 - [ ] draw_rot
@@ -75,11 +72,6 @@
 - [ ] open_filename
 - [ ] save_filename
 - [ ] folder_dialog
-- [ ] create
-- [ ] sync
-- [ ] update
-- [ ] load_icon
-- [ ] hWnd
 - [ ] x
 - [ ] x=
 - [ ] y
@@ -116,6 +108,17 @@
 - [ ] decide
 - [ ] before_call
 - [ ] after_call
+
+These methods will not be supported (does not make sense in the browser or marked as obsolete).
+
+- create
+- close
+- created?
+- closed?
+- update
+- sync
+- load_icon
+- hWnd
 
 ## class Font
 
