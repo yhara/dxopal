@@ -188,12 +188,12 @@ These methods will not be supported (does not make sense in the browser or marke
 - [ ] load_from_memory
 - [ ] dispose
 - [ ] disposed?
-- [ ] play
+- [x] play
 - [ ] start=
 - [ ] loop_start=
 - [ ] loop_end=
 - [ ] loop_count=
-- [ ] stop
+- [x] stop
 - [ ] set_volume
 - [ ] pan
 - [ ] pan=
@@ -201,6 +201,14 @@ These methods will not be supported (does not make sense in the browser or marke
 - [ ] frequency=
 
 ## class SoundEffect
+
+- [x] new
+- [ ] disposed?
+- [ ] add
+- [x] play
+- [x] stop
+- [ ] save
+
 ## class Sprite
 
 - [ ] new

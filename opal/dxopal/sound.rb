@@ -2,6 +2,8 @@ require 'dxopal/remote_resource'
 
 module DXOpal
   class Sound < RemoteResource
+    RemoteResource.add_class(Sound)
+
     # Return AudioContext
     def self.audio_context
       @@audio_context ||= %x{

@@ -7,6 +7,7 @@ require 'dxopal/input'
 require 'dxopal/input/key_codes'
 require 'dxopal/image'
 require 'dxopal/sound'
+require 'dxopal/sound_effect'
 require 'dxopal/sprite'
 require 'dxopal/window'
 # Enable runtime compilation of Opal code (so that you can make games
@@ -18,6 +19,7 @@ require 'pp'
 module DXOpal
   include DXOpal::Constants::Colors
   include DXOpal::Input::KeyCodes
+  include DXOpal::SoundEffect::WaveTypes
 
   # Like `Kernel.p`, but prints only limited times for each `key`
   # This is useful for debugging your game without flooding the

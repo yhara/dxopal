@@ -1,4 +1,7 @@
 module DXOpal
+  # A base class for resources acquired through JS Promises.
+  # Provides `<klass>.register` and `<klass>[name]`.
+  # A subclass must impelment `<klass>._load`.
   class RemoteResource
     # List of registered resources (Contains path_or_url)
     @@resources = Hash.new{|h,k| h[k] = {}}
@@ -9,13 +12,14 @@ module DXOpal
 
     # Subclasses of RemoteResource
     @@klasses = {}
-    def self.inherited(subklass)
+    def self.add_class(subklass)
       @@klasses[subklass._klass_name] = subklass
     end
 
-    def self.register(name, path_or_url)
+    # Reserve instance generation
+    def self.register(name, *args, &block)
       @@resources[_klass_name] ||= {}
-      @@resources[_klass_name][name] = path_or_url
+      @@resources[_klass_name][name] = [block, args]
     end
 
     # Return instance of loaded resource (call on subclasses)
@@ -29,11 +33,11 @@ module DXOpal
 
     # Called from Window.load_resources
     def self._load_resources(&block)
-      @@resources.each do |klass_name, path_or_urls|
+      @@resources.each do |klass_name, items|
         klass = @@klasses[klass_name] 
-        path_or_urls.each do |name, path_or_url|
+        items.each do |name, (block, args)|
           if !@@promises[klass_name][name]
-            instance, promise = klass._load(path_or_url) 
+            instance, promise = klass._load(*args, &block) 
             @@instances[klass_name][name] = instance
             @@promises[klass_name][name] = promise
           end
@@ -48,7 +52,8 @@ module DXOpal
     end
 
     # Load actual content (defined on subclasses)
-    def self._load
+    # Return `[instance, promise]`
+    def self._load(*args)
       raise "override me"
     end
 

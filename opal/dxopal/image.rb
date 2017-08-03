@@ -2,6 +2,8 @@ require 'dxopal/remote_resource'
 
 module DXOpal
   class Image < RemoteResource
+    RemoteResource.add_class(Image)
+
     # Load remote image (called via Window.load_resources)
     def self._load(path_or_url)
       raw_img = `new Image()`
