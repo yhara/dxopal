@@ -18,3 +18,39 @@ file "build/dxopal.js" => "opal/dxopal.rb" do |t|
   Opal.append_path("opal")
   File.write(t.name, Opal::Builder.build("dxopal.rb").to_s)
 end
+
+namespace "release" do
+  desc "Make a release commit"
+  task :prepare do
+    ver = ENV.fetch("VER")
+    sh "git stash"
+    sh "rake build_min -B"
+    sh "git ci -m 'v#{ver}'"
+  end
+
+  desc "Make a release commit"
+  task :push do
+    ver = ENV.fetch("VER")
+    sh "git tag 'v#{ver}'"
+    sh "git push origin master --tags"
+  end
+
+  desc "Make a release commit"
+  task :push_game do
+    ver = ENV.fetch("VER")
+    cd "dxopal-game" do
+      sh "git ci dxopal.min.js -m 'v#{ver}'"
+      sh "git tag 'v#{ver}'"
+      sh "git push origin master --tags"
+    end
+  end
+end
+
+# How to make a release
+# 1. Edit CHANGELOG.md
+# 2. `rake release:prepare`
+# 3. Test
+#   - Open dxopal-game/index.html in Firefox
+#   - rackup and open http://localhost:9292/
+# 4. `rake release:push`
+# 5. `rake release:push_game`
