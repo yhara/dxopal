@@ -47,6 +47,7 @@ namespace "release" do
 end
 
 # How to make a release
+# TODO: should edit lib/dxopal/version.rb :-\
 # 1. Edit CHANGELOG.md
 # 2. `rake release:prepare`
 # 3. Test
