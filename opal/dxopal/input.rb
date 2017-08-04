@@ -1,5 +1,38 @@
 module DXOpal
   module Input
+    # Internal setup for Input class
+    def self._init(canvas)
+      @@tick = 0
+      @@pressing_keys = pressing_keys = `new Object()`
+      @@mouse_info = `{x: 0, y: 0}`
+
+      rect = `canvas.getBoundingClientRect()`
+      @@canvas_x = `rect.left + window.pageXOffset`
+      @@canvas_y = `rect.top  + window.pageYOffset`
+
+      %x{
+        document.addEventListener('keydown', function(ev){
+          pressing_keys[ev.keyCode] = #{@@tick};
+          ev.preventDefault();
+          ev.stopPropagation();
+        });
+        document.addEventListener('keyup', function(ev){
+          pressing_keys[ev.keyCode] = -#{@@tick};
+          ev.preventDefault();
+          ev.stopPropagation();
+        });
+        document.addEventListener('mousemove', function(ev){
+          #{@@mouse_info}.x = ev.pageX - #{@@canvas_x};
+          #{@@mouse_info}.y = ev.pageY - #{@@canvas_y};
+        });
+      }
+    end
+    
+    # Called on every frame from Window
+    def self._on_tick
+      @@tick += 1
+    end
+
     # Return 1 if 'right', -1 if 'left'
     def self.x(pad_number=0)
       ret = 0
@@ -42,39 +75,6 @@ module DXOpal
     class << self
       alias mouse_pos_x mouse_x
       alias mouse_pos_y mouse_y
-    end
-
-    # Internal setup for Input class
-    def self._init(canvas)
-      @@tick = 0
-      @@pressing_keys = pressing_keys = `new Object()`
-      @@mouse_info = `{x: 0, y: 0}`
-
-      rect = `canvas.getBoundingClientRect()`
-      @@canvas_x = `rect.left + window.pageXOffset`
-      @@canvas_y = `rect.top  + window.pageYOffset`
-
-      %x{
-        document.addEventListener('keydown', function(ev){
-          pressing_keys[ev.keyCode] = #{@@tick};
-          ev.preventDefault();
-          ev.stopPropagation();
-        });
-        document.addEventListener('keyup', function(ev){
-          pressing_keys[ev.keyCode] = -#{@@tick};
-          ev.preventDefault();
-          ev.stopPropagation();
-        });
-        document.addEventListener('mousemove', function(ev){
-          #{@@mouse_info}.x = ev.pageX - #{@@canvas_x};
-          #{@@mouse_info}.y = ev.pageY - #{@@canvas_y};
-        });
-      }
-    end
-    
-    # Called on every frame from Window
-    def self._on_tick
-      @@tick += 1
     end
   end
 end
