@@ -88,13 +88,13 @@
 - [ ] windowed=
 - [ ] full_screen?
 - [ ] full_screen=
-- [ ] real_fps
+- [x] real_fps
 - [x] fps
 - [x] fps=
 - [ ] frameskip?
 - [ ] frameskip=
-- [ ] bgcolor
-- [ ] bgcolor=
+- [x] bgcolor
+- [x] bgcolor=
 - [ ] min_filter
 - [ ] min_filter=
 - [ ] mag_filter

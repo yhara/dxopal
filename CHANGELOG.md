@@ -1,3 +1,8 @@
+## v0.3.1 ()
+
+- fix: Image transparency was ignored
+- new: Window.bgcolor
+
 ## v0.3.0 (2017-08-03)
 
 - new: Window.real_fps

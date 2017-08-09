@@ -61,7 +61,7 @@ module DXOpal
       end
 
       # Draw
-      @@img.box_fill(0, 0, @@width, @@height, [0, 0, 0])
+      @@img.box_fill(0, 0, @@width, @@height, @@bgcolor)
       @@draw_queue.sort.each do |item|
         case item[2]
         when :image then @@img.draw(*item.drop(3))
@@ -95,6 +95,9 @@ module DXOpal
     def self.width=(w); @@width = w; end
     def self.height; @@height; end
     def self.height=(h); @@height = h; end
+    @@bgcolor = [0, 0, 0, 0]
+    def self.bgcolor; @@bgcolor; end
+    def self.bgcolor=(col); @@bgcolor = col; end
 
     def self.draw(x, y, image, z=0)
       enqueue_draw(z, :image, x, y, image)
