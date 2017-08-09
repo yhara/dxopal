@@ -232,10 +232,10 @@ module DXOpal
       case color.length
       when 4
         # color is ARGB in DXRuby, so move A to the last
-        color[1, 3] + [color[0]]
+        color[1, 3] + [color[0]/255.0]
       when 3
         # Complement 255 as alpha 
-        color + [255]
+        color + [1.0]
       else
         raise "invalid color: #{color.inspect}"
       end
