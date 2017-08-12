@@ -19,6 +19,7 @@ require 'pp'
 module DXOpal
   include DXOpal::Constants::Colors
   include DXOpal::Input::KeyCodes
+  include DXOpal::Input::MouseCodes
   include DXOpal::SoundEffect::WaveTypes
 
   # Like `Kernel.p`, but prints only limited times for each `key`
