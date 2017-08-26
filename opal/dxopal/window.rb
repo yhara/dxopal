@@ -1,3 +1,5 @@
+require 'dxopal/constants/colors'
+
 module DXOpal
   module Window
     @@fps = 60
@@ -95,7 +97,7 @@ module DXOpal
     def self.width=(w); @@width = w; end
     def self.height; @@height; end
     def self.height=(h); @@height = h; end
-    @@bgcolor = [0, 0, 0, 0]
+    @@bgcolor = Constants::Colors::C_BLACK
     def self.bgcolor; @@bgcolor; end
     def self.bgcolor=(col); @@bgcolor = col; end
 
