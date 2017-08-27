@@ -74,6 +74,8 @@ module DXOpal
         when :box_fill then @@img.box_fill(*item.drop(3))
         when :circle then @@img.circle(*item.drop(3))
         when :circle_fill then @@img.circle_fill(*item.drop(3))
+        when :triangle then @@img.triangle(*item.drop(3))
+        when :triangle_fill then @@img.triangle_fill(*item.drop(3))
         end
       end
 
@@ -133,6 +135,14 @@ module DXOpal
 
     def self.draw_circle_fill(x, y, r, color, z=0)
       enqueue_draw(z, :circle_fill, x, y, r, color)
+    end
+
+    def self.draw_triangle(x1, y1, x2, y2, x3, y3, color, z=0)
+      enqueue_draw(z, :triangle, x1, y1, x2, y2, x3, y3, color)
+    end
+
+    def self.draw_triangle_fill(x1, y1, x2, y2, x3, y3, color, z=0)
+      enqueue_draw(z, :triangle_fill, x1, y1, x2, y2, x3, y3, color)
     end
 
     def self.enqueue_draw(z, *args)

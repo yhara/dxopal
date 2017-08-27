@@ -160,6 +160,35 @@ module DXOpal
       return self
     end
 
+    # Draw a triangle on this image
+    def triangle(x1, y1, x2, y2, x3, y3, color)
+      ctx = @ctx
+      %x{
+        ctx.beginPath();
+        ctx.strokeStyle = #{_rgba(color)};
+        ctx.moveTo(x1, y1);
+        ctx.lineTo(x2, y2);
+        ctx.lineTo(x3, y3);
+        ctx.lineTo(x1, y1);
+        ctx.stroke();
+      }
+      return self
+    end
+
+    # Draw a filled triangle on this image
+    def triangle_fill(x1, y1, x2, y2, x3, y3, color)
+      ctx = @ctx
+      %x{
+        ctx.beginPath();
+        ctx.fillStyle = #{_rgba(color)};
+        ctx.moveTo(x1, y1);
+        ctx.lineTo(x2, y2);
+        ctx.lineTo(x3, y3);
+        ctx.fill();
+      }
+      return self
+    end
+
     # Fill this image with `color`
     def fill(color)
       box_fill(0, 0, @width-1, @height-1, color)
