@@ -19,9 +19,9 @@
 - [x] mouse_pos_x
 - [x] mouse_pos_y
 - [ ] set_mouse_pos
-- [ ] mouse_down?
-- [ ] mouse_push?
-- [ ] mouse_release?
+- [x] mouse_down?
+- [x] mouse_push?
+- [x] mouse_release?
 - [ ] mouse_wheel_pos
 - [ ] mouse_wheel_pos=
 - [ ] mouse_enable=
@@ -159,8 +159,8 @@ These methods will not be supported (does not make sense in the browser or marke
 - [x] box_fill
 - [x] circle
 - [x] circle_fill
-- [ ] triangle
-- [ ] triangle_fill
+- [x] triangle
+- [x] triangle_fill
 - [x] fill
 - [x] clear
 - [ ] copy_rect
@@ -173,8 +173,8 @@ These methods will not be supported (does not make sense in the browser or marke
 - [ ] dup
 - [ ] clone
 - [ ] set_color_key
-- [ ] width
-- [ ] height
+- [x] width
+- [x] height
 - [ ] flush
 - [ ] effect_image_font
 - [ ] change_hls
