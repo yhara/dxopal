@@ -64,53 +64,6 @@ module DXOpal
       def _collidable?
         return !@vanished && @collision_enable
       end
-
-#      # Return true when two areas collide with each other
-#      def self.collides?(a, ax, ay, b, bx, by)
-#        if a.is_a?(Rect) && b.is_a?(Rect)
-#          # Opal 
-#          ax1 = a.x1 + ax
-#          ay1 = a.y1 + ay
-#          ax2 = a.x2 + ax
-#          ay2 = a.y2 + ay
-#          bx1 = b.x1 + bx
-#          by1 = b.y1 + by
-#          bx2 = b.x2 + bx
-#          by2 = b.y2 + by
-#
-#          return ax2 >= bx1 &&
-#          ax1 <= bx2 &&
-#          ay2 >= by1 &&
-#          ay1 <= by2 
-#
-#          # JS
-##          return %x{ ax2 >= bx1 &&
-##            ax1 <= bx2 &&
-##            ay2 >= by1 &&
-##            ay1 <= by2 
-##          }
-#
-#          # WASM
-##          return `window.rect_rect(ax1, ay1, ax2, ay2, bx1, by1, bx2, by2) ==  1`
-#        elsif a.is_a?(Circle) && b.is_a?(Circle)
-#          # Opal
-#          ax, ay = a.x+ax, a.y+ay
-#          bx, by = b.x+bx, b.y+by
-#          ar, br = a.r, b.r
-##          Math.sqrt((ax-bx)**2 + (ay-by)**2) < a.r + b.r
-#
-#          # JavaScript
-#          %x{
-#//            var ax = a['$$data'].x+ax, ay = a['$$data'].y+ay,
-#//                bx = b['$$data'].x+bx, by = b['$$data'].y+by;
-#//            return Math.sqrt((ax-bx)**2 + (ay-by)**2) < a['$$data'].r + b['$$data'].r
-#            return Math.sqrt((ax-bx)**2 + (ay-by)**2) < ar + br
-#          }
-#        else
-#          raise NotImplementedError, "collision detection not yet "+
-#            "implemented for #{a.inspect} and #{b.inspect}"
-#        end
-#      end
     end
   end
 end
