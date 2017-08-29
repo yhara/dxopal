@@ -11,6 +11,12 @@ module DXOpal
           @checker = CollisionChecker::WasmChecker.new
         end
 
+        # Return a string like "Point", "Rect", etc.
+        # Used for type checking in `collides?` (because Opal's Class#is_a? is not very fast)
+        def type
+          raise "override me"
+        end
+
         def absolute(poss)
           return poss if !@sprite.collision_sync
           rad = Math::PI / 180.0 * @sprite.angle
@@ -40,19 +46,21 @@ module DXOpal
           super()
         end
 
+        def type; :Point; end
+
         def pos
           absolute_pos([@x, @y])
         end
 
         def collides?(other)
-          case other
-          when Point
+          case other.type
+          when :Point
             self.pos == other.pos
-          when Circle
+          when :Circle
             TODO
-          when Rect
+          when :Rect
             TODO
-          when Triangle
+          when :Triangle
             TODO
           end
         end
@@ -64,15 +72,17 @@ module DXOpal
           super()
         end
 
+        def type; :Circle; end
+
         def collides?(other)
-          case other
-          when Point
+          case other.type
+          when :Point
             other.collides?(self)
           when Circle
             TODO
-          when Rect
+          when :Rect
             TODO
-          when Triangle
+          when :Triangle
             TODO
           end
         end
@@ -84,9 +94,11 @@ module DXOpal
           super()
         end
 
+        def type; :Rect; end
+
         def collides?(other)
-          case other
-          when Point, Circle
+          case other.type
+          when :Point, :Circle
             other.collides?(self)
           when Rect
             TODO
@@ -103,12 +115,16 @@ module DXOpal
           super()
         end
 
+        def type; :Triangle; end
+
         def collides?(other)
-          case other
-          when Point, Circle, Rect
+          case other.type
+          when :Point, :Circle, :Rect
             other.collides?(self)
-          when Triangle
+          when :Triangle
             collides_triangle?(other)
+          else
+            raise
           end
         end
 
