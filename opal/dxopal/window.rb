@@ -66,7 +66,8 @@ module DXOpal
 
       # Draw
       @@img.box_fill(0, 0, @@width, @@height, @@bgcolor)
-      @@draw_queue.sort.each do |item|
+      sorted = @@draw_queue.sort{|a, b| a[0] == b[0] ? a[1] <=> b[1] : a[0] <=> a[1] }
+      sorted.each do |item|
         case item[2]
         when :image then @@img.draw(*item.drop(3))
         when :image_rot then @@img.draw_rot(*item.drop(3))
