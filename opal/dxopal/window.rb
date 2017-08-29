@@ -67,6 +67,7 @@ module DXOpal
       @@draw_queue.sort.each do |item|
         case item[2]
         when :image then @@img.draw(*item.drop(3))
+        when :image_rot then @@img.draw_rot(*item.drop(3))
         when :font then @@img.draw_font(*item.drop(3)) 
         when :pixel then @@img.[]=(*item.drop(3))
         when :line then @@img.line(*item.drop(3))
@@ -105,6 +106,10 @@ module DXOpal
 
     def self.draw(x, y, image, z=0)
       enqueue_draw(z, :image, x, y, image)
+    end
+
+    def self.draw_rot(x, y, image, angle, center_x=nil, center_y=nil, z=0)
+      enqueue_draw(z, :image_rot, x, y, image, angle, center_x, center_y)
     end
 
     def self.draw_font(x, y, string, font, option={})

@@ -53,6 +53,21 @@ module DXOpal
       return self
     end
 
+    # Draw an Image on this image with rotation
+    # - angle: Rotation angle (radian)
+    # - center_x, center_y: Rotation center in the `image` (default: center of the `image`)
+    def draw_rot(x, y, image, angle, center_x=nil, center_y=nil)
+      cx = x + (center_x || image.width / 2)
+      cy = y + (center_y || image.height / 2)
+      %x{
+        #{@ctx}.translate(cx, cy);
+        #{@ctx}.rotate(angle * Math.PI / 180.0);
+        #{@ctx}.drawImage(#{image.canvas}, x-cx, y-cy);
+        #{@ctx}.setTransform(1, 0, 0, 1, 0, 0); // reset
+      }
+      return self
+    end
+
     # Draw some text on this image
     def draw_font(x, y, string, font, color=[255,255,255])
       ctx = @ctx
