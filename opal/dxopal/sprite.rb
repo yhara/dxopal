@@ -4,6 +4,29 @@ module DXOpal
   class Sprite
     include DXOpal::Sprite::CollisionCheck
 
+    def self.check(offences, defences, shot=:shot, hit=:hit)
+      if offences.equal?(defences)
+        sprites = offences.select{|x| x.is_a?(Sprite)}
+        n = sprites.length
+        %x{
+          for (var i=0; i<n; i++) {
+            for (var j=i+1; j<n; j++) {
+              if (sprites[i]['$==='](sprites[j])) {
+                sprites[i]['$hit']();
+                sprites[j]['$hit']();
+              }
+            }
+          }
+        }
+      else
+        raise "TODO"
+      end
+    end
+
+    # Default callback methods of `Sprite.check`
+    def shot(other); end
+    def hit(other); end
+
     # Call #update on each sprite (unless it is vanished or do not have #update)
     def self.update(sprites)
       sprites.each do |sprite|
@@ -31,6 +54,12 @@ module DXOpal
     def initialize(x=0, y=0, image=nil)
       @x, @y, @image = x, y, image
       @z = 0
+      @angle = 0
+      @scale_x = @scale_y = 1.0
+      if image
+        @center_x = image.width / 2
+        @center_y = image.height / 2
+      end
 
       @visible = true
       @vanished = false
@@ -38,11 +67,22 @@ module DXOpal
     end
     attr_accessor :x, :y, :z, :visible
 
+    # Set angle (0~360, default: 0)
+    attr_accessor :angle
+    # Set horizontal/vertical scale (default: 1.0)
+    attr_accessor :scale_x, :scale_y
+    # Set rotation center (default: center of `image`)
+    attr_accessor :center_x, :center_y
+
     def image; @image; end
     def image=(img)
       @image = img
       if @collision.nil?
         self.collision = Rect.new(0, 0, img.width, img.height)
+      end
+      if @center_x.nil?
+        @center_x = img.width / 2
+        @center_y = img.height / 2
       end
     end
 
@@ -54,7 +94,8 @@ module DXOpal
       raise "image not set to Sprite" if @image.nil?
       return if !@visible
 
-      Window.draw(@x, @y, @image)
+      # TODO: scale_x, scale_y
+      Window.draw_rot(@x, @y, @image, @angle, @center_x, @center_y)
     end
   end
 end
