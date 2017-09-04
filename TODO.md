@@ -95,10 +95,6 @@
 - [ ] frameskip=
 - [x] bgcolor
 - [x] bgcolor=
-- [ ] min_filter
-- [ ] min_filter=
-- [ ] mag_filter
-- [ ] mag_filter=
 - [ ] resize
 - [ ] active?
 - [ ] running_time
@@ -119,6 +115,10 @@ These methods will not be supported (does not make sense in the browser or marke
 - sync
 - load_icon
 - hWnd
+- min_filter
+- min_filter=
+- mag_filter
+- mag_filter=
 
 ## class Font
 
