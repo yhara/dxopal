@@ -1,8 +1,10 @@
 require 'dxopal/sprite/collision_check'
+require 'dxopal/sprite/physics'
 
 module DXOpal
   class Sprite
     include DXOpal::Sprite::CollisionCheck
+    include DXOpal::Sprite::Physics
 
     def self.check(offences, defences, shot=:shot, hit=:hit)
       if offences.equal?(defences)
@@ -65,7 +67,7 @@ module DXOpal
       @vanished = false
       _init_collision_info(@image)
     end
-    attr_accessor :x, :y, :z, :visible
+    attr_accessor :z, :visible
 
     # Set angle (0~360, default: 0)
     attr_accessor :angle
@@ -73,6 +75,18 @@ module DXOpal
     attr_accessor :scale_x, :scale_y
     # Set rotation center (default: center of `image`)
     attr_accessor :center_x, :center_y
+
+    attr_reader :x, :y
+
+    def x=(newx)
+      @x = newx
+      _move_matter_body if @_matter_body
+    end
+
+    def y=(newy)
+      @y = newy
+      _move_matter_body if @_matter_body
+    end
 
     def image; @image; end
     def image=(img)

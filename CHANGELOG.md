@@ -3,6 +3,7 @@
 - fix: Image transparency was ignored
 - new: Window.bgcolor
 - new: Input.mouse_down?, mouse_push?, mouse_release?
+- new: Matter.js support (experimental)
 
 ## v0.3.0 (2017-08-03)
 

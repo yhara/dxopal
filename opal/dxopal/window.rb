@@ -21,7 +21,7 @@ module DXOpal
 
     def self.loop(&block)
       @@block = block
-      `window`.JS.requestAnimationFrame{ _loop(&block) }
+      `window`.JS.requestAnimationFrame{|time| _loop(time, &block) }
     end
 
     # (DXOpal original) Pause & resume
@@ -40,7 +40,7 @@ module DXOpal
       Window.draw_font(0, 0, "...PAUSE...", Font.default, color: C_WHITE)
     end
 
-    def self._loop(&block)
+    def self._loop(time, &block)
       @@img ||= _init(@@width, @@height)
       t0 = Time.now
 
@@ -52,6 +52,9 @@ module DXOpal
       else
         @@real_fps_ct += 1
       end
+
+      # Update physics
+      Sprite.matter_tick(time) if Sprite.matter_enabled?
 
       # Detect inputs
       Input._on_tick
@@ -83,7 +86,7 @@ module DXOpal
         end
       end
 
-      `window`.JS.requestAnimationFrame{ _loop(&block) }
+      `window`.JS.requestAnimationFrame{|time| _loop(time, &block) }
     end
 
     def self._init(w, h)
