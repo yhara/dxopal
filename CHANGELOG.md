@@ -1,6 +1,7 @@
-## v0.3.1 ()
+## v0.4.0 ()
 
 - fix: Image transparency was ignored
+- new: Sprite.check
 - new: Window.bgcolor
 - new: Input.mouse_down?, mouse_push?, mouse_release?
 - new: Matter.js support (experimental)

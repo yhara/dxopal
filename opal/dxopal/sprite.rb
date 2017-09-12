@@ -6,8 +6,10 @@ module DXOpal
     include DXOpal::Sprite::CollisionCheck
     include DXOpal::Sprite::Physics
 
+    # TODO: implement arguments `shot` and `hit`
     def self.check(offences, defences, shot=:shot, hit=:hit)
       if offences.equal?(defences)
+        # any-vs-any mode
         sprites = offences.select{|x| x.is_a?(Sprite)}
         n = sprites.length
         %x{
@@ -21,7 +23,17 @@ module DXOpal
           }
         }
       else
-        raise "TODO"
+        # offence-vs-defence mode
+        %x{
+          for (var i=0; i<offences.length; i++) {
+            for (var j=i+1; j<defences.length; j++) {
+              if (offences[i]['$==='](defences[j])) {
+                offences[i]['$shot']();
+                defences[j]['$hit']();
+              }
+            }
+          }
+        }
       end
     end
 
