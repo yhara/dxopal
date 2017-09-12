@@ -50,9 +50,9 @@ module DXOpal
       end
     end
 
-    # Remove vanished sprites (and nils) from the array
+    # Remove vanished sprites (and nils) from the array, destructively
     def self.clean(sprites)
-      return sprites.reject{|sprite|
+      sprites.reject!{|sprite|
         sprite.nil? || sprite.vanished?
       }
     end
