@@ -2,8 +2,8 @@
 
 ## module Input
 
-- [x] x - TODO: pad support
-- [x] y - TODO: pad support
+- [ ] x - TODO: pad support
+- [ ] y - TODO: pad support
 - [x] key_down?
 - [x] key_push?
 - [x] key_release?
@@ -28,7 +28,6 @@
 - [ ] keys
 - [ ] pads
 - [ ] requested_close?
-- [ ] update
 - [ ] pad_num
 - [ ] pad_axis
 - [ ] pad_lstick
@@ -42,12 +41,16 @@
 - [ ] pad_pov_y
 - [ ] set_cursor
 
+These methods will not be supported.
+
+- update
+
 ## module Window
 
 - [x] loop
 - [x] draw
 - [ ] draw_scale
-- [ ] draw_rot
+- [x] draw_rot
 - [ ] draw_alpha
 - [ ] draw_add
 - [ ] draw_sub
@@ -76,12 +79,10 @@
 - [ ] x=
 - [ ] y
 - [ ] y=
-- [ ] width
-- [ ] width=
-- [ ] height
-- [ ] height=
-- [ ] caption
-- [ ] caption=
+- [x] width
+- [x] width=
+- [x] height
+- [x] height=
 - [ ] scale
 - [ ] scale=
 - [ ] windowed?
@@ -105,8 +106,10 @@
 - [ ] before_call
 - [ ] after_call
 
-These methods will not be supported (does not make sense in the browser or marked as obsolete).
+These methods will not be supported.
 
+- caption
+- caption=
 - create
 - close
 - created?
@@ -122,12 +125,9 @@ These methods will not be supported (does not make sense in the browser or marke
 
 ## class Font
 
-- [ ] new - partially
-- [ ] install
-- [x] default
-- [x] default=
-- [ ] dispose
-- [ ] disposed?
+- [ ] Font.new - partially
+- [x] Font.default
+- [x] Font.default=
 - [ ] get_width
 - [x] size
 - [x] fontname
@@ -137,20 +137,22 @@ These methods will not be supported (does not make sense in the browser or marke
 - [ ] auto_fitting
 - [ ] info
 
+These methods will not be supported.
+
+- install
+- dispose
+- disposed?
+
 ## class Image
 
-- [ ] new
-- [ ] load
-- [ ] load_tiles
-- [ ] create_from_array
-- [ ] load_from_file_in_memory
-- [ ] perlin_noise
-- [ ] octave_perlin_noise
-- [ ] custom_perlin_noise
-- [ ] perlin_seed
-- [ ] dispose
-- [ ] delayed_dispose
-- [ ] disposed?
+- [x] Image.new
+- [ ] Image.load_tiles
+- [ ] Image.create_from_array
+- [ ] Image.load_from_file_in_memory
+- [ ] Image.perlin_noise
+- [ ] Image.octave_perlin_noise
+- [ ] Image.custom_perlin_noise
+- [ ] Image.perlin_seed
 - [x] `[]`
 - [x] `[]=`
 - [x] compare
@@ -164,7 +166,7 @@ These methods will not be supported (does not make sense in the browser or marke
 - [x] fill
 - [x] clear
 - [ ] copy_rect
-- [ ] draw
+- [x] draw
 - [ ] draw_font - partially
 - [ ] draw_font_ex
 - [ ] save
@@ -179,15 +181,19 @@ These methods will not be supported (does not make sense in the browser or marke
 - [ ] effect_image_font
 - [ ] change_hls
 
+These methods will not be supported.
+
+- Image.load (use Image.register and `Image.[]` instead)
+- dispose
+- delayed_dispose
+- disposed?
+
 ## class RenderTarget
 ## class Shader
 ## class Shader::Core
 ## class Sound
 
-- [ ] new
-- [ ] load_from_memory
-- [ ] dispose
-- [ ] disposed?
+- [ ] Sound.load_from_memory
 - [x] play
 - [ ] start=
 - [ ] loop_start=
@@ -200,22 +206,31 @@ These methods will not be supported (does not make sense in the browser or marke
 - [ ] frequency
 - [ ] frequency=
 
+These methods will not be supported.
+
+- Sound.new (use Sound.register and `Sound.[]` instead)
+- dispose
+- disposed?
+
 ## class SoundEffect
 
-- [x] new
-- [ ] disposed?
+- [x] SoundEffect.new
 - [ ] add
 - [x] play
 - [x] stop
 - [ ] save
 
+These methods will not be supported.
+
+- disposed?
+
 ## class Sprite
 
-- [ ] new
-- [ ] check
-- [x] update
-- [x] draw
-- [x] clean
+- [x] Sprite.new
+- [x] Sprite.check
+- [x] Sprite.update
+- [x] Sprite.draw
+- [x] Sprite.clean
 - [x] draw
 - [x] `===`
 - [x] check
