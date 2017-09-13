@@ -10,6 +10,7 @@ require 'dxopal/sound'
 require 'dxopal/sound_effect'
 require 'dxopal/sprite'
 require 'dxopal/window'
+require 'dxopal/version'
 # Enable runtime compilation of Opal code (so that you can make games
 # without even install Ruby)
 require 'opal-parser'
