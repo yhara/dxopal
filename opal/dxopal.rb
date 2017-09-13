@@ -14,6 +14,16 @@ require 'dxopal/version'
 # Enable runtime compilation of Opal code (so that you can make games
 # without even install Ruby)
 require 'opal-parser'
+def require_remote(url)
+  %x{
+    var r = new XMLHttpRequest();
+    r.overrideMimeType("text/plain"); // Patch for Firefox + file://
+    r.open("GET", url, false);
+    r.send('');
+  }
+  eval `r.responseText`
+end
+
 # These libraries will be included in dxopal.js:
 require 'pp'
 
