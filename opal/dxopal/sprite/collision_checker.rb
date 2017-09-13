@@ -128,7 +128,11 @@ module DXOpal
                   return instance.exports.check_triangle_triangle(0*4, 3*4, 6*4, 9*4);
                 }
               };
-            }).then(after);
+            }).then(after)
+            .catch((reason) => {
+              console.error("Failed to load wasm file. Reason:", reason);
+              after();
+            });
           }
         end
 
