@@ -42,10 +42,13 @@ end
 
 Prerequisites: Ruby (tested with 2.3.3)
 
+Development requirements: Node.js (to minify .js)
+
 ```
 $ git clone https://github.com/yhara/dxopal
 $ cd dxopal
 $ bundle install
+$ npm install uglify-es -g
 ```
 
 Developing dxopal-game:
