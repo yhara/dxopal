@@ -1,4 +1,4 @@
-# DXRuby APIs
+# Compatibility to DXRuby 
 
 ## module Input
 
