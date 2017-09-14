@@ -104,7 +104,7 @@ module DXOpal
     def image=(img)
       @image = img
       if @collision.nil?
-        self.collision = Rect.new(0, 0, img.width, img.height)
+        self.collision = [0, 0, img.width-1, img.height-1]
       end
       if @center_x.nil?
         @center_x = img.width / 2

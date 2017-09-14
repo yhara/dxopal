@@ -62,6 +62,7 @@ module DXOpal
             TODO
           when :Triangle
             TODO
+          else raise
           end
         end
       end
@@ -78,12 +79,13 @@ module DXOpal
           case other.type
           when :Point
             other.collides?(self)
-          when Circle
+          when :Circle
             TODO
           when :Rect
             TODO
           when :Triangle
             TODO
+          else raise
           end
         end
       end
@@ -93,18 +95,40 @@ module DXOpal
           @sprite, @x1, @y1, @x2, @y2 = sprite, x1, y1, x2, y2
           super()
         end
+        attr_reader :x1, :y1, :x2, :y2
 
         def type; :Rect; end
+
+        def inspect
+          "#<CollisionArea::Rect(#{@x1}, #{@y1}, #{@x2}, #{@y2})>"
+        end
 
         def collides?(other)
           case other.type
           when :Point, :Circle
             other.collides?(self)
-          when Rect
+          when :Rect
+            raise "TODO" if @sprite.angle != 0 || @sprite.scale_x != 1 || @sprite.scale_y != 1
+            collides_rect?(other)
+          when :Triangle
             TODO
-          when Triangle
-            TODO
+          else raise
           end
+        end
+
+        def absolute_xy
+          return [@sprite.x + x1, @sprite.y + y1, @sprite.x + x2, @sprite.y + y2]
+        end
+
+        private
+
+        def collides_rect?(other)
+          ax1, ay1, ax2, ay2 = *absolute_xy
+          bx1, by1, bx2, by2 = *other.absolute_xy
+          return `ax1 < bx2 &&
+                  ay1 < by2 &&
+                  bx1 < ax2 &&
+                  by1 < ay2`
         end
       end
 
