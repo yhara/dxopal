@@ -19,23 +19,26 @@ module DXOpal
 
         def absolute(poss)
           return poss if !@sprite.collision_sync
-          rad = Math::PI / 180.0 * @sprite.angle
-          sin = Math.sin(rad)
-          cos = Math.cos(rad)
-          data1x = @sprite.scale_x * cos
-          data1y = @sprite.scale_y * sin
-          data2x = @sprite.scale_x * sin
-          data2y = @sprite.scale_y * cos
-          cx = @sprite.center_x
-          cy = @sprite.center_y
           xs = []
           ys = []
-          poss.each do |x, y|
-            x2 = (x - cx) * data1x - (y - cy) * data1y + cx + @sprite.x
-            y2 = (x - cx) * data2x + (y - cy) * data2y + cy + @sprite.y
-            xs.push(x2)
-            ys.push(y2)
-          end
+          %x{
+            var rad = Math.PI / 180.0 * #{@sprite.angle};
+            var sin = Math.sin(rad);
+            var cos = Math.cos(rad);
+            var data1x = #{@sprite.scale_x} * cos;
+            var data1y = #{@sprite.scale_y} * sin;
+            var data2x = #{@sprite.scale_x} * sin;
+            var data2y = #{@sprite.scale_y} * cos;
+            var cx = #{@sprite.center_x};
+            var cy = #{@sprite.center_y};
+            poss.forEach(function(pos){
+              var x = pos[0], y = pos[1];
+              x2 = (x - cx) * data1x - (y - cy) * data1y + cx + #{@sprite.x}
+              y2 = (x - cx) * data2x + (y - cy) * data2y + cy + #{@sprite.y}
+              xs.push(x2)
+              ys.push(y2)
+            });
+          }
           return xs, ys
         end
       end
