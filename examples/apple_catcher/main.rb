@@ -38,14 +38,12 @@ module AppleCatcher
     def initialize
       @anim_idx = 0
       @anim_ct = 0
+      @tile_images = Image[:player].slice_tiles(4, 4)  # 4x4
+      @char_images = @tile_images.first(4)
       super(240, 400-32)
     end
 
     def update
-      # We cannot call .slice_tiles outside Window.loop :-( Now I'm sure current API design is wrong
-      @tile_images ||= Image[:player].slice_tiles(4, 4)  # 4x4
-      @char_images ||= @tile_images.first(4)
-
       @anim_ct += 1
       @anim_ct = 0 if @anim_ct >= 40
       self.image = @char_images[@anim_ct/10]
