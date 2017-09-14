@@ -67,9 +67,9 @@ module DXOpal
 
               if (intersect( x1, y1, x2, y2, x, y, cx, cy ) < 0.0 ||
                   intersect( x2, y2, x3, y3, x, y, cx, cy ) < 0.0 ||
-                  intersect( x3, y3, x1, y1, x, y, cx, cy ) < 0.0 )
+                  intersect( x3, y3, x1, y1, x, y, cx, cy ) < 0.0 ) {
                 return false;
-              end
+              }
               return true;
             };
             var intersect = function(x1, y1, x2, y2, x3, y3, x4, y4){
