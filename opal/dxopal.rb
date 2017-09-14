@@ -38,11 +38,13 @@ module DXOpal
   # developer console.
   #
   # Example:
-  #   p_ :player_x, @player.x, 20
+  #   p_ player_x: @player.x
+  #   p_({player_x: @player.x}, 20)
   P_CT = Hash.new{|h, k| h[k] = 0}
-  def p_(key, obj, n=10)
+  def p_(hash, n=10)
+    key = hash.keys.sort.join
     return if P_CT[key] >= n
-    `console.log(#{key}+":", #{obj.inspect})`
+    `console.log(#{hash.inspect})`
     P_CT[key] += 1
   end
 end
