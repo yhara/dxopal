@@ -5,12 +5,6 @@ module DXOpal
     # Methods of Sprite related to collision checking
     module CollisionArea
       class Base
-        def initialize
-          #@checker = CollisionChecker::OpalChecker.new
-          #@checker = CollisionChecker::JsChecker.new
-          @checker = CollisionChecker::WasmChecker.new
-        end
-
         # Return a string like "Point", "Rect", etc.
         # Used for type checking in `collides?` (because Opal's Class#is_a? is not very fast)
         def type
@@ -165,7 +159,7 @@ module DXOpal
           ox, oy = self.absolute_xy
           dx, dy = other.absolute_xy
 
-          return @checker.check_triangle_triangle(ox, oy, dx, dy)
+          return Sprite.collision_checker.check_triangle_triangle(ox, oy, dx, dy)
         end
       end
     end

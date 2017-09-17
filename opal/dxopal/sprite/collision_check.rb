@@ -2,6 +2,14 @@ require 'dxopal/sprite/collision_area'
 
 module DXOpal
   class Sprite
+    # (For demos)
+    def self.collision_checker
+      @collision_checker ||= CollisionChecker::JsChecker.new
+    end
+    def self.collision_checker=(x)
+      @collision_checker = x
+    end
+
     # Methods of Sprite related to collision checking
     module CollisionCheck
       # Called from Sprites#initialize
