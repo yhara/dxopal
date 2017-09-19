@@ -21804,13 +21804,13 @@ Opal.modules["dxopal/sprite/collision_checker"] = function(Opal) {
 
           var def = self.$$proto, $scope = self.$$scope, TMP_7, TMP_8;
 
-          Opal.defs(self, '$load', TMP_7 = function $$load() {
+          Opal.defs(self, '$load', TMP_7 = function $$load(path) {
             var self = this, $iter = TMP_7.$$p, after = $iter || nil;
 
             TMP_7.$$p = null;
             
             var importObject = {imports: {}};
-            fetch('/wasm/collision_checker_double.wasm').then(function(response){
+            fetch(path + '/wasm/collision_checker_double.wasm').then(function(response){
               return response.arrayBuffer();
             }).then(function(buffer){
               return WebAssembly.instantiate(buffer, importObject);
@@ -21843,7 +21843,7 @@ Opal.modules["dxopal/sprite/collision_checker"] = function(Opal) {
               after();
             });
           
-          }, TMP_7.$$arity = 0);
+          }, TMP_7.$$arity = 1);
 
           return (Opal.defn(self, '$check_triangle_triangle', TMP_8 = function $$check_triangle_triangle(ox, oy, dx, dy) {
             var self = this;
@@ -22213,7 +22213,7 @@ Opal.modules["dxopal/sprite/physics"] = function(Opal) {
   }
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $module = Opal.module, $klass = Opal.klass, $hash2 = Opal.hash2;
 
-  Opal.add_stubs(['$[]', '$===', '$+', '$x', '$/', '$y', '$*', '$angle', '$raise', '$inspect', '$_add_matter_body', '$attr_reader', '$-', '$[]=', '$_matter_sprites', '$_matter_engine', '$_matter_runner', '$type']);
+  Opal.add_stubs(['$nil?', '$x', '$raise', '$[]', '$===', '$+', '$/', '$y', '$*', '$angle', '$inspect', '$_add_matter_body', '$attr_reader', '$-', '$[]=', '$_matter_sprites', '$_matter_engine', '$_matter_runner', '$type']);
   return (function($base) {
     var $DXOpal, self = $DXOpal = $module($base, 'DXOpal');
 
@@ -22234,6 +22234,8 @@ Opal.modules["dxopal/sprite/physics"] = function(Opal) {
           var $a, self = this, type = nil, $case = nil, _ = nil, width = nil, height = nil, opts = nil, x = nil, y = nil, info = nil;
           if (self._matter_body == null) self._matter_body = nil;
 
+          if ((($a = self.$x()['$nil?']()) !== nil && $a != null && (!$a.$$is_boolean || $a == true))) {
+            self.$raise("Call Sprite#initialize before calling physical_body=")};
           type = ary['$[]'](0);
           $case = type;if ("rectangle"['$===']($case)) {$a = Opal.to_a(ary), _ = ($a[0] == null ? nil : $a[0]), width = ($a[1] == null ? nil : $a[1]), height = ($a[2] == null ? nil : $a[2]), opts = ($a[3] == null ? nil : $a[3]), $a;
           x = $rb_plus(self.$x(), $rb_divide(width, 2));
@@ -22254,9 +22256,8 @@ Opal.modules["dxopal/sprite/physics"] = function(Opal) {
           if (self.y == null) self.y = nil;
           if (self.center_y == null) self.center_y = nil;
 
-          Matter.Body.setPosition(self._matter_body,
+          return Matter.Body.setPosition(self._matter_body,
            Matter.Vector.create($rb_plus(self.x, self.center_x), $rb_plus(self.y, self.center_y)));
-          return console.log(self._matter_body.position, self.x, self.center_x);
         }, TMP_2.$$arity = 0);
 
         Opal.defn(self, '$_move_to_matter_body', TMP_3 = function $$_move_to_matter_body(mx, my) {
@@ -22550,7 +22551,7 @@ Opal.modules["dxopal/window"] = function(Opal) {
   }
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $module = Opal.module, $hash2 = Opal.hash2;
 
-  Opal.add_stubs(['$require', '$now', '$load', '$_load_resources', '$to_proc', '$_loop', '$clear', '$draw_pause_screen', '$nil?', '$raise', '$loop', '$draw_box_fill', '$width', '$height', '$draw_font', '$default', '$_init', '$>=', '$-', '$+', '$matter_enabled?', '$matter_tick', '$_on_tick', '$call', '$box_fill', '$sort', '$==', '$[]', '$<=>', '$each', '$===', '$draw', '$drop', '$draw_rot', '$[]=', '$line', '$box', '$circle', '$circle_fill', '$triangle', '$triangle_fill', '$new', '$enqueue_draw', '$push', '$length']);
+  Opal.add_stubs(['$require', '$now', '$_load_resources', '$to_proc', '$_loop', '$clear', '$draw_pause_screen', '$nil?', '$raise', '$loop', '$draw_box_fill', '$width', '$height', '$draw_font', '$default', '$_init', '$>=', '$-', '$+', '$matter_enabled?', '$matter_tick', '$_on_tick', '$call', '$box_fill', '$sort', '$==', '$[]', '$<=>', '$each', '$===', '$draw', '$drop', '$draw_rot', '$[]=', '$line', '$box', '$circle', '$circle_fill', '$triangle', '$triangle_fill', '$new', '$enqueue_draw', '$push', '$length']);
   self.$require("dxopal/constants/colors");
   return (function($base) {
     var $DXOpal, self = $DXOpal = $module($base, 'DXOpal');
@@ -22560,7 +22561,7 @@ Opal.modules["dxopal/window"] = function(Opal) {
     (function($base) {
       var $Window, self = $Window = $module($base, 'Window');
 
-      var def = self.$$proto, $scope = self.$$scope, TMP_1, TMP_3, TMP_5, TMP_6, TMP_7, TMP_8, TMP_9, TMP_13, TMP_14, TMP_15, TMP_16, TMP_17, TMP_18, TMP_19, TMP_20, TMP_21, TMP_22, TMP_23, TMP_24, TMP_25, TMP_26, TMP_27, TMP_28, TMP_29, TMP_30, TMP_31, TMP_32, TMP_33, TMP_34, TMP_35;
+      var def = self.$$proto, $scope = self.$$scope, TMP_1, TMP_2, TMP_4, TMP_5, TMP_6, TMP_7, TMP_8, TMP_12, TMP_13, TMP_14, TMP_15, TMP_16, TMP_17, TMP_18, TMP_19, TMP_20, TMP_21, TMP_22, TMP_23, TMP_24, TMP_25, TMP_26, TMP_27, TMP_28, TMP_29, TMP_30, TMP_31, TMP_32, TMP_33, TMP_34;
 
       (Opal.cvars['@@fps'] = 60);
 
@@ -22579,58 +22580,56 @@ Opal.modules["dxopal/window"] = function(Opal) {
       (Opal.cvars['@@paused'] = false);
 
       Opal.defs(self, '$load_resources', TMP_1 = function $$load_resources() {
-        var $a, $b, TMP_2, self = this, $iter = TMP_1.$$p, block = $iter || nil;
+        var $a, $b, self = this, $iter = TMP_1.$$p, block = $iter || nil;
 
         TMP_1.$$p = null;
-        return ($a = ($b = (((($scope.get('Sprite')).$$scope.get('CollisionChecker'))).$$scope.get('WasmChecker'))).$load, $a.$$p = (TMP_2 = function(){var self = TMP_2.$$s || this, $c, $d;
-
-        return ($c = ($d = $scope.get('RemoteResource')).$_load_resources, $c.$$p = block.$to_proc(), $c).call($d)}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $a).call($b);
+        return ($a = ($b = $scope.get('RemoteResource')).$_load_resources, $a.$$p = block.$to_proc(), $a).call($b);
       }, TMP_1.$$arity = 0);
 
-      Opal.defs(self, '$loop', TMP_3 = function $$loop() {
-        var $a, TMP_4, self = this, $iter = TMP_3.$$p, block = $iter || nil;
+      Opal.defs(self, '$loop', TMP_2 = function $$loop() {
+        var $a, TMP_3, self = this, $iter = TMP_2.$$p, block = $iter || nil;
 
-        TMP_3.$$p = null;
+        TMP_2.$$p = null;
         (Opal.cvars['@@block'] = block);
-        return ($a = (TMP_4 = function(time){var self = TMP_4.$$s || this, $b, $c;
+        return ($a = (TMP_3 = function(time){var self = TMP_3.$$s || this, $b, $c;
 if (time == null) time = nil;
-        return ($b = ($c = self).$_loop, $b.$$p = block.$to_proc(), $b).call($c, time)}, TMP_4.$$s = self, TMP_4.$$arity = 1, TMP_4), (window).requestAnimationFrame)($a);
-      }, TMP_3.$$arity = 0);
+        return ($b = ($c = self).$_loop, $b.$$p = block.$to_proc(), $b).call($c, time)}, TMP_3.$$s = self, TMP_3.$$arity = 1, TMP_3), (window).requestAnimationFrame)($a);
+      }, TMP_2.$$arity = 0);
 
-      Opal.defs(self, '$pause', TMP_5 = function $$pause() {
+      Opal.defs(self, '$pause', TMP_4 = function $$pause() {
         var $a, self = this;
 
         (Opal.cvars['@@paused'] = true);
         (($a = Opal.cvars['@@draw_queue']) == null ? nil : $a).$clear();
         return self.$draw_pause_screen();
-      }, TMP_5.$$arity = 0);
+      }, TMP_4.$$arity = 0);
 
-      Opal.defs(self, '$paused?', TMP_6 = function() {
+      Opal.defs(self, '$paused?', TMP_5 = function() {
         var $a, self = this;
 
         return (($a = Opal.cvars['@@paused']) == null ? nil : $a);
-      }, TMP_6.$$arity = 0);
+      }, TMP_5.$$arity = 0);
 
-      Opal.defs(self, '$resume', TMP_7 = function $$resume() {
+      Opal.defs(self, '$resume', TMP_6 = function $$resume() {
         var $a, $b, $c, self = this;
 
         if ((($a = (($b = Opal.cvars['@@block']) == null ? nil : $b)['$nil?']()) !== nil && $a != null && (!$a.$$is_boolean || $a == true))) {
           self.$raise("Window.resume is called before Window.loop")};
         (Opal.cvars['@@paused'] = false);
         return ($a = ($b = $scope.get('Window')).$loop, $a.$$p = (($c = Opal.cvars['@@block']) == null ? nil : $c).$to_proc(), $a).call($b);
-      }, TMP_7.$$arity = 0);
+      }, TMP_6.$$arity = 0);
 
-      Opal.defs(self, '$draw_pause_screen', TMP_8 = function $$draw_pause_screen() {
+      Opal.defs(self, '$draw_pause_screen', TMP_7 = function $$draw_pause_screen() {
         var self = this;
 
         $scope.get('Window').$draw_box_fill(0, 0, $scope.get('Window').$width(), $scope.get('Window').$height(), $scope.get('C_BLACK'));
         return $scope.get('Window').$draw_font(0, 0, "...PAUSE...", $scope.get('Font').$default(), $hash2(["color"], {"color": $scope.get('C_WHITE')}));
-      }, TMP_8.$$arity = 0);
+      }, TMP_7.$$arity = 0);
 
-      Opal.defs(self, '$_loop', TMP_9 = function $$_loop(time) {
-        var $a, $b, TMP_10, $c, TMP_11, TMP_12, self = this, $iter = TMP_9.$$p, block = $iter || nil, t0 = nil, sorted = nil;
+      Opal.defs(self, '$_loop', TMP_8 = function $$_loop(time) {
+        var $a, $b, TMP_9, $c, TMP_10, TMP_11, self = this, $iter = TMP_8.$$p, block = $iter || nil, t0 = nil, sorted = nil;
 
-        TMP_9.$$p = null;
+        TMP_8.$$p = null;
         ((($a = (($b = Opal.cvars['@@img']) == null ? nil : $b)) !== false && $a !== nil && $a != null) ? $a : (Opal.cvars['@@img'] = self.$_init((($b = Opal.cvars['@@width']) == null ? nil : $b), (($b = Opal.cvars['@@height']) == null ? nil : $b))));
         t0 = $scope.get('Time').$now();
         if ((($a = $rb_ge($rb_minus(t0, (($b = Opal.cvars['@@real_fps_t']) == null ? nil : $b)), 1.0)) !== nil && $a != null && (!$a.$$is_boolean || $a == true))) {
@@ -22650,102 +22649,102 @@ if (time == null) time = nil;
           block.$call()
         };
         (($a = Opal.cvars['@@img']) == null ? nil : $a).$box_fill(0, 0, (($a = Opal.cvars['@@width']) == null ? nil : $a), (($a = Opal.cvars['@@height']) == null ? nil : $a), (($a = Opal.cvars['@@bgcolor']) == null ? nil : $a));
-        sorted = ($a = ($b = (($c = Opal.cvars['@@draw_queue']) == null ? nil : $c)).$sort, $a.$$p = (TMP_10 = function(a, b){var self = TMP_10.$$s || this;
+        sorted = ($a = ($b = (($c = Opal.cvars['@@draw_queue']) == null ? nil : $c)).$sort, $a.$$p = (TMP_9 = function(a, b){var self = TMP_9.$$s || this;
 if (a == null) a = nil;if (b == null) b = nil;
         if (a['$[]'](0)['$=='](b['$[]'](0))) {
             return a['$[]'](1)['$<=>'](b['$[]'](1))
             } else {
             return a['$[]'](0)['$<=>'](a['$[]'](1))
-          }}, TMP_10.$$s = self, TMP_10.$$arity = 2, TMP_10), $a).call($b);
-        ($a = ($c = sorted).$each, $a.$$p = (TMP_11 = function(item){var self = TMP_11.$$s || this, $d, $e, $f, $g, $h, $i, $j, $k, $l, $m, $n, $o, $case = nil;
+          }}, TMP_9.$$s = self, TMP_9.$$arity = 2, TMP_9), $a).call($b);
+        ($a = ($c = sorted).$each, $a.$$p = (TMP_10 = function(item){var self = TMP_10.$$s || this, $d, $e, $f, $g, $h, $i, $j, $k, $l, $m, $n, $o, $case = nil;
 if (item == null) item = nil;
-        return (function() {$case = item['$[]'](2);if ("image"['$===']($case)) {return ($d = (($e = Opal.cvars['@@img']) == null ? nil : $e)).$draw.apply($d, Opal.to_a(item.$drop(3)))}else if ("image_rot"['$===']($case)) {return ($e = (($f = Opal.cvars['@@img']) == null ? nil : $f)).$draw_rot.apply($e, Opal.to_a(item.$drop(3)))}else if ("font"['$===']($case)) {return ($f = (($g = Opal.cvars['@@img']) == null ? nil : $g)).$draw_font.apply($f, Opal.to_a(item.$drop(3)))}else if ("pixel"['$===']($case)) {return ($g = (($h = Opal.cvars['@@img']) == null ? nil : $h))['$[]='].apply($g, Opal.to_a(item.$drop(3)))}else if ("line"['$===']($case)) {return ($h = (($i = Opal.cvars['@@img']) == null ? nil : $i)).$line.apply($h, Opal.to_a(item.$drop(3)))}else if ("box"['$===']($case)) {return ($i = (($j = Opal.cvars['@@img']) == null ? nil : $j)).$box.apply($i, Opal.to_a(item.$drop(3)))}else if ("box_fill"['$===']($case)) {return ($j = (($k = Opal.cvars['@@img']) == null ? nil : $k)).$box_fill.apply($j, Opal.to_a(item.$drop(3)))}else if ("circle"['$===']($case)) {return ($k = (($l = Opal.cvars['@@img']) == null ? nil : $l)).$circle.apply($k, Opal.to_a(item.$drop(3)))}else if ("circle_fill"['$===']($case)) {return ($l = (($m = Opal.cvars['@@img']) == null ? nil : $m)).$circle_fill.apply($l, Opal.to_a(item.$drop(3)))}else if ("triangle"['$===']($case)) {return ($m = (($n = Opal.cvars['@@img']) == null ? nil : $n)).$triangle.apply($m, Opal.to_a(item.$drop(3)))}else if ("triangle_fill"['$===']($case)) {return ($n = (($o = Opal.cvars['@@img']) == null ? nil : $o)).$triangle_fill.apply($n, Opal.to_a(item.$drop(3)))}else { return nil }})()}, TMP_11.$$s = self, TMP_11.$$arity = 1, TMP_11), $a).call($c);
-        return ($a = (TMP_12 = function(time){var self = TMP_12.$$s || this, $d, $e;
+        return (function() {$case = item['$[]'](2);if ("image"['$===']($case)) {return ($d = (($e = Opal.cvars['@@img']) == null ? nil : $e)).$draw.apply($d, Opal.to_a(item.$drop(3)))}else if ("image_rot"['$===']($case)) {return ($e = (($f = Opal.cvars['@@img']) == null ? nil : $f)).$draw_rot.apply($e, Opal.to_a(item.$drop(3)))}else if ("font"['$===']($case)) {return ($f = (($g = Opal.cvars['@@img']) == null ? nil : $g)).$draw_font.apply($f, Opal.to_a(item.$drop(3)))}else if ("pixel"['$===']($case)) {return ($g = (($h = Opal.cvars['@@img']) == null ? nil : $h))['$[]='].apply($g, Opal.to_a(item.$drop(3)))}else if ("line"['$===']($case)) {return ($h = (($i = Opal.cvars['@@img']) == null ? nil : $i)).$line.apply($h, Opal.to_a(item.$drop(3)))}else if ("box"['$===']($case)) {return ($i = (($j = Opal.cvars['@@img']) == null ? nil : $j)).$box.apply($i, Opal.to_a(item.$drop(3)))}else if ("box_fill"['$===']($case)) {return ($j = (($k = Opal.cvars['@@img']) == null ? nil : $k)).$box_fill.apply($j, Opal.to_a(item.$drop(3)))}else if ("circle"['$===']($case)) {return ($k = (($l = Opal.cvars['@@img']) == null ? nil : $l)).$circle.apply($k, Opal.to_a(item.$drop(3)))}else if ("circle_fill"['$===']($case)) {return ($l = (($m = Opal.cvars['@@img']) == null ? nil : $m)).$circle_fill.apply($l, Opal.to_a(item.$drop(3)))}else if ("triangle"['$===']($case)) {return ($m = (($n = Opal.cvars['@@img']) == null ? nil : $n)).$triangle.apply($m, Opal.to_a(item.$drop(3)))}else if ("triangle_fill"['$===']($case)) {return ($n = (($o = Opal.cvars['@@img']) == null ? nil : $o)).$triangle_fill.apply($n, Opal.to_a(item.$drop(3)))}else { return nil }})()}, TMP_10.$$s = self, TMP_10.$$arity = 1, TMP_10), $a).call($c);
+        return ($a = (TMP_11 = function(time){var self = TMP_11.$$s || this, $d, $e;
 if (time == null) time = nil;
-        return ($d = ($e = self).$_loop, $d.$$p = block.$to_proc(), $d).call($e, time)}, TMP_12.$$s = self, TMP_12.$$arity = 1, TMP_12), (window).requestAnimationFrame)($a);
-      }, TMP_9.$$arity = 1);
+        return ($d = ($e = self).$_loop, $d.$$p = block.$to_proc(), $d).call($e, time)}, TMP_11.$$s = self, TMP_11.$$arity = 1, TMP_11), (window).requestAnimationFrame)($a);
+      }, TMP_8.$$arity = 1);
 
-      Opal.defs(self, '$_init', TMP_13 = function $$_init(w, h) {
+      Opal.defs(self, '$_init', TMP_12 = function $$_init(w, h) {
         var self = this, canvas = nil, img = nil;
 
         canvas = document.getElementById("canvas");
         img = $scope.get('Image').$new(w, h, $hash2(["canvas"], {"canvas": canvas}));
         $scope.get('Input').$_init(canvas);
         return img;
-      }, TMP_13.$$arity = 2);
+      }, TMP_12.$$arity = 2);
 
-      Opal.defs(self, '$_img', TMP_14 = function $$_img() {
+      Opal.defs(self, '$_img', TMP_13 = function $$_img() {
         var $a, self = this;
 
         return (($a = Opal.cvars['@@img']) == null ? nil : $a);
-      }, TMP_14.$$arity = 0);
+      }, TMP_13.$$arity = 0);
 
-      Opal.defs(self, '$fps', TMP_15 = function $$fps() {
+      Opal.defs(self, '$fps', TMP_14 = function $$fps() {
         var $a, self = this;
 
         return (($a = Opal.cvars['@@fps']) == null ? nil : $a);
-      }, TMP_15.$$arity = 0);
+      }, TMP_14.$$arity = 0);
 
-      Opal.defs(self, '$fps=', TMP_16 = function(w) {
+      Opal.defs(self, '$fps=', TMP_15 = function(w) {
         var self = this;
 
         return (Opal.cvars['@@fps'] = w);
-      }, TMP_16.$$arity = 1);
+      }, TMP_15.$$arity = 1);
 
-      Opal.defs(self, '$real_fps', TMP_17 = function $$real_fps() {
+      Opal.defs(self, '$real_fps', TMP_16 = function $$real_fps() {
         var $a, self = this;
 
         return (($a = Opal.cvars['@@real_fps']) == null ? nil : $a);
-      }, TMP_17.$$arity = 0);
+      }, TMP_16.$$arity = 0);
 
-      Opal.defs(self, '$width', TMP_18 = function $$width() {
+      Opal.defs(self, '$width', TMP_17 = function $$width() {
         var $a, self = this;
 
         return (($a = Opal.cvars['@@width']) == null ? nil : $a);
-      }, TMP_18.$$arity = 0);
+      }, TMP_17.$$arity = 0);
 
-      Opal.defs(self, '$width=', TMP_19 = function(w) {
+      Opal.defs(self, '$width=', TMP_18 = function(w) {
         var self = this;
 
         return (Opal.cvars['@@width'] = w);
-      }, TMP_19.$$arity = 1);
+      }, TMP_18.$$arity = 1);
 
-      Opal.defs(self, '$height', TMP_20 = function $$height() {
+      Opal.defs(self, '$height', TMP_19 = function $$height() {
         var $a, self = this;
 
         return (($a = Opal.cvars['@@height']) == null ? nil : $a);
-      }, TMP_20.$$arity = 0);
+      }, TMP_19.$$arity = 0);
 
-      Opal.defs(self, '$height=', TMP_21 = function(h) {
+      Opal.defs(self, '$height=', TMP_20 = function(h) {
         var self = this;
 
         return (Opal.cvars['@@height'] = h);
-      }, TMP_21.$$arity = 1);
+      }, TMP_20.$$arity = 1);
 
       (Opal.cvars['@@bgcolor'] = (((($scope.get('Constants')).$$scope.get('Colors'))).$$scope.get('C_BLACK')));
 
-      Opal.defs(self, '$bgcolor', TMP_22 = function $$bgcolor() {
+      Opal.defs(self, '$bgcolor', TMP_21 = function $$bgcolor() {
         var $a, self = this;
 
         return (($a = Opal.cvars['@@bgcolor']) == null ? nil : $a);
-      }, TMP_22.$$arity = 0);
+      }, TMP_21.$$arity = 0);
 
-      Opal.defs(self, '$bgcolor=', TMP_23 = function(col) {
+      Opal.defs(self, '$bgcolor=', TMP_22 = function(col) {
         var self = this;
 
         return (Opal.cvars['@@bgcolor'] = col);
-      }, TMP_23.$$arity = 1);
+      }, TMP_22.$$arity = 1);
 
-      Opal.defs(self, '$draw', TMP_24 = function $$draw(x, y, image, z) {
+      Opal.defs(self, '$draw', TMP_23 = function $$draw(x, y, image, z) {
         var self = this;
 
         if (z == null) {
           z = 0;
         }
         return self.$enqueue_draw(z, "image", x, y, image);
-      }, TMP_24.$$arity = -4);
+      }, TMP_23.$$arity = -4);
 
-      Opal.defs(self, '$draw_rot', TMP_25 = function $$draw_rot(x, y, image, angle, center_x, center_y, z) {
+      Opal.defs(self, '$draw_rot', TMP_24 = function $$draw_rot(x, y, image, angle, center_x, center_y, z) {
         var self = this;
 
         if (center_x == null) {
@@ -22758,9 +22757,9 @@ if (time == null) time = nil;
           z = 0;
         }
         return self.$enqueue_draw(z, "image_rot", x, y, image, angle, center_x, center_y);
-      }, TMP_25.$$arity = -5);
+      }, TMP_24.$$arity = -5);
 
-      Opal.defs(self, '$draw_font', TMP_26 = function $$draw_font(x, y, string, font, option) {
+      Opal.defs(self, '$draw_font', TMP_25 = function $$draw_font(x, y, string, font, option) {
         var $a, self = this, z = nil, color = nil;
 
         if (option == null) {
@@ -22769,81 +22768,81 @@ if (time == null) time = nil;
         z = ((($a = option['$[]']("z")) !== false && $a !== nil && $a != null) ? $a : 0);
         color = ((($a = option['$[]']("color")) !== false && $a !== nil && $a != null) ? $a : [255, 255, 255]);
         return self.$enqueue_draw(z, "font", x, y, string, font, color);
-      }, TMP_26.$$arity = -5);
+      }, TMP_25.$$arity = -5);
 
-      Opal.defs(self, '$draw_pixel', TMP_27 = function $$draw_pixel(x, y, color, z) {
+      Opal.defs(self, '$draw_pixel', TMP_26 = function $$draw_pixel(x, y, color, z) {
         var self = this;
 
         if (z == null) {
           z = 0;
         }
         return self.$enqueue_draw(z, "pixel", x, y, color);
-      }, TMP_27.$$arity = -4);
+      }, TMP_26.$$arity = -4);
 
-      Opal.defs(self, '$draw_line', TMP_28 = function $$draw_line(x1, y1, x2, y2, color, z) {
+      Opal.defs(self, '$draw_line', TMP_27 = function $$draw_line(x1, y1, x2, y2, color, z) {
         var self = this;
 
         if (z == null) {
           z = 0;
         }
         return self.$enqueue_draw(z, "line", x1, y1, x2, y2, color);
-      }, TMP_28.$$arity = -6);
+      }, TMP_27.$$arity = -6);
 
-      Opal.defs(self, '$draw_box', TMP_29 = function $$draw_box(x1, y1, x2, y2, color, z) {
+      Opal.defs(self, '$draw_box', TMP_28 = function $$draw_box(x1, y1, x2, y2, color, z) {
         var self = this;
 
         if (z == null) {
           z = 0;
         }
         return self.$enqueue_draw(z, "box", x1, y1, x2, y2, color);
-      }, TMP_29.$$arity = -6);
+      }, TMP_28.$$arity = -6);
 
-      Opal.defs(self, '$draw_box_fill', TMP_30 = function $$draw_box_fill(x1, y1, x2, y2, color, z) {
+      Opal.defs(self, '$draw_box_fill', TMP_29 = function $$draw_box_fill(x1, y1, x2, y2, color, z) {
         var self = this;
 
         if (z == null) {
           z = 0;
         }
         return self.$enqueue_draw(z, "box_fill", x1, y1, x2, y2, color);
-      }, TMP_30.$$arity = -6);
+      }, TMP_29.$$arity = -6);
 
-      Opal.defs(self, '$draw_circle', TMP_31 = function $$draw_circle(x, y, r, color, z) {
+      Opal.defs(self, '$draw_circle', TMP_30 = function $$draw_circle(x, y, r, color, z) {
         var self = this;
 
         if (z == null) {
           z = 0;
         }
         return self.$enqueue_draw(z, "circle", x, y, r, color);
-      }, TMP_31.$$arity = -5);
+      }, TMP_30.$$arity = -5);
 
-      Opal.defs(self, '$draw_circle_fill', TMP_32 = function $$draw_circle_fill(x, y, r, color, z) {
+      Opal.defs(self, '$draw_circle_fill', TMP_31 = function $$draw_circle_fill(x, y, r, color, z) {
         var self = this;
 
         if (z == null) {
           z = 0;
         }
         return self.$enqueue_draw(z, "circle_fill", x, y, r, color);
-      }, TMP_32.$$arity = -5);
+      }, TMP_31.$$arity = -5);
 
-      Opal.defs(self, '$draw_triangle', TMP_33 = function $$draw_triangle(x1, y1, x2, y2, x3, y3, color, z) {
+      Opal.defs(self, '$draw_triangle', TMP_32 = function $$draw_triangle(x1, y1, x2, y2, x3, y3, color, z) {
         var self = this;
 
         if (z == null) {
           z = 0;
         }
         return self.$enqueue_draw(z, "triangle", x1, y1, x2, y2, x3, y3, color);
-      }, TMP_33.$$arity = -8);
+      }, TMP_32.$$arity = -8);
 
-      Opal.defs(self, '$draw_triangle_fill', TMP_34 = function $$draw_triangle_fill(x1, y1, x2, y2, x3, y3, color, z) {
+      Opal.defs(self, '$draw_triangle_fill', TMP_33 = function $$draw_triangle_fill(x1, y1, x2, y2, x3, y3, color, z) {
         var self = this;
 
         if (z == null) {
           z = 0;
         }
         return self.$enqueue_draw(z, "triangle_fill", x1, y1, x2, y2, x3, y3, color);
-      }, TMP_34.$$arity = -8);
+      }, TMP_33.$$arity = -8);
 
-      Opal.defs(self, '$enqueue_draw', TMP_35 = function $$enqueue_draw(z, $a_rest) {
+      Opal.defs(self, '$enqueue_draw', TMP_34 = function $$enqueue_draw(z, $a_rest) {
         var $b, self = this, args;
 
         var $args_len = arguments.length, $rest_len = $args_len - 1;
@@ -22853,7 +22852,7 @@ if (time == null) time = nil;
           args[$arg_idx - 1] = arguments[$arg_idx];
         }
         return (($b = Opal.cvars['@@draw_queue']) == null ? nil : $b).$push([z, (($b = Opal.cvars['@@draw_queue']) == null ? nil : $b).$length()].concat(Opal.to_a(args)));
-      }, TMP_35.$$arity = -2);
+      }, TMP_34.$$arity = -2);
     })($scope.base)
   })($scope.base);
 };
