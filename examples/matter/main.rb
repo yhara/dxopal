@@ -14,7 +14,6 @@ Window.load_resources do
 
   Window.loop do
     if Input.key_push?(K_R)
-      p box2
       box2.x = 250
       box2.y = 200
     end
