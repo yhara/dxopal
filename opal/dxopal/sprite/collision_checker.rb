@@ -101,7 +101,7 @@ module DXOpal
         def self.load(&after)
           %x{
             var importObject = {imports: {}};
-            fetch('/wasm/collision_checker_orig.wasm').then(function(response){
+            fetch('/wasm/collision_checker_double.wasm').then(function(response){
               return response.arrayBuffer();
             }).then(function(buffer){
               return WebAssembly.instantiate(buffer, importObject);
@@ -110,7 +110,7 @@ module DXOpal
 
               Opal.DXOpal.WasmCollisionChecker = {
                 check_triangle_triangle: function(ox, oy, dx, dy) {
-                  var i32 = new Uint32Array(instance.exports.memory.buffer);
+                  var i32 = new Float32Array(instance.exports.memory.buffer);
 
                   i32[ 0] = ox[0];
                   i32[ 1] = ox[1];
