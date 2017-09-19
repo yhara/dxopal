@@ -1,7 +1,6 @@
 (module
  (table 0 anyfunc)
- (memory $0 153)
- (data (i32.const 4) "\a8\96\98\00")
+ (memory $0 1)
  (export "memory" (memory $0))
  (export "check_point_triangle" (func $check_point_triangle))
  (export "check_triangle_triangle" (func $check_triangle_triangle))
@@ -484,6 +483,10 @@
        (tee_local $21
         (f32.add
          (f32.mul
+          (f32.sub
+           (get_local $14)
+           (get_local $9)
+          )
           (tee_local $18
            (f32.sub
             (get_local $5)
@@ -494,12 +497,12 @@
             )
            )
           )
-          (f32.sub
-           (get_local $14)
-           (get_local $9)
-          )
          )
          (f32.mul
+          (f32.sub
+           (get_local $5)
+           (get_local $15)
+          )
           (tee_local $20
            (f32.sub
             (get_local $9)
@@ -510,27 +513,23 @@
             )
            )
           )
-          (f32.sub
-           (get_local $5)
-           (get_local $15)
-          )
          )
         )
        )
        (f32.add
         (f32.mul
-         (get_local $18)
          (f32.sub
           (get_local $7)
           (get_local $9)
          )
+         (get_local $18)
         )
         (f32.mul
-         (get_local $20)
          (f32.sub
           (get_local $5)
           (get_local $11)
          )
+         (get_local $20)
         )
        )
       )
@@ -548,43 +547,43 @@
          (f32.add
           (f32.mul
            (f32.sub
-            (get_local $15)
-            (get_local $5)
-           )
-           (tee_local $22
-            (f32.sub
-             (get_local $14)
-             (get_local $7)
-            )
-           )
-          )
-          (f32.mul
-           (f32.sub
             (get_local $9)
             (get_local $14)
            )
-           (tee_local $23
+           (tee_local $22
             (f32.sub
              (get_local $15)
              (get_local $11)
             )
            )
           )
+          (f32.mul
+           (tee_local $23
+            (f32.sub
+             (get_local $14)
+             (get_local $7)
+            )
+           )
+           (f32.sub
+            (get_local $15)
+            (get_local $5)
+           )
+          )
          )
          (f32.add
           (f32.mul
+           (get_local $23)
            (f32.sub
             (get_local $15)
             (get_local $17)
            )
-           (get_local $22)
           )
           (f32.mul
+           (get_local $22)
            (f32.sub
             (get_local $19)
             (get_local $14)
            )
-           (get_local $23)
           )
          )
         )
@@ -602,6 +601,7 @@
     (br_if $label$4
      (f32.gt
       (f32.mul
+       (get_local $21)
        (f32.add
         (f32.mul
          (get_local $18)
@@ -618,7 +618,6 @@
          )
         )
        )
-       (get_local $21)
       )
       (f32.const 0)
      )
@@ -634,43 +633,43 @@
          (f32.add
           (f32.mul
            (f32.sub
-            (get_local $13)
-            (get_local $5)
-           )
-           (tee_local $22
-            (f32.sub
-             (get_local $12)
-             (get_local $14)
-            )
-           )
-          )
-          (f32.mul
-           (f32.sub
             (get_local $9)
             (get_local $12)
            )
-           (tee_local $23
+           (tee_local $22
             (f32.sub
              (get_local $13)
              (get_local $15)
             )
            )
           )
-         )
-         (f32.add
           (f32.mul
+           (tee_local $23
+            (f32.sub
+             (get_local $12)
+             (get_local $14)
+            )
+           )
            (f32.sub
             (get_local $13)
-            (get_local $17)
+            (get_local $5)
            )
-           (get_local $22)
           )
+         )
+         (f32.add
           (f32.mul
            (f32.sub
             (get_local $19)
             (get_local $12)
            )
+           (get_local $22)
+          )
+          (f32.mul
            (get_local $23)
+           (f32.sub
+            (get_local $13)
+            (get_local $17)
+           )
           )
          )
         )
@@ -691,27 +690,27 @@
        (tee_local $24
         (f32.add
          (f32.mul
+          (f32.sub
+           (get_local $14)
+           (get_local $19)
+          )
           (tee_local $22
            (f32.sub
             (get_local $17)
             (get_local $4)
            )
           )
-          (f32.sub
-           (get_local $14)
-           (get_local $19)
-          )
          )
          (f32.mul
+          (f32.sub
+           (get_local $17)
+           (get_local $15)
+          )
           (tee_local $23
            (f32.sub
             (get_local $19)
             (get_local $8)
            )
-          )
-          (f32.sub
-           (get_local $17)
-           (get_local $15)
           )
          )
         )
@@ -803,23 +802,23 @@
     (br_if $label$6
      (f32.gt
       (f32.mul
-       (get_local $25)
        (f32.add
         (f32.mul
-         (get_local $22)
          (f32.sub
           (get_local $12)
           (get_local $19)
          )
+         (get_local $22)
         )
         (f32.mul
-         (get_local $23)
          (f32.sub
           (get_local $17)
           (get_local $13)
          )
+         (get_local $23)
         )
        )
+       (get_local $25)
       )
       (f32.const 0)
      )
@@ -835,43 +834,43 @@
          (f32.add
           (f32.mul
            (f32.sub
-            (get_local $11)
-            (get_local $17)
-           )
-           (tee_local $25
-            (f32.sub
-             (get_local $7)
-             (get_local $12)
-            )
-           )
-          )
-          (f32.mul
-           (f32.sub
             (get_local $19)
             (get_local $7)
            )
-           (tee_local $27
+           (tee_local $25
             (f32.sub
              (get_local $11)
              (get_local $13)
             )
            )
           )
-         )
-         (f32.add
           (f32.mul
+           (tee_local $27
+            (f32.sub
+             (get_local $7)
+             (get_local $12)
+            )
+           )
            (f32.sub
             (get_local $11)
-            (get_local $4)
+            (get_local $17)
            )
-           (get_local $25)
           )
+         )
+         (f32.add
           (f32.mul
            (f32.sub
             (get_local $8)
             (get_local $7)
            )
+           (get_local $25)
+          )
+          (f32.mul
            (get_local $27)
+           (f32.sub
+            (get_local $11)
+            (get_local $4)
+           )
           )
          )
         )
@@ -919,11 +918,11 @@
       (f32.mul
        (f32.add
         (f32.mul
+         (get_local $27)
          (f32.sub
           (get_local $8)
           (get_local $14)
          )
-         (get_local $27)
         )
         (f32.mul
          (f32.sub
@@ -942,8 +941,8 @@
            (f32.div
             (f32.add
              (f32.add
-              (get_local $15)
               (get_local $11)
+              (get_local $15)
              )
              (get_local $13)
             )
@@ -959,8 +958,8 @@
            (f32.div
             (f32.add
              (f32.add
-              (get_local $14)
               (get_local $7)
+              (get_local $14)
              )
              (get_local $12)
             )
