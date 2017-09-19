@@ -14,9 +14,7 @@ module DXOpal
     # Load resources specified with Image.register or Sound.register
     # Call block when loaded
     def self.load_resources(&block)
-      Sprite::CollisionChecker::WasmChecker.load do
-        RemoteResource._load_resources(&block)
-      end
+      RemoteResource._load_resources(&block)
     end
 
     def self.loop(&block)

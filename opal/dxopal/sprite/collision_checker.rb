@@ -98,10 +98,10 @@ module DXOpal
       end
 
       class WasmChecker
-        def self.load(&after)
+        def self.load(path, &after)
           %x{
             var importObject = {imports: {}};
-            fetch('/wasm/collision_checker_double.wasm').then(function(response){
+            fetch(path + '/wasm/collision_checker_double.wasm').then(function(response){
               return response.arrayBuffer();
             }).then(function(buffer){
               return WebAssembly.instantiate(buffer, importObject);

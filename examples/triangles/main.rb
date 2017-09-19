@@ -97,6 +97,7 @@ end
 
 N_ENEMIES = 80
 N_BULLETS = 50
+DXOpal::Sprite::CollisionChecker::WasmChecker.load("../../") do
 Window.load_resources do
   player = Player.new
   enemies = N_ENEMIES.times.map{ Enemy.new }
@@ -130,4 +131,5 @@ Window.load_resources do
       #{Sprite.collision_checker = Sprite::CollisionChecker::WasmChecker.new}
     });
   }
+end
 end
