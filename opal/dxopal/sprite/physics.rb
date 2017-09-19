@@ -26,7 +26,6 @@ module DXOpal
         # TODO: support non-default center_x, center_y
         `Matter.Body.setPosition(#{@_matter_body},
            Matter.Vector.create(#{@x+@center_x}, #{@y+@center_y}))`
-        `console.log(#{@_matter_body}.position, #{@x}, #{@center_x})`
       end
 
       def _move_to_matter_body(mx, my)
