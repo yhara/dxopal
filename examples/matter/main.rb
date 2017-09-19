@@ -1,21 +1,4 @@
 require 'dxopal'
-#  class Window
-#    def self.loop(&block)
-#      @@block = block
-#      %x{
-#        window.requestAnimationFrame((time) => {
-#          if (#{Sprite.matter_enabled?}) {
-#            Matter.Runner.tick(#{Sprite._matter_runner},
-#                               #{Sprite._matter_engine},
-#                               time);
-#          }
-#          #{_loop(&block)}
-#        });
-#      }
-#    end
-#  end
-
-
 Window.load_resources do
   box = Sprite.new(200, 200, Image.new(100, 100, C_RED))
   box.angle = 30
@@ -41,8 +24,11 @@ Window.load_resources do
   end
 end
 
-#%x{
+# 
+# Equivalent JS version
 #
+
+#%x{
 #// module aliases
 #var Engine = Matter.Engine,
 #    Render = Matter.Render,
@@ -55,22 +41,26 @@ end
 #// create a renderer
 #var render = Render.create({
 #    element: document.body,
-#    engine: engine
+#    engine: engine,
+#    options: {
+#      width: 640,
+#      height: 480
+#    }
 #});
 #
 #// create two boxes and a ground
-#var boxA = Bodies.rectangle(400, 200, 80, 80, {angle: 10});
-#var boxB = Bodies.rectangle(450, 50, 80, 80);
-#var ground = Bodies.rectangle(400, 610, 810, 60, { isStatic: true });
+#var box = Bodies.rectangle(250, 250, 100, 100, {angle: 30*Math.PI/180, restitution: 0.9});
+#var box2 = Bodies.rectangle(265, 215, 30, 30, {angle: 30*Math.PI/180, density: 0.0001, restitution: 0.99});
+#var ground = Bodies.rectangle(320, 485, 640, 10, { isStatic: true });
+#
+#engine.world.gravity.scale /= 2;
 #
 #// add all of the bodies to the world
-#World.add(engine.world, [boxA, ground]);
+#World.add(engine.world, [box, box2, ground]);
 #
 #// run the engine
 #Engine.run(engine);
 #
 #// run the renderer
 #Render.run(render);
-#
-#setTimeout(() => console.log(boxA), 1000);
 #}
