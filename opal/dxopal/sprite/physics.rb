@@ -5,6 +5,7 @@ module DXOpal
       # Create Matter Body and register it to the World
       # - type: :rectangle, etc.
       def physical_body=(ary)
+        raise "Call Sprite#initialize before calling physical_body=" if self.x.nil?
         type = ary[0]
         case type
         when :rectangle
