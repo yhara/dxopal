@@ -97,14 +97,12 @@ end
 
 N_ENEMIES = 80
 N_BULLETS = 50
-DXOpal::Sprite::CollisionChecker::WasmChecker.load("../../") do
 Window.load_resources do
   player = Player.new
   enemies = N_ENEMIES.times.map{ Enemy.new }
 
   Window.loop do
-    checker_name = Sprite.collision_checker.class.name.split('::').last
-    Window.draw_font(0, 0, "FPS: #{Window.real_fps} #{checker_name}", Font.default)
+    Window.draw_font(0, 0, "FPS: #{Window.real_fps}", Font.default)
     sprites = [player] + player.bullets + enemies
     Sprite.draw(sprites)
     #Sprite.check([player], enemies)
@@ -121,15 +119,5 @@ Window.load_resources do
     document.getElementById('pause').addEventListener('click', function(){
       #{Window.paused? ? Window.resume : Window.pause}
     });
-    document.getElementById('chk_opal').addEventListener('click', function(){
-      #{Sprite.collision_checker = Sprite::CollisionChecker::OpalChecker.new}
-    });
-    document.getElementById('chk_js').addEventListener('click', function(){
-      #{Sprite.collision_checker = Sprite::CollisionChecker::JsChecker.new}
-    });
-    document.getElementById('chk_wasm').addEventListener('click', function(){
-      #{Sprite.collision_checker = Sprite::CollisionChecker::WasmChecker.new}
-    });
   }
-end
 end
