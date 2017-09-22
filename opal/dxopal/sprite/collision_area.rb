@@ -12,7 +12,9 @@ module DXOpal
         end
 
         def absolute(poss)
+          # We can assume poss is already absolute when collision_sync is disabled
           return poss if !@sprite.collision_sync
+
           xs = []
           ys = []
           %x{
