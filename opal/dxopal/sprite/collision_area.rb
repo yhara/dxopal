@@ -163,7 +163,7 @@ module DXOpal
           ox, oy = self.absolute_xy
           dx, dy = other.absolute_xy
 
-          return Sprite.collision_checker.check_triangle_triangle(ox, oy, dx, dy)
+          return CollisionChecker.check_triangle_triangle(ox, oy, dx, dy)
         end
       end
     end
