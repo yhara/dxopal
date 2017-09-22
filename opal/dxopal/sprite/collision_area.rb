@@ -27,10 +27,12 @@ module DXOpal
             var data2y = #{@sprite.scale_y} * cos;
             var cx = #{@sprite.center_x};
             var cy = #{@sprite.center_y};
+            var ox = #{@sprite.x};
+            var oy = #{@sprite.y};
             poss.forEach(function(pos){
               var x = pos[0], y = pos[1];
-              x2 = (x - cx) * data1x - (y - cy) * data1y + cx + #{@sprite.x}
-              y2 = (x - cx) * data2x + (y - cy) * data2y + cy + #{@sprite.y}
+              x2 = (x - cx) * data1x - (y - cy) * data1y + cx + ox;
+              y2 = (x - cx) * data2x + (y - cy) * data2y + cy + oy;
               xs.push(x2)
               ys.push(y2)
             });
