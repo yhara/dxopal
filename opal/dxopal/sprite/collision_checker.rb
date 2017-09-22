@@ -1,12 +1,6 @@
 module DXOpal
   class Sprite
     module CollisionChecker
-      class Base
-        def check_triangle_triangle(ox, oy, dx, dy)
-          raise "override me"
-        end
-      end
-
       class JsChecker
         %x{
           (function(){
