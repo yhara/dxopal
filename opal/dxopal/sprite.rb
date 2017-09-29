@@ -28,8 +28,8 @@ module DXOpal
           for (var i=0; i<offences.length; i++) {
             for (var j=i+1; j<defences.length; j++) {
               if (offences[i]['$==='](defences[j])) {
-                offences[i]['$shot']();
-                defences[j]['$hit']();
+                offences[i]['$shot'](defences[j]);
+                defences[j]['$hit'](offences[i]);
               }
             }
           }
