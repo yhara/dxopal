@@ -25,7 +25,7 @@ module DXOpal
             # offence-vs-defence mode
             %x{
               for (var i=0; i<offences.length; i++) {
-                for (var j=i+1; j<defences.length; j++) {
+                for (var j=0; j<defences.length; j++) {
                   if (offences[i]['$==='](defences[j])) {
                     offences[i]['$shot'](defences[j]);
                     defences[j]['$hit'](offences[i]);
