@@ -72,6 +72,7 @@ module DXOpal
         case item[2]
         when :image then @@img.draw(*item.drop(3))
         when :image_rot then @@img.draw_rot(*item.drop(3))
+        when :draw_ex then @@img.draw_ex(*item.drop(3))
         when :font then @@img.draw_font(*item.drop(3)) 
         when :pixel then @@img.[]=(*item.drop(3))
         when :line then @@img.line(*item.drop(3))
@@ -114,6 +115,10 @@ module DXOpal
 
     def self.draw_rot(x, y, image, angle, center_x=nil, center_y=nil, z=0)
       enqueue_draw(z, :image_rot, x, y, image, angle, center_x, center_y)
+    end
+
+    def self.draw_ex(x, y, image, options={})
+      enqueue_draw(options[:z] || 0, :draw_ex, x, y, image, options)
     end
 
     def self.draw_font(x, y, string, font, option={})

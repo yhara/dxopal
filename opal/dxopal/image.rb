@@ -57,11 +57,24 @@ module DXOpal
     # - angle: Rotation angle (radian)
     # - center_x, center_y: Rotation center in the `image` (default: center of the `image`)
     def draw_rot(x, y, image, angle, center_x=nil, center_y=nil)
-      cx = x + (center_x || image.width / 2)
-      cy = y + (center_y || image.height / 2)
+      draw_ex(x, y, image, angle: angle, center_x: center_x, center_y: center_y)
+    end
+
+    def draw_ex(x, y, image, options={})
+      scale_x = options[:scale_x] || 1
+      scale_y = options[:scale_y] || 1
+      center_x = options[:center_x] || image.width/2
+      center_y = options[:center_y] || image.height/2 
+      # TODO: alpha
+      # TODO: blend
+      angle = options[:angle] || 0
+
+      cx = x + center_x
+      cy = y + center_y
       %x{
         #{@ctx}.translate(cx, cy);
         #{@ctx}.rotate(angle * Math.PI / 180.0);
+        #{@ctx}.scale(scale_x, scale_y);
         #{@ctx}.drawImage(#{image.canvas}, x-cx, y-cy);
         #{@ctx}.setTransform(1, 0, 0, 1, 0, 0); // reset
       }
