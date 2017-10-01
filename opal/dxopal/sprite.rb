@@ -3,43 +3,9 @@ require 'dxopal/sprite/physics'
 
 module DXOpal
   class Sprite
+    extend DXOpal::Sprite::CollisionCheck::ClassMethods
     include DXOpal::Sprite::CollisionCheck
     include DXOpal::Sprite::Physics
-
-    # TODO: implement arguments `shot` and `hit`
-    def self.check(offences, defences, shot=:shot, hit=:hit)
-      if offences.equal?(defences)
-        # any-vs-any mode
-        sprites = offences.select{|x| x.is_a?(Sprite)}
-        n = sprites.length
-        %x{
-          for (var i=0; i<n; i++) {
-            for (var j=i+1; j<n; j++) {
-              if (sprites[i]['$==='](sprites[j])) {
-                sprites[i]['$hit']();
-                sprites[j]['$hit']();
-              }
-            }
-          }
-        }
-      else
-        # offence-vs-defence mode
-        %x{
-          for (var i=0; i<offences.length; i++) {
-            for (var j=i+1; j<defences.length; j++) {
-              if (offences[i]['$==='](defences[j])) {
-                offences[i]['$shot']();
-                defences[j]['$hit']();
-              }
-            }
-          }
-        }
-      end
-    end
-
-    # Default callback methods of `Sprite.check`
-    def shot(other); end
-    def hit(other); end
 
     # Call #update on each sprite (unless it is vanished or do not have #update)
     def self.update(sprites)
@@ -120,8 +86,9 @@ module DXOpal
       raise "image not set to Sprite" if @image.nil?
       return if !@visible
 
-      # TODO: scale_x, scale_y
-      Window.draw_rot(@x, @y, @image, @angle, @center_x, @center_y)
+      Window.draw_ex(@x, @y, @image,
+                     scale_x: @scale_x, scale_y: @scale_y,
+                     angle: @angle, center_x: @center_x, center_y: @center_y)
     end
   end
 end

@@ -2,16 +2,45 @@ require 'dxopal/sprite/collision_area'
 
 module DXOpal
   class Sprite
-    # (For demos)
-    def self.collision_checker
-      @collision_checker ||= CollisionChecker::JsChecker.new
-    end
-    def self.collision_checker=(x)
-      @collision_checker = x
-    end
-
     # Methods of Sprite related to collision checking
     module CollisionCheck
+      module ClassMethods
+        # TODO: implement arguments `shot` and `hit`
+        def check(offences, defences, shot=:shot, hit=:hit)
+          if offences.equal?(defences)
+            # any-vs-any mode
+            sprites = offences.select{|x| x.is_a?(Sprite)}
+            n = sprites.length
+            %x{
+              for (var i=0; i<n; i++) {
+                for (var j=i+1; j<n; j++) {
+                  if (sprites[i]['$==='](sprites[j])) {
+                    sprites[i]['$hit']();
+                    sprites[j]['$hit']();
+                  }
+                }
+              }
+            }
+          else
+            # offence-vs-defence mode
+            %x{
+              for (var i=0; i<offences.length; i++) {
+                for (var j=0; j<defences.length; j++) {
+                  if (offences[i]['$==='](defences[j])) {
+                    offences[i]['$shot'](defences[j]);
+                    defences[j]['$hit'](offences[i]);
+                  }
+                }
+              }
+            }
+          end
+        end
+      end
+
+      # Default callback methods of `Sprite.check`
+      def shot(other); end
+      def hit(other); end
+
       # Called from Sprites#initialize
       def _init_collision_info(image)
         @collision ||= nil
