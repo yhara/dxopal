@@ -9,7 +9,6 @@ task :build_min => ["build/dxopal.min.js", "dxopal-game/dxopal.min.js"]
 file "dxopal-game/dxopal.min.js" => "build/dxopal.min.js" do |t| cp t.source, t.name end
 
 file "build/dxopal.min.js" => "build/dxopal.js" do |t|
-  puts "Minifying (this may take a little time)"
   sh "uglifyjs #{t.source} -o #{t.name}"
 end
 
