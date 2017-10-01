@@ -86,8 +86,9 @@ module DXOpal
       raise "image not set to Sprite" if @image.nil?
       return if !@visible
 
-      # TODO: scale_x, scale_y
-      Window.draw_rot(@x, @y, @image, @angle, @center_x, @center_y)
+      Window.draw_ex(@x, @y, @image,
+                     scale_x: @scale_x, scale_y: @scale_y,
+                     angle: @angle, center_x: @center_x, center_y: @center_y)
     end
   end
 end
