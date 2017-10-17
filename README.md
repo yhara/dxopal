@@ -38,28 +38,6 @@ Window.load_resources do
 end
 ```
 
-## Development
-
-Prerequisites: Ruby (tested with 2.3.3)
-
-Development requirements: Node.js (to minify .js)
-
-```
-$ git clone https://github.com/yhara/dxopal
-$ cd dxopal
-$ bundle install
-$ npm install uglify-es -g
-```
-
-Developing dxopal-game:
-
-```
-$ cd dxopal
-$ git clone https://github.com/yhara/dxopal-game
-$ rake build  # Updates dxopal-game/scripts/dxopal.js
-$ open dxopal-game/index.html
-```
-
 ## License
 
 MIT (including images and sounds under examples/)
