@@ -4,9 +4,9 @@ desc "Build dxopal.js"
 task :build => ["build/dxopal.js"]
 
 desc "Build dxopal.js and dxopal.min.js"
-task :build_min => ["build/dxopal.min.js", "dxopal-game/dxopal.min.js"]
+task :build_min => ["build/dxopal.min.js", "starter-kit/dxopal.min.js"]
 
-file "dxopal-game/dxopal.min.js" => "build/dxopal.min.js" do |t| cp t.source, t.name end
+file "starter-kit/dxopal.min.js" => "build/dxopal.min.js" do |t| cp t.source, t.name end
 
 file "build/dxopal.min.js" => "build/dxopal.js" do |t|
   sh "uglifyjs #{t.source} -o #{t.name}"
@@ -36,9 +36,9 @@ namespace "release" do
   end
 
   desc "Make a release commit"
-  task :push_game do
+  task :push_kit do
     ver = ENV.fetch("VER")
-    cd "dxopal-game" do
+    cd "starter-kit" do
       sh "git ci dxopal.min.js -m 'v#{ver}'"
       sh "git tag 'v#{ver}'"
       sh "git push origin master --tags"
