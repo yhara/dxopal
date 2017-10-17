@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset= "utf-8" />
+    <title>DXOpal demo</title>
+
+    <link href='https://fonts.googleapis.com/css?family=Arvo:400,700,400italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../../vendor/pages-themes-dinky-14e8031/_site/assets/css/style.css">
+    <script src="../../vendor/pages-themes-dinky-14e8031/_site/assets/js/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header"><a href='../../index.html'>DXOpal</a></h1>
+        <p class="header">
+        <a href='../en/index.html'>English</a> | <a href='index.html'>日本語</a>
+        </p>
+        <p class="header">
+        DXOpal (<a href='https://github.com/yhara/dxopal'>github</a>) は<a href='http://opalrb.com'>Opal</a>のためのゲームフレームワークです。
+        </p>
+      </header>
+
+      <section>
+        <h2>概要</h2>
+        <p>
+        DXOpalはRuby(<a href='http://opalrb.com'>Opal</a>)でブラウザゲームを作るためのライブラリです。
+        <a href='http://dxruby.osdn.jp/'>DXRuby</a>に似たAPIを持っています。
+        </p>
+        
+        <h2>デモ</h2>
+        <ul>
+          <li>
+            <a href="../../examples/apple_catcher/index.html">Apple Catcher</a>
+          </li>
+          <li>
+            <a href="../../examples/collision/index.html">Collision detection</a>
+          </li>
+          <li>
+            <a href="../../examples/triangles/index.html">STG-like demo</a>
+          </li>
+          <li>
+            <a href="../../examples/matter/index.html">Physics</a> (experimental / powered by <a href='http://brm.io/matter-js/'>Matter.js</a>)
+          </li>
+        </ul>
+
+        <h2>セットアップ</h2>
+        <h3>Rubyがインストール済みのとき</h3>
+        <p>
+        <pre><code>$ gem install dxopal
+$ mkdir game1
+$ cd game1
+$ dxopal init
+$ dxopal server</code></pre>
+        </p>
+        <p>
+        <a href='http://localhost:7521/index.html'>http://localhost:7521/index.html</a>を開くと画面が出ます。
+        </p>
+        <p>
+        main.rbを編集してブラウザをリロードすると動くはずです。
+        </p>
+
+        <h3>Rubyをインストールしたくないとき</h3>
+        <p>
+        Gitコマンドが使える場合は<a href='https://github.com/yhara/dxopal-starter-kit'>yhara/dxopal-starter-kit</a>をgit cloneしてください。そうでない場合は<a href='https://github.com/yhara/dxopal-starter-kit/releases'>releases</a>から最新のzipをダウンロードして展開してください。
+        </p>
+        <p>
+        index.htmlをFirefoxかSafariで開くと画面が出ます (Google Chromeは<code>file://</code>へのAjaxアクセスができないのでだめ)。
+        </p>
+        <p>
+        main.rbを編集してブラウザをリロードすると動くはずです。
+        </p>
+
+        <h2>リンク</h2>
+        <ul>
+          <li>
+            <a href="../api/index.html">APIリファレンス(英語)</a>
+          </li>
+          <li>
+            <a href="https://github.com/yhara/dxopal">ソースコード(github)</a>
+          </li>
+        </ul>
+
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the <a href='https://github.com/pages-themes/dinky'>Dinky theme</a></small></p>
+      </footer>
+    </div>
+  </body>
+</html>
+
