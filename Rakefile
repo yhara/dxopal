@@ -55,31 +55,3 @@ end
 #   - rackup and open http://localhost:9292/
 # 4. `rake release:push`
 # 5. `rake release:push_game`
-
-# WebAssembly stuffs (experimental)
-#
-# source ~/rr_2017/emsdk-portable/emsdk_env.sh
-namespace "wasm" do
-
-  # Compile with LLVM's experimental wasm support
-  task :compile do
-    chdir "wasm" do
-      name = "collision_checker_double"
-      out = "collision_checker_double"
-      sh "clang -O3 -emit-llvm --target=wasm32 -S #{name}.c -o #{out}.ll"
-      sh "~/rr_2017/bin/llvm/bin/llc #{out}.ll -march=wasm32"
-      sh "#{ENV['BINARYEN_ROOT']}/bin/s2wasm #{out}.s -o #{out}.wast"
-      sh "#{ENV['BINARYEN_ROOT']}/bin/wasm-as -o #{out}.wasm #{out}.wast"
-    end
-  end
-
-  # Compile with emcc command (via asm.js)
-  task :emcc do
-    chdir "wasm" do
-      name = "collision_checker_double"
-      out = "collision_checker_double"
-      sh "emcc #{name}.c -s WASM=1 -s \"EXPORTED_FUNCTIONS=['_check_triangle_triangle', '_absolute']\" -o #{out}.html"
-      sh "#{ENV['BINARYEN_ROOT']}/bin/wasm-dis -o #{out}.wast #{out}.wasm"
-    end
-  end
-end
