@@ -19,6 +19,11 @@ file "build/dxopal.js" => Dir["opal/**/*.rb"] + ["vendor/matter.js"] do |t|
   File.write(t.name, js)
 end
 
+desc "Rebuild API reference"
+task :api do
+  sh "yard doc -o doc/api/ opal/**/*.rb"
+end
+
 namespace "release" do
   desc "Make a release commit"
   task :prepare do
