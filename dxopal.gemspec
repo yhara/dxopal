@@ -21,6 +21,8 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_runtime_dependency "opal", "~> 0.10.3"
+  spec.add_runtime_dependency "thor", "~> 0.19.1"
+  spec.add_runtime_dependency "rack", "~> 2.0.3"
   spec.add_development_dependency "bundler", "~> 1.14"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rack", "~> 2.0.1"
