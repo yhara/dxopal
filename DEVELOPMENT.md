@@ -14,15 +14,20 @@ $ bundle install
 $ npm install uglify-es -g
 ```
 
-Developing dxopal-game:
+Developing dxopal-starter-kit:
 
 ```
 $ cd dxopal  # Must be cloned into here
-$ git clone https://github.com/yhara/dxopal-game
-$ open dxopal-game/index.html
+$ git clone https://github.com/yhara/dxopal-starter-kit
 ```
 
 ## Build .js
 
     $ rake build
     $ rake build_min  # Build and minify
+
+## Documents
+
+Build API reference:
+
+    $ rake api
