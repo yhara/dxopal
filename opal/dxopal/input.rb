@@ -100,7 +100,6 @@ module DXOpal
         }
         #{@@keyevent_target}.addEventListener('keydown', #{ON_KEYDOWN_});
         #{@@keyevent_target}.addEventListener('keyup', #{ON_KEYUP_});
-        console.log(#{@@keyevent_target});
       }
     end
 
