@@ -1,3 +1,5 @@
 # Ignore file for ripgrep
 /build/
+/doc/api/
 /examples/_vendor/
+/vendor/
