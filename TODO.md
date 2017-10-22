@@ -276,7 +276,3 @@ These methods will not be supported.
 - [ ] param_hash
 - [ ] offset_sync
 - [ ] offset_sync=
-
-## Other TODOs
-
-- Change `id=canvas` to `id=dxopal-canvas`

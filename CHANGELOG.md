@@ -1,5 +1,17 @@
 ## v1.0.0 ()
 
+### Breaking change: canvas id
+
+Old:
+
+    <canvas id="canvas">
+
+New:
+
+    <canvas id="dxopal-canvas">
+
+### Other improvements:
+
 - new: Sprite.check (collision detection)
 - new: Window.bgcolor
 - new: Input.mouse_down?, mouse_push?, mouse_release?

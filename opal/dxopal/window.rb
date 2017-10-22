@@ -94,7 +94,7 @@ module DXOpal
     end
 
     def self._init(w, h)
-      canvas = `document.getElementById("canvas")`
+      canvas = `document.getElementById("dxopal-canvas")`
       `canvas.width = w`
       `canvas.height = h`
       img = Image.new(w, h, canvas: canvas)
