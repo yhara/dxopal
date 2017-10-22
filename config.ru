@@ -12,11 +12,13 @@ opal_server = Opal::Server.new{|s|
   s.use_index = false
 }
 
-Dir["examples/*"].reject{|x| x =~ /_vendor/}.each do |proj|
+DEMO_DIRS = Dir["examples/*"].reject{|x| x =~ /_vendor|top_page/}.map{|x| "/#{x}"}
+DEMO_DIRS << ""  # top page
+DEMO_DIRS.each do |path|
   # Compile dxopal.js dynamically to avoid manual recompiling
-  map "/#{proj}/index.html" do
+  map "#{path}/index.html" do
     index = Opal::Server::Index.new(nil, opal_server)
-    s = File.read("#{proj}/index.html")
+    s = File.read(".#{path}/index.html")
             .gsub(%r{<script (.*)dxopal.js"></script>}){
               index.javascript_include_tag(opal_server.main) +
               "<script type='text/javascript' src='../../vendor/matter.js'></script>"
