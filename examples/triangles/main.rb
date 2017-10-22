@@ -11,7 +11,7 @@ class Enemy < Sprite
     @img_hit = Image.new(SIZE, SIZE) 
     @img_hit.triangle_fill(0, 0, SIZE-1, 10, 10, SIZE-1, C_RED)
     self.collision = [0, 0, SIZE-1, 10, 10, SIZE-1]
-    @dy = rand(8) + 1
+    @dy = rand(6) + 1
     @drot = rand(8) + 1
     @hit = false
   end
@@ -37,11 +37,11 @@ class Bullet < Sprite
     x = px
     y = py
     @img_normal = Image.new(SIZE, SIZE)
-    @img_normal.triangle_fill(SIZE/2, 0, SIZE-1, SIZE-1, 0, SIZE-1, C_YELLOW)
+    @img_normal.circle_fill(SIZE/2, SIZE/2, (SIZE/2)-1, C_YELLOW)
     super(x, y, @img_normal)
-    self.collision = [0, 0, SIZE-1, 10, 10, SIZE-1]
+    self.collision = [SIZE/2, SIZE/2, (SIZE/2)-1]
     @dx = rand(8) - 4
-    @dy = -rand(3) - 6
+    @dy = -rand(3) - 3
   end
 
   def shot(other)
@@ -95,8 +95,8 @@ class Player < Sprite
   end
 end
 
-N_ENEMIES = 80
-N_BULLETS = 50
+N_ENEMIES = 70
+N_BULLETS = 30
 Window.load_resources do
   player = Player.new
   enemies = N_ENEMIES.times.map{ Enemy.new }
@@ -111,7 +111,7 @@ Window.load_resources do
     Sprite.clean(enemies)
     Sprite.clean(player.bullets)
 
-    (N_ENEMIES - enemies.length).times{ enemies << Enemy.new }
+    rand(N_ENEMIES - enemies.length).times{ enemies << Enemy.new }
     player.make_bullets
   end
 
