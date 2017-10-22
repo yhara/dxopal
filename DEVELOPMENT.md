@@ -31,3 +31,25 @@ $ git clone https://github.com/yhara/dxopal-starter-kit
 Build API reference:
 
     $ rake api
+
+## Directory structure
+
+- build/
+  - dxopal.js
+  - dxopal.min.js
+- doc/
+  - api/
+  - en/
+  - ja/
+- examples/
+- exe/
+  - dxopal
+- opal/ : Source code
+  - dxopal.rb
+  - dxopal/
+- template/ : Template files for `dxopal init` command
+  - index.html
+  - main.rb
+- vendor/
+  - matter.js
+  - pages-themes-dinky-14e8031/
