@@ -20653,7 +20653,7 @@ Opal.modules["dxopal/input"] = function(Opal) {
   }
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $module = Opal.module;
 
-  Opal.add_stubs(['$+', '$key_down?', '$-']);
+  Opal.add_stubs(['$keyevent_target', '$keyevent_target=', '$+', '$key_down?', '$-', '$_pressing_keys']);
   return (function($base) {
     var $DXOpal, self = $DXOpal = $module($base, 'DXOpal');
 
@@ -20662,7 +20662,7 @@ Opal.modules["dxopal/input"] = function(Opal) {
     (function($base) {
       var $Input, self = $Input = $module($base, 'Input');
 
-      var def = self.$$proto, $scope = self.$$scope, TMP_1, TMP_2, TMP_3, TMP_4, TMP_5, TMP_6, TMP_7, TMP_8, TMP_9, TMP_10, TMP_11, TMP_12;
+      var def = self.$$proto, $scope = self.$$scope, TMP_1, TMP_2, TMP_3, TMP_4, TMP_5, TMP_6, TMP_7, TMP_8, $a, TMP_9, TMP_10, TMP_11, TMP_12, TMP_13, TMP_14, TMP_15;
 
       (function($base) {
         var $MouseCodes, self = $MouseCodes = $module($base, 'MouseCodes');
@@ -20680,59 +20680,36 @@ Opal.modules["dxopal/input"] = function(Opal) {
         Opal.cdecl($scope, 'M_5TH_BUTTON', 16);
       })($scope.base);
 
-      Opal.defs(self, '$_init', TMP_1 = function $$_init(canvas) {
-        var $a, self = this, pressing_keys = nil, pressing_mouse_buttons = nil, rect = nil;
+      Opal.defs(self, '$_pressing_keys', TMP_1 = function $$_pressing_keys() {
+        var $a, self = this;
+
+        return (($a = Opal.cvars['@@pressing_keys']) == null ? nil : $a);
+      }, TMP_1.$$arity = 0);
+
+      Opal.defs(self, '$_init', TMP_2 = function $$_init(canvas) {
+        var $a, $b, self = this, rect = nil;
 
         (Opal.cvars['@@tick'] = 0);
-        (Opal.cvars['@@pressing_keys'] = pressing_keys = new Object());
+        (Opal.cvars['@@pressing_keys'] = new Object());
         (Opal.cvars['@@mouse_info'] = {x: 0, y: 0});
-        (Opal.cvars['@@pressing_mouse_buttons'] = pressing_mouse_buttons = new Object());
+        (Opal.cvars['@@pressing_mouse_buttons'] = new Object());
         rect = canvas.getBoundingClientRect();
         (Opal.cvars['@@canvas_x'] = rect.left + window.pageXOffset);
         (Opal.cvars['@@canvas_y'] = rect.top  + window.pageYOffset);
-        
-        document.addEventListener('keydown', function(ev){
-          pressing_keys[ev.keyCode] = (($a = Opal.cvars['@@tick']) == null ? nil : $a);
-          ev.preventDefault();
-          ev.stopPropagation();
-        });
-        document.addEventListener('keyup', function(ev){
-          pressing_keys[ev.keyCode] = -(($a = Opal.cvars['@@tick']) == null ? nil : $a);
-          ev.preventDefault();
-          ev.stopPropagation();
-        });
-        document.addEventListener('mousemove', function(ev){
-          (($a = Opal.cvars['@@mouse_info']) == null ? nil : $a).x = ev.pageX - (($a = Opal.cvars['@@canvas_x']) == null ? nil : $a);
-          (($a = Opal.cvars['@@mouse_info']) == null ? nil : $a).y = ev.pageY - (($a = Opal.cvars['@@canvas_y']) == null ? nil : $a);
-        });
-        document.addEventListener('mousedown', function(ev){
-          (($a = Opal.cvars['@@mouse_info']) == null ? nil : $a).x = ev.pageX - (($a = Opal.cvars['@@canvas_x']) == null ? nil : $a);
-          (($a = Opal.cvars['@@mouse_info']) == null ? nil : $a).y = ev.pageY - (($a = Opal.cvars['@@canvas_y']) == null ? nil : $a);
-          for (var k=1; k<=16; k<<=1) {
-            if (ev.buttons & k) {
-              pressing_mouse_buttons[k] = (($a = Opal.cvars['@@tick']) == null ? nil : $a);
-            }
-          }
-        });
-        document.addEventListener('mouseup', function(ev){
-          (($a = Opal.cvars['@@mouse_info']) == null ? nil : $a).x = ev.pageX - (($a = Opal.cvars['@@canvas_x']) == null ? nil : $a);
-          (($a = Opal.cvars['@@mouse_info']) == null ? nil : $a).y = ev.pageY - (($a = Opal.cvars['@@canvas_y']) == null ? nil : $a);
-          for (var k=1; k<=16; k<<=1) {
-            if ((ev.buttons & k) == 0 && pressing_mouse_buttons[k]) {
-              pressing_mouse_buttons[k] = -(($a = Opal.cvars['@@tick']) == null ? nil : $a);
-            }
-          }
-        });
-      ;
-      }, TMP_1.$$arity = 1);
+        if ((($a = $scope.get('Input').$keyevent_target()) !== nil && $a != null && (!$a.$$is_boolean || $a == true))) {
+          return nil
+          } else {
+          return (($a = [window]), $b = self, $b['$keyevent_target='].apply($b, $a), $a[$a.length-1])
+        };
+      }, TMP_2.$$arity = 1);
 
-      Opal.defs(self, '$_on_tick', TMP_2 = function $$_on_tick() {
+      Opal.defs(self, '$_on_tick', TMP_3 = function $$_on_tick() {
         var $a, self = this;
 
         return (Opal.cvars['@@tick'] = $rb_plus((($a = Opal.cvars['@@tick']) == null ? nil : $a), 1));
-      }, TMP_2.$$arity = 0);
+      }, TMP_3.$$arity = 0);
 
-      Opal.defs(self, '$x', TMP_3 = function $$x(pad_number) {
+      Opal.defs(self, '$x', TMP_4 = function $$x(pad_number) {
         var $a, self = this, ret = nil;
 
         if (pad_number == null) {
@@ -20744,9 +20721,9 @@ Opal.modules["dxopal/input"] = function(Opal) {
         if ((($a = self['$key_down?']($scope.get('K_LEFT'))) !== nil && $a != null && (!$a.$$is_boolean || $a == true))) {
           ret = $rb_minus(ret, 1)};
         return ret;
-      }, TMP_3.$$arity = -1);
+      }, TMP_4.$$arity = -1);
 
-      Opal.defs(self, '$y', TMP_4 = function $$y(pad_number) {
+      Opal.defs(self, '$y', TMP_5 = function $$y(pad_number) {
         var $a, self = this, ret = nil;
 
         if (pad_number == null) {
@@ -20758,37 +20735,78 @@ Opal.modules["dxopal/input"] = function(Opal) {
         if ((($a = self['$key_down?']($scope.get('K_UP'))) !== nil && $a != null && (!$a.$$is_boolean || $a == true))) {
           ret = $rb_minus(ret, 1)};
         return ret;
-      }, TMP_4.$$arity = -1);
+      }, TMP_5.$$arity = -1);
 
-      Opal.defs(self, '$key_down?', TMP_5 = function(code) {
+      Opal.defs(self, '$key_down?', TMP_6 = function(code) {
         var $a, self = this;
 
         return (($a = Opal.cvars['@@pressing_keys']) == null ? nil : $a)[code] > 0;
-      }, TMP_5.$$arity = 1);
+      }, TMP_6.$$arity = 1);
 
-      Opal.defs(self, '$key_push?', TMP_6 = function(code) {
+      Opal.defs(self, '$key_push?', TMP_7 = function(code) {
         var $a, self = this;
 
         return (($a = Opal.cvars['@@pressing_keys']) == null ? nil : $a)[code] == (($a = Opal.cvars['@@tick']) == null ? nil : $a)-1;
-      }, TMP_6.$$arity = 1);
+      }, TMP_7.$$arity = 1);
 
-      Opal.defs(self, '$key_release?', TMP_7 = function(code) {
+      Opal.defs(self, '$key_release?', TMP_8 = function(code) {
         var $a, self = this;
 
         return (($a = Opal.cvars['@@pressing_keys']) == null ? nil : $a)[code] == -((($a = Opal.cvars['@@tick']) == null ? nil : $a)-1);
-      }, TMP_7.$$arity = 1);
+      }, TMP_8.$$arity = 1);
 
-      Opal.defs(self, '$mouse_x', TMP_8 = function $$mouse_x() {
+      Opal.cdecl($scope, 'ON_KEYDOWN_', 
+      function(ev){
+        $scope.get('Input').$_pressing_keys()[ev.keyCode] = (($a = Opal.cvars['@@tick']) == null ? nil : $a);
+        ev.preventDefault();
+        ev.stopPropagation();
+      }
+    );
+
+      Opal.cdecl($scope, 'ON_KEYUP_', 
+      function(ev){
+        $scope.get('Input').$_pressing_keys()[ev.keyCode] = -(($a = Opal.cvars['@@tick']) == null ? nil : $a);
+        ev.preventDefault();
+        ev.stopPropagation();
+      }
+    );
+
+      Opal.defs(self, '$keyevent_target=', TMP_9 = function(target) {
+        var $a, $b, self = this;
+
+        if ((($a = (($b = Opal.cvars['@@keyevent_target']) == null ? nil : $b)) !== nil && $a != null && (!$a.$$is_boolean || $a == true))) {
+          
+          (($a = Opal.cvars['@@keyevent_target']) == null ? nil : $a).removeEventListener('keydown', $scope.get('ON_KEYDOWN_'));
+          (($a = Opal.cvars['@@keyevent_target']) == null ? nil : $a).removeEventListener('keyup', $scope.get('ON_KEYUP_'));
+        ;};
+        (Opal.cvars['@@keyevent_target'] = target);
+        
+        if ((($a = Opal.cvars['@@keyevent_target']) == null ? nil : $a).tagName == "CANVAS") {
+          (($a = Opal.cvars['@@keyevent_target']) == null ? nil : $a).setAttribute('tabindex', 0);
+        }
+        (($a = Opal.cvars['@@keyevent_target']) == null ? nil : $a).addEventListener('keydown', $scope.get('ON_KEYDOWN_'));
+        (($a = Opal.cvars['@@keyevent_target']) == null ? nil : $a).addEventListener('keyup', $scope.get('ON_KEYUP_'));
+        console.log((($a = Opal.cvars['@@keyevent_target']) == null ? nil : $a));
+      ;
+      }, TMP_9.$$arity = 1);
+
+      Opal.defs(self, '$keyevent_target', TMP_10 = function $$keyevent_target() {
+        var $a, self = this;
+
+        return (($a = Opal.cvars['@@keyevent_target']) == null ? nil : $a);
+      }, TMP_10.$$arity = 0);
+
+      Opal.defs(self, '$mouse_x', TMP_11 = function $$mouse_x() {
         var $a, self = this;
 
         return (($a = Opal.cvars['@@mouse_info']) == null ? nil : $a).x;
-      }, TMP_8.$$arity = 0);
+      }, TMP_11.$$arity = 0);
 
-      Opal.defs(self, '$mouse_y', TMP_9 = function $$mouse_y() {
+      Opal.defs(self, '$mouse_y', TMP_12 = function $$mouse_y() {
         var $a, self = this;
 
         return (($a = Opal.cvars['@@mouse_info']) == null ? nil : $a).y;
-      }, TMP_9.$$arity = 0);
+      }, TMP_12.$$arity = 0);
 
       (function(self) {
         var $scope = self.$$scope, def = self.$$proto;
@@ -20797,23 +20815,23 @@ Opal.modules["dxopal/input"] = function(Opal) {
         return Opal.alias(self, 'mouse_pos_y', 'mouse_y');
       })(Opal.get_singleton_class(self));
 
-      Opal.defs(self, '$mouse_down?', TMP_10 = function(mouse_code) {
+      Opal.defs(self, '$mouse_down?', TMP_13 = function(mouse_code) {
         var $a, self = this;
 
         return (($a = Opal.cvars['@@pressing_mouse_buttons']) == null ? nil : $a)[mouse_code] > 0;
-      }, TMP_10.$$arity = 1);
+      }, TMP_13.$$arity = 1);
 
-      Opal.defs(self, '$mouse_push?', TMP_11 = function(mouse_code) {
+      Opal.defs(self, '$mouse_push?', TMP_14 = function(mouse_code) {
         var $a, self = this;
 
         return (($a = Opal.cvars['@@pressing_mouse_buttons']) == null ? nil : $a)[mouse_code] == -((($a = Opal.cvars['@@tick']) == null ? nil : $a)-1);
-      }, TMP_11.$$arity = 1);
+      }, TMP_14.$$arity = 1);
 
-      Opal.defs(self, '$mouse_release?', TMP_12 = function(mouse_code) {
+      Opal.defs(self, '$mouse_release?', TMP_15 = function(mouse_code) {
         var $a, self = this;
 
         return (($a = Opal.cvars['@@pressing_mouse_buttons']) == null ? nil : $a)[mouse_code] == -((($a = Opal.cvars['@@tick']) == null ? nil : $a)-1);
-      }, TMP_12.$$arity = 1);
+      }, TMP_15.$$arity = 1);
     })($scope.base)
   })($scope.base)
 };
@@ -22697,7 +22715,7 @@ Opal.modules["dxopal/window"] = function(Opal) {
     (function($base) {
       var $Window, self = $Window = $module($base, 'Window');
 
-      var def = self.$$proto, $scope = self.$$scope, TMP_1, TMP_2, TMP_4, TMP_5, TMP_6, TMP_7, TMP_8, TMP_12, TMP_13, TMP_14, TMP_15, TMP_16, TMP_17, TMP_18, TMP_19, TMP_20, TMP_21, TMP_22, TMP_23, TMP_24, TMP_25, TMP_26, TMP_27, TMP_28, TMP_29, TMP_30, TMP_31, TMP_32, TMP_33, TMP_34, TMP_35;
+      var def = self.$$proto, $scope = self.$$scope, TMP_1, TMP_2, TMP_4, TMP_5, TMP_6, TMP_7, TMP_11, TMP_12, TMP_13, TMP_14, TMP_15, TMP_16, TMP_17, TMP_18, TMP_19, TMP_20, TMP_21, TMP_22, TMP_23, TMP_24, TMP_25, TMP_26, TMP_27, TMP_28, TMP_29, TMP_30, TMP_31, TMP_32, TMP_33, TMP_34, TMP_35;
 
       (Opal.cvars['@@fps'] = 60);
 
@@ -22727,9 +22745,9 @@ Opal.modules["dxopal/window"] = function(Opal) {
 
         TMP_2.$$p = null;
         (Opal.cvars['@@block'] = block);
-        return ($a = (TMP_3 = function(time){var self = TMP_3.$$s || this, $b, $c;
+        return ($a = (TMP_3 = function(time){var self = TMP_3.$$s || this;
 if (time == null) time = nil;
-        return ($b = ($c = self).$_loop, $b.$$p = block.$to_proc(), $b).call($c, time)}, TMP_3.$$s = self, TMP_3.$$arity = 1, TMP_3), (window).requestAnimationFrame)($a);
+        return self.$_loop(time)}, TMP_3.$$s = self, TMP_3.$$arity = 1, TMP_3), (window).requestAnimationFrame)($a);
       }, TMP_2.$$arity = 0);
 
       Opal.defs(self, '$pause', TMP_4 = function $$pause() {
@@ -22762,10 +22780,9 @@ if (time == null) time = nil;
         return $scope.get('Window').$draw_font(0, 0, "...PAUSE...", $scope.get('Font').$default(), $hash2(["color"], {"color": $scope.get('C_WHITE')}));
       }, TMP_7.$$arity = 0);
 
-      Opal.defs(self, '$_loop', TMP_8 = function $$_loop(time) {
-        var $a, $b, TMP_9, $c, TMP_10, TMP_11, self = this, $iter = TMP_8.$$p, block = $iter || nil, t0 = nil, sorted = nil;
+      Opal.defs(self, '$_loop', TMP_11 = function $$_loop(time) {
+        var $a, $b, TMP_8, $c, TMP_9, TMP_10, self = this, t0 = nil, sorted = nil;
 
-        TMP_8.$$p = null;
         ((($a = (($b = Opal.cvars['@@img']) == null ? nil : $b)) !== false && $a !== nil && $a != null) ? $a : (Opal.cvars['@@img'] = self.$_init((($b = Opal.cvars['@@width']) == null ? nil : $b), (($b = Opal.cvars['@@height']) == null ? nil : $b))));
         t0 = $scope.get('Time').$now();
         if ((($a = $rb_ge($rb_minus(t0, (($b = Opal.cvars['@@real_fps_t']) == null ? nil : $b)), 1.0)) !== nil && $a != null && (!$a.$$is_boolean || $a == true))) {
@@ -22782,28 +22799,30 @@ if (time == null) time = nil;
         if ((($a = (($b = Opal.cvars['@@paused']) == null ? nil : $b)) !== nil && $a != null && (!$a.$$is_boolean || $a == true))) {
           $scope.get('Window').$draw_pause_screen()
           } else {
-          block.$call()
+          (($a = Opal.cvars['@@block']) == null ? nil : $a).$call()
         };
         (($a = Opal.cvars['@@img']) == null ? nil : $a).$box_fill(0, 0, (($a = Opal.cvars['@@width']) == null ? nil : $a), (($a = Opal.cvars['@@height']) == null ? nil : $a), (($a = Opal.cvars['@@bgcolor']) == null ? nil : $a));
-        sorted = ($a = ($b = (($c = Opal.cvars['@@draw_queue']) == null ? nil : $c)).$sort, $a.$$p = (TMP_9 = function(a, b){var self = TMP_9.$$s || this;
+        sorted = ($a = ($b = (($c = Opal.cvars['@@draw_queue']) == null ? nil : $c)).$sort, $a.$$p = (TMP_8 = function(a, b){var self = TMP_8.$$s || this;
 if (a == null) a = nil;if (b == null) b = nil;
         if (a['$[]'](0)['$=='](b['$[]'](0))) {
             return a['$[]'](1)['$<=>'](b['$[]'](1))
             } else {
             return a['$[]'](0)['$<=>'](a['$[]'](1))
-          }}, TMP_9.$$s = self, TMP_9.$$arity = 2, TMP_9), $a).call($b);
-        ($a = ($c = sorted).$each, $a.$$p = (TMP_10 = function(item){var self = TMP_10.$$s || this, $d, $e, $f, $g, $h, $i, $j, $k, $l, $m, $n, $o, $p, $case = nil;
+          }}, TMP_8.$$s = self, TMP_8.$$arity = 2, TMP_8), $a).call($b);
+        ($a = ($c = sorted).$each, $a.$$p = (TMP_9 = function(item){var self = TMP_9.$$s || this, $d, $e, $f, $g, $h, $i, $j, $k, $l, $m, $n, $o, $p, $case = nil;
 if (item == null) item = nil;
-        return (function() {$case = item['$[]'](2);if ("image"['$===']($case)) {return ($d = (($e = Opal.cvars['@@img']) == null ? nil : $e)).$draw.apply($d, Opal.to_a(item.$drop(3)))}else if ("image_rot"['$===']($case)) {return ($e = (($f = Opal.cvars['@@img']) == null ? nil : $f)).$draw_rot.apply($e, Opal.to_a(item.$drop(3)))}else if ("draw_ex"['$===']($case)) {return ($f = (($g = Opal.cvars['@@img']) == null ? nil : $g)).$draw_ex.apply($f, Opal.to_a(item.$drop(3)))}else if ("font"['$===']($case)) {return ($g = (($h = Opal.cvars['@@img']) == null ? nil : $h)).$draw_font.apply($g, Opal.to_a(item.$drop(3)))}else if ("pixel"['$===']($case)) {return ($h = (($i = Opal.cvars['@@img']) == null ? nil : $i))['$[]='].apply($h, Opal.to_a(item.$drop(3)))}else if ("line"['$===']($case)) {return ($i = (($j = Opal.cvars['@@img']) == null ? nil : $j)).$line.apply($i, Opal.to_a(item.$drop(3)))}else if ("box"['$===']($case)) {return ($j = (($k = Opal.cvars['@@img']) == null ? nil : $k)).$box.apply($j, Opal.to_a(item.$drop(3)))}else if ("box_fill"['$===']($case)) {return ($k = (($l = Opal.cvars['@@img']) == null ? nil : $l)).$box_fill.apply($k, Opal.to_a(item.$drop(3)))}else if ("circle"['$===']($case)) {return ($l = (($m = Opal.cvars['@@img']) == null ? nil : $m)).$circle.apply($l, Opal.to_a(item.$drop(3)))}else if ("circle_fill"['$===']($case)) {return ($m = (($n = Opal.cvars['@@img']) == null ? nil : $n)).$circle_fill.apply($m, Opal.to_a(item.$drop(3)))}else if ("triangle"['$===']($case)) {return ($n = (($o = Opal.cvars['@@img']) == null ? nil : $o)).$triangle.apply($n, Opal.to_a(item.$drop(3)))}else if ("triangle_fill"['$===']($case)) {return ($o = (($p = Opal.cvars['@@img']) == null ? nil : $p)).$triangle_fill.apply($o, Opal.to_a(item.$drop(3)))}else { return nil }})()}, TMP_10.$$s = self, TMP_10.$$arity = 1, TMP_10), $a).call($c);
-        return ($a = (TMP_11 = function(time){var self = TMP_11.$$s || this, $d, $e;
+        return (function() {$case = item['$[]'](2);if ("image"['$===']($case)) {return ($d = (($e = Opal.cvars['@@img']) == null ? nil : $e)).$draw.apply($d, Opal.to_a(item.$drop(3)))}else if ("image_rot"['$===']($case)) {return ($e = (($f = Opal.cvars['@@img']) == null ? nil : $f)).$draw_rot.apply($e, Opal.to_a(item.$drop(3)))}else if ("draw_ex"['$===']($case)) {return ($f = (($g = Opal.cvars['@@img']) == null ? nil : $g)).$draw_ex.apply($f, Opal.to_a(item.$drop(3)))}else if ("font"['$===']($case)) {return ($g = (($h = Opal.cvars['@@img']) == null ? nil : $h)).$draw_font.apply($g, Opal.to_a(item.$drop(3)))}else if ("pixel"['$===']($case)) {return ($h = (($i = Opal.cvars['@@img']) == null ? nil : $i))['$[]='].apply($h, Opal.to_a(item.$drop(3)))}else if ("line"['$===']($case)) {return ($i = (($j = Opal.cvars['@@img']) == null ? nil : $j)).$line.apply($i, Opal.to_a(item.$drop(3)))}else if ("box"['$===']($case)) {return ($j = (($k = Opal.cvars['@@img']) == null ? nil : $k)).$box.apply($j, Opal.to_a(item.$drop(3)))}else if ("box_fill"['$===']($case)) {return ($k = (($l = Opal.cvars['@@img']) == null ? nil : $l)).$box_fill.apply($k, Opal.to_a(item.$drop(3)))}else if ("circle"['$===']($case)) {return ($l = (($m = Opal.cvars['@@img']) == null ? nil : $m)).$circle.apply($l, Opal.to_a(item.$drop(3)))}else if ("circle_fill"['$===']($case)) {return ($m = (($n = Opal.cvars['@@img']) == null ? nil : $n)).$circle_fill.apply($m, Opal.to_a(item.$drop(3)))}else if ("triangle"['$===']($case)) {return ($n = (($o = Opal.cvars['@@img']) == null ? nil : $o)).$triangle.apply($n, Opal.to_a(item.$drop(3)))}else if ("triangle_fill"['$===']($case)) {return ($o = (($p = Opal.cvars['@@img']) == null ? nil : $p)).$triangle_fill.apply($o, Opal.to_a(item.$drop(3)))}else { return nil }})()}, TMP_9.$$s = self, TMP_9.$$arity = 1, TMP_9), $a).call($c);
+        return ($a = (TMP_10 = function(time){var self = TMP_10.$$s || this;
 if (time == null) time = nil;
-        return ($d = ($e = self).$_loop, $d.$$p = block.$to_proc(), $d).call($e, time)}, TMP_11.$$s = self, TMP_11.$$arity = 1, TMP_11), (window).requestAnimationFrame)($a);
-      }, TMP_8.$$arity = 1);
+        return self.$_loop(time)}, TMP_10.$$s = self, TMP_10.$$arity = 1, TMP_10), (window).requestAnimationFrame)($a);
+      }, TMP_11.$$arity = 1);
 
       Opal.defs(self, '$_init', TMP_12 = function $$_init(w, h) {
         var self = this, canvas = nil, img = nil;
 
-        canvas = document.getElementById("canvas");
+        canvas = document.getElementById("dxopal-canvas");
+        canvas.width = w;
+        canvas.height = h;
         img = $scope.get('Image').$new(w, h, $hash2(["canvas"], {"canvas": canvas}));
         $scope.get('Input').$_init(canvas);
         return img;
