@@ -17,9 +17,13 @@ module DXOpal
       RemoteResource._load_resources(&block)
     end
 
+    # Start main loop
+    #
+    # When called twice, previous loop is stopped (this is useful
+    # when implementing interactive game editor, etc.)
     def self.loop(&block)
       @@block = block
-      `window`.JS.requestAnimationFrame{|time| _loop(time, &block) }
+      `window`.JS.requestAnimationFrame{|time| _loop(time) }
     end
 
     # (DXOpal original) Pause & resume
@@ -38,7 +42,8 @@ module DXOpal
       Window.draw_font(0, 0, "...PAUSE...", Font.default, color: C_WHITE)
     end
 
-    def self._loop(time, &block)
+    # (internal) call @@block periodically
+    def self._loop(time)
       @@img ||= _init(@@width, @@height)
       t0 = Time.now
 
@@ -62,7 +67,7 @@ module DXOpal
       if @@paused
         Window.draw_pause_screen
       else
-        block.call
+        @@block.call
       end
 
       # Draw
@@ -85,7 +90,7 @@ module DXOpal
         end
       end
 
-      `window`.JS.requestAnimationFrame{|time| _loop(time, &block) }
+      `window`.JS.requestAnimationFrame{|time| _loop(time) }
     end
 
     def self._init(w, h)

@@ -5,6 +5,7 @@
 - new: Input.mouse_down?, mouse_push?, mouse_release?
 - new: Input.keyevent_target
 - new: Matter.js support (experimental)
+- new: Window.loop can be called twice
 - fix: Image transparency was ignored
 - fix: Sprite.clean was broken
 - fix: Window.width=, height= did not work
