@@ -9,51 +9,20 @@ module DXOpal
       M_5TH_BUTTON = 16
     end
 
+    def self._pressing_keys; @@pressing_keys; end
+
     # Internal setup for Input class
     def self._init(canvas)
       @@tick = 0
-      @@pressing_keys = pressing_keys = `new Object()`
+      @@pressing_keys = `new Object()`
       @@mouse_info = `{x: 0, y: 0}`
-      @@pressing_mouse_buttons = pressing_mouse_buttons = `new Object()`
+      @@pressing_mouse_buttons = `new Object()`
 
       rect = `canvas.getBoundingClientRect()`
       @@canvas_x = `rect.left + window.pageXOffset`
       @@canvas_y = `rect.top  + window.pageYOffset`
 
-      %x{
-        document.addEventListener('keydown', function(ev){
-          pressing_keys[ev.keyCode] = #{@@tick};
-          ev.preventDefault();
-          ev.stopPropagation();
-        });
-        document.addEventListener('keyup', function(ev){
-          pressing_keys[ev.keyCode] = -#{@@tick};
-          ev.preventDefault();
-          ev.stopPropagation();
-        });
-        document.addEventListener('mousemove', function(ev){
-          #{@@mouse_info}.x = ev.pageX - #{@@canvas_x};
-          #{@@mouse_info}.y = ev.pageY - #{@@canvas_y};
-        });
-        document.addEventListener('mousedown', function(ev){
-          #{@@mouse_info}.x = ev.pageX - #{@@canvas_x};
-          #{@@mouse_info}.y = ev.pageY - #{@@canvas_y};
-          for (var k=1; k<=16; k<<=1) {
-            if (ev.buttons & k) {
-              pressing_mouse_buttons[k] = #{@@tick};
-            }
-          }
-        });
-        document.addEventListener('mouseup', function(ev){
-          #{@@mouse_info}.x = ev.pageX - #{@@canvas_x};
-          #{@@mouse_info}.y = ev.pageY - #{@@canvas_y};
-          for (var k=1; k<=16; k<<=1) {
-            if ((ev.buttons & k) == 0 && pressing_mouse_buttons[k]) {
-              pressing_mouse_buttons[k] = -#{@@tick};
-            }
-          }
-        });
-      }
+      self.keyevent_target = `window` unless Input.keyevent_target
     end
     
     # Called on every frame from Window
@@ -77,6 +46,10 @@ module DXOpal
       ret
     end
 
+    #
+    # Keyboard
+    #
+
     # Return true if the key is being pressed
     def self.key_down?(code)
       return `#{@@pressing_keys}[code] > 0`
@@ -91,6 +64,52 @@ module DXOpal
     def self.key_release?(code)
       return `#{@@pressing_keys}[code] == -(#{@@tick}-1)`
     end
+
+    # (private) JS keydown event handler
+    ON_KEYDOWN_ = %x{
+      function(ev){
+        #{Input._pressing_keys}[ev.keyCode] = #{@@tick};
+        ev.preventDefault();
+        ev.stopPropagation();
+      }
+    }
+    # (private) JS keyup event handler
+    ON_KEYUP_ = %x{
+      function(ev){
+        #{Input._pressing_keys}[ev.keyCode] = -#{@@tick};
+        ev.preventDefault();
+        ev.stopPropagation();
+      }
+    }
+    # Set DOM element to receive keydown/keyup event
+    #
+    # By default, `window` is set to this (i.e. all key events are
+    # stolen by DXOpal.) If canvas element is set to this, only key events
+    # happend on canvas are processed by DXOpal.
+    def self.keyevent_target=(target)
+      if @@keyevent_target
+        %x{
+          #{@@keyevent_target}.removeEventListener('keydown', #{ON_KEYDOWN_});
+          #{@@keyevent_target}.removeEventListener('keyup', #{ON_KEYUP_});
+        }
+      end
+      @@keyevent_target = target
+      %x{
+        if (#{@@keyevent_target}.tagName == "CANVAS") {
+          #{@@keyevent_target}.setAttribute('tabindex', 0);
+        }
+        #{@@keyevent_target}.addEventListener('keydown', #{ON_KEYDOWN_});
+        #{@@keyevent_target}.addEventListener('keyup', #{ON_KEYUP_});
+        console.log(#{@@keyevent_target});
+      }
+    end
+
+    # Return DOM element set by `keyevent_target=`
+    def self.keyevent_target; @@keyevent_target; end
+
+    #
+    # Mouse
+    #
 
     # Return position of mouse cursor
     # (0, 0) is the top-left corner of the canvas

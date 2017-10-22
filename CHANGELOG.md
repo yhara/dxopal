@@ -1,8 +1,9 @@
-## v0.4.0 ()
+## v1.0.0 ()
 
 - new: Sprite.check (collision detection)
 - new: Window.bgcolor
 - new: Input.mouse_down?, mouse_push?, mouse_release?
+- new: Input.keyevent_target
 - new: Matter.js support (experimental)
 - fix: Image transparency was ignored
 - fix: Sprite.clean was broken
