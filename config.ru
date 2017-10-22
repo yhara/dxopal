@@ -18,12 +18,14 @@ DEMO_DIRS.each do |path|
   # Compile dxopal.js dynamically to avoid manual recompiling
   map "#{path}/index.html" do
     index = Opal::Server::Index.new(nil, opal_server)
-    s = File.read(".#{path}/index.html")
-            .gsub(%r{<script (.*)dxopal.js"></script>}){
-              index.javascript_include_tag(opal_server.main) +
-              "<script type='text/javascript' src='../../vendor/matter.js'></script>"
-            }
-    run lambda{|env| [200, {}, [s]] }
+    run lambda{|env|
+      s = File.read(".#{path}/index.html")
+              .gsub(%r{<script (.*)dxopal.js"></script>}){
+                index.javascript_include_tag(opal_server.main) +
+                "<script type='text/javascript' src='../../vendor/matter.js'></script>"
+              }
+      [200, {}, [s]]
+    }
   end
 end
 
