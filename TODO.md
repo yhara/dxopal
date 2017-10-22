@@ -7,9 +7,6 @@
 - [x] key_down?
 - [x] key_push?
 - [x] key_release?
-- [ ] pad_down?
-- [ ] pad_push?
-- [ ] pad_release?
 - [ ] set_repeat
 - [ ] set_key_repeat
 - [ ] set_pad_repeat
@@ -26,8 +23,14 @@
 - [ ] mouse_wheel_pos=
 - [ ] mouse_enable=
 - [ ] keys
-- [ ] pads
 - [ ] requested_close?
+- [ ] set_cursor
+
+These methods are waiting Pull Requests because I don't have a gamepad.
+
+- [ ] pad_down?
+- [ ] pad_push?
+- [ ] pad_release?
 - [ ] pad_num
 - [ ] pad_axis
 - [ ] pad_lstick
@@ -39,7 +42,7 @@
 - [ ] pad_ry
 - [ ] pad_pov_x
 - [ ] pad_pov_y
-- [ ] set_cursor
+- [ ] pads
 
 These methods will not be supported.
 
@@ -273,3 +276,7 @@ These methods will not be supported.
 - [ ] param_hash
 - [ ] offset_sync
 - [ ] offset_sync=
+
+## Other TODOs
+
+- Change `id=canvas` to `id=dxopal-canvas`
