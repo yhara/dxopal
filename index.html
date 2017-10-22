@@ -18,7 +18,39 @@
         <a href='doc/en/index.html'>English</a> | <a href='doc/ja/index.html'>日本語</a>
         </p>
       </header>
+
+      <section>
+        <canvas id="dxopal-canvas" style='float: left'></canvas>
+        <div id="editor" style='width: 350px; height: 300px; position: relative'></div>
+        <input type='button' style='float: right' id='run' value='Run'>
+      </section>
     </div>
+
+    <script type="text/javascript" src="build/dxopal.js"></script>
+    <script>
+      eval(Opal.compile("DXOpal::Input.keyevent_target = `document.getElementById('dxopal-canvas')`"));
+    </script>
+    <script type="text/ruby" src="examples/top_page/main.rb"></script>
+
+    <script type="text/javascript" src="examples/_vendor/ace/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="examples/_vendor/jquery-3.2.1.js"></script>
+    <script>
+      var editor = ace.edit("editor");
+      editor.setTheme("ace/theme/github");
+      editor.getSession().setMode("ace/mode/ruby");
+      $.get("examples/top_page/main.rb", function(rb) {
+        editor.setValue(rb, -1); // -1: set cursor to document start
+      });
+      $('#run').on("click", function() {
+        try {
+          eval(Opal.compile(editor.getValue()));
+        }
+        catch(e) {
+          alert(e);
+          throw e;
+        }
+      });
+    </script>
   </body>
 </html>
 
