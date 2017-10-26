@@ -1,4 +1,5 @@
 require 'opal'
+require_relative 'opal/dxopal/version'
 
 desc "Build dxopal.js"
 task :build => ["build/dxopal.js"]
@@ -27,25 +28,21 @@ end
 namespace "release" do
   desc "Make a release commit"
   task :prepare do
-    ver = ENV.fetch("VER")
-    sh "git stash"
     sh "rake build_min -B"
-    sh "git ci -m 'v#{ver}'"
+    sh "git ci -a -m 'v#{DXOpal::VERSION}'"
   end
 
   desc "Make a release commit"
   task :push do
-    ver = ENV.fetch("VER")
-    sh "git tag 'v#{ver}'"
+    sh "git tag 'v#{DXOpal::VERSION}'"
     sh "git push origin master --tags"
   end
 
   desc "Make a release commit"
   task :push_kit do
-    ver = ENV.fetch("VER")
     cd "starter-kit" do
-      sh "git ci dxopal.min.js -m 'v#{ver}'"
-      sh "git tag 'v#{ver}'"
+      sh "git ci dxopal.min.js -m 'v#{DXOpal::VERSION}'"
+      sh "git tag 'v#{DXOpal::VERSION}'"
       sh "git push origin master --tags"
     end
   end
