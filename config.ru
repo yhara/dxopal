@@ -14,15 +14,16 @@ opal_server = Opal::Server.new{|s|
 
 DEMO_DIRS = Dir["examples/*"].reject{|x| x =~ /_vendor|top_page/}.map{|x| "/#{x}"}
 DEMO_DIRS << ""  # top page
+DEMO_DIRS << "/starter-kit"
 DEMO_DIRS.each do |path|
   # Compile dxopal.js dynamically to avoid manual recompiling
   map "#{path}/index.html" do
     index = Opal::Server::Index.new(nil, opal_server)
     run lambda{|env|
       s = File.read(".#{path}/index.html")
-              .gsub(%r{<script (.*)dxopal.js"></script>}){
+              .gsub(%r{<script (.*)dxopal(.min)?.js"></script>}){
                 index.javascript_include_tag(opal_server.main) +
-                "<script type='text/javascript' src='../../vendor/matter.js'></script>"
+                "<script type='text/javascript' src='/vendor/matter.js'></script>"
               }
       [200, {}, [s]]
     }
