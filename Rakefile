@@ -53,7 +53,7 @@ end
 # 1. Edit CHANGELOG.md
 # 2. `rake release:prepare`
 # 3. Test
-#   - Open dxopal-game/index.html in Firefox
+#   - Open starter-kit/index.html in Firefox
 #   - rackup and open http://localhost:9292/
 # 4. `rake release:push`
 # 5. `rake release:push_game`
