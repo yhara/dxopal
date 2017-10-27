@@ -1,4 +1,4 @@
-## v1.0.0 ()
+## v1.0.0 (2017-10-26)
 
 ### Breaking change: canvas id
 

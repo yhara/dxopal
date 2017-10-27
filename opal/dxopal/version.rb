@@ -1,3 +1,3 @@
 module DXOpal
-  VERSION = "0.4.0.pre1"
+  VERSION = "1.0.0"
 end
