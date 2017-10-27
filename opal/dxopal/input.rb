@@ -22,6 +22,7 @@ module DXOpal
       @@canvas_x = `rect.left + window.pageXOffset`
       @@canvas_y = `rect.top  + window.pageYOffset`
 
+      self._init_mouse_events
       self.keyevent_target = `window` unless Input.keyevent_target
     end
     
@@ -109,6 +110,34 @@ module DXOpal
     #
     # Mouse
     #
+
+    # (internal) initialize mouse events
+    def self._init_mouse_events
+      %x{
+        document.addEventListener('mousemove', function(ev){
+          #{@@mouse_info}.x = ev.pageX - #{@@canvas_x};
+          #{@@mouse_info}.y = ev.pageY - #{@@canvas_y};
+        });
+        document.addEventListener('mousedown', function(ev){
+          #{@@mouse_info}.x = ev.pageX - #{@@canvas_x};
+          #{@@mouse_info}.y = ev.pageY - #{@@canvas_y};
+          for (var k=1; k<=16; k<<=1) {
+            if (ev.buttons & k) {
+              #{@@pressing_mouse_buttons}[k] = #{@@tick};
+            }
+          }
+        });
+        document.addEventListener('mouseup', function(ev){
+          #{@@mouse_info}.x = ev.pageX - #{@@canvas_x};
+          #{@@mouse_info}.y = ev.pageY - #{@@canvas_y};
+          for (var k=1; k<=16; k<<=1) {
+            if ((ev.buttons & k) == 0 && #{@@pressing_mouse_buttons}[k]) {
+              #{@@pressing_mouse_buttons}[k] = -#{@@tick};
+            }
+          }
+        });
+      }
+    end
 
     # Return position of mouse cursor
     # (0, 0) is the top-left corner of the canvas
