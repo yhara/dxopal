@@ -12,6 +12,8 @@ $ git clone https://github.com/yhara/dxopal
 $ cd dxopal
 $ bundle install
 $ npm install uglify-es -g
+$ bundle exec rackup
+$ open http://localhost:9292/
 ```
 
 Developing dxopal-starter-kit:
