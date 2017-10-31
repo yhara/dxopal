@@ -29,6 +29,7 @@ namespace "release" do
   desc "Make a release commit"
   task :prepare do
     sh "rake build_min -B"
+    sh "gem build dxopal.gemspec"
     sh "git ci -a -m 'v#{DXOpal::VERSION}'"
   end
 
@@ -36,6 +37,12 @@ namespace "release" do
   task :push do
     sh "git tag 'v#{DXOpal::VERSION}'"
     sh "git push origin master --tags"
+  end
+
+  desc "Release gem"
+  task :push_gem do
+    sh "gem build dxopal.gemspec"
+    sh "gem push dxopal-#{DXOpal::VERSION}.gem"
   end
 
   desc "Make a release commit"
