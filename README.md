@@ -3,9 +3,9 @@
 Game development framework for [Opal](http://opalrb.org/),
 has similar API to [DXRuby](http://dxruby.osdn.jp/)
 
-## Website
+## How to use
 
-https://yhara.github.io/dxopal/
+see https://yhara.github.io/dxopal/
 
 ## License
 
