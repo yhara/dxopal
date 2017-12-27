@@ -1,9 +1,6 @@
 module DXOpal
   module Input
     module KeyCodes
-      K_SPACE = " "
-      K_X = "x"
-
       K_ESCAPE = 27
       # K_1 1
       # K_2 2
