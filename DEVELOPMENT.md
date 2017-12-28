@@ -36,7 +36,7 @@ Build API reference:
 
 ## Directory structure
 
-- build/
+- build/ : Pre-compiled source code
   - dxopal.js
   - dxopal.min.js
 - doc/
