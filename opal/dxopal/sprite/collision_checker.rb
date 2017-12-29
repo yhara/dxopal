@@ -1,4 +1,6 @@
 # vim: set ft=javascript:
+# Collision checking algorithm, implemented in JavaScript.
+# Available as `Opal.DXOpal.CollisionChecker` in the runtime.
 %x{ (function(){
 
 var intersect = function(x1, y1, x2, y2, x3, y3, x4, y4){
