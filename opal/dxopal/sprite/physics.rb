@@ -1,6 +1,9 @@
 module DXOpal
   class Sprite
-    # Physics engine powered by Matter.js
+    # Experimental Matter.js (physics engine) support
+    # TODO: Currently matter.js is embeeded in build/dxopal.js (see Rakefile).
+    # It is better to make it optional (i.e. do not embed matter.js and
+    # enable Matter.js support when matter.js is loaded before dxopal.js)
     module Physics
       # Create Matter Body and register it to the World
       # - type: :rectangle, etc.
