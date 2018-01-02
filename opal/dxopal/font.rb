@@ -1,4 +1,6 @@
 module DXOpal
+  # Represents a font
+  # Used by Window.draw_font, etc.
   class Font
     def self.default; @@default ||= Font.new(24); end
     def self.default=(f); @@default = f; end
