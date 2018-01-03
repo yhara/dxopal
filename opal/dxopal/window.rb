@@ -22,8 +22,9 @@ module DXOpal
     # When called twice, previous loop is stopped (this is useful
     # when implementing interactive game editor, etc.)
     def self.loop(&block)
+      already_running = !!@@block
       @@block = block
-      `window`.JS.requestAnimationFrame{|time| _loop(time) }
+      _loop unless already_running
     end
 
     # (DXOpal original) Pause & resume
@@ -43,7 +44,7 @@ module DXOpal
     end
 
     # (internal) call @@block periodically
-    def self._loop(time)
+    def self._loop(time=0)
       @@img ||= _init(@@width, @@height)
       t0 = Time.now
 

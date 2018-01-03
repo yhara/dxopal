@@ -1,3 +1,7 @@
+## (not yet)
+
+- fix: Multiple loops runs when Window.loop is called more than once
+
 ## v1.0.0 (2017-10-26)
 
 ### Breaking change: canvas id
