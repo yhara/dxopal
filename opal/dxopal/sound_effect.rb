@@ -79,6 +79,7 @@ module DXOpal
     end
 
     def add(wave_type=WAVE_RECT, resolution=1000)
+      TODO
     end
   end
 end
