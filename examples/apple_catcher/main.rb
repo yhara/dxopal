@@ -1,7 +1,7 @@
 include DXOpal
 
 Image.register(:player, 'images/noschar.png') 
-Image.register(:apple, 'images/ringo.png') 
+Image.register(:apple, 'images/apple.png') 
 Image.register(:bomb, 'images/bomb.png') 
 
 Sound.register(:point, 'sounds/get.wav')
