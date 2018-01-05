@@ -1,6 +1,8 @@
 require 'dxopal/remote_resource'
 
 module DXOpal
+  # Represents an image
+  # Each instance of Image has its own off-screen canvas.
   class Image < RemoteResource
     RemoteResource.add_class(Image)
 
