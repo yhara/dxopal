@@ -2,6 +2,8 @@ module DXOpal
   # A base class for resources acquired through JS Promises.
   # Provides `<klass>.register` and `<klass>[name]`.
   # A subclass must impelment `<klass>._load`.
+  #
+  # TODO: better name? (SoundEffect is not actually 'remote')
   class RemoteResource
     # List of registered resources (Contains path_or_url)
     @@resources = Hash.new{|h,k| h[k] = {}}
