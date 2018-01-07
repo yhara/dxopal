@@ -4,8 +4,8 @@ Image.register(:player, 'images/noschar.png')
 Image.register(:apple, 'images/apple.png') 
 Image.register(:bomb, 'images/bomb.png') 
 
-Sound.register(:point, 'sounds/get.wav')
-Sound.register(:bomb, 'sounds/Explosion2.wav')
+Sound.register(:get, 'sounds/get.wav')
+Sound.register(:explosion, 'sounds/explosion.wav')
 
 module AppleCatcher
   class GameInfo
@@ -76,7 +76,7 @@ module AppleCatcher
       end
 
       def hit(info)
-        Sound[:point].play
+        Sound[:get].play
         info.score += 10
         self.vanish
       end
@@ -89,7 +89,7 @@ module AppleCatcher
       end
 
       def hit(info)
-        Sound[:bomb].play
+        Sound[:explosion].play
         info.game_over = true
       end
     end
