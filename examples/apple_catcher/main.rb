@@ -9,12 +9,16 @@ Sound.register(:explosion, 'sounds/explosion.wav')
 
 module AppleCatcher
   class GameInfo
-    def initialize(player)
-      @player = player
+    def initialize
+      @player = nil
       @score = 0
       @game_over = false
     end
     attr_accessor :player, :score, :game_over
+  end
+
+  def self.game_info
+    @@info ||= GameInfo.new
   end
 
   def self.scene; @@scene; end
@@ -31,6 +35,13 @@ module AppleCatcher
       image.box_fill(0, 0,   640, 480, [128, 255, 255])
       image.box_fill(0, 400, 640, 480, [0, 128, 0])
       super(0, 0, image)
+    end
+  end
+
+  class ScoreDisp < Sprite
+    def draw
+      score = AppleCatcher.game_info.score
+      Window.draw_font(0, 0, "SCORE: #{score}", Font.default)
     end
   end
 
@@ -60,12 +71,12 @@ module AppleCatcher
       @vy = rand(9)+4
     end
 
-    def update(info)
+    def update
       self.y += @vy
       if self.y > 480
         self.vanish
-      elsif self === info.player
-        self.hit(info)
+      elsif self === AppleCatcher.game_info.player
+        self.hit
       end
     end
 
@@ -75,9 +86,9 @@ module AppleCatcher
         self.collision = [0, 15, 75, 80]
       end
 
-      def hit(info)
+      def hit
         Sound[:get].play
-        info.score += 10
+        AppleCatcher.game_info.score += 10
         self.vanish
       end
     end
@@ -88,9 +99,9 @@ module AppleCatcher
         self.collision = [15, 31, 61, 76]
       end
 
-      def hit(info)
+      def hit
         Sound[:explosion].play
-        info.game_over = true
+        AppleCatcher.game_info.game_over = true
       end
     end
   end
@@ -102,8 +113,8 @@ module AppleCatcher
       @items = []
     end
 
-    def update(info)
-      @items.each{|x| x.update(info)}
+    def update
+      @items.each{|x| x.update}
       @items.reject!{|x| x.vanished?}
 
       (N - @items.size).times do
@@ -120,9 +131,11 @@ end
 
 Window.load_resources do
   background = AppleCatcher::Background.new
+  score_disp = AppleCatcher::ScoreDisp.new
   player = AppleCatcher::Player.new
   items = AppleCatcher::Items.new
-  info = AppleCatcher::GameInfo.new(player)
+  info = AppleCatcher.game_info
+  info.player = player
   AppleCatcher.scene = :title
 
   Window.loop do
@@ -133,11 +146,11 @@ Window.load_resources do
       end
 
       background.draw
-      Window.draw_font(0, 0, "SCORE: #{info.score}", Font.default)
+      score_disp.draw
       Window.draw_font(0, 30, "PRESS SPACE TO START", Font.default)
     when :playing
       player.update
-      items.update(info)
+      items.update
       if info.game_over
         AppleCatcher.scene = :game_over
       end
@@ -145,7 +158,7 @@ Window.load_resources do
       background.draw
       items.draw
       player.draw
-      Window.draw_font(0, 0, "SCORE: #{info.score}", Font.default)
+      score_disp.draw
     when :game_over
       if Input.key_push?(K_SPACE)
         player = AppleCatcher::Player.new; player.update
@@ -157,7 +170,7 @@ Window.load_resources do
       background.draw
       items.draw
       player.draw
-      Window.draw_font(0, 0, "SCORE: #{info.score}", Font.default)
+      score_disp.draw
       Window.draw_font(0, 30, "PRESS SPACE TO RESTART", Font.default)
     end
   end
