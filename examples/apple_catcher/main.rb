@@ -9,17 +9,16 @@ Sound.register(:explosion, 'sounds/explosion.wav')
 
 module AppleCatcher
   class GameInfo
-    def initialize
-      @player = nil
+    def initialize(player)
+      @player = player
       @score = 0
       @game_over = false
     end
     attr_accessor :player, :score, :game_over
   end
 
-  def self.game_info
-    @@info ||= GameInfo.new
-  end
+  def self.game_info; @@game_info; end
+  def self.game_info=(info); @@game_info = info; end
 
   def self.scene; @@scene; end
   def self.scene=(sym)
@@ -134,8 +133,7 @@ Window.load_resources do
   score_disp = AppleCatcher::ScoreDisp.new
   player = AppleCatcher::Player.new
   items = AppleCatcher::Items.new
-  info = AppleCatcher.game_info
-  info.player = player
+  AppleCatcher.game_info = AppleCatcher::GameInfo.new(player)
   AppleCatcher.scene = :title
 
   Window.loop do
@@ -151,7 +149,7 @@ Window.load_resources do
     when :playing
       player.update
       items.update
-      if info.game_over
+      if AppleCatcher.game_info.game_over
         AppleCatcher.scene = :game_over
       end
 
@@ -163,7 +161,7 @@ Window.load_resources do
       if Input.key_push?(K_SPACE)
         player = AppleCatcher::Player.new; player.update
         items = AppleCatcher::Items.new
-        info = AppleCatcher::GameInfo.new(player)
+        AppleCatcher.game_info = AppleCatcher::GameInfo.new(player)
         AppleCatcher.scene = :playing
       end
 
