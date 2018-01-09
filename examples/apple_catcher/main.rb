@@ -44,13 +44,21 @@ module AppleCatcher
     end
   end
 
+  class Message < Sprite
+    attr_accessor :str
+
+    def draw
+      Window.draw_font(0, 30, "PRESS SPACE TO START", Font.default)
+    end
+  end
+
   class Player < Sprite
     def initialize
       @anim_idx = 0
       @anim_ct = 0
       @tile_images = Image[:player].slice_tiles(4, 4)  # 4x4
       @char_images = @tile_images.first(4)
-      super(240, 400-32)
+      super(240, 400-32, @char_images.first)
     end
 
     def update
@@ -105,10 +113,11 @@ module AppleCatcher
     end
   end
 
-  class Items
+  class Items < Sprite
     N = 5
 
     def initialize
+      super
       @items = []
     end
 
@@ -131,6 +140,7 @@ end
 Window.load_resources do
   background = AppleCatcher::Background.new
   score_disp = AppleCatcher::ScoreDisp.new
+  message = AppleCatcher::Message.new
   player = AppleCatcher::Player.new
   items = AppleCatcher::Items.new
   AppleCatcher.game_info = AppleCatcher::GameInfo.new(player)
@@ -139,37 +149,29 @@ Window.load_resources do
   Window.loop do
     case AppleCatcher.scene
     when :title
+      message.str = "PRESS SPACE TO START"
+      sprites = [background, score_disp, message]
       if Input.key_push?(K_SPACE)
         AppleCatcher.scene = :playing
       end
-
-      background.draw
-      score_disp.draw
-      Window.draw_font(0, 30, "PRESS SPACE TO START", Font.default)
+      Sprite.draw(sprites)
     when :playing
-      player.update
-      items.update
+      sprites = [background, items, player, score_disp]
+      Sprite.update(sprites)
       if AppleCatcher.game_info.game_over
         AppleCatcher.scene = :game_over
       end
-
-      background.draw
-      items.draw
-      player.draw
-      score_disp.draw
+      Sprite.draw(sprites)
     when :game_over
+      message.str = "PRESS SPACE TO RESTART"
+      sprites = [background, items, player, score_disp, message]
       if Input.key_push?(K_SPACE)
-        player = AppleCatcher::Player.new; player.update
+        player = AppleCatcher::Player.new
         items = AppleCatcher::Items.new
         AppleCatcher.game_info = AppleCatcher::GameInfo.new(player)
         AppleCatcher.scene = :playing
       end
-
-      background.draw
-      items.draw
-      player.draw
-      score_disp.draw
-      Window.draw_font(0, 30, "PRESS SPACE TO RESTART", Font.default)
+      Sprite.draw(sprites)
     end
   end
 
