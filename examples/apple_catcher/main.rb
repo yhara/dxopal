@@ -20,14 +20,6 @@ module AppleCatcher
   def self.game_info; @@game_info; end
   def self.game_info=(info); @@game_info = info; end
 
-  def self.scene; @@scene; end
-  def self.scene=(sym)
-    if ![:title, :playing, :game_over].include?(sym)
-      raise "Unknown scene: #{sym}"
-    end
-    @@scene = sym
-  end
-
   class Background < Sprite
     def initialize
       image = Image.new(640, 480, [128, 255, 255])
@@ -135,44 +127,59 @@ module AppleCatcher
       Sprite.draw(@items)
     end
   end
-end
 
-Window.load_resources do
-  background = AppleCatcher::Background.new
-  score_disp = AppleCatcher::ScoreDisp.new
-  message = AppleCatcher::Message.new
-  player = AppleCatcher::Player.new
-  items = AppleCatcher::Items.new
-  AppleCatcher.game_info = AppleCatcher::GameInfo.new(player)
-  AppleCatcher.scene = :title
+  class Main
+    def initialize
+      @background = AppleCatcher::Background.new
+      @score_disp = AppleCatcher::ScoreDisp.new
+      @message = AppleCatcher::Message.new
+      @player = AppleCatcher::Player.new
+      @items = AppleCatcher::Items.new
+      AppleCatcher.game_info = AppleCatcher::GameInfo.new(player)
+      @scene = :title
+    end
 
-  Window.loop do
-    case AppleCatcher.scene
-    when :title
-      message.str = "PRESS SPACE TO START"
-      sprites = [background, score_disp, message]
+    def tick
+      __send__("tick_#{@scene}")
+    end
+
+    def tick_title
+      @message.str = "PRESS SPACE TO START"
+      sprites = [@background, @score_disp, @message]
       if Input.key_push?(K_SPACE)
-        AppleCatcher.scene = :playing
-      end
-      Sprite.draw(sprites)
-    when :playing
-      sprites = [background, items, player, score_disp]
-      Sprite.update(sprites)
-      if AppleCatcher.game_info.game_over
-        AppleCatcher.scene = :game_over
-      end
-      Sprite.draw(sprites)
-    when :game_over
-      message.str = "PRESS SPACE TO RESTART"
-      sprites = [background, items, player, score_disp, message]
-      if Input.key_push?(K_SPACE)
-        player = AppleCatcher::Player.new
-        items = AppleCatcher::Items.new
-        AppleCatcher.game_info = AppleCatcher::GameInfo.new(player)
-        AppleCatcher.scene = :playing
+        @scene = :playing
       end
       Sprite.draw(sprites)
     end
+
+    def tick_playing
+      sprites = [@background, @items, @player, @score_disp]
+      Sprite.update(sprites)
+      if AppleCatcher.game_info.game_over
+        @scene = :game_over
+      end
+      Sprite.draw(sprites)
+    end
+
+    def tick_game_over
+      @message.str = "PRESS SPACE TO RESTART"
+      sprites = [@background, @items, @player, @score_disp, @message]
+      if Input.key_push?(K_SPACE)
+        @player = AppleCatcher::Player.new
+        @items = AppleCatcher::Items.new
+        AppleCatcher.game_info = AppleCatcher::GameInfo.new(player)
+        @scene = :playing
+      end
+      Sprite.draw(sprites)
+    end
+  end
+end
+
+Window.load_resources do
+  main = AppleCatcher::Main.new
+
+  Window.loop do
+    main.tick
   end
 
   %x{
