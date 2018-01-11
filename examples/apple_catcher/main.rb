@@ -135,7 +135,7 @@ module AppleCatcher
       @message = AppleCatcher::Message.new
       @player = AppleCatcher::Player.new
       @items = AppleCatcher::Items.new
-      AppleCatcher.game_info = AppleCatcher::GameInfo.new(player)
+      AppleCatcher.game_info = AppleCatcher::GameInfo.new(@player)
       @scene = :title
     end
 
