@@ -167,7 +167,7 @@ module AppleCatcher
       if Input.key_push?(K_SPACE)
         @player = AppleCatcher::Player.new
         @items = AppleCatcher::Items.new
-        AppleCatcher.game_info = AppleCatcher::GameInfo.new(player)
+        AppleCatcher.game_info = AppleCatcher::GameInfo.new(@player)
         @scene = :playing
       end
       Sprite.draw(sprites)
