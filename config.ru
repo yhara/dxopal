@@ -1,8 +1,8 @@
 # config.ru for local development
 require 'tempfile'
-require 'opal'
+require 'opal/sprockets'
 
-opal_server = Opal::Server.new{|s|
+opal_server = Opal::Sprockets::Server.new{|s|
   # Let javascript_include_tag to serve compiled version of opal/dxopal.rb
   s.append_path 'opal'
   s.main = 'dxopal.rb'
@@ -18,7 +18,7 @@ DEMO_DIRS << "/starter-kit"
 DEMO_DIRS.each do |path|
   # Compile dxopal.js dynamically to avoid manual recompiling
   map "#{path}/index.html" do
-    index = Opal::Server::Index.new(nil, opal_server)
+    index = Opal::Sprockets::Server::Index.new(nil, opal_server)
     run lambda{|env|
       s = File.read(".#{path}/index.html")
               .gsub(%r{<script (.*)dxopal(.min)?.js"></script>}){
