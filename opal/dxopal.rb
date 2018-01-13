@@ -49,6 +49,23 @@ module DXOpal
   end
 end
 
+%x{
+  // Like `console.log`, but prints only limited times.
+  // Example:
+  //   Opal.DXOpal.p_("player", player)
+  (function(){
+    var P_CT = {};
+    Opal.DXOpal.p_ = function(key, obj, n) {
+      n = (n || 10);
+      P_CT[key] = (P_CT[key] || 0);
+      if (P_CT[key] < n) {
+        console.log(key, obj);
+        P_CT[key] += 1;
+      }
+    };
+  })();
+}
+
 # `require 'dxopal'` will automatically import names like `Window` to the
 # toplevel (as `require 'dxruby'` does)
 include DXOpal
