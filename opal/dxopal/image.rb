@@ -251,7 +251,7 @@ module DXOpal
     # Copy an <img> onto this image
     def _draw_raw_image(x, y, raw_img)
       %x{
-        #{@ctx}.drawImage(#{raw_img}, x, y)
+        #{@ctx}.drawImage(#{raw_img}, x, y);
       }
     end
 
