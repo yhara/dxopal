@@ -248,6 +248,23 @@ module DXOpal
       }
     end
 
+    # Set alpha of the pixels of the given color to 0
+    # - color : RGB color (If ARGV color is given, A is just ignored)
+    def set_color_key(color)
+      r, g, b, _ = _rgba_ary(color)
+      data = _image_data()
+      %x{
+        var buf = data.data;
+
+        for(var i = 0; i < buf.length; i += 4){
+          if (buf[i] == r && buf[i+1] == g && buf[i+2] == b) {
+            buf[i+3] = 0
+          }
+        }
+      }
+      _put_image_data(data)
+    end
+
     # Copy an <img> onto this image
     def _draw_raw_image(x, y, raw_img)
       %x{

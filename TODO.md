@@ -177,7 +177,7 @@ These methods will not be supported.
 - [x] slice_tiles
 - [ ] dup
 - [ ] clone
-- [ ] set_color_key
+- [x] set_color_key
 - [x] width
 - [x] height
 - [ ] flush
