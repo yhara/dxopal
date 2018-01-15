@@ -233,7 +233,7 @@ module DXOpal
     def slice(x, y, width, height)
       newimg = Image.new(width, height)
       data = _image_data(x, y, width, height)
-      newimg._put_image_data(data, 0, 0)
+      newimg._put_image_data(data)
       return newimg
     end
 
@@ -278,7 +278,7 @@ module DXOpal
     end
 
     # Call .putImageData
-    def _put_image_data(image_data, x, y)
+    def _put_image_data(image_data, x=0, y=0)
       `#{@ctx}.putImageData(image_data, x, y)`
     end
 
