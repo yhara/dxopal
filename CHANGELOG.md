@@ -1,6 +1,9 @@
 ## (not yet)
 
+- new: Image#set_color_key
+- new: Window.draw_scale
 - fix: Multiple loops runs when Window.loop is called more than once
+- internal: Upgrade to Opal 0.11.0
 
 ## v1.0.0 (2017-10-26)
 
