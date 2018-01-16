@@ -55,6 +55,14 @@ module DXOpal
       return self
     end
 
+    # Draw an Image on this image with scaling
+    # - scale_x, scale_y: scaling factor (eg. 1.5)
+    # - center_x, center_y: scaling center (in other words, the point
+    #   which does not move by this scaling. Default: image center)
+    def draw_scale(x, y, image, scale_x, scale_y, center_x=nil, center_y=nil)
+      draw_ex(x, y, image, scale_x: scale_x, scale_y: scale_y, center_x: center_x, center_y: center_y)
+    end
+
     # Draw an Image on this image with rotation
     # - angle: Rotation angle (radian)
     # - center_x, center_y: Rotation center in the `image` (default: center of the `image`)

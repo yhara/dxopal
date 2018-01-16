@@ -52,7 +52,7 @@ These methods will not be supported.
 
 - [x] loop
 - [x] draw
-- [ ] draw_scale
+- [x] draw_scale
 - [x] draw_rot
 - [ ] draw_alpha
 - [ ] draw_add
