@@ -4,6 +4,7 @@
 - new: Window.draw_scale
 - new: Show the message of an exception if there is a `<div id='dxopal-errors'>`
 - new: Add --port to dxopal command
+- fix: shot/hit method names for Sprite.check are now customizable
 - fix: Multiple loops runs when Window.loop is called more than once
 - internal: Upgrade to Opal 0.11.0
 

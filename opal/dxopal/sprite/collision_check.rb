@@ -5,8 +5,28 @@ module DXOpal
     # Methods of Sprite related to collision checking
     module CollisionCheck
       module ClassMethods
-        # TODO: implement arguments `shot` and `hit`
+        # Run collision checking for set of sprites
+        # - offences: Sprite or [Sprite]
+        # - defences: Sprite or [Sprite]
+        # - shot: method name
+        # - hit: method name
+        #
+        # This method has two modes.
+        # - If `offences` and `defences` are the same, collision check will
+        #   be performed on each pair from the array. Method `hit` is called
+        #   on the each sprite, with the other sprite as an argument.
+        # - Otherwise, collision check will be performed on each pair
+        #   of offence sprite and defence sprite. In this case,
+        #   method `shot` is called on the offence sprite and
+        #   method `hit` is called on the defence sprite, with the
+        #   other sprite as an argument.
+        #
+        # TODO: return true if any collition is detected
+        # TODO: skip collision checking if shot/hit returned `:discard`
         def check(offences, defences, shot=:shot, hit=:hit)
+          offences = Array(offences)
+          defences = Array(defences)
+          i = j = 0  # trick to use i, j in the `#{}`
           if offences.equal?(defences)
             # any-vs-any mode
             sprites = offences.select{|x| x.is_a?(Sprite)}
@@ -14,9 +34,9 @@ module DXOpal
             %x{
               for (var i=0; i<n; i++) {
                 for (var j=i+1; j<n; j++) {
-                  if (sprites[i]['$==='](sprites[j])) {
-                    sprites[i]['$hit']();
-                    sprites[j]['$hit']();
+                  if (#{sprites[i] === sprites[j]}) {
+                    #{sprites[i].__send__(hit)};
+                    #{sprites[j].__send__(hit)};
                   }
                 }
               }
@@ -26,9 +46,9 @@ module DXOpal
             %x{
               for (var i=0; i<offences.length; i++) {
                 for (var j=0; j<defences.length; j++) {
-                  if (offences[i]['$==='](defences[j])) {
-                    offences[i]['$shot'](defences[j]);
-                    defences[j]['$hit'](offences[i]);
+                  if (#{offences[i] === defences[j]}) {
+                    #{offences[i].__send__(shot, defences[j])};
+                    #{defences[j].__send__(hit, offences[i])};
                   }
                 }
               }
