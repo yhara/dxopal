@@ -83,6 +83,18 @@ $ dxopal server</code></pre>
           </li>
         </ul>
 
+        <h2>FAQ</h2>
+        <h3>Why is dxopal.js so big?</h3>
+        <p>
+        Because it contains the whole opal processor, so that you will
+        not be bothered by how to compile your game files into JS.
+        </p>
+        <p>
+        Technically you can reduce the file size by commenting out
+        <code>require "opal-parser"</code> in opal/dxopal.rb and
+        building your own .js (including your game).
+        </p>
+
       </section>
       <footer>
         <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the <a href='https://github.com/pages-themes/dinky'>Dinky theme</a></small></p>

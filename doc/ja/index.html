@@ -82,6 +82,15 @@ $ dxopal server</code></pre>
           </li>
         </ul>
 
+        <h2>FAQ</h2>
+        <h3>dxopal.jsのサイズがけっこう大きいのはなぜ？</h3>
+        <p>
+        Opal処理系がまるごと入っているからです。その代わり、作ったゲームをJavaScriptに変換する手順を気にしなくて済むというメリットがあります。
+        </p>
+        <p>
+        技術的には、opal/dxopal.rbの<code>require "opal-parser"</code>をコメントアウトして、作ったゲームと一緒に.jsに変換すればより小さいサイズで済むはずです。
+        </p>
+
       </section>
       <footer>
         <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the <a href='https://github.com/pages-themes/dinky'>Dinky theme</a></small></p>
