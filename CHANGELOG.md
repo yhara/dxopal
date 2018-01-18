@@ -2,6 +2,7 @@
 
 - new: Image#set_color_key
 - new: Window.draw_scale
+- new: Show the message of an exception if there is a `<div id='dxopal-errors'>`
 - fix: Multiple loops runs when Window.loop is called more than once
 - internal: Upgrade to Opal 0.11.0
 

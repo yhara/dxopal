@@ -23,6 +23,7 @@
         <canvas id="dxopal-canvas" style='float: left'></canvas>
         <div id="editor" style='width: 350px; height: 300px; position: relative'></div>
         <input type='button' style='float: right' id='run' value='Run'>
+        <div id="dxopal-errors"></div>
       </section>
     </div>
 
@@ -42,6 +43,7 @@
         editor.setValue(rb, -1); // -1: set cursor to document start
       });
       $('#run').on("click", function() {
+        $('#dxopal-errors').empty();
         try {
           eval(Opal.compile(editor.getValue()));
         }

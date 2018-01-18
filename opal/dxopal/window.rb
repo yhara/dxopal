@@ -14,7 +14,9 @@ module DXOpal
     # Load resources specified with Image.register or Sound.register
     # Call block when loaded
     def self.load_resources(&block)
-      RemoteResource._load_resources(&block)
+      RemoteResource._load_resources do
+        DXOpal.dump_error(&block)
+      end
     end
 
     # Start main loop
@@ -68,7 +70,7 @@ module DXOpal
       if @@paused
         Window.draw_pause_screen
       else
-        @@block.call
+        DXOpal.dump_error(&@@block)
       end
 
       # Draw

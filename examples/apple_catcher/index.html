@@ -4,13 +4,16 @@
     <meta charset= "utf-8" />
     <title>DXOpal demo</title>
     <script type="text/javascript" src="../../build/dxopal.js"></script>
-    <script type="text/ruby" src="main.rb"></script>
+    <script type="text/ruby">
+      DXOpal.dump_error{ require_remote 'main.rb' }
+    </script>
   </head>
 
   <body>
     <h1><a href="https://yhara.github.io/dxopal/">DXOpal</a> demo</h1>
     <canvas id="dxopal-canvas"></canvas><br>
     <input type='button' id='pause' value='Pause/Resume'>
+    <div id="dxopal-errors"></div>
 
     <h2>Source code</h2>
     <div id="editor" style='width: 640px; height: 600px;'></div>

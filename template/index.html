@@ -4,10 +4,13 @@
     <meta charset= "utf-8" />
     <title>DXOpal game</title>
     <script type="text/javascript" src="dxopal.min.js"></script>
-    <script type="text/ruby" src="main.rb"></script>
+    <script type="text/ruby">
+      DXOpal.dump_error{ require_remote 'main.rb' }
+    </script>
   </head>
 
   <body>
     <canvas id="dxopal-canvas"></canvas>
+    <div id="dxopal-errors"></div>
   </body>
 </html>

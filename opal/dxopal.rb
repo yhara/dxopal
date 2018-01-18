@@ -33,6 +33,29 @@ module DXOpal
   include DXOpal::Input::MouseCodes
   include DXOpal::SoundEffect::WaveTypes
 
+  # Call block and dump backtrace if an exception is raised.
+  # Nothing is shown if a tag with `id='dxopal-errors'` does not exist
+  def self.dump_error(&block)
+    block.call
+  rescue Exception => ex
+    div = `document.getElementById('dxopal-errors')`
+    if `div && !ex.DXOpalPrinted`
+      %x{
+        div.textContent = "ERROR: " + #{ex.class.name};
+        var ul = document.createElement('ul');
+        // Note: ex.backtrace may be an Array or a String
+        #{Array(ex.backtrace)}.forEach(function(line){
+          var li = document.createElement('li');
+          li.textContent = line;
+          ul.appendChild(li);
+        });
+        div.appendChild(ul);
+        ex.DXOpalPrinted = true;
+      }
+    end
+    raise ex
+  end
+
   # Like `Kernel.p`, but prints only limited times for each `key`
   # This is useful for debugging your game without flooding the
   # developer console.
