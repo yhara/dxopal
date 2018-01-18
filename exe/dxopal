@@ -31,12 +31,13 @@ module DXOpal
     end
 
     desc "server", "Start local server"
+    option "port", aliases: :p, type: :numeric, default: 7521
     def server
       puts "Starting DXOpal Server"
-      puts "(Open http://localhost:7521/index.html in browser)"
+      puts "(Open http://localhost:#{options[:port]}/index.html in the browser)"
       puts "---"
       app = Rack::Directory.new(Dir.pwd)
-      Rack::Server.start(app: app, Port: 7521)
+      Rack::Server.start(app: app, Port: options[:port])
     end
   end
 end
