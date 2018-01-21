@@ -28,6 +28,8 @@ $ git clone https://github.com/yhara/dxopal-starter-kit
     $ rake build
     $ rake build_min  # Build and minify
 
+(If some error is printed by build_min, make sure you have installed uglify-es)
+
 ## Documents
 
 Build API reference:
