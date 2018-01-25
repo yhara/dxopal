@@ -14,6 +14,8 @@ require 'dxopal/version'
 # Enable runtime compilation of Opal code (so that you can make games
 # without even install Ruby)
 require 'opal-parser'
+
+# Patch to opal-parser
 def require_remote(url)
   %x{
     var r = new XMLHttpRequest();
