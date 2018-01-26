@@ -28,6 +28,7 @@ end
 namespace "release" do
   desc "Make a release commit"
   task :prepare do
+    sh "rake api"
     sh "rake build_min -B"
     sh "gem build dxopal.gemspec"
     sh "git ci -a -m 'v#{DXOpal::VERSION}'"
