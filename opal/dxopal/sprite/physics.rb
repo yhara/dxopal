@@ -59,7 +59,9 @@ module DXOpal
 
     # Return true if `physical_body=` is ever called
     def self.matter_enabled?
-      `!!#{@matter_engine}`
+      # Note: we cannot use `!!` here because @matter_engine may be a JS object,
+      # which does not have Ruby's `!@` method
+      @matter_engine ? true : false
     end
 
     # Call Matter.Runner.tick
