@@ -174,6 +174,7 @@ module DXOpal
       enqueue_draw(z, :triangle_fill, x1, y1, x2, y2, x3, y3, color)
     end
 
+    # (internal)
     def self.enqueue_draw(z, *args)
       @@draw_queue.push([z, @@draw_queue.length, *args])
     end
