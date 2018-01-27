@@ -1,5 +1,20 @@
 ## (not yet)
 
+### Breaking change: matter.js is split from dxopal.js
+
+To use `DXOpal::Sprite::Physics`, you need to load matter.js explicitly.
+
+Old:
+    
+    <script src="dxopal.min.js"></script>
+
+New:
+
+    <script src="matter.js"></script>
+    <script src="dxopal.min.js"></script>
+
+### Other improvements:
+
 - new: Image#set_color_key
 - new: Window.draw_scale
 - new: Show the message of an exception if there is a `<div id='dxopal-errors'>`
