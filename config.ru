@@ -22,8 +22,9 @@ DEMO_DIRS.each do |path|
     run lambda{|env|
       s = File.read(".#{path}/index.html")
               .gsub(%r{<script (.*)dxopal(.min)?.js"></script>}){
-                index.javascript_include_tag(opal_server.main) +
-                "<script type='text/javascript' src='/vendor/matter.js'></script>"
+                s = index.javascript_include_tag(opal_server.main)
+                s += "<script type='text/javascript' src='/_vendor/matter-0.10.0.js'></script>" if path =~ /matter/
+                s
               }
       [200, {}, [s]]
     }
