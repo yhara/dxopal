@@ -13,10 +13,9 @@ file "build/dxopal.min.js" => "build/dxopal.js" do |t|
   sh "uglifyjs #{t.source} -o #{t.name}"
 end
 
-file "build/dxopal.js" => Dir["opal/**/*.rb"] + ["vendor/matter.js"] do |t|
+file "build/dxopal.js" => Dir["opal/**/*.rb"] do |t|
   Opal.append_path("opal")
   js = Opal::Builder.build("dxopal.rb").to_s
-  js << File.read("vendor/matter.js")
   File.write(t.name, js)
 end
 
