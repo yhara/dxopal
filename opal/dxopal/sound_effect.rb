@@ -7,6 +7,8 @@ module DXOpal
   #     v = v - 0.03
   #     [rand(300), v]
   #   end
+  #
+  # This will generate a sound with WebAudio.
   class SoundEffect < Sound
     RemoteResource.add_class(SoundEffect)
 
