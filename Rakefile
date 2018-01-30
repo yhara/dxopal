@@ -26,15 +26,15 @@ end
 
 namespace "release" do
   desc "Make a release commit"
-  task :prepare do
+  task :make_release_commit do
     sh "rake api"
     sh "rake build_min -B"
     sh "gem build dxopal.gemspec"
     sh "git ci -a -m 'v#{DXOpal::VERSION}'"
   end
 
-  desc "Make a release commit"
-  task :push do
+  desc "Make a tag and push to github"
+  task :push_tag do
     sh "git tag 'v#{DXOpal::VERSION}'"
     sh "git push origin master --tags"
   end
@@ -45,7 +45,7 @@ namespace "release" do
     sh "gem push dxopal-#{DXOpal::VERSION}.gem"
   end
 
-  desc "Make a release commit"
+  desc "Release starter kit"
   task :push_kit do
     cd "starter-kit" do
       sh "git ci dxopal.min.js -m 'v#{DXOpal::VERSION}'"
@@ -58,9 +58,10 @@ end
 # How to make a release
 # 0. Edit lib/dxopal/version.rb
 # 1. Edit CHANGELOG.md
-# 2. `rake release:prepare`
+# 2. `rake release:make_release_commit`
 # 3. Test
 #   - Open starter-kit/index.html in Firefox
 #   - rackup and open http://localhost:9292/
-# 4. `rake release:push`
-# 5. `rake release:push_kit`
+# 4. `rake release:push_tag`
+# 5. `rake release:push_gem`
+# 6. `rake release:push_kit`
