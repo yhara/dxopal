@@ -56,11 +56,11 @@ namespace "release" do
 end
 
 # How to make a release
-# TODO: should edit lib/dxopal/version.rb :-\
+# 0. Edit lib/dxopal/version.rb
 # 1. Edit CHANGELOG.md
 # 2. `rake release:prepare`
 # 3. Test
 #   - Open starter-kit/index.html in Firefox
 #   - rackup and open http://localhost:9292/
 # 4. `rake release:push`
-# 5. `rake release:push_game`
+# 5. `rake release:push_kit`
