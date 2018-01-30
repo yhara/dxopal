@@ -42,4 +42,5 @@ module DXOpal
   end
 end
 
+puts "DXOpal v#{DXOpal::VERSION}" 
 DXOpal::Cli.start
