@@ -6,7 +6,7 @@
 <title>
   File: README
   
-    &mdash; Documentation by YARD 0.9.9
+    &mdash; Documentation by YARD 0.9.12
   
 </title>
 
@@ -60,41 +60,11 @@
       <div id="content"><div id='filecontents'><h1>DXOpal</h1>
 
 <p>Game development framework for <a href="http://opalrb.org/">Opal</a>,
-API compatible to <a href="http://dxruby.osdn.jp/">DXRuby</a></p>
+has similar API to <a href="http://dxruby.osdn.jp/">DXRuby</a></p>
 
-<h2>Demo</h2>
+<h2>How to use</h2>
 
-<p><a href="https://yhara.github.io/dxopal/">https://yhara.github.io/dxopal/</a></p>
-
-<h2>Status</h2>
-
-<p>Early-alpha</p>
-
-<h2>How to create a game</h2>
-
-<p>See <a href="https://github.com/yhara/dxopal-game">dxopal-game</a></p>
-
-<h2>API difference</h2>
-
-<h3>Loading resources</h3>
-
-<p>Because of the async nature of JavaScript, <code>Image.load</code> and <code>Sound.new</code>
-are changed to <code>Image.register</code>, <code>Sound.register</code> and <code>Window.load_resources</code>.</p>
-
-<p><code>Window.load_resources</code> tries to load all the resouces declared by <code>register</code>
-and call the block when all of them are loaded.</p>
-
-<pre class="code rb"><code class="rb">Image.register(:player, &#39;images/player.png&#39;)
-Sound.register(:game_over, &#39;sounds/game_over.wav&#39;)
-
-Window.load_resources do
-  Window.loop do
-    # ... Window.draw(0, 0, Image[:player]) ...
-
-    # ... Sound[:game_over].play ...
-  end
-end
-</code></pre>
+<p>see <a href="https://yhara.github.io/dxopal/">https://yhara.github.io/dxopal/</a></p>
 
 <h2>License</h2>
 
@@ -114,9 +84,9 @@ end
 </div></div>
 
       <div id="footer">
-  Generated on Tue Oct 17 13:56:27 2017 by
+  Generated on Mon Feb  5 16:56:40 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.9 (ruby-2.4.2).
+  0.9.12 (ruby-2.4.2).
 </div>
 
     </div>

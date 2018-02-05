@@ -6,7 +6,7 @@
 <title>
   Class: DXOpal::SoundEffect
   
-    &mdash; Documentation by YARD 0.9.9
+    &mdash; Documentation by YARD 0.9.12
   
 </title>
 
@@ -116,6 +116,8 @@
   <span class='lbracket'>[</span><span class='id identifier rubyid_rand'>rand</span><span class='lparen'>(</span><span class='int'>300</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='id identifier rubyid_v'>v</span><span class='rbracket'>]</span>
 <span class='kw'>end</span>
 </code></pre>
+
+<p>This will generate a sound with WebAudio.</p>
 
 
   </div>
@@ -278,8 +280,6 @@ total length of the sound in milliseconds.</code></pre>
       <pre class="lines">
 
 
-26
-27
 28
 29
 30
@@ -331,10 +331,12 @@ total length of the sound in milliseconds.</code></pre>
 76
 77
 78
-79</pre>
+79
+80
+81</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/sound_effect.rb', line 26</span>
+      <pre class="code"><span class="info file"># File 'opal/dxopal/sound_effect.rb', line 28</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid__load'>_load</span><span class='lparen'>(</span><span class='id identifier rubyid_time'>time</span><span class='comma'>,</span> <span class='id identifier rubyid_wave_type'>wave_type</span><span class='op'>=</span><span class='const'>WAVE_RECT</span><span class='comma'>,</span> <span class='id identifier rubyid_resolution'>resolution</span><span class='op'>=</span><span class='int'>1000</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_snd'>snd</span> <span class='op'>=</span> <span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>(soundeffect)</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
@@ -416,13 +418,15 @@ total length of the sound in milliseconds.</code></pre>
       <pre class="lines">
 
 
-81
-82</pre>
+83
+84
+85</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/sound_effect.rb', line 81</span>
+      <pre class="code"><span class="info file"># File 'opal/dxopal/sound_effect.rb', line 83</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_add'>add</span><span class='lparen'>(</span><span class='id identifier rubyid_wave_type'>wave_type</span><span class='op'>=</span><span class='const'>WAVE_RECT</span><span class='comma'>,</span> <span class='id identifier rubyid_resolution'>resolution</span><span class='op'>=</span><span class='int'>1000</span><span class='rparen'>)</span>
+  <span class='const'>TODO</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -434,9 +438,9 @@ total length of the sound in milliseconds.</code></pre>
 </div>
 
       <div id="footer">
-  Generated on Tue Oct 17 13:56:28 2017 by
+  Generated on Mon Feb  5 16:56:41 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.9 (ruby-2.4.2).
+  0.9.12 (ruby-2.4.2).
 </div>
 
     </div>

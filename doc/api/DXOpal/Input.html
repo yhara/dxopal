@@ -6,7 +6,7 @@
 <title>
   Module: DXOpal::Input
   
-    &mdash; Documentation by YARD 0.9.9
+    &mdash; Documentation by YARD 0.9.12
   
 </title>
 
@@ -94,6 +94,55 @@
   
 </p>
 
+  <h2>Constant Summary</h2>
+  <dl class="constants">
+    
+      <dt id="ON_KEYDOWN_-constant" class="">ON_KEYDOWN_ =
+        <div class="docstring">
+  <div class="discussion">
+    
+<p>(private) JS keydown event handler</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+      </dt>
+      <dd><pre class="code"><span class='backtick'>%x{</span><span class='tstring_content'>
+  function(ev){
+    </span><span class='embexpr_beg'>#{</span><span class='const'>Input</span><span class='period'>.</span><span class='id identifier rubyid__pressing_keys'><span class='object_link'><a href="#_pressing_keys-class_method" title="DXOpal::Input._pressing_keys (method)">_pressing_keys</a></span></span><span class='embexpr_end'>}</span><span class='tstring_content'>[ev.keyCode] = </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@tick</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+    ev.preventDefault();
+    ev.stopPropagation();
+  }
+</span><span class='tstring_end'>}</span></span></pre></dd>
+    
+      <dt id="ON_KEYUP_-constant" class="">ON_KEYUP_ =
+        <div class="docstring">
+  <div class="discussion">
+    
+<p>(private) JS keyup event handler</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+      </dt>
+      <dd><pre class="code"><span class='backtick'>%x{</span><span class='tstring_content'>
+  function(ev){
+    </span><span class='embexpr_beg'>#{</span><span class='const'>Input</span><span class='period'>.</span><span class='id identifier rubyid__pressing_keys'><span class='object_link'><a href="#_pressing_keys-class_method" title="DXOpal::Input._pressing_keys (method)">_pressing_keys</a></span></span><span class='embexpr_end'>}</span><span class='tstring_content'>[ev.keyCode] = -</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@tick</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+    ev.preventDefault();
+    ev.stopPropagation();
+  }
+</span><span class='tstring_end'>}</span></span></pre></dd>
+    
+  </dl>
+
 
 
 
@@ -135,6 +184,30 @@
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#_init_mouse_events-class_method" title="_init_mouse_events (class method)">.<strong>_init_mouse_events</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>(internal) initialize mouse events.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#_on_tick-class_method" title="_on_tick (class method)">.<strong>_on_tick</strong>  &#x21d2; Object </a>
     
 
@@ -152,6 +225,28 @@
     <span class="summary_desc"><div class='inline'>
 <p>Called on every frame from Window.</p>
 </div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#_pressing_keys-class_method" title="_pressing_keys (class method)">.<strong>_pressing_keys</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
   
 </li>
 
@@ -223,6 +318,54 @@
   
     <span class="summary_desc"><div class='inline'>
 <p>Return true if the key is just released.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#keyevent_target-class_method" title="keyevent_target (class method)">.<strong>keyevent_target</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Return DOM element set by `keyevent_target=`.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#keyevent_target=-class_method" title="keyevent_target= (class method)">.<strong>keyevent_target=</strong>(target)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Set DOM element to receive keydown/keyup event.</p>
 </div></span>
   
 </li>
@@ -434,8 +577,6 @@ canvas.</p>
       <pre class="lines">
 
 
-13
-14
 15
 16
 17
@@ -448,62 +589,87 @@ canvas.</p>
 24
 25
 26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57</pre>
+27</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/input.rb', line 13</span>
+      <pre class="code"><span class="info file"># File 'opal/dxopal/input.rb', line 15</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid__init'>_init</span><span class='lparen'>(</span><span class='id identifier rubyid_canvas'>canvas</span><span class='rparen'>)</span>
   <span class='cvar'>@@tick</span> <span class='op'>=</span> <span class='int'>0</span>
-  <span class='cvar'>@@pressing_keys</span> <span class='op'>=</span> <span class='id identifier rubyid_pressing_keys'>pressing_keys</span> <span class='op'>=</span> <span class='backtick'>`</span><span class='tstring_content'>new Object()</span><span class='tstring_end'>`</span></span>
+  <span class='cvar'>@@pressing_keys</span> <span class='op'>=</span> <span class='backtick'>`</span><span class='tstring_content'>new Object()</span><span class='tstring_end'>`</span></span>
   <span class='cvar'>@@mouse_info</span> <span class='op'>=</span> <span class='backtick'>`</span><span class='tstring_content'>{x: 0, y: 0}</span><span class='tstring_end'>`</span></span>
-  <span class='cvar'>@@pressing_mouse_buttons</span> <span class='op'>=</span> <span class='id identifier rubyid_pressing_mouse_buttons'>pressing_mouse_buttons</span> <span class='op'>=</span> <span class='backtick'>`</span><span class='tstring_content'>new Object()</span><span class='tstring_end'>`</span></span>
+  <span class='cvar'>@@pressing_mouse_buttons</span> <span class='op'>=</span> <span class='backtick'>`</span><span class='tstring_content'>new Object()</span><span class='tstring_end'>`</span></span>
 
   <span class='id identifier rubyid_rect'>rect</span> <span class='op'>=</span> <span class='backtick'>`</span><span class='tstring_content'>canvas.getBoundingClientRect()</span><span class='tstring_end'>`</span></span>
   <span class='cvar'>@@canvas_x</span> <span class='op'>=</span> <span class='backtick'>`</span><span class='tstring_content'>rect.left + window.pageXOffset</span><span class='tstring_end'>`</span></span>
   <span class='cvar'>@@canvas_y</span> <span class='op'>=</span> <span class='backtick'>`</span><span class='tstring_content'>rect.top  + window.pageYOffset</span><span class='tstring_end'>`</span></span>
 
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid__init_mouse_events'>_init_mouse_events</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_keyevent_target'>keyevent_target</span> <span class='op'>=</span> <span class='backtick'>`</span><span class='tstring_content'>window</span><span class='tstring_end'>`</span></span> <span class='kw'>unless</span> <span class='const'><span class='object_link'><a href="" title="DXOpal::Input (module)">Input</a></span></span><span class='period'>.</span><span class='id identifier rubyid_keyevent_target'><span class='object_link'><a href="#keyevent_target-class_method" title="DXOpal::Input.keyevent_target (method)">keyevent_target</a></span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="_init_mouse_events-class_method">
+  
+    .<strong>_init_mouse_events</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>(internal) initialize mouse events</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/dxopal/input.rb', line 115</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid__init_mouse_events'>_init_mouse_events</span>
   <span class='backtick'>%x{</span><span class='tstring_content'>
-    document.addEventListener(&#39;keydown&#39;, function(ev){
-      pressing_keys[ev.keyCode] = </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@tick</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
-      ev.preventDefault();
-      ev.stopPropagation();
-    });
-    document.addEventListener(&#39;keyup&#39;, function(ev){
-      pressing_keys[ev.keyCode] = -</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@tick</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
-      ev.preventDefault();
-      ev.stopPropagation();
-    });
     document.addEventListener(&#39;mousemove&#39;, function(ev){
       </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@mouse_info</span><span class='embexpr_end'>}</span><span class='tstring_content'>.x = ev.pageX - </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@canvas_x</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
       </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@mouse_info</span><span class='embexpr_end'>}</span><span class='tstring_content'>.y = ev.pageY - </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@canvas_y</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
@@ -513,7 +679,7 @@ canvas.</p>
       </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@mouse_info</span><span class='embexpr_end'>}</span><span class='tstring_content'>.y = ev.pageY - </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@canvas_y</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
       for (var k=1; k&lt;=16; k&lt;&lt;=1) {
         if (ev.buttons &amp; k) {
-          pressing_mouse_buttons[k] = </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@tick</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+          </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@pressing_mouse_buttons</span><span class='embexpr_end'>}</span><span class='tstring_content'>[k] = </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@tick</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
         }
       }
     });
@@ -521,8 +687,8 @@ canvas.</p>
       </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@mouse_info</span><span class='embexpr_end'>}</span><span class='tstring_content'>.x = ev.pageX - </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@canvas_x</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
       </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@mouse_info</span><span class='embexpr_end'>}</span><span class='tstring_content'>.y = ev.pageY - </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@canvas_y</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
       for (var k=1; k&lt;=16; k&lt;&lt;=1) {
-        if ((ev.buttons &amp; k) == 0 &amp;&amp; pressing_mouse_buttons[k]) {
-          pressing_mouse_buttons[k] = -</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@tick</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+        if ((ev.buttons &amp; k) == 0 &amp;&amp; </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@pressing_mouse_buttons</span><span class='embexpr_end'>}</span><span class='tstring_content'>[k]) {
+          </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@pressing_mouse_buttons</span><span class='embexpr_end'>}</span><span class='tstring_content'>[k] = -</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@tick</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
         }
       }
     });
@@ -559,16 +725,42 @@ canvas.</p>
       <pre class="lines">
 
 
-60
-61
-62</pre>
+30
+31
+32</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/input.rb', line 60</span>
+      <pre class="code"><span class="info file"># File 'opal/dxopal/input.rb', line 30</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid__on_tick'>_on_tick</span>
   <span class='cvar'>@@tick</span> <span class='op'>+=</span> <span class='int'>1</span>
 <span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="_pressing_keys-class_method">
+  
+    .<strong>_pressing_keys</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+12</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/dxopal/input.rb', line 12</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid__pressing_keys'>_pressing_keys</span><span class='semicolon'>;</span> <span class='cvar'>@@pressing_keys</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -613,12 +805,12 @@ canvas.</p>
       <pre class="lines">
 
 
-81
-82
-83</pre>
+55
+56
+57</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/input.rb', line 81</span>
+      <pre class="code"><span class="info file"># File 'opal/dxopal/input.rb', line 55</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_key_down?'>key_down?</span><span class='lparen'>(</span><span class='id identifier rubyid_code'>code</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='backtick'>`</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@pressing_keys</span><span class='embexpr_end'>}</span><span class='tstring_content'>[code] &gt; 0</span><span class='tstring_end'>`</span></span>
@@ -667,12 +859,12 @@ canvas.</p>
       <pre class="lines">
 
 
-86
-87
-88</pre>
+60
+61
+62</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/input.rb', line 86</span>
+      <pre class="code"><span class="info file"># File 'opal/dxopal/input.rb', line 60</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_key_push?'>key_push?</span><span class='lparen'>(</span><span class='id identifier rubyid_code'>code</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='backtick'>`</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@pressing_keys</span><span class='embexpr_end'>}</span><span class='tstring_content'>[code] == </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@tick</span><span class='embexpr_end'>}</span><span class='tstring_content'>-1</span><span class='tstring_end'>`</span></span>
@@ -721,15 +913,123 @@ canvas.</p>
       <pre class="lines">
 
 
-91
-92
-93</pre>
+65
+66
+67</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/input.rb', line 91</span>
+      <pre class="code"><span class="info file"># File 'opal/dxopal/input.rb', line 65</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_key_release?'>key_release?</span><span class='lparen'>(</span><span class='id identifier rubyid_code'>code</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='backtick'>`</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@pressing_keys</span><span class='embexpr_end'>}</span><span class='tstring_content'>[code] == -(</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@tick</span><span class='embexpr_end'>}</span><span class='tstring_content'>-1)</span><span class='tstring_end'>`</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="keyevent_target-class_method">
+  
+    .<strong>keyevent_target</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Return DOM element set by `keyevent_target=`</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+108</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/dxopal/input.rb', line 108</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_keyevent_target'>keyevent_target</span><span class='semicolon'>;</span> <span class='cvar'>@@keyevent_target</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="keyevent_target=-class_method">
+  
+    .<strong>keyevent_target=</strong>(target)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Set DOM element to receive keydown/keyup event</p>
+
+<p>By default, `window` is set to this (i.e. all key events are stolen by
+DXOpal.) If canvas element is set to this, only key events happend on
+canvas are processed by DXOpal.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/dxopal/input.rb', line 90</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_keyevent_target='>keyevent_target=</span><span class='lparen'>(</span><span class='id identifier rubyid_target'>target</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='cvar'>@@keyevent_target</span>
+    <span class='backtick'>%x{</span><span class='tstring_content'>
+      </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@keyevent_target</span><span class='embexpr_end'>}</span><span class='tstring_content'>.removeEventListener(&#39;keydown&#39;, </span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="#ON_KEYDOWN_-constant" title="DXOpal::Input::ON_KEYDOWN_ (constant)">ON_KEYDOWN_</a></span></span><span class='embexpr_end'>}</span><span class='tstring_content'>);
+      </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@keyevent_target</span><span class='embexpr_end'>}</span><span class='tstring_content'>.removeEventListener(&#39;keyup&#39;, </span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="#ON_KEYUP_-constant" title="DXOpal::Input::ON_KEYUP_ (constant)">ON_KEYUP_</a></span></span><span class='embexpr_end'>}</span><span class='tstring_content'>);
+    </span><span class='tstring_end'>}</span></span>
+  <span class='kw'>end</span>
+  <span class='cvar'>@@keyevent_target</span> <span class='op'>=</span> <span class='id identifier rubyid_target'>target</span>
+  <span class='backtick'>%x{</span><span class='tstring_content'>
+    if (</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@keyevent_target</span><span class='embexpr_end'>}</span><span class='tstring_content'>.tagName == &quot;CANVAS&quot;) {
+      </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@keyevent_target</span><span class='embexpr_end'>}</span><span class='tstring_content'>.setAttribute(&#39;tabindex&#39;, 0);
+    }
+    </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@keyevent_target</span><span class='embexpr_end'>}</span><span class='tstring_content'>.addEventListener(&#39;keydown&#39;, </span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="#ON_KEYDOWN_-constant" title="DXOpal::Input::ON_KEYDOWN_ (constant)">ON_KEYDOWN_</a></span></span><span class='embexpr_end'>}</span><span class='tstring_content'>);
+    </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@keyevent_target</span><span class='embexpr_end'>}</span><span class='tstring_content'>.addEventListener(&#39;keyup&#39;, </span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="#ON_KEYUP_-constant" title="DXOpal::Input::ON_KEYUP_ (constant)">ON_KEYUP_</a></span></span><span class='embexpr_end'>}</span><span class='tstring_content'>);
+  </span><span class='tstring_end'>}</span></span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -775,12 +1075,12 @@ canvas.</p>
       <pre class="lines">
 
 
-109
-110
-111</pre>
+156
+157
+158</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/input.rb', line 109</span>
+      <pre class="code"><span class="info file"># File 'opal/dxopal/input.rb', line 156</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_mouse_down?'>mouse_down?</span><span class='lparen'>(</span><span class='id identifier rubyid_mouse_code'>mouse_code</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='backtick'>`</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@pressing_mouse_buttons</span><span class='embexpr_end'>}</span><span class='tstring_content'>[mouse_code] &gt; 0</span><span class='tstring_end'>`</span></span>
@@ -829,12 +1129,12 @@ canvas.</p>
       <pre class="lines">
 
 
-114
-115
-116</pre>
+161
+162
+163</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/input.rb', line 114</span>
+      <pre class="code"><span class="info file"># File 'opal/dxopal/input.rb', line 161</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_mouse_push?'>mouse_push?</span><span class='lparen'>(</span><span class='id identifier rubyid_mouse_code'>mouse_code</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='backtick'>`</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@pressing_mouse_buttons</span><span class='embexpr_end'>}</span><span class='tstring_content'>[mouse_code] == -(</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@tick</span><span class='embexpr_end'>}</span><span class='tstring_content'>-1)</span><span class='tstring_end'>`</span></span>
@@ -883,12 +1183,12 @@ canvas.</p>
       <pre class="lines">
 
 
-119
-120
-121</pre>
+166
+167
+168</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/input.rb', line 119</span>
+      <pre class="code"><span class="info file"># File 'opal/dxopal/input.rb', line 166</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_mouse_release?'>mouse_release?</span><span class='lparen'>(</span><span class='id identifier rubyid_mouse_code'>mouse_code</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='backtick'>`</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@pressing_mouse_buttons</span><span class='embexpr_end'>}</span><span class='tstring_content'>[mouse_code] == -(</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@tick</span><span class='embexpr_end'>}</span><span class='tstring_content'>-1)</span><span class='tstring_end'>`</span></span>
@@ -928,12 +1228,12 @@ canvas.</p>
       <pre class="lines">
 
 
-97
-98
-99</pre>
+144
+145
+146</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/input.rb', line 97</span>
+      <pre class="code"><span class="info file"># File 'opal/dxopal/input.rb', line 144</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_mouse_x'>mouse_x</span>
   <span class='kw'>return</span> <span class='backtick'>`</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@mouse_info</span><span class='embexpr_end'>}</span><span class='tstring_content'>.x</span><span class='tstring_end'>`</span></span>
@@ -962,12 +1262,12 @@ canvas.</p>
       <pre class="lines">
 
 
-100
-101
-102</pre>
+147
+148
+149</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/input.rb', line 100</span>
+      <pre class="code"><span class="info file"># File 'opal/dxopal/input.rb', line 147</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_mouse_y'>mouse_y</span>
   <span class='kw'>return</span> <span class='backtick'>`</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@mouse_info</span><span class='embexpr_end'>}</span><span class='tstring_content'>.y</span><span class='tstring_end'>`</span></span>
@@ -1003,15 +1303,15 @@ canvas.</p>
       <pre class="lines">
 
 
-65
-66
-67
-68
-69
-70</pre>
+35
+36
+37
+38
+39
+40</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/input.rb', line 65</span>
+      <pre class="code"><span class="info file"># File 'opal/dxopal/input.rb', line 35</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_x'>x</span><span class='lparen'>(</span><span class='id identifier rubyid_pad_number'>pad_number</span><span class='op'>=</span><span class='int'>0</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_ret'>ret</span> <span class='op'>=</span> <span class='int'>0</span>
@@ -1050,15 +1350,15 @@ canvas.</p>
       <pre class="lines">
 
 
-73
-74
-75
-76
-77
-78</pre>
+43
+44
+45
+46
+47
+48</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/input.rb', line 73</span>
+      <pre class="code"><span class="info file"># File 'opal/dxopal/input.rb', line 43</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_y'>y</span><span class='lparen'>(</span><span class='id identifier rubyid_pad_number'>pad_number</span><span class='op'>=</span><span class='int'>0</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_ret'>ret</span> <span class='op'>=</span> <span class='int'>0</span>
@@ -1076,9 +1376,9 @@ canvas.</p>
 </div>
 
       <div id="footer">
-  Generated on Tue Oct 17 13:56:27 2017 by
+  Generated on Mon Feb  5 16:56:41 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.9 (ruby-2.4.2).
+  0.9.12 (ruby-2.4.2).
 </div>
 
     </div>

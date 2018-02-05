@@ -6,7 +6,7 @@
 <title>
   Class: DXOpal::RemoteResource
   
-    &mdash; Documentation by YARD 0.9.9
+    &mdash; Documentation by YARD 0.9.12
   
 </title>
 
@@ -105,6 +105,8 @@
 <p>A base class for resources acquired through JS Promises. Provides
 `&lt;klass&gt;.register` and `&lt;<a href="name">klass></a>`. A subclass
 must impelment `&lt;klass&gt;._load`.</p>
+
+<p>TODO: better name? (SoundEffect is not actually &#39;remote&#39;)</p>
 
 
   </div>
@@ -377,16 +379,16 @@ must impelment `&lt;klass&gt;._load`.</p>
       <pre class="lines">
 
 
-26
-27
 28
 29
 30
 31
-32</pre>
+32
+33
+34</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/remote_resource.rb', line 26</span>
+      <pre class="code"><span class="info file"># File 'opal/dxopal/remote_resource.rb', line 28</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='op'>[]</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_ret'>ret</span> <span class='op'>=</span> <span class='cvar'>@@instances</span><span class='lbracket'>[</span><span class='id identifier rubyid__klass_name'>_klass_name</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -426,12 +428,12 @@ must impelment `&lt;klass&gt;._load`.</p>
       <pre class="lines">
 
 
-61
-62
-63</pre>
+63
+64
+65</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/remote_resource.rb', line 61</span>
+      <pre class="code"><span class="info file"># File 'opal/dxopal/remote_resource.rb', line 63</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid__klass_name'>_klass_name</span>
   <span class='kw'>return</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>::</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_last'>last</span>
@@ -467,12 +469,12 @@ must impelment `&lt;klass&gt;._load`.</p>
       <pre class="lines">
 
 
-56
-57
-58</pre>
+58
+59
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/remote_resource.rb', line 56</span>
+      <pre class="code"><span class="info file"># File 'opal/dxopal/remote_resource.rb', line 58</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid__load'>_load</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>override me</span><span class='tstring_end'>&quot;</span></span>
@@ -508,8 +510,6 @@ must impelment `&lt;klass&gt;._load`.</p>
       <pre class="lines">
 
 
-35
-36
 37
 38
 39
@@ -525,10 +525,12 @@ must impelment `&lt;klass&gt;._load`.</p>
 49
 50
 51
-52</pre>
+52
+53
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/remote_resource.rb', line 35</span>
+      <pre class="code"><span class="info file"># File 'opal/dxopal/remote_resource.rb', line 37</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid__load_resources'>_load_resources</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='cvar'>@@resources</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_klass_name'>klass_name</span><span class='comma'>,</span> <span class='id identifier rubyid_items'>items</span><span class='op'>|</span>
@@ -568,12 +570,12 @@ must impelment `&lt;klass&gt;._load`.</p>
       <pre class="lines">
 
 
-15
-16
-17</pre>
+17
+18
+19</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/remote_resource.rb', line 15</span>
+      <pre class="code"><span class="info file"># File 'opal/dxopal/remote_resource.rb', line 17</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_add_class'>add_class</span><span class='lparen'>(</span><span class='id identifier rubyid_subklass'>subklass</span><span class='rparen'>)</span>
   <span class='cvar'>@@klasses</span><span class='lbracket'>[</span><span class='id identifier rubyid_subklass'>subklass</span><span class='period'>.</span><span class='id identifier rubyid__klass_name'>_klass_name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_subklass'>subklass</span>
@@ -609,13 +611,13 @@ must impelment `&lt;klass&gt;._load`.</p>
       <pre class="lines">
 
 
-20
-21
 22
-23</pre>
+23
+24
+25</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/remote_resource.rb', line 20</span>
+      <pre class="code"><span class="info file"># File 'opal/dxopal/remote_resource.rb', line 22</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_register'>register</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='cvar'>@@resources</span><span class='lbracket'>[</span><span class='id identifier rubyid__klass_name'>_klass_name</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
@@ -631,9 +633,9 @@ must impelment `&lt;klass&gt;._load`.</p>
 </div>
 
       <div id="footer">
-  Generated on Tue Oct 17 13:56:28 2017 by
+  Generated on Mon Feb  5 16:56:41 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.9 (ruby-2.4.2).
+  0.9.12 (ruby-2.4.2).
 </div>
 
     </div>
