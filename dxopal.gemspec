@@ -10,7 +10,10 @@ Gem::Specification.new do |spec|
   spec.email         = ["yutaka.hara+github@gmail.com"]
 
   spec.summary       = %q{Game development framework for Opal}
-  spec.homepage      = "https://github.com/yhara/dxopal"
+  spec.homepage      = "https://yhara.github.io/dxopal/"
+  spec.metadata      = {
+    "source_code_uri" => "https://github.com/yhara/dxopal"
+  }
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
