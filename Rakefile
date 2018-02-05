@@ -46,7 +46,7 @@ namespace "release" do
   end
 
   desc "Release starter kit"
-  task :push_kit do
+  task :release_kit do
     cd "starter-kit" do
       sh "git ci dxopal.min.js -m 'v#{DXOpal::VERSION}'"
       sh "git tag 'v#{DXOpal::VERSION}'"
@@ -64,4 +64,4 @@ end
 #   - rackup and open http://localhost:9292/
 # 4. `rake release:push_tag`
 # 5. `rake release:push_gem`
-# 6. `rake release:push_kit`
+# 6. `rake release:release_kit`
