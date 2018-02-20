@@ -41,13 +41,22 @@ module DXOpal
     # Play this sound once
     def play
       raise "Sound #{path_or_url} is not loaded yet" unless @decoded
+      source = nil
       %x{
         var context = #{Sound.audio_context};
-        var source = context.createBufferSource();
+        source = context.createBufferSource();
         source.buffer = #{@decoded};
         source.connect(context.destination);
         source.start(0); 
       }
+      @source = source
+    end
+
+    # Stop playing this sound (if playing)
+    def stop
+      return unless @decoded 
+      return unless @source
+      @source.JS.stop()
     end
   end
 end
