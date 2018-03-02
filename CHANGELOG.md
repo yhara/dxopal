@@ -1,6 +1,7 @@
 ## v1.2.0 (not yet)
 
 - new: Sound#stop
+- fix: `z` for draw_xx did not work correctly
 
 ## v1.1.0 (2018-02-05)
 
