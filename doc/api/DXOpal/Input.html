@@ -113,7 +113,7 @@
       </dt>
       <dd><pre class="code"><span class='backtick'>%x{</span><span class='tstring_content'>
   function(ev){
-    </span><span class='embexpr_beg'>#{</span><span class='const'>Input</span><span class='period'>.</span><span class='id identifier rubyid__pressing_keys'><span class='object_link'><a href="#_pressing_keys-class_method" title="DXOpal::Input._pressing_keys (method)">_pressing_keys</a></span></span><span class='embexpr_end'>}</span><span class='tstring_content'>[ev.keyCode] = </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@tick</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+    </span><span class='embexpr_beg'>#{</span><span class='const'>Input</span><span class='period'>.</span><span class='id identifier rubyid__pressing_keys'><span class='object_link'><a href="#_pressing_keys-class_method" title="DXOpal::Input._pressing_keys (method)">_pressing_keys</a></span></span><span class='embexpr_end'>}</span><span class='tstring_content'>[ev.code] = </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@tick</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
     ev.preventDefault();
     ev.stopPropagation();
   }
@@ -135,7 +135,7 @@
       </dt>
       <dd><pre class="code"><span class='backtick'>%x{</span><span class='tstring_content'>
   function(ev){
-    </span><span class='embexpr_beg'>#{</span><span class='const'>Input</span><span class='period'>.</span><span class='id identifier rubyid__pressing_keys'><span class='object_link'><a href="#_pressing_keys-class_method" title="DXOpal::Input._pressing_keys (method)">_pressing_keys</a></span></span><span class='embexpr_end'>}</span><span class='tstring_content'>[ev.keyCode] = -</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@tick</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+    </span><span class='embexpr_beg'>#{</span><span class='const'>Input</span><span class='period'>.</span><span class='id identifier rubyid__pressing_keys'><span class='object_link'><a href="#_pressing_keys-class_method" title="DXOpal::Input._pressing_keys (method)">_pressing_keys</a></span></span><span class='embexpr_end'>}</span><span class='tstring_content'>[ev.code] = -</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@tick</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
     ev.preventDefault();
     ev.stopPropagation();
   }
@@ -1376,7 +1376,7 @@ canvas are processed by DXOpal.</p>
 </div>
 
       <div id="footer">
-  Generated on Mon Feb  5 16:56:41 2018 by
+  Generated on Wed May 16 19:52:08 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.12 (ruby-2.4.2).
 </div>

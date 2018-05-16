@@ -259,6 +259,30 @@
 </li>
 
       
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#stop-instance_method" title="#stop (instance method)">#<strong>stop</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Stop playing this sound (if playing).</p>
+</div></span>
+  
+</li>
+
+      
     </ul>
   
 
@@ -533,20 +557,69 @@
 48
 49
 50
-51</pre>
+51
+52
+53</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'opal/dxopal/sound.rb', line 42</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_play'>play</span>
   <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Sound </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_path_or_url'>path_or_url</span><span class='embexpr_end'>}</span><span class='tstring_content'> is not loaded yet</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>unless</span> <span class='ivar'>@decoded</span>
+  <span class='id identifier rubyid_source'>source</span> <span class='op'>=</span> <span class='kw'>nil</span>
   <span class='backtick'>%x{</span><span class='tstring_content'>
     var context = </span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="" title="DXOpal::Sound (class)">Sound</a></span></span><span class='period'>.</span><span class='id identifier rubyid_audio_context'><span class='object_link'><a href="#audio_context-class_method" title="DXOpal::Sound.audio_context (method)">audio_context</a></span></span><span class='embexpr_end'>}</span><span class='tstring_content'>;
-    var source = context.createBufferSource();
+    source = context.createBufferSource();
     source.buffer = </span><span class='embexpr_beg'>#{</span><span class='ivar'>@decoded</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
     source.connect(context.destination);
     source.start(0); 
   </span><span class='tstring_end'>}</span></span>
+  <span class='ivar'>@source</span> <span class='op'>=</span> <span class='id identifier rubyid_source'>source</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="stop-instance_method">
+  
+    #<strong>stop</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Stop playing this sound (if playing)</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+56
+57
+58
+59
+60</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/dxopal/sound.rb', line 56</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_stop'>stop</span>
+  <span class='kw'>return</span> <span class='kw'>unless</span> <span class='ivar'>@decoded</span> 
+  <span class='kw'>return</span> <span class='kw'>unless</span> <span class='ivar'>@source</span>
+  <span class='ivar'>@source</span><span class='period'>.</span><span class='const'>JS</span><span class='period'>.</span><span class='id identifier rubyid_stop'>stop</span><span class='lparen'>(</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -558,7 +631,7 @@
 </div>
 
       <div id="footer">
-  Generated on Mon Feb  5 16:56:41 2018 by
+  Generated on Wed May 16 19:52:08 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.12 (ruby-2.4.2).
 </div>
