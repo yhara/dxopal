@@ -56,7 +56,7 @@ namespace "release" do
 end
 
 # How to make a release
-# 0. Edit lib/dxopal/version.rb
+# 0. Edit opal/dxopal/version.rb
 # 1. Edit CHANGELOG.md
 # 2. `rake release:make_release_commit`
 # 3. Test
