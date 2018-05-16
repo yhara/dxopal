@@ -1,4 +1,4 @@
-## v1.2.0 (not yet)
+## v1.2.0 (2018-05-16)
 
 - new: Support shift/ctrl key 
 - new: Added some opal stdlibs
