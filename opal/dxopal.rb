@@ -26,8 +26,14 @@ def require_remote(url)
   eval `r.responseText`
 end
 
-# These libraries will be included in dxopal.js:
+# These opal stdlibs will be embedded in dxopal.js.
+require 'singleton'
+require 'delegate'
+require 'forwardable'
 require 'pp'
+require 'promise'
+require 'set'
+require 'time'
 
 module DXOpal
   include DXOpal::Constants::Colors
