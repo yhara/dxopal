@@ -1,64 +1,70 @@
 module DXOpal
   module Input
+    # List of key codes (event.code)
+    # https://developer.mozilla.org/ja/docs/Web/API/KeyboardEvent
     module KeyCodes
-      K_ESCAPE = 27
-      # K_1 1
-      # K_2 2
-      # K_3 3
-      # K_4 4
-      # K_5 5
-      # K_6 6
-      # K_7 7
-      # K_8 8
-      # K_9 9
-      # K_0 0
-      K_MINUS = 189
-      #K_EQUALS = "="
-      K_BACK = 8  # Backspace
-      K_TAB = 9
-      K_Q = 81
-      K_W = 87
-      K_E = 69
-      K_R = 82
-      K_T = 84
-      K_Y = 89
-      K_U = 85
-      K_I = 73
-      K_O = 79
-      K_P = 80
-      K_LBRACKET = 219
-      K_RBRACKET = 221
-      K_RETURN = 13
-      #K_LCONTROL  Ctrl
-      K_A = 65
-      K_S = 83
-      K_D = 68
-      K_F = 70
-      K_G = 71
-      K_H = 72
-      K_J = 74
-      K_K = 75
-      K_L = 76
-      K_SEMICOLON = 186
-      #K_APOSTROPHE = "'"
+      # TODO: add more keycodes (pull request welcome)
+      # especially keypads and us-keyboards
+
+      K_ESCAPE = 'Escape'
+      K_1 = 'Digit1'
+      K_2 = 'Digit2'
+      K_3 = 'Digit3'
+      K_4 = 'Digit4'
+      K_5 = 'Digit5'
+      K_6 = 'Digit6'
+      K_7 = 'Digit7'
+      K_8 = 'Digit8'
+      K_9 = 'Digit9'
+      K_0 = 'Digit0'
+      K_MINUS = 'Minus'
+      K_EQUALS = 'Equal'
+      K_BACK = 'Backspace'
+      K_TAB = 'Tab'
+      K_Q = 'KeyQ'
+      K_W = 'KeyW'
+      K_E = 'KeyE'
+      K_R = 'KeyR'
+      K_T = 'KeyT'
+      K_Y = 'KeyY'
+      K_U = 'KeyU'
+      K_I = 'KeyI'
+      K_O = 'KeyO'
+      K_P = 'KeyP'
+      K_LBRACKET = 'BracketLeft'
+      K_RBRACKET = 'BracketRight'
+      K_RETURN = 'Enter'
+      K_ENTER = 'Enter'  # Alias; not in DXRuby
+      K_LCONTROL = 'ControlLeft'
+      K_A = 'KeyA'
+      K_S = 'KeyS'
+      K_D = 'KeyD'
+      K_F = 'KeyF'
+      K_G = 'KeyG'
+      K_H = 'KeyH'
+      K_J = 'KeyJ'
+      K_K = 'KeyK'
+      K_L = 'KeyL'
+      K_SEMICOLON = 'Semicolon'
+      K_APOSTROPHE = 'Quote'  # '
       #K_GRAVE = "`"
-      #K_LSHIFT  Shift
-      K_BACKSLASH = 0
-      K_Z = 90
-      K_X = 88
-      K_C = 67
-      K_V = 86
-      K_B = 66
-      K_N = 78
-      K_M = 77
-      K_COMMA = 188
-      K_PERIOD = 190
-      K_SLASH = 191
-      #K_RSHIFT  Shift
+      K_LSHIFT = 'ShiftLeft'
+      K_BACKSLASH = 'BackSlash'  # Note: different to K_YEN
+      K_Z = 'KeyZ'
+      K_X = 'KeyX'
+      K_C = 'KeyC'
+      K_V = 'KeyV'
+      K_B = 'KeyB'
+      K_N = 'KeyN'
+      K_M = 'KeyM'
+      K_COMMA = 'Comma'
+      K_PERIOD = 'Period'
+      K_SLASH = 'Slash'
+      K_RSHIFT = 'ShiftRight'
       #K_MULTIPLY = "*"
       #K_LMENU Alt
-      K_SPACE = 32
-      #K_CAPITAL Caps Lock
+      K_SPACE = 'Space'
+      #K_CAPITAL
       K_F1 = 112
       K_F2 = 113
       K_F3 = 114
@@ -94,20 +100,20 @@ module DXOpal
       #K_ABNT_C1 
       #K_CONVERT 
       #K_NOCONVERT
-      #K_YEN 
+      K_YEN = 'IntlYen'
       #K_ABNT_C2 
       #K_NUMPADEQUALS  = *3 *1
-      K_PREVTRACK = 187   # ^
-      K_AT = 219          # @
-      K_COLON = 186
-      K_UNDERLINE = 189   # _
+      #K_PREVTRACK
+      #K_AT
+      K_COLON = 'Colon'
+      K_UNDERLINE = 'IntlRo'   # _
       #K_KANJI 
       #K_STOP
       #K_AX
       #K_UNLABELED
       #K_NEXTTRACK
       #K_NUMPADENTER Enter *3
-      #K_RCONTROL  Ctrl
+      K_RCONTROL = 'ControlRight'
       #K_MUTE
       #K_CALCULATOR
       #K_PLAYPAUSE
@@ -121,12 +127,12 @@ module DXOpal
       #K_RMENU Alt
       #K_PAUSE = "Pause"
       #K_HOME "Home"
-      K_UP = 38
+      K_UP = 'ArrowUp'
       #K_PRIOR
-      K_LEFT = 37
-      K_RIGHT = 39
+      K_LEFT = 'ArrowLeft'
+      K_RIGHT = 'ArrowRight'
       #K_END = "End"
-      K_DOWN = 40
+      K_DOWN = 'ArrowDown'
       #K_NEXT
       #K_INSERT = "Insert"
       #K_DELETE = "Delete"
@@ -145,20 +151,20 @@ module DXOpal
       #K_MYCOMPUTER
       #K_MAIL
       #K_MEDIASELECT
-      K_BACKSPACE = 8
+      K_BACKSPACE = 'Backspace'
       #K_NUMPADSTAR  * *3
       #K_LALT  Alt
-      #K_CAPSLOCK  CapsLock
+      K_CAPSLOCK = 'CapsLock'
       #K_NUMPADMINUS - *3
       #K_NUMPADPLUS  + *3
       #K_NUMPADPERIOD  . *3
       #K_NUMPADSLASH / *3
       #K_RALT  Alt
-      K_UPARROW = 38
+      K_UPARROW = 'ArrowUp'
       #K_PGUP = "PageUp"
-      K_LEFTARROW = 37
-      K_RIGHTARROW = 39
-      K_DOWNARROW = 40
+      K_LEFTARROW = 'ArrowLeft'
+      K_RIGHTARROW = 'ArrowRight'
+      K_DOWNARROW = 'ArrowDown'
       #K_PGDN = "PageDown"
     end
   end

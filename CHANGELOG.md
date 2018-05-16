@@ -1,5 +1,13 @@
 ## v1.2.0 (not yet)
 
+- new: Support shift/ctrl key 
+- new: Added some opal stdlibs
+  - singleton
+  - delegate, forwardable
+  - promise
+  - set
+  - time
+  - ([Let me know](https://github.com/yhara/dxopal/issues/) if you need some more)
 - new: Sound#stop
 - fix: `z` for draw_xx did not work correctly
 

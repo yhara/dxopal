@@ -69,7 +69,7 @@ module DXOpal
     # (private) JS keydown event handler
     ON_KEYDOWN_ = %x{
       function(ev){
-        #{Input._pressing_keys}[ev.keyCode] = #{@@tick};
+        #{Input._pressing_keys}[ev.code] = #{@@tick};
         ev.preventDefault();
         ev.stopPropagation();
       }
@@ -77,7 +77,7 @@ module DXOpal
     # (private) JS keyup event handler
     ON_KEYUP_ = %x{
       function(ev){
-        #{Input._pressing_keys}[ev.keyCode] = -#{@@tick};
+        #{Input._pressing_keys}[ev.code] = -#{@@tick};
         ev.preventDefault();
         ev.stopPropagation();
       }
