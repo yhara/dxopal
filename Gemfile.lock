@@ -1,11 +1,3 @@
-PATH
-  remote: .
-  specs:
-    dxopal (1.2.0.dev)
-      opal (~> 0.11.0)
-      rack (~> 2.0)
-      thor (~> 0.19.1)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -30,7 +22,6 @@ GEM
     sprockets (3.7.1)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
-    thor (0.19.4)
     tilt (2.0.8)
     yard (0.9.12)
 
@@ -38,12 +29,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (~> 1.14)
-  dxopal!
-  opal-sprockets (~> 0.4.1)
-  puma (~> 3.11.2)
-  rake (~> 10.0)
-  yard (~> 0.9.12)
+  opal
+  opal-sprockets
+  puma
+  rake
+  yard
 
 BUNDLED WITH
    1.16.1

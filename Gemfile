@@ -1,2 +1,7 @@
 source 'https://rubygems.org'
-gemspec
+
+gem 'opal'
+gem 'opal-sprockets'
+gem 'rake'
+gem 'yard'
+gem 'puma'
