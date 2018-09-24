@@ -70,13 +70,18 @@ module DXOpal
       draw_ex(x, y, image, angle: angle, center_x: center_x, center_y: center_y)
     end
 
+    BLEND_TYPES = {
+      alpha: "source-over", # A over B (Default)
+      add:   "lighter"      # A + B
+    }
+
     def draw_ex(x, y, image, options={})
       scale_x = options[:scale_x] || 1
       scale_y = options[:scale_y] || 1
       center_x = options[:center_x] || image.width/2
       center_y = options[:center_y] || image.height/2 
-      # TODO: alpha
-      # TODO: blend
+      alpha = options[:alpha] || 255
+      blend = options[:blend] || :alpha
       angle = options[:angle] || 0
 
       cx = x + center_x
@@ -85,7 +90,11 @@ module DXOpal
         #{@ctx}.translate(cx, cy);
         #{@ctx}.rotate(angle * Math.PI / 180.0);
         #{@ctx}.scale(scale_x, scale_y);
+        #{@ctx}.save();
+        #{@ctx}.globalAlpha = alpha / 255;
+        #{@ctx}.globalCompositeOperation = #{BLEND_TYPES[blend]};
         #{@ctx}.drawImage(#{image.canvas}, x-cx, y-cy);
+        #{@ctx}.restore();
         #{@ctx}.setTransform(1, 0, 0, 1, 0, 0); // reset
       }
       return self

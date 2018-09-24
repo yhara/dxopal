@@ -53,6 +53,10 @@ module DXOpal
     attr_accessor :scale_x, :scale_y
     # Set rotation center (default: center of `image`)
     attr_accessor :center_x, :center_y
+    # Set alpha(0~255, default: nil)
+    attr_accessor :alpha
+    # Set blend type(default: :alpha)
+    attr_accessor :blend
 
     attr_reader :x, :y
 
@@ -88,6 +92,7 @@ module DXOpal
 
       Window.draw_ex(@x, @y, @image,
                      scale_x: @scale_x, scale_y: @scale_y,
+                     alpha: @alpha, blend: @blend,
                      angle: @angle, center_x: @center_x, center_y: @center_y)
     end
   end
