@@ -6,7 +6,7 @@
 <title>
   Class: DXOpal::RemoteResource
   
-    &mdash; Documentation by YARD 0.9.12
+    &mdash; Documentation by YARD 0.9.16
   
 </title>
 
@@ -119,11 +119,16 @@ must impelment `&lt;klass&gt;._load`.</p>
   <p class="children"><span class='object_link'><a href="Image.html" title="DXOpal::Image (class)">Image</a></span>, <span class='object_link'><a href="Sound.html" title="DXOpal::Sound (class)">Sound</a></span></p>
 </div>
 
-  <h2>Constant Summary</h2>
-  <dl class="constants">
-    
-      <dt id="resources-classvariable" class="">@@resources =
-        <div class="docstring">
+  
+    <h2>
+      Constant Summary
+      <small><a href="#" class="constants_summary_toggle">collapse</a></small>
+    </h2>
+
+    <dl class="constants">
+      
+        <dt id="resources-classvariable" class="">@@resources =
+          <div class="docstring">
   <div class="discussion">
     
 <p>List of registered resources (Contains path_or_url)</p>
@@ -135,11 +140,11 @@ must impelment `&lt;klass&gt;._load`.</p>
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>Hash</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_h'>h</span><span class='comma'>,</span><span class='id identifier rubyid_k'>k</span><span class='op'>|</span> <span class='id identifier rubyid_h'>h</span><span class='lbracket'>[</span><span class='id identifier rubyid_k'>k</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rbrace'>}</span></pre></dd>
-    
-      <dt id="promises-classvariable" class="">@@promises =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code"><span class='const'>Hash</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_h'>h</span><span class='comma'>,</span><span class='id identifier rubyid_k'>k</span><span class='op'>|</span> <span class='id identifier rubyid_h'>h</span><span class='lbracket'>[</span><span class='id identifier rubyid_k'>k</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rbrace'>}</span></pre></dd>
+      
+        <dt id="promises-classvariable" class="">@@promises =
+          <div class="docstring">
   <div class="discussion">
     
 <p>Contains promises</p>
@@ -151,11 +156,11 @@ must impelment `&lt;klass&gt;._load`.</p>
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>Hash</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_h'>h</span><span class='comma'>,</span><span class='id identifier rubyid_k'>k</span><span class='op'>|</span> <span class='id identifier rubyid_h'>h</span><span class='lbracket'>[</span><span class='id identifier rubyid_k'>k</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rbrace'>}</span></pre></dd>
-    
-      <dt id="instances-classvariable" class="">@@instances =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code"><span class='const'>Hash</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_h'>h</span><span class='comma'>,</span><span class='id identifier rubyid_k'>k</span><span class='op'>|</span> <span class='id identifier rubyid_h'>h</span><span class='lbracket'>[</span><span class='id identifier rubyid_k'>k</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rbrace'>}</span></pre></dd>
+      
+        <dt id="instances-classvariable" class="">@@instances =
+          <div class="docstring">
   <div class="discussion">
     
 <p>Contains instances of Image, Sound</p>
@@ -167,11 +172,11 @@ must impelment `&lt;klass&gt;._load`.</p>
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>Hash</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_h'>h</span><span class='comma'>,</span><span class='id identifier rubyid_k'>k</span><span class='op'>|</span> <span class='id identifier rubyid_h'>h</span><span class='lbracket'>[</span><span class='id identifier rubyid_k'>k</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rbrace'>}</span></pre></dd>
-    
-      <dt id="klasses-classvariable" class="">@@klasses =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code"><span class='const'>Hash</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_h'>h</span><span class='comma'>,</span><span class='id identifier rubyid_k'>k</span><span class='op'>|</span> <span class='id identifier rubyid_h'>h</span><span class='lbracket'>[</span><span class='id identifier rubyid_k'>k</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rbrace'>}</span></pre></dd>
+      
+        <dt id="klasses-classvariable" class="">@@klasses =
+          <div class="docstring">
   <div class="discussion">
     
 <p>Subclasses of RemoteResource</p>
@@ -183,10 +188,11 @@ must impelment `&lt;klass&gt;._load`.</p>
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='lbrace'>{</span><span class='rbrace'>}</span></pre></dd>
-    
-  </dl>
+        </dt>
+        <dd><pre class="code"><span class='lbrace'>{</span><span class='rbrace'>}</span></pre></dd>
+      
+    </dl>
+  
 
 
 
@@ -633,9 +639,9 @@ must impelment `&lt;klass&gt;._load`.</p>
 </div>
 
       <div id="footer">
-  Generated on Wed May 16 19:58:24 2018 by
+  Generated on Sat Sep 29 15:56:48 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.12 (ruby-2.4.2).
+  0.9.16 (ruby-2.5.1).
 </div>
 
     </div>

@@ -1,4 +1,4 @@
-## HEAD
+## v1.3.0 (2018-09-29)
 
 - new: [Support blend mode `:add`](https://github.com/yhara/dxopal/pull/11)
 - Update gems 

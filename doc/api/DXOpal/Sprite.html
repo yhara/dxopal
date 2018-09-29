@@ -6,7 +6,7 @@
 <title>
   Class: DXOpal::Sprite
   
-    &mdash; Documentation by YARD 0.9.12
+    &mdash; Documentation by YARD 0.9.16
   
 </title>
 
@@ -119,6 +119,33 @@
       <li class="public ">
   <span class="summary_signature">
     
+      <a href="#alpha-instance_method" title="#alpha (instance method)">#<strong>alpha</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Set alpha (0~255, default: nil).</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#angle-instance_method" title="#angle (instance method)">#<strong>angle</strong>  &#x21d2; Object </a>
     
 
@@ -138,6 +165,34 @@
   
     <span class="summary_desc"><div class='inline'>
 <p>Set angle (0~360, default: 0).</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#blend-instance_method" title="#blend (instance method)">#<strong>blend</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Set blend type (Any of :alpha(default), :add) (:none, :add2 and :sub are
+not implemented yet; Pull request is welcome).</p>
 </div></span>
   
 </li>
@@ -669,9 +724,52 @@
     <h2>Instance Attribute Details</h2>
     
       
-      <span id="angle=-instance_method"></span>
+      <span id="alpha=-instance_method"></span>
       <div class="method_details first">
-  <h3 class="signature first" id="angle-instance_method">
+  <h3 class="signature first" id="alpha-instance_method">
+  
+    #<strong>alpha</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Set alpha (0~255, default: nil)</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+57
+58
+59</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/dxopal/sprite.rb', line 57</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_alpha'>alpha</span>
+  <span class='ivar'>@alpha</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="angle=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="angle-instance_method">
   
     #<strong>angle</strong>  &#x21d2; <tt>Object</tt> 
   
@@ -705,6 +803,50 @@
 
 <span class='kw'>def</span> <span class='id identifier rubyid_angle'>angle</span>
   <span class='ivar'>@angle</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="blend=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="blend-instance_method">
+  
+    #<strong>blend</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Set blend type (Any of :alpha(default), :add) (:none, :add2 and :sub are
+not implemented yet; Pull request is welcome)</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+60
+61
+62</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/dxopal/sprite.rb', line 60</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_blend'>blend</span>
+  <span class='ivar'>@blend</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -954,12 +1096,12 @@
       <pre class="lines">
 
 
-57
-58
-59</pre>
+62
+63
+64</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/sprite.rb', line 57</span>
+      <pre class="code"><span class="info file"># File 'opal/dxopal/sprite.rb', line 62</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_x'>x</span>
   <span class='ivar'>@x</span>
@@ -997,12 +1139,12 @@
       <pre class="lines">
 
 
-57
-58
-59</pre>
+62
+63
+64</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/sprite.rb', line 57</span>
+      <pre class="code"><span class="info file"># File 'opal/dxopal/sprite.rb', line 62</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_y'>y</span>
   <span class='ivar'>@y</span>
@@ -1235,17 +1377,18 @@
       <pre class="lines">
 
 
-85
-86
-87
-88
-89
 90
 91
-92</pre>
+92
+93
+94
+95
+96
+97
+98</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/sprite.rb', line 85</span>
+      <pre class="code"><span class="info file"># File 'opal/dxopal/sprite.rb', line 90</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_draw'>draw</span>
   <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>image not set to Sprite</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='ivar'>@image</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
@@ -1253,6 +1396,7 @@
 
   <span class='const'><span class='object_link'><a href="Window.html" title="DXOpal::Window (module)">Window</a></span></span><span class='period'>.</span><span class='id identifier rubyid_draw_ex'><span class='object_link'><a href="Window.html#draw_ex-class_method" title="DXOpal::Window.draw_ex (method)">draw_ex</a></span></span><span class='lparen'>(</span><span class='ivar'>@x</span><span class='comma'>,</span> <span class='ivar'>@y</span><span class='comma'>,</span> <span class='ivar'>@image</span><span class='comma'>,</span>
                  <span class='label'>scale_x:</span> <span class='ivar'>@scale_x</span><span class='comma'>,</span> <span class='label'>scale_y:</span> <span class='ivar'>@scale_y</span><span class='comma'>,</span>
+                 <span class='label'>alpha:</span> <span class='ivar'>@alpha</span><span class='comma'>,</span> <span class='label'>blend:</span> <span class='ivar'>@blend</span><span class='comma'>,</span>
                  <span class='label'>angle:</span> <span class='ivar'>@angle</span><span class='comma'>,</span> <span class='label'>center_x:</span> <span class='ivar'>@center_x</span><span class='comma'>,</span> <span class='label'>center_y:</span> <span class='ivar'>@center_y</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -1275,10 +1419,10 @@
       <pre class="lines">
 
 
-69</pre>
+74</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/sprite.rb', line 69</span>
+      <pre class="code"><span class="info file"># File 'opal/dxopal/sprite.rb', line 74</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_image'>image</span><span class='semicolon'>;</span> <span class='ivar'>@image</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -1301,19 +1445,19 @@
       <pre class="lines">
 
 
-70
-71
-72
-73
-74
 75
 76
 77
 78
-79</pre>
+79
+80
+81
+82
+83
+84</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/sprite.rb', line 70</span>
+      <pre class="code"><span class="info file"># File 'opal/dxopal/sprite.rb', line 75</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_image='>image=</span><span class='lparen'>(</span><span class='id identifier rubyid_img'>img</span><span class='rparen'>)</span>
   <span class='ivar'>@image</span> <span class='op'>=</span> <span class='id identifier rubyid_img'>img</span>
@@ -1345,10 +1489,10 @@
       <pre class="lines">
 
 
-81</pre>
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/sprite.rb', line 81</span>
+      <pre class="code"><span class="info file"># File 'opal/dxopal/sprite.rb', line 86</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_vanish'>vanish</span><span class='semicolon'>;</span> <span class='ivar'>@vanished</span> <span class='op'>=</span> <span class='kw'>true</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -1393,10 +1537,10 @@
       <pre class="lines">
 
 
-82</pre>
+87</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/sprite.rb', line 82</span>
+      <pre class="code"><span class="info file"># File 'opal/dxopal/sprite.rb', line 87</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_vanished?'>vanished?</span><span class='semicolon'>;</span> <span class='ivar'>@vanished</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -1409,9 +1553,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed May 16 19:58:24 2018 by
+  Generated on Sat Sep 29 15:56:48 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.12 (ruby-2.4.2).
+  0.9.16 (ruby-2.5.1).
 </div>
 
     </div>

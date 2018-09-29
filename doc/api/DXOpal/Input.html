@@ -6,7 +6,7 @@
 <title>
   Module: DXOpal::Input
   
-    &mdash; Documentation by YARD 0.9.12
+    &mdash; Documentation by YARD 0.9.16
   
 </title>
 
@@ -94,11 +94,16 @@
   
 </p>
 
-  <h2>Constant Summary</h2>
-  <dl class="constants">
-    
-      <dt id="ON_KEYDOWN_-constant" class="">ON_KEYDOWN_ =
-        <div class="docstring">
+  
+    <h2>
+      Constant Summary
+      <small><a href="#" class="constants_summary_toggle">collapse</a></small>
+    </h2>
+
+    <dl class="constants">
+      
+        <dt id="ON_KEYDOWN_-constant" class="">ON_KEYDOWN_ =
+          <div class="docstring">
   <div class="discussion">
     
 <p>(private) JS keydown event handler</p>
@@ -110,17 +115,17 @@
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='backtick'>%x{</span><span class='tstring_content'>
+        </dt>
+        <dd><pre class="code"><span class='backtick'>%x{</span><span class='tstring_content'>
   function(ev){
     </span><span class='embexpr_beg'>#{</span><span class='const'>Input</span><span class='period'>.</span><span class='id identifier rubyid__pressing_keys'><span class='object_link'><a href="#_pressing_keys-class_method" title="DXOpal::Input._pressing_keys (method)">_pressing_keys</a></span></span><span class='embexpr_end'>}</span><span class='tstring_content'>[ev.code] = </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@tick</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
     ev.preventDefault();
     ev.stopPropagation();
   }
 </span><span class='tstring_end'>}</span></span></pre></dd>
-    
-      <dt id="ON_KEYUP_-constant" class="">ON_KEYUP_ =
-        <div class="docstring">
+      
+        <dt id="ON_KEYUP_-constant" class="">ON_KEYUP_ =
+          <div class="docstring">
   <div class="discussion">
     
 <p>(private) JS keyup event handler</p>
@@ -132,16 +137,17 @@
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='backtick'>%x{</span><span class='tstring_content'>
+        </dt>
+        <dd><pre class="code"><span class='backtick'>%x{</span><span class='tstring_content'>
   function(ev){
     </span><span class='embexpr_beg'>#{</span><span class='const'>Input</span><span class='period'>.</span><span class='id identifier rubyid__pressing_keys'><span class='object_link'><a href="#_pressing_keys-class_method" title="DXOpal::Input._pressing_keys (method)">_pressing_keys</a></span></span><span class='embexpr_end'>}</span><span class='tstring_content'>[ev.code] = -</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@tick</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
     ev.preventDefault();
     ev.stopPropagation();
   }
 </span><span class='tstring_end'>}</span></span></pre></dd>
-    
-  </dl>
+      
+    </dl>
+  
 
 
 
@@ -1376,9 +1382,9 @@ canvas are processed by DXOpal.</p>
 </div>
 
       <div id="footer">
-  Generated on Wed May 16 19:58:23 2018 by
+  Generated on Sat Sep 29 15:56:47 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.12 (ruby-2.4.2).
+  0.9.16 (ruby-2.5.1).
 </div>
 
     </div>
