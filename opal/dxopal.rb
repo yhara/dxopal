@@ -15,17 +15,6 @@ require 'dxopal/version'
 # without even install Ruby)
 require 'opal-parser'
 
-# Patch to opal-parser
-def require_remote(url)
-  %x{
-    var r = new XMLHttpRequest();
-    r.overrideMimeType("text/plain"); // Patch for Firefox + file://
-    r.open("GET", url, false);
-    r.send('');
-  }
-  eval `r.responseText`
-end
-
 # These opal stdlibs will be embedded in dxopal.js.
 require 'singleton'
 require 'delegate'
@@ -34,6 +23,9 @@ require 'pp'
 require 'promise'
 require 'set'
 require 'time'
+
+# Patches
+require 'dxopal/patches/require_remote'
 
 module DXOpal
   include DXOpal::Constants::Colors
