@@ -5,7 +5,7 @@ Window.load_resources do
   box.physical_body = [:rectangle, 100, 100, `{restitution: 0.9}`]
   box2 = Sprite.new(250, 200, Image.new(30, 30, C_GREEN))
   box2.angle = 30
-  box2.physical_body = [:rectangle, 30, 30, `{density: 0.0001, restitution: 0.99}`]
+  box2.physical_body = [:rectangle, 30, 30, `{density: 0.0002, restitution: 0.99}`]
 
   floor = Sprite.new(0, Window.height, Image.new(Window.width, 10, C_WHITE))
   floor.physical_body = [:rectangle, Window.width, 10, `{isStatic: true}`]
