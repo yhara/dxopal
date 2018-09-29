@@ -1,3 +1,8 @@
+## HEAD
+
+- [Support blend mode `:add`](https://github.com/yhara/dxopal/pull/11)
+- Update gems 
+
 ## v1.2.0 (2018-05-16)
 
 - new: Support shift/ctrl key 

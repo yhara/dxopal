@@ -57,7 +57,7 @@ end
 
 # How to make a release
 # 0. Edit opal/dxopal/version.rb
-# 1. Edit CHANGELOG.md
+# 1. Add release date in CHANGELOG.md
 # 2. `rake release:make_release_commit`
 # 3. Test
 #   - Open starter-kit/index.html in Firefox

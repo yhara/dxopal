@@ -53,9 +53,10 @@ module DXOpal
     attr_accessor :scale_x, :scale_y
     # Set rotation center (default: center of `image`)
     attr_accessor :center_x, :center_y
-    # Set alpha(0~255, default: nil)
+    # Set alpha (0~255, default: nil)
     attr_accessor :alpha
-    # Set blend type(default: :alpha)
+    # Set blend type (Any of :alpha(default), :add)
+    # (:none, :add2 and :sub are not implemented yet; Pull request is welcome)
     attr_accessor :blend
 
     attr_reader :x, :y

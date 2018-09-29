@@ -1,5 +1,9 @@
 # Compatibility to DXRuby 
 
+DXOpal has many of the DXRuby methods but some are not implemented yet. Pull Requests are welcome!
+
+And if you are not sure how to implement, just create a issue to request them: https://github.com/yhara/dxopal/issues
+
 ## module Input
 
 - [ ] x - TODO: pad support
@@ -243,20 +247,20 @@ These methods will not be supported.
 - [x] y=
 - [x] z
 - [x] z=
-- [ ] angle
-- [ ] angle=
-- [ ] scale_x
-- [ ] scale_x=
-- [ ] scale_y
-- [ ] scale_y=
-- [ ] center_x
-- [ ] center_x=
-- [ ] center_y
-- [ ] center_y=
-- [ ] alpha
-- [ ] alpha=
-- [ ] blend
-- [ ] blend=
+- [x] angle
+- [x] angle=
+- [x] scale_x
+- [x] scale_x=
+- [x] scale_y
+- [x] scale_y=
+- [x] center_x
+- [x] center_x=
+- [x] center_y
+- [x] center_y=
+- [x] alpha
+- [x] alpha=
+- [x] blend
+- [ ] blend= (TODO: :none, :add2, :sub)
 - [ ] shader
 - [ ] shader=
 - [x] image
@@ -267,8 +271,8 @@ These methods will not be supported.
 - [x] collision=
 - [x] collision_enable
 - [x] collision_enable=
-- [ ] collision_sync
-- [ ] collision_sync=
+- [x] collision_sync
+- [x] collision_sync=
 - [x] visible
 - [x] visible=
 - [x] vanish

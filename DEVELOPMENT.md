@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-- Ruby (tested with 2.3.3)
+- Ruby (tested with 2.5.1)
 - Node.js (to minify .js)
 
 ## Setup
