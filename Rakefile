@@ -41,7 +41,6 @@ namespace "release" do
 
   desc "Release gem"
   task :push_gem do
-    sh "gem build dxopal.gemspec"
     sh "gem push dxopal-#{DXOpal::VERSION}.gem"
   end
 
