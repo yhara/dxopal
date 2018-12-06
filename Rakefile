@@ -47,9 +47,13 @@ namespace "release" do
   desc "Release starter kit"
   task :release_kit do
     cd "starter-kit" do
-      sh "git ci dxopal.min.js -m 'v#{DXOpal::VERSION}'"
-      sh "git tag 'v#{DXOpal::VERSION}'"
-      sh "git push origin master --tags"
+      sh "git status"
+      print "ok? [y/n] "
+      if $stdin.gets.chomp == "y"
+        sh "git ci dxopal.min.js -m 'v#{DXOpal::VERSION}'"
+        sh "git tag 'v#{DXOpal::VERSION}'"
+        sh "git push origin master --tags"
+      end
     end
   end
 end
