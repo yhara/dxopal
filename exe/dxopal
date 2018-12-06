@@ -2,7 +2,7 @@
 require 'fileutils'
 require 'rack'
 require 'thor'
-require_relative '../opal/dxopal/version' # Import DXOpal::VERSION
+require_relative '../lib/dxopal/version' # Import DXOpal::VERSION
 
 module DXOpal
   class Cli < Thor
