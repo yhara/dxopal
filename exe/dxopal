@@ -8,6 +8,18 @@ module DXOpal
   class Cli < Thor
     GEM_ROOT = "#{__dir__}/../"
 
+    desc "new APP_PATH", "Create a DXOpal project"
+    def new(app_path)
+      if File.exist?(app_path)
+        puts "Already exists: #{app_path}"
+        return
+      end
+      FileUtils.mkdir_p(app_path)
+      Dir.chdir(app_path) do
+        init
+      end
+    end
+
     desc "init", "Copy template files into this directory" 
     def init
       FileUtils.cp("#{GEM_ROOT}/template/index.html", Dir.pwd)
