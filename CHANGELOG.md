@@ -1,3 +1,8 @@
+## HEAD
+
+- new: `dxopal new APP_PATH` (#14)
+- internal: Moved ./opal to ./lib (#15)
+
 ## v1.3.0 (2018-09-29)
 
 - new: [Support blend mode `:add`](https://github.com/yhara/dxopal/pull/11)
