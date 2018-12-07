@@ -1,5 +1,6 @@
 ## HEAD
 
+- fix: `Window.draw_box(C_WHITE)` draws a gray rectangle (#16)
 - new: `dxopal new APP_PATH` (#14)
 - internal: Moved ./opal to ./lib (#15)
 

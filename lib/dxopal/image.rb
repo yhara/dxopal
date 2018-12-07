@@ -153,8 +153,8 @@ module DXOpal
       %x{
         ctx.beginPath();
         ctx.strokeStyle = #{_rgba(color)};
-        ctx.moveTo(x1, y1); 
-        ctx.lineTo(x2, y2); 
+        ctx.moveTo(x1+0.5, y1+0.5); 
+        ctx.lineTo(x2+0.5, y2+0.5); 
         ctx.stroke(); 
       }
       return self
@@ -166,7 +166,7 @@ module DXOpal
       %x{
         ctx.beginPath();
         ctx.strokeStyle = #{_rgba(color)};
-        ctx.rect(x1, y1, x2-x1+1, y2-y1+1); 
+        ctx.rect(x1+0.5, y1+0.5, x2-x1, y2-y1); 
         ctx.stroke(); 
       }
       return self
@@ -178,7 +178,7 @@ module DXOpal
       %x{
         ctx.beginPath();
         ctx.fillStyle = #{_rgba(color)};
-        ctx.fillRect(x1, y1, x2-x1+1, y2-y1+1); 
+        ctx.fillRect(x1, y1, x2-x1, y2-y1); 
       }
       return self
     end
@@ -189,7 +189,7 @@ module DXOpal
       %x{
         ctx.beginPath();
         ctx.strokeStyle = #{_rgba(color)};
-        ctx.arc(x, y, r, 0, Math.PI*2, false)
+        ctx.arc(x+0.5, y+0.5, r, 0, Math.PI*2, false)
         ctx.stroke();
       }
       return self
@@ -213,10 +213,10 @@ module DXOpal
       %x{
         ctx.beginPath();
         ctx.strokeStyle = #{_rgba(color)};
-        ctx.moveTo(x1, y1);
-        ctx.lineTo(x2, y2);
-        ctx.lineTo(x3, y3);
-        ctx.lineTo(x1, y1);
+        ctx.moveTo(x1+0.5, y1+0.5);
+        ctx.lineTo(x2+0.5, y2+0.5);
+        ctx.lineTo(x3+0.5, y3+0.5);
+        ctx.lineTo(x1+0.5, y1+0.5);
         ctx.stroke();
       }
       return self
