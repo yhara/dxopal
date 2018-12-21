@@ -2,11 +2,23 @@
 require 'fileutils'
 require 'rack'
 require 'thor'
-require_relative '../opal/dxopal/version' # Import DXOpal::VERSION
+require_relative '../lib/dxopal/version' # Import DXOpal::VERSION
 
 module DXOpal
   class Cli < Thor
     GEM_ROOT = "#{__dir__}/../"
+
+    desc "new APP_PATH", "Create a DXOpal project"
+    def new(app_path)
+      if File.exist?(app_path)
+        puts "Already exists: #{app_path}"
+        return
+      end
+      FileUtils.mkdir_p(app_path)
+      Dir.chdir(app_path) do
+        init
+      end
+    end
 
     desc "init", "Copy template files into this directory" 
     def init

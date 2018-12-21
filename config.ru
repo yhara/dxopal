@@ -3,8 +3,8 @@ require 'tempfile'
 require 'opal/sprockets'
 
 opal_server = Opal::Server.new{|s|
-  # Let javascript_include_tag to serve compiled version of opal/dxopal.rb
-  s.append_path 'opal'
+  # Let javascript_include_tag to serve compiled version of lib/dxopal.rb
+  s.append_path 'lib'
   s.main = 'dxopal.rb'
   # Serve static files
   s.public_root = __dir__
