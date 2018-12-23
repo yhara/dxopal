@@ -28,6 +28,37 @@ module DXOpal
       return img, img_promise
     end
 
+    attr_accessor :promise, :loaded
+    def loaded?; loaded; end
+
+    def self.load(path_or_url)
+      return new(1, 1).load(path_or_url)
+    end
+
+    def load(path_or_url)
+      raw_img = `new Image()`
+      @promise = %x{
+        new Promise(function(resolve, reject) {
+          raw_img.onload = function() {
+            self.$_resize(raw_img.width, raw_img.height);
+            self.$_draw_raw_image(0, 0, raw_img);
+            self.loaded = #{true};
+            resolve();
+          };
+          raw_img.src = path_or_url;
+        });
+      }
+      return self
+    end
+
+    def onload(&block)
+      %x{
+        #{@promise}.then(function(response){
+          #{block.call()}
+        });
+      }
+    end
+
     # Create an instance of Image
     def initialize(width, height, color=C_DEFAULT, canvas: nil)
       @width, @height = width, height
