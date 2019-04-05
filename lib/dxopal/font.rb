@@ -14,6 +14,11 @@ module DXOpal
     def size; @size; end
     def fontname; @orig_fontname; end
 
+    def get_width(string)
+      canvas = Native(`document.getElementById('dxopal-canvas')`)
+      canvas.getContext('2d').measureText(string).width
+    end
+
     # Return a string like "48px serif"
     def _spec_str
       "#{@size}px #{@fontname}"
