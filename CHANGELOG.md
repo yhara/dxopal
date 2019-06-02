@@ -1,3 +1,7 @@
+## v1.4.1 (2019-06-02)
+
+- fix: `LoadError: cannot load such file -- dxopal` (#19)
+
 ## v1.4.0 (2019-06-02)
 
 - new: `dxopal new APP_PATH` (#14)

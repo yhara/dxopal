@@ -26,6 +26,7 @@ require 'time'
 
 # Patches
 require 'dxopal/patches/require_remote'
+require 'dxopal/patches/require_dxopal'
 
 module DXOpal
   include DXOpal::Constants::Colors
