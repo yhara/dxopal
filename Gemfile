@@ -6,4 +6,4 @@ gem 'rake'
 gem 'yard'
 gem 'puma'
 
-#gem 'dxopal', path: '.'
+gem 'dxopal', path: '.'
