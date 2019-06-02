@@ -13,10 +13,12 @@ file "build/dxopal.min.js" => "build/dxopal.js" do |t|
   sh "uglifyjs #{t.source} -o #{t.name}"
 end
 
-file "build/dxopal.js" => Dir["opal/**/*.rb"] do |t|
+file "build/dxopal.js" => Dir["lib/**/*.rb"] do |t|
+  puts "Building #{t.name}..."
   Opal.append_path("lib")
   js = Opal::Builder.build("dxopal.rb").to_s
   File.write(t.name, js)
+  puts "Wrote #{t.name}"
 end
 
 desc "Rebuild API reference"
