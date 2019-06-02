@@ -1,7 +1,7 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require_relative 'opal/dxopal/version.rb'
+require_relative 'lib/dxopal/version.rb'
 
 Gem::Specification.new do |spec|
   spec.name          = "dxopal"

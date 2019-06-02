@@ -1,5 +1,5 @@
 require 'opal'
-require_relative 'opal/dxopal/version'
+require_relative 'lib/dxopal/version'
 
 desc "Build dxopal.js"
 task :build => ["build/dxopal.js"]
@@ -14,7 +14,7 @@ file "build/dxopal.min.js" => "build/dxopal.js" do |t|
 end
 
 file "build/dxopal.js" => Dir["opal/**/*.rb"] do |t|
-  Opal.append_path("opal")
+  Opal.append_path("lib")
   js = Opal::Builder.build("dxopal.rb").to_s
   File.write(t.name, js)
 end
