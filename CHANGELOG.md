@@ -1,7 +1,9 @@
-## HEAD
+## v1.4.0 (2019-06-02)
 
-- fix: `Window.draw_box(C_WHITE)` draws a gray rectangle (#16)
 - new: `dxopal new APP_PATH` (#14)
+- new: `Image.load` (#17)
+- new: `Font.get_width` (#18)
+- fix: `Window.draw_box(C_WHITE)` draws a gray rectangle (#16)
 - chores: Update Opal to 1.0.0
 - internal: Moved ./opal to ./lib (#15)
 

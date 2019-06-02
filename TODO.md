@@ -135,7 +135,7 @@ These methods will not be supported.
 - [ ] Font.new - partially
 - [x] Font.default
 - [x] Font.default=
-- [ ] get_width
+- [x] get_width
 - [x] size
 - [x] fontname
 - [ ] name
@@ -153,6 +153,7 @@ These methods will not be supported.
 ## class Image
 
 - [x] Image.new
+- [x] Image.load
 - [ ] Image.load_tiles
 - [ ] Image.create_from_array
 - [ ] Image.load_from_file_in_memory
@@ -190,7 +191,6 @@ These methods will not be supported.
 
 These methods will not be supported.
 
-- Image.load (use Image.register and `Image.[]` instead)
 - dispose
 - delayed_dispose
 - disposed?
