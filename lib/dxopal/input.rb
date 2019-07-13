@@ -17,12 +17,15 @@ module DXOpal
       @@pressing_keys = `new Object()`
       @@mouse_info = `{x: 0, y: 0}`
       @@pressing_mouse_buttons = `new Object()`
+      @@touch_info = `{x: 0, y: 0}`
+      @@pressing_touch = `new Object()`
 
       rect = `canvas.getBoundingClientRect()`
       @@canvas_x = `rect.left + window.pageXOffset`
       @@canvas_y = `rect.top  + window.pageYOffset`
 
       self._init_mouse_events
+      self._init_touch_events
       self.keyevent_target = `window` unless Input.keyevent_target
     end
     
@@ -165,6 +168,58 @@ module DXOpal
     # Return true if the mouse button is released in the last tick
     def self.mouse_release?(mouse_code)
       return `#{@@pressing_mouse_buttons}[mouse_code] == -(#{@@tick}-1)`
+    end
+
+    #
+    # Touch
+    #
+
+    # (internal) initialize touch events
+    def self._init_touch_events
+      %x{
+        document.addEventListener('touchmove', function(ev){
+          #{@@touch_info}.x = ev.changedTouches[0].pageX - #{@@canvas_x};
+          #{@@touch_info}.y = ev.changedTouches[0].pageY - #{@@canvas_y};
+        });
+        document.addEventListener('touchstart', function(ev){
+          #{@@touch_info}.x = ev.changedTouches[0].pageX - #{@@canvas_x};
+          #{@@touch_info}.y = ev.changedTouches[0].pageY - #{@@canvas_y};
+          #{@@pressing_touch}[0] = #{@@tick};
+        });
+        document.addEventListener('touchend', function(ev){
+          #{@@touch_info}.x = ev.changedTouches[0].pageX - #{@@canvas_x};
+          #{@@touch_info}.y = ev.changedTouches[0].pageY - #{@@canvas_y};
+          #{@@pressing_touch}[0] = -#{@@tick};
+        });
+      }
+    end
+
+    # Return position of touch
+    # (0, 0) is the top-left corner of the canvas
+    def self.touch_x
+      return `#{@@touch_info}.x`
+    end
+    def self.touch_y
+      return `#{@@touch_info}.y`
+    end
+    class << self
+      alias touch_pos_x touch_x
+      alias touch_pos_y touch_y
+    end
+
+    # Return true if the touch is being pressed
+    def self.touch_down?
+      return `#{@@pressing_touch}[0] > 0`
+    end
+
+    # Return true if the touch is pressed in the last tick
+    def self.touch_push?
+      return `#{@@pressing_touch}[0] == -(#{@@tick}-1)`
+    end
+
+    # Return true if the touch is released in the last tick
+    def self.touch_release?
+      return `#{@@pressing_touch}[0] == -(#{@@tick}-1)`
     end
   end
 end
