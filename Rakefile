@@ -42,13 +42,13 @@ task :release do
   sh "git push origin master --tags"
   sh "gem push dxopal-#{DXOpal::VERSION}.gem"
 
-  cd "starter-kit" do
-    sh "git status"
-    print "ok? [y/n] "
-    if $stdin.gets.chomp == "y"
-      sh "git ci dxopal.min.js -m 'v#{DXOpal::VERSION}'"
-      sh "git tag 'v#{DXOpal::VERSION}'"
-      sh "git push origin master --tags"
-    end
-  end
+  #cd "starter-kit" do
+  #  sh "git status"
+  #  print "ok? [y/n] "
+  #  if $stdin.gets.chomp == "y"
+  #    sh "git ci dxopal.min.js -m 'v#{DXOpal::VERSION}'"
+  #    sh "git tag 'v#{DXOpal::VERSION}'"
+  #    sh "git push origin master --tags"
+  #  end
+  #end
 end
