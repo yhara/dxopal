@@ -37,9 +37,9 @@ module DXOpal
     def self._load_resources(&block)
       @@resources.each do |klass_name, items|
         klass = @@klasses[klass_name] 
-        items.each do |name, (block, args)|
+        items.each do |name, (block2, args)|
           if !@@promises[klass_name][name]
-            instance, promise = klass._load(*args, &block) 
+            instance, promise = klass._load(*args, &block2)
             @@instances[klass_name][name] = instance
             @@promises[klass_name][name] = promise
           end
