@@ -1,8 +1,12 @@
-## v1.4.1 (2019-06-02)
+## HEAD
 
+- change: starter-kit is discontinued
+- feat: Touch events (experimental) (#21)
+- feat: Added some more keycodes
 - fix: `LoadError: cannot load such file -- dxopal` (#19)
+- fix: Resource loading does not work on v1.4.0 (#20)
 
-## v1.4.0 (2019-06-02)
+## v1.4.0 (2019-06-02/yanked: see #20)
 
 - new: `dxopal new APP_PATH` (#14)
 - new: `Image.load` (#17)
