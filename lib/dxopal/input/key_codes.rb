@@ -3,9 +3,7 @@ module DXOpal
     # List of key codes (event.code)
     # https://developer.mozilla.org/ja/docs/Web/API/KeyboardEvent
     module KeyCodes
-      # TODO: add more keycodes (pull request welcome)
-      # especially keypads and us-keyboards
-
+      # TODO: add event.code for those commented out (pull request welcome)
       K_ESCAPE = 'Escape'
       K_1 = 'Digit1'
       K_2 = 'Digit2'
@@ -47,7 +45,7 @@ module DXOpal
       K_L = 'KeyL'
       K_SEMICOLON = 'Semicolon'
       K_APOSTROPHE = 'Quote'  # '
-      #K_GRAVE = "`"
+      K_GRAVE = "Backquote"   # `
       K_LSHIFT = 'ShiftLeft'
       K_BACKSLASH = 'BackSlash'  # Note: different to K_YEN
       K_Z = 'KeyZ'
@@ -61,45 +59,45 @@ module DXOpal
       K_PERIOD = 'Period'
       K_SLASH = 'Slash'
       K_RSHIFT = 'ShiftRight'
-      #K_MULTIPLY = "*"
+      K_MULTIPLY = "NumpadMultiply"
       #K_LMENU Alt
       K_SPACE = 'Space'
       #K_CAPITAL
-      K_F1 = 112
-      K_F2 = 113
-      K_F3 = 114
-      K_F4 = 115
-      K_F5 = 116
-      K_F6 = 117
-      K_F7 = 118
-      K_F8 = 119
-      K_F9 = 120
-      K_F10 = 121
-      #K_NUMLOCK = "NumLock"
-      #K_SCROLL = "ScrollLock"
-      #K_NUMPAD7 7 *3
-      #K_NUMPAD8 8 *3
-      #K_NUMPAD9 9 *3
-      #K_SUBTRACT  - *3
-      #K_NUMPAD4 4 *3
-      #K_NUMPAD5 5 *3
-      #K_NUMPAD6 6 *3
-      #K_ADD + *3
-      #K_NUMPAD1 1 *3
-      #K_NUMPAD2 2 *3
-      #K_NUMPAD3 3 *3
-      #K_NUMPAD0 0 *3
-      #K_DECIMAL . *3
+      K_F1  = "F1"
+      K_F2  = "F2"
+      K_F3  = "F3"
+      K_F4  = "F4"
+      K_F5  = "F5"
+      K_F6  = "F6"
+      K_F7  = "F7"
+      K_F8  = "F8"
+      K_F9  = "F9"
+      K_F10 = "F10"
+      K_NUMLOCK = "NumLock"
+      K_SCROLL = "ScrollLock"
+      K_NUMPAD7 = "Numpad7"
+      K_NUMPAD8 = "Numpad8"
+      K_NUMPAD9 = "Numpad9"
+      K_SUBTRACT = "NumpadSubtract"
+      K_NUMPAD4 = "Numpad4"
+      K_NUMPAD5 = "Numpad5"
+      K_NUMPAD6 = "Numpad6"
+      K_ADD = "NumpadAdd"
+      K_NUMPAD1 = "Numpad1"
+      K_NUMPAD2 = "Numpad2"
+      K_NUMPAD3 = "Numpad3"
+      K_NUMPAD0 = "Numpad0"
+      K_DECIMAL = "NumpadDecimal"
       #K_OEM_102 
-      K_F11 = 122
-      K_F12 = 123
-      K_F13 = 124
-      K_F14 = 125
-      K_F15 = 126
-      #K_KANA 
+      K_F11 = "F11"
+      K_F12 = "F12"
+      K_F13 = "F13"
+      K_F14 = "F14"
+      K_F15 = "F15"
+      K_KANA = "KanaMode"
       #K_ABNT_C1 
-      #K_CONVERT 
-      #K_NOCONVERT
+      K_CONVERT = "Convert"
+      K_NOCONVERT = "NonConvert"
       K_YEN = 'IntlYen'
       #K_ABNT_C2 
       #K_NUMPADEQUALS  = *3 *1
@@ -112,60 +110,60 @@ module DXOpal
       #K_AX
       #K_UNLABELED
       #K_NEXTTRACK
-      #K_NUMPADENTER Enter *3
+      K_NUMPADENTER = "NumpadEnter"
       K_RCONTROL = 'ControlRight'
-      #K_MUTE
+      K_MUTE = "VolumeMute"
       #K_CALCULATOR
       #K_PLAYPAUSE
       #K_MEDIASTOP
-      #K_VOLUMEDOWN
-      #K_VOLUMEUP
-      #K_WEBHOME
+      K_VOLUMEDOWN = "VolumeDown"
+      K_VOLUMEUP = "VolumeUp"
+      K_WEBHOME = "BrowserHome"
       #K_NUMPADCOMMA , *3 *1
-      #K_DIVIDE  / *3
+      K_DIVIDE = "NumpadDivide"
       #K_SYSRQ
       #K_RMENU Alt
-      #K_PAUSE = "Pause"
-      #K_HOME "Home"
+      K_PAUSE = "Pause"
+      K_HOME = "Home"
       K_UP = 'ArrowUp'
       #K_PRIOR
       K_LEFT = 'ArrowLeft'
       K_RIGHT = 'ArrowRight'
-      #K_END = "End"
+      K_END = "End"
       K_DOWN = 'ArrowDown'
       #K_NEXT
-      #K_INSERT = "Insert"
-      #K_DELETE = "Delete"
-      #K_LWIN  Windows
-      #K_RWIN  Windows
+      K_INSERT = "Insert"
+      K_DELETE = "Delete"
+      #K_LWIN
+      #K_RWIN
       #K_APPS
       #K_POWER
       #K_SLEEP
       #K_WAKE
-      #K_WEBSEARCH
-      #K_WEBFAVORITES
-      #K_WEBREFRESH
-      #K_WEBSTOP
-      #K_WEBFORWARD
-      #K_WEBBACK
+      K_WEBSEARCH = "BrowserSearch"
+      K_WEBFAVORITES = "BrowserFavorites"
+      K_WEBREFRESH = "BrowserRefresh"
+      K_WEBSTOP = "BrowserStop"
+      K_WEBFORWARD = "BrowserForward"
+      K_WEBBACK = "BrowserBack"
       #K_MYCOMPUTER
       #K_MAIL
       #K_MEDIASELECT
       K_BACKSPACE = 'Backspace'
-      #K_NUMPADSTAR  * *3
-      #K_LALT  Alt
+      K_NUMPADSTAR = "NumpadMultiply"
+      K_LALT = "AltLeft"
       K_CAPSLOCK = 'CapsLock'
-      #K_NUMPADMINUS - *3
-      #K_NUMPADPLUS  + *3
-      #K_NUMPADPERIOD  . *3
-      #K_NUMPADSLASH / *3
-      #K_RALT  Alt
+      K_NUMPADMINUS = "NumpadSubtract"
+      K_NUMPADPLUS = "NumpadAdd"
+      K_NUMPADPERIOD = "NumpadDecimal"
+      K_NUMPADSLASH = "NumpadDivide"
+      K_RALT = "AltRight"
       K_UPARROW = 'ArrowUp'
-      #K_PGUP = "PageUp"
+      K_PGUP = "PageUp"
       K_LEFTARROW = 'ArrowLeft'
       K_RIGHTARROW = 'ArrowRight'
       K_DOWNARROW = 'ArrowDown'
-      #K_PGDN = "PageDown"
+      K_PGDN = "PageDown"
     end
   end
 end
