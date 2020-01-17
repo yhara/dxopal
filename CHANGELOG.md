@@ -1,4 +1,4 @@
-## HEAD
+## v1.4.1 (2020-01-18)
 
 - change: starter-kit is discontinued
 - feat: Touch events (experimental) (#21)
