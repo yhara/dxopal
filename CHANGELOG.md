@@ -1,3 +1,7 @@
+## HEAD
+
+- feat: Maximize Window by setting nil to .width, .height
+
 ## v1.4.2 (2020-01-18)
 
 - fix: Downgrade opal to 0.11 (#25)

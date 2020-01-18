@@ -47,7 +47,7 @@ module DXOpal
 
     # (internal) call @@block periodically
     def self._loop(time=0)
-      @@img ||= _init(@@width, @@height)
+      @@img ||= _init
       t0 = Time.now
 
       # Calculate fps
@@ -97,11 +97,12 @@ module DXOpal
       `window`.JS.requestAnimationFrame{|time| _loop(time) }
     end
 
-    def self._init(w, h)
+    def self._init
       canvas = `document.getElementById("dxopal-canvas")`
-      `canvas.width = w`
-      `canvas.height = h`
-      img = Image.new(w, h, canvas: canvas)
+      # If user did not change Window.width/Window.height, set the canvas size here
+      self.width = @@width
+      self.height = @@height
+      img = Image.new(self.width, self.height, canvas: canvas)
       Input._init(canvas)
       return img
     end
@@ -113,9 +114,23 @@ module DXOpal
     def self.fps=(w); @@fps = w; end
     def self.real_fps; @@real_fps; end
     def self.width; @@width; end
-    def self.width=(w); @@width = w; end
+    # Set window width and resize the canvas
+    # Set `nil` to maximize canvas
+    def self.width=(w)
+      canvas = `document.getElementById("dxopal-canvas")`
+      @@width = w || `window.innerWidth`
+      `canvas.width = #{@@width}`
+      `canvas.style.width = #{@@width}`
+    end
     def self.height; @@height; end
-    def self.height=(h); @@height = h; end
+    # Set window height and resize the canvas
+    # Set `nil` to maximize canvas
+    def self.height=(h)
+      canvas = `document.getElementById("dxopal-canvas")`
+      @@height = h || `window.innerHeight`
+      `canvas.height = #{@@height}`
+      `canvas.style.height = #{@@height}`
+    end
     @@bgcolor = Constants::Colors::C_BLACK
     def self.bgcolor; @@bgcolor; end
     def self.bgcolor=(col); @@bgcolor = col; end
