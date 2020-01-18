@@ -1,6 +1,7 @@
 ## HEAD
 
-- feat: Maximize Window by setting nil to .width, .height
+- feat: Maximize Window by setting nil to .width, .height (#27)
+- fix: Disable pull-to-refresh on mobile devices (#28)
 
 ## v1.4.2 (2020-01-18)
 

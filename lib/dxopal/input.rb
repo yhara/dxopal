@@ -20,6 +20,7 @@ module DXOpal
       @@touch_info = `{x: 0, y: 0}`
       @@pressing_touch = `new Object()`
 
+      @@canvas = canvas
       rect = `canvas.getBoundingClientRect()`
       @@canvas_x = `rect.left + window.pageXOffset`
       @@canvas_y = `rect.top  + window.pageYOffset`
@@ -177,16 +178,22 @@ module DXOpal
     # (internal) initialize touch events
     def self._init_touch_events
       %x{
-        document.addEventListener('touchmove', function(ev){
+        #{@@canvas}.addEventListener('touchmove', function(ev){
+          ev.preventDefault();
+          ev.stopPropagation();
           #{@@touch_info}.x = ev.changedTouches[0].pageX - #{@@canvas_x};
           #{@@touch_info}.y = ev.changedTouches[0].pageY - #{@@canvas_y};
         });
-        document.addEventListener('touchstart', function(ev){
+        #{@@canvas}.addEventListener('touchstart', function(ev){
+          ev.preventDefault();
+          ev.stopPropagation();
           #{@@touch_info}.x = ev.changedTouches[0].pageX - #{@@canvas_x};
           #{@@touch_info}.y = ev.changedTouches[0].pageY - #{@@canvas_y};
           #{@@pressing_touch}[0] = #{@@tick};
         });
-        document.addEventListener('touchend', function(ev){
+        #{@@canvas}.addEventListener('touchend', function(ev){
+          ev.preventDefault();
+          ev.stopPropagation();
           #{@@touch_info}.x = ev.changedTouches[0].pageX - #{@@canvas_x};
           #{@@touch_info}.y = ev.changedTouches[0].pageY - #{@@canvas_y};
           #{@@pressing_touch}[0] = -#{@@tick};
