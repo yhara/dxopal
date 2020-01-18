@@ -24580,6 +24580,7 @@ Opal.modules["dxopal/input"] = function(Opal) {
         (Opal.class_variable_set($nesting[0], '@@pressing_mouse_buttons', new Object()));
         (Opal.class_variable_set($nesting[0], '@@touch_info', {x: 0, y: 0}));
         (Opal.class_variable_set($nesting[0], '@@pressing_touch', new Object()));
+        (Opal.class_variable_set($nesting[0], '@@canvas', canvas));
         rect = canvas.getBoundingClientRect();
         (Opal.class_variable_set($nesting[0], '@@canvas_x', rect.left + window.pageXOffset));
         (Opal.class_variable_set($nesting[0], '@@canvas_y', rect.top  + window.pageYOffset));
@@ -24745,16 +24746,22 @@ Opal.modules["dxopal/input"] = function(Opal) {
         var $a, self = this;
 
         
-        document.addEventListener('touchmove', function(ev){
+        (($a = $nesting[0].$$cvars['@@canvas']) == null ? nil : $a).addEventListener('touchmove', function(ev){
+          ev.preventDefault();
+          ev.stopPropagation();
           (($a = $nesting[0].$$cvars['@@touch_info']) == null ? nil : $a).x = ev.changedTouches[0].pageX - (($a = $nesting[0].$$cvars['@@canvas_x']) == null ? nil : $a);
           (($a = $nesting[0].$$cvars['@@touch_info']) == null ? nil : $a).y = ev.changedTouches[0].pageY - (($a = $nesting[0].$$cvars['@@canvas_y']) == null ? nil : $a);
         });
-        document.addEventListener('touchstart', function(ev){
+        (($a = $nesting[0].$$cvars['@@canvas']) == null ? nil : $a).addEventListener('touchstart', function(ev){
+          ev.preventDefault();
+          ev.stopPropagation();
           (($a = $nesting[0].$$cvars['@@touch_info']) == null ? nil : $a).x = ev.changedTouches[0].pageX - (($a = $nesting[0].$$cvars['@@canvas_x']) == null ? nil : $a);
           (($a = $nesting[0].$$cvars['@@touch_info']) == null ? nil : $a).y = ev.changedTouches[0].pageY - (($a = $nesting[0].$$cvars['@@canvas_y']) == null ? nil : $a);
           (($a = $nesting[0].$$cvars['@@pressing_touch']) == null ? nil : $a)[0] = (($a = $nesting[0].$$cvars['@@tick']) == null ? nil : $a);
         });
-        document.addEventListener('touchend', function(ev){
+        (($a = $nesting[0].$$cvars['@@canvas']) == null ? nil : $a).addEventListener('touchend', function(ev){
+          ev.preventDefault();
+          ev.stopPropagation();
           (($a = $nesting[0].$$cvars['@@touch_info']) == null ? nil : $a).x = ev.changedTouches[0].pageX - (($a = $nesting[0].$$cvars['@@canvas_x']) == null ? nil : $a);
           (($a = $nesting[0].$$cvars['@@touch_info']) == null ? nil : $a).y = ev.changedTouches[0].pageY - (($a = $nesting[0].$$cvars['@@canvas_y']) == null ? nil : $a);
           (($a = $nesting[0].$$cvars['@@pressing_touch']) == null ? nil : $a)[0] = -(($a = $nesting[0].$$cvars['@@tick']) == null ? nil : $a);
@@ -26944,7 +26951,7 @@ Opal.modules["dxopal/window"] = function(Opal) {
   }
   var self = Opal.top, $nesting = [], nil = Opal.nil, $$$ = Opal.const_get_qualified, $$ = Opal.const_get_relative, $breaker = Opal.breaker, $slice = Opal.slice, $module = Opal.module, $send = Opal.send, $truthy = Opal.truthy, $hash2 = Opal.hash2;
 
-  Opal.add_stubs(['$require', '$now', '$_load_resources', '$dump_error', '$to_proc', '$!', '$_loop', '$clear', '$draw_pause_screen', '$nil?', '$raise', '$loop', '$draw_box_fill', '$width', '$height', '$draw_font', '$default', '$_init', '$>=', '$-', '$+', '$matter_enabled?', '$matter_tick', '$_on_tick', '$box_fill', '$sort', '$==', '$[]', '$<=>', '$each', '$===', '$draw', '$drop', '$draw_rot', '$draw_scale', '$draw_ex', '$[]=', '$line', '$box', '$circle', '$circle_fill', '$triangle', '$triangle_fill', '$new', '$enqueue_draw', '$push', '$length']);
+  Opal.add_stubs(['$require', '$now', '$_load_resources', '$dump_error', '$to_proc', '$!', '$_loop', '$clear', '$draw_pause_screen', '$nil?', '$raise', '$loop', '$draw_box_fill', '$width', '$height', '$draw_font', '$default', '$_init', '$>=', '$-', '$+', '$matter_enabled?', '$matter_tick', '$_on_tick', '$box_fill', '$sort', '$==', '$[]', '$<=>', '$each', '$===', '$draw', '$drop', '$draw_rot', '$draw_scale', '$draw_ex', '$[]=', '$line', '$box', '$circle', '$circle_fill', '$triangle', '$triangle_fill', '$width=', '$height=', '$new', '$enqueue_draw', '$push', '$length']);
   
   self.$require("dxopal/constants/colors");
   return (function($base, $parent_nesting) {
@@ -27029,7 +27036,7 @@ Opal.modules["dxopal/window"] = function(Opal) {
         if (time == null) {
           time = 0;
         };
-        (Opal.class_variable_set($nesting[0], '@@img', ($truthy($a = (($b = $nesting[0].$$cvars['@@img']) == null ? nil : $b)) ? $a : self.$_init((($b = $nesting[0].$$cvars['@@width']) == null ? nil : $b), (($b = $nesting[0].$$cvars['@@height']) == null ? nil : $b)))));
+        (Opal.class_variable_set($nesting[0], '@@img', ($truthy($a = (($b = $nesting[0].$$cvars['@@img']) == null ? nil : $b)) ? $a : self.$_init())));
         t0 = $$($nesting, 'Time').$now();
         if ($truthy($rb_ge($rb_minus(t0, (($a = $nesting[0].$$cvars['@@real_fps_t']) == null ? nil : $a)), 1.0))) {
           
@@ -27099,17 +27106,23 @@ Opal.modules["dxopal/window"] = function(Opal) {
           };
           return self.$_loop(time);}, $$11.$$s = self, $$11.$$arity = 1, $$11));
       }, $Window__loop$8.$$arity = -1);
-      Opal.defs(self, '$_init', $Window__init$12 = function $$_init(w, h) {
-        var self = this, canvas = nil, img = nil;
+      Opal.defs(self, '$_init', $Window__init$12 = function $$_init() {
+        var $a, self = this, canvas = nil, $writer = nil, img = nil;
 
         
         canvas = document.getElementById("dxopal-canvas");
-        canvas.width = w;
-        canvas.height = h;
-        img = $$($nesting, 'Image').$new(w, h, $hash2(["canvas"], {"canvas": canvas}));
+        
+        $writer = [(($a = $nesting[0].$$cvars['@@width']) == null ? nil : $a)];
+        $send(self, 'width=', Opal.to_a($writer));
+        $writer[$rb_minus($writer["length"], 1)];;
+        
+        $writer = [(($a = $nesting[0].$$cvars['@@height']) == null ? nil : $a)];
+        $send(self, 'height=', Opal.to_a($writer));
+        $writer[$rb_minus($writer["length"], 1)];;
+        img = $$($nesting, 'Image').$new(self.$width(), self.$height(), $hash2(["canvas"], {"canvas": canvas}));
         $$($nesting, 'Input').$_init(canvas);
         return img;
-      }, $Window__init$12.$$arity = 2);
+      }, $Window__init$12.$$arity = 0);
       Opal.defs(self, '$_img', $Window__img$13 = function $$_img() {
         var $a, self = this;
 
@@ -27136,9 +27149,13 @@ Opal.modules["dxopal/window"] = function(Opal) {
         return (($a = $nesting[0].$$cvars['@@width']) == null ? nil : $a)
       }, $Window_width$17.$$arity = 0);
       Opal.defs(self, '$width=', $Window_width$eq$18 = function(w) {
-        var self = this;
+        var $a, self = this, canvas = nil;
 
-        return (Opal.class_variable_set($nesting[0], '@@width', w))
+        
+        canvas = document.getElementById("dxopal-canvas");
+        (Opal.class_variable_set($nesting[0], '@@width', ($truthy($a = w) ? $a : window.innerWidth)));
+        canvas.width = (($a = $nesting[0].$$cvars['@@width']) == null ? nil : $a);
+        return canvas.style.width = (($a = $nesting[0].$$cvars['@@width']) == null ? nil : $a);
       }, $Window_width$eq$18.$$arity = 1);
       Opal.defs(self, '$height', $Window_height$19 = function $$height() {
         var $a, self = this;
@@ -27146,9 +27163,13 @@ Opal.modules["dxopal/window"] = function(Opal) {
         return (($a = $nesting[0].$$cvars['@@height']) == null ? nil : $a)
       }, $Window_height$19.$$arity = 0);
       Opal.defs(self, '$height=', $Window_height$eq$20 = function(h) {
-        var self = this;
+        var $a, self = this, canvas = nil;
 
-        return (Opal.class_variable_set($nesting[0], '@@height', h))
+        
+        canvas = document.getElementById("dxopal-canvas");
+        (Opal.class_variable_set($nesting[0], '@@height', ($truthy($a = h) ? $a : window.innerHeight)));
+        canvas.height = (($a = $nesting[0].$$cvars['@@height']) == null ? nil : $a);
+        return canvas.style.height = (($a = $nesting[0].$$cvars['@@height']) == null ? nil : $a);
       }, $Window_height$eq$20.$$arity = 1);
       (Opal.class_variable_set($nesting[0], '@@bgcolor', $$$($$$($$($nesting, 'Constants'), 'Colors'), 'C_BLACK')));
       Opal.defs(self, '$bgcolor', $Window_bgcolor$21 = function $$bgcolor() {
@@ -27332,7 +27353,7 @@ Opal.modules["dxopal/version"] = function(Opal) {
 
     var $nesting = [self].concat($parent_nesting);
 
-    Opal.const_set($nesting[0], 'VERSION', "1.4.2")
+    Opal.const_set($nesting[0], 'VERSION', "1.4.3")
   })($nesting[0], $nesting)
 };
 

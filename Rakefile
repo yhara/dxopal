@@ -33,6 +33,7 @@ task :release do
   puts "release as #{v}? [y/N]"
   break unless $stdin.gets.chomp == "y"
 
+  sh "bundle install" # to update the version in Gemfile.lock
   sh "rake api"
   sh "rake build_min -B"
   sh "gem build dxopal.gemspec"
