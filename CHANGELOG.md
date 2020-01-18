@@ -1,8 +1,8 @@
-## HEAD
+## v1.4.2 (2020-01-18)
 
 - fix: Downgrade opal to 0.11 (#25)
 
-## v1.4.1 (2020-01-18)
+## v1.4.1 (2020-01-18/yanked: see #25)
 
 - change: starter-kit is discontinued
 - feat: Touch events (experimental) (#21)

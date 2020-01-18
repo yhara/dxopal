@@ -27332,7 +27332,7 @@ Opal.modules["dxopal/version"] = function(Opal) {
 
     var $nesting = [self].concat($parent_nesting);
 
-    Opal.const_set($nesting[0], 'VERSION', "1.4.1")
+    Opal.const_set($nesting[0], 'VERSION', "1.4.2")
   })($nesting[0], $nesting)
 };
 
