@@ -9,24 +9,25 @@ GEM
   remote: https://rubygems.org/
   specs:
     ast (2.4.0)
-    c_lexer (2.6.4.1.1)
-      ast (~> 2.4.0)
-      parser (= 2.6.4.1)
     concurrent-ruby (1.1.5)
+    hike (1.2.3)
     nio4r (2.5.2)
-    opal (1.0.2)
+    opal (0.11.4)
       ast (>= 2.3.0)
-      parser (~> 2.6)
-    opal-sprockets (0.4.8.1.0.3.7)
-      opal (~> 1.0.0)
+      hike (~> 1.2)
+      parser (= 2.3.3.1)
+      sourcemap (~> 0.1.0)
+    opal-sprockets (0.4.3.0.11.0.3.7)
+      opal (~> 0.11.0)
       sprockets (~> 3.7)
       tilt (>= 1.4)
-    parser (2.6.4.1)
-      ast (~> 2.4.0)
+    parser (2.3.3.1)
+      ast (~> 2.2)
     puma (4.3.1)
       nio4r (~> 2.0)
     rack (2.1.1)
     rake (13.0.1)
+    sourcemap (0.1.1)
     sprockets (3.7.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -38,9 +39,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  c_lexer
   dxopal!
-  opal
+  opal (= 0.11.4)
   opal-sprockets
   puma
   rake

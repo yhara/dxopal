@@ -1,8 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'opal' #, github: 'opal/opal'
+gem 'opal', '0.11.4'
 gem 'opal-sprockets'
-gem 'c_lexer'
 gem 'rake'
 gem 'yard'
 gem 'puma'

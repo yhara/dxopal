@@ -1,3 +1,7 @@
+## HEAD
+
+- fix: Downgrade opal to 0.11 (#25)
+
 ## v1.4.1 (2020-01-18)
 
 - change: starter-kit is discontinued
