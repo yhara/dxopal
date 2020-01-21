@@ -159,16 +159,19 @@ module DXOpal
 
     # Return true if the mouse button is being pressed
     def self.mouse_down?(mouse_code)
+      raise "missing argument of `mouse_down?'" unless mouse_code
       return `#{@@pressing_mouse_buttons}[mouse_code] > 0`
     end
 
     # Return true if the mouse button is pressed in the last tick
     def self.mouse_push?(mouse_code)
+      raise "missing argument of `mouse_push?'" unless mouse_code
       return `#{@@pressing_mouse_buttons}[mouse_code] == -(#{@@tick}-1)`
     end
 
     # Return true if the mouse button is released in the last tick
     def self.mouse_release?(mouse_code)
+      raise "missing argument of `mouse_release?'" unless mouse_code
       return `#{@@pressing_mouse_buttons}[mouse_code] == -(#{@@tick}-1)`
     end
 

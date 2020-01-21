@@ -1,3 +1,7 @@
+## HEAD
+
+- feat: Better error msg (#29)
+
 ## v1.4.4 (2020-01-21)
 
 - feat: Multi-touch (#26)
