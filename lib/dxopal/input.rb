@@ -33,6 +33,7 @@ module DXOpal
     # Called on every frame from Window
     def self._on_tick
       @@tick += 1
+      self._update_touch_info
     end
 
     # Return 1 if 'right', -1 if 'left'
@@ -177,12 +178,20 @@ module DXOpal
 
     # (internal) initialize touch events
     def self._init_touch_events
+      @@touches = {}
+      @@new_touches = []
       %x{
         #{@@canvas}.addEventListener('touchmove', function(ev){
           ev.preventDefault();
           ev.stopPropagation();
           #{@@touch_info}.x = ev.changedTouches[0].pageX - #{@@canvas_x};
           #{@@touch_info}.y = ev.changedTouches[0].pageY - #{@@canvas_y};
+          for (var touch of ev.changedTouches) {
+            const id = touch.identifier;
+            const x = touch.pageX - #{@@canvas_x};
+            const y = touch.pageY - #{@@canvas_y};
+            #{@@touches[`id`]&._move(`x`, `y`)}
+          }
         });
         #{@@canvas}.addEventListener('touchstart', function(ev){
           ev.preventDefault();
@@ -190,6 +199,16 @@ module DXOpal
           #{@@touch_info}.x = ev.changedTouches[0].pageX - #{@@canvas_x};
           #{@@touch_info}.y = ev.changedTouches[0].pageY - #{@@canvas_y};
           #{@@pressing_touch}[0] = #{@@tick};
+          for (var touch of ev.changedTouches) {
+            const id = touch.identifier;
+            const x = touch.pageX - #{@@canvas_x};
+            const y = touch.pageY - #{@@canvas_y};
+            #{
+              new_touch = Touch.new(`id`, `x`, `y`)
+              @@touches[`id`] = new_touch
+              @@new_touches.push(new_touch)
+            }
+          }
         });
         #{@@canvas}.addEventListener('touchend', function(ev){
           ev.preventDefault();
@@ -197,9 +216,22 @@ module DXOpal
           #{@@touch_info}.x = ev.changedTouches[0].pageX - #{@@canvas_x};
           #{@@touch_info}.y = ev.changedTouches[0].pageY - #{@@canvas_y};
           #{@@pressing_touch}[0] = -#{@@tick};
+          for (var touch of ev.changedTouches) {
+            const id = touch.identifier;
+            #{@@touches[`id`]&._released(@@tick)}
+          }
         });
       }
     end
+
+    def self._update_touch_info
+      # Clear old data
+      @@touches.delete_if{|id, t| t.released? && t._released_at < @@tick-1}
+    end
+
+    #
+    # Single touch
+    #
 
     # Return position of touch
     # (0, 0) is the top-left corner of the canvas
@@ -227,6 +259,52 @@ module DXOpal
     # Return true if the touch is released in the last tick
     def self.touch_release?
       return `#{@@pressing_touch}[0] == -(#{@@tick}-1)`
+    end
+
+    #
+    # Multi touches
+    #
+    
+    # Represents a touch
+    class Touch
+      def initialize(id, x, y)
+        @id = id
+        _move(x, y)
+        @_released_at = nil
+        @data = {}
+      end
+      attr_reader :id, :x, :y, :data, :_released_at
+
+      # Return true if this touch is released in the last tick
+      def released?
+        !!@_released_at
+      end
+
+      def inspect
+        rel = (released_at ? " released_at=#{released_at}" : "")
+        "#<DXOpal::Touch id=#{id} x=#{x} y=#{y} data=#{data.inspect}#{rel}>"
+      end
+
+      def _move(x, y)
+        @x = x
+        @y = y
+      end
+
+      def _released(tick)
+        @_released_at = tick
+      end
+    end
+
+    # Returns current touches as an array of Input::Touch
+    def self.touches
+      @@touches.values
+    end
+
+    # Returns newly created touches
+    def self.new_touches
+      ret = @@new_touches
+      @@new_touches = []
+      ret
     end
   end
 end

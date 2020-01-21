@@ -1,3 +1,7 @@
+## HEAD
+
+- feat: Multi-touch (#26)
+
 ## v1.4.3 (2020-01-18)
 
 - feat: Maximize Window by setting nil to .width, .height (#27)
