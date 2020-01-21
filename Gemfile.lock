@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    dxopal (1.4.3)
+    dxopal (1.4.4)
       rack (~> 2.0)
       thor (~> 0.20)
 
