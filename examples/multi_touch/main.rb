@@ -15,7 +15,7 @@ Window.load_resources do
       if mouse_circle
         mouse_circle[2] += 1
       else
-        color = [100+rand(155), 100+rand(155), 100+rand(155), 50]
+        color = [50, 100+rand(155), 100+rand(155), 100+rand(155)]
         mouse_circle = [Input.mouse_x, Input.mouse_y, 30, color]
       end
       x, y, radius, color = *mouse_circle
@@ -28,7 +28,7 @@ Window.load_resources do
 
     Input.new_touches.each do |t|
       t.data[:radius] = 30
-      t.data[:color] = [100+rand(155), 100+rand(155), 100+rand(155), 50]
+      t.data[:color] = [50, 100+rand(155), 100+rand(155), 100+rand(155)]
     end
     Input.touches.each do |t|
       t.data[:radius] += 1
