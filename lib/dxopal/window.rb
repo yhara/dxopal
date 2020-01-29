@@ -48,13 +48,13 @@ module DXOpal
     # (internal) call @@block periodically
     def self._loop(time=0)
       @@img ||= _init
-      t0 = Time.now
 
       # Calculate fps
-      if t0 - @@real_fps_t >= 1.0
+      t = Time.now
+      if t - @@real_fps_t >= 1.0
         @@real_fps = @@real_fps_ct
         @@real_fps_ct = 1
-        @@real_fps_t = t0
+        @@real_fps_t = t
       else
         @@real_fps_ct += 1
       end
