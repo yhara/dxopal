@@ -48,7 +48,7 @@ module DXOpal
       puts "Starting DXOpal Server"
       puts "(Open http://localhost:#{options[:port]}/index.html in the browser)"
       puts "---"
-      app = Rack::Directory.new(Dir.pwd)
+      app = Rack::CommonLogger.new(Rack::Directory.new(Dir.pwd))
       Rack::Server.start(app: app, Port: options[:port])
     end
   end
