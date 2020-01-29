@@ -29,6 +29,13 @@ DEMO_DIRS.each do |path|
       [200, {}, [s]]
     }
   end
+  if File.exist?(".#{path}/main.rb")
+    map "#{path}/main.rb" do
+      run lambda{|env|
+        [200, {'Cache-Control' => 'no-cache'}, [File.read(".#{path}/main.rb")]]
+      }
+    end
+  end
 end
 
 run lambda{|env|
