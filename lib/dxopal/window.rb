@@ -3,6 +3,8 @@ require 'dxopal/constants/colors'
 module DXOpal
   module Window
     @@fps = 60
+    @@fps_ts = nil
+    @@fps_ct = 0
     @@real_fps = 0
     @@real_fps_ct = 1
     @@real_fps_t = Time.now
@@ -26,7 +28,8 @@ module DXOpal
     def self.loop(&block)
       already_running = !!@@block
       @@block = block
-      _loop unless already_running
+      return if already_running
+      `window`.JS.requestAnimationFrame{|time| _loop(time) }
     end
 
     # (DXOpal original) Pause & resume
@@ -46,10 +49,23 @@ module DXOpal
     end
 
     # (internal) call @@block periodically
-    def self._loop(time=0)
+    def self._loop(timestamp)
       @@img ||= _init
 
       # Calculate fps
+      frame_msec = 1000.0 / @@fps
+      @@fps_ts ||= timestamp
+      passed_msec = timestamp - @@fps_ts
+      @@fps_ts = timestamp
+      @@fps_ct += passed_msec
+      if @@fps_ct >= frame_msec
+        @@fps_ct -= frame_msec
+      else
+        `window`.JS.requestAnimationFrame{|time| _loop(time) }
+        return
+      end
+
+      # Calculate real_fps
       t = Time.now
       if t - @@real_fps_t >= 1.0
         @@real_fps = @@real_fps_ct
@@ -60,7 +76,7 @@ module DXOpal
       end
 
       # Update physics
-      Sprite.matter_tick(time) if Sprite.matter_enabled?
+      Sprite.matter_tick(timestamp) if Sprite.matter_enabled?
 
       # Detect inputs
       Input._on_tick
