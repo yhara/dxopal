@@ -3,6 +3,7 @@
 - feat: Better error msg (#29)
 - feat: Support Window.fps= (#30)
 - feat: dxopal server prints access log (#31)
+- feat: Default index.html avoids main.rb cache (#32)
 
 ## v1.4.4 (2020-01-21)
 
