@@ -1,4 +1,4 @@
-## HEAD
+## v1.5.0 (2020-01-31)
 
 - feat: Better error msg (#29)
 - feat: Support Window.fps= (#30)
