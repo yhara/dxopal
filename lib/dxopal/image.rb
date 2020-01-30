@@ -6,6 +6,34 @@ module DXOpal
   class Image < RemoteResource
     RemoteResource.add_class(Image)
 
+    # Convert HSL to RGB (DXOpal original; not in DXRuby)
+    # h: 0-359
+    # s: 0-100
+    # l: 0-100
+    def self.hsl2rgb(h, s, l)
+      if l < 50
+        max = 2.55 * (l + l*(s/100.0))
+        min = 2.55 * (l - l*(s/100.0))
+      else
+        max = 2.55 * (l + (100-l)*(s/100.0))
+        min = 2.55 * (l - (100-l)*(s/100.0))
+      end
+      case h
+      when 0...60
+        [max, (h/60.0)*(max-min) + min, min]
+      when 60...120
+        [((120-h)/60.0)*(max-min) + min, max, min]
+      when 120...180
+        [min, max, ((h-120)/60.0)*(max-min) + min]
+      when 180...240
+        [min, ((240-h)/60.0)*(max-min) + min, max]
+      when 240...300
+        [((h-240)/60.0)*(max-min) + min, min, max]
+      else
+        [max, min, ((360-h)/60.0)*(max-min) + min]
+      end
+    end
+
     # Load remote image (called via Window.load_resources)
     def self._load(path_or_url)
       raw_img = `new Image()`
