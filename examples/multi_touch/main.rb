@@ -15,14 +15,6 @@ Window.load_resources do
   Window.loop do
     Window.draw_font(0, 0, "Multi touch demo\n(Open with mobile device)", Font.default)
 
-    closing_circles.map!{|(x, y, radius, color)|
-      Window.draw_circle_fill(x, y, radius, color)
-      [x, y, radius-1, color]
-    }
-    closing_circles.delete_if{|(x, y, radius, color)|
-      radius <= 0
-    }
-
     # Mouse support (for PCs)
     if Input.mouse_down?(M_LBUTTON)
       if mouse_circle
@@ -45,10 +37,19 @@ Window.load_resources do
     end
     Input.touches.each do |t|
       t.data[:radius] += 1
-      Window.draw_circle_fill(t.x, t.y, t.data[:radius], t.data[:color])
       if t.released?
         closing_circles << [t.x, t.y, t.data[:radius], t.data[:color]]
+      else
+        Window.draw_circle_fill(t.x, t.y, t.data[:radius], t.data[:color])
       end
     end
+
+    closing_circles.map!{|(x, y, radius, color)|
+      Window.draw_circle_fill(x, y, radius, color)
+      [x, y, radius-1, color]
+    }
+    closing_circles.delete_if{|(x, y, radius, color)|
+      radius <= 0
+    }
   end
 end
