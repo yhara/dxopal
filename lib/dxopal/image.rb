@@ -185,7 +185,7 @@ module DXOpal
 
     # Put a pixel on this image
     def []=(x, y, color)
-      box_fill(x, y, x, y, color)
+      box_fill(x, y, x+1, y+1, color)
     end
 
     # Return true if the pixel at `(x, y)` has the `color`

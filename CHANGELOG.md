@@ -1,3 +1,7 @@
+# HEAD
+
+- fix: Image#[]= was broken since 1.4.0 (#35)
+
 ## v1.5.0 (2020-01-31)
 
 - feat: Better error msg (#29)
