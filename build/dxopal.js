@@ -23698,7 +23698,7 @@ Opal.modules["dxopal/image"] = function(Opal) {
       Opal.defn(self, '$[]=', TMP_Image_$$$eq_15 = function(x, y, color) {
         var self = this;
 
-        return self.$box_fill(x, y, x, y, color)
+        return self.$box_fill(x, y, $rb_plus(x, 1), $rb_plus(y, 1), color)
       }, TMP_Image_$$$eq_15.$$arity = 3);
       
       Opal.defn(self, '$compare', TMP_Image_compare_16 = function $$compare(x, y, color) {
@@ -25602,7 +25602,7 @@ Opal.modules["dxopal/version"] = function(Opal) {
 
     var def = self.$$proto, $nesting = [self].concat($parent_nesting);
 
-    Opal.const_set($nesting[0], 'VERSION', "1.5.0")
+    Opal.const_set($nesting[0], 'VERSION', "1.5.1")
   })($nesting[0], $nesting)
 };
 

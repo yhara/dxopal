@@ -1,4 +1,4 @@
-# HEAD
+## v1.5.1 (2020-02-01)
 
 - fix: Image#[]= was broken since 1.4.0 (#35)
 
