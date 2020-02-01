@@ -1,6 +1,6 @@
 # DXOpal
 
-Game development framework for [Opal](http://opalrb.org/),
+Game development framework for [Opal](https://opalrb.com/),
 has similar API to [DXRuby](http://dxruby.osdn.jp/)
 
 ## How to use
@@ -13,9 +13,9 @@ MIT (including images and sounds under examples/)
 
 ## Acknowledgements
 
-- [Opal](http://opalrb.org/)
+- [Opal](https://opalrb.com/)
 - [DXRuby](http://dxruby.osdn.jp/)
-- [Bxfr](http://www.bfxr.net/) examples/apple_catcher/sounds/Explosion2.wav is made by this
+- [Bxfr](https://www.bfxr.net/) examples/apple_catcher/sounds/Explosion2.wav is made by this
 
 ## Contact
 
