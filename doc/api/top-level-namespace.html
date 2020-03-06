@@ -6,15 +6,15 @@
 <title>
   Top Level Namespace
   
-    &mdash; Documentation by YARD 0.9.24
+    &mdash; Documentation by YARD 0.9.20
   
 </title>
 
-  <link rel="stylesheet" href="css/style.css" type="text/css" />
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
 
-  <link rel="stylesheet" href="css/common.css" type="text/css" />
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
 
-<script type="text/javascript">
+<script type="text/javascript" charset="utf-8">
   pathId = "";
   relpath = '';
 </script>
@@ -78,6 +78,16 @@
   
 </div>
 
+<h2>Defined Under Namespace</h2>
+<p class="children">
+  
+    
+      <strong class="modules">Modules:</strong> <span class='object_link'><a href="DXOpal.html" title="DXOpal (module)">DXOpal</a></span>, <span class='object_link'><a href="Kernel.html" title="Kernel (module)">Kernel</a></span>
+    
+  
+    
+  
+</p>
 
 
 
@@ -85,14 +95,155 @@
 
 
 
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
 
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="top-level-namespace.html#require-instance_method" title="#require (instance method)">#<strong>require</strong>(*args)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="top-level-namespace.html#require_remote-instance_method" title="#require_remote (instance method)">#<strong>require_remote</strong>(url)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="require-instance_method">
+  
+    #<strong>require</strong>(*args)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+24
+25
+26
+27
+28
+29
+30</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/patches/require_dxopal.rb', line 24</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_require'>require</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_args'>args</span> <span class='op'>==</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>dxopal</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>    <span class='comment'># Do nothing, because DXOpal is already loaded and you don&#39;t need to find it
+</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_dxopal_orig_require'>dxopal_orig_require</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="require_remote-instance_method">
+  
+    #<strong>require_remote</strong>(url)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/patches/require_remote.rb', line 2</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_require_remote'>require_remote</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
+  <span class='backtick'>%x{</span><span class='tstring_content'>
+    var r = new XMLHttpRequest();
+    r.overrideMimeType(&quot;text/plain&quot;); // https://github.com/yhara/dxopal/issues/12
+    r.open(&quot;GET&quot;, url, false);
+    r.send(&#39;&#39;);
+  </span><span class='tstring_end'>}</span></span>
+  <span class='id identifier rubyid_eval'>eval</span> <span class='backtick'>`</span><span class='tstring_content'>r.responseText</span><span class='tstring_end'>`</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
 
 </div>
 
       <div id="footer">
-  Generated on Sat Feb  1 01:00:35 2020 by
+  Generated on Fri Mar  6 17:38:37 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.24 (ruby-2.5.5).
+  0.9.20 (ruby-2.7.0).
 </div>
 
     </div>

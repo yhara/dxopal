@@ -6,7 +6,7 @@
 <title>
   Class: DXOpal::Image
   
-    &mdash; Documentation by YARD 0.9.16
+    &mdash; Documentation by YARD 0.9.20
   
 </title>
 
@@ -96,23 +96,12 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>opal/dxopal/image.rb</dd>
+    <dd>lib/dxopal/image.rb</dd>
   </dl>
   
 </div>
 
-<h2>Overview</h2><div class="docstring">
-  <div class="discussion">
-    
-<p>Represents an image Each instance of Image has its own off-screen canvas.</p>
 
-
-  </div>
-</div>
-<div class="tags">
-  
-
-</div>
   
     <h2>
       Constant Summary
@@ -228,6 +217,60 @@
       <li class="public ">
   <span class="summary_signature">
     
+      <a href="#loaded-instance_method" title="#loaded (instance method)">#<strong>loaded</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute loaded.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#promise-instance_method" title="#promise (instance method)">#<strong>promise</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute promise.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#width-instance_method" title="#width (instance method)">#<strong>width</strong>  &#x21d2; Object </a>
     
 
@@ -287,6 +330,52 @@
     <span class="summary_desc"><div class='inline'>
 <p>Load remote image (called via Window.load_resources).</p>
 </div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#hsl2rgb-class_method" title="hsl2rgb (class method)">.<strong>hsl2rgb</strong>(h, s, l)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Convert HSL to RGB (DXOpal original; not in DXRuby) h: 0-359 s: 0-100 l: 0-100.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#load-class_method" title="load (class method)">.<strong>load</strong>(path_or_url)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
   
 </li>
 
@@ -462,8 +551,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Return a string like &#39;rgb(255, 255, 255)&#39; `color` is 3 or 4
-numbers.</p>
+<p>Return a string like &#39;rgb(255, 255, 255)&#39; `color` is 3 or 4 numbers.</p>
 </div></span>
   
 </li>
@@ -487,8 +575,7 @@ numbers.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Return a string like &#39;rgba(255, 255, 255, 128)&#39; `color` is 3 or 4
-numbers.</p>
+<p>Return a string like &#39;rgba(255, 255, 255, 128)&#39; `color` is 3 or 4 numbers.</p>
 </div></span>
   
 </li>
@@ -750,9 +837,7 @@ numbers.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Draw an Image on this image with rotation - angle: Rotation angle (radian)
-- center_x, center_y: Rotation center in the `image` (default: center of
-the `image`).</p>
+<p>Draw an Image on this image with rotation - angle: Rotation angle (radian) - center_x, center_y: Rotation center in the `image` (default: center of the `image`).</p>
 </div></span>
   
 </li>
@@ -776,9 +861,7 @@ the `image`).</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Draw an Image on this image with scaling - scale_x, scale_y: scaling factor
-(eg. 1.5) - center_x, center_y: scaling center (in other words, the point  
-which does not move by this scaling. Default: image center).</p>
+<p>Draw an Image on this image with scaling - scale_x, scale_y: scaling factor (eg. 1.5) - center_x, center_y: scaling center (in other words, the point   which does not move by this scaling. Default: image center).</p>
 </div></span>
   
 </li>
@@ -861,6 +944,72 @@ which does not move by this scaling. Default: image center).</p>
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#load-instance_method" title="#load (instance method)">#<strong>load</strong>(path_or_url)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#loaded%3F-instance_method" title="#loaded? (instance method)">#<strong>loaded?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#onload-instance_method" title="#onload (instance method)">#<strong>onload</strong>(&amp;block)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#set_color_key-instance_method" title="#set_color_key (instance method)">#<strong>set_color_key</strong>(color)  &#x21d2; Object </a>
     
 
@@ -876,8 +1025,7 @@ which does not move by this scaling. Default: image center).</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Set alpha of the pixels of the given color to 0 - color : RGB color (If
-ARGV color is given, A is just ignored).</p>
+<p>Set alpha of the pixels of the given color to 0 - color : RGB color (If ARGV color is given, A is just ignored).</p>
 </div></span>
   
 </li>
@@ -1022,16 +1170,16 @@ ARGV color is given, A is just ignored).</p>
       <pre class="lines">
 
 
-32
-33
-34
-35
-36
-37
-38</pre>
+91
+92
+93
+94
+95
+96
+97</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/image.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/image.rb', line 91</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_width'>width</span><span class='comma'>,</span> <span class='id identifier rubyid_height'>height</span><span class='comma'>,</span> <span class='id identifier rubyid_color'>color</span><span class='op'>=</span><span class='const'>C_DEFAULT</span><span class='comma'>,</span> <span class='label'>canvas:</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='ivar'>@width</span><span class='comma'>,</span> <span class='ivar'>@height</span> <span class='op'>=</span> <span class='id identifier rubyid_width'>width</span><span class='comma'>,</span> <span class='id identifier rubyid_height'>height</span>
@@ -1078,12 +1226,12 @@ ARGV color is given, A is just ignored).</p>
       <pre class="lines">
 
 
-39
-40
-41</pre>
+98
+99
+100</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/image.rb', line 39</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/image.rb', line 98</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_canvas'>canvas</span>
   <span class='ivar'>@canvas</span>
@@ -1121,12 +1269,12 @@ ARGV color is given, A is just ignored).</p>
       <pre class="lines">
 
 
-39
-40
-41</pre>
+98
+99
+100</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/image.rb', line 39</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/image.rb', line 98</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ctx'>ctx</span>
   <span class='ivar'>@ctx</span>
@@ -1164,15 +1312,101 @@ ARGV color is given, A is just ignored).</p>
       <pre class="lines">
 
 
-39
-40
-41</pre>
+98
+99
+100</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/image.rb', line 39</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/image.rb', line 98</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_height'>height</span>
   <span class='ivar'>@height</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="loaded=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="loaded-instance_method">
+  
+    #<strong>loaded</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute loaded</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+59
+60
+61</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/image.rb', line 59</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_loaded'>loaded</span>
+  <span class='ivar'>@loaded</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="promise=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="promise-instance_method">
+  
+    #<strong>promise</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute promise</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+59
+60
+61</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/image.rb', line 59</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_promise'>promise</span>
+  <span class='ivar'>@promise</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1207,12 +1441,12 @@ ARGV color is given, A is just ignored).</p>
       <pre class="lines">
 
 
-39
-40
-41</pre>
+98
+99
+100</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/image.rb', line 39</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/image.rb', line 98</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_width'>width</span>
   <span class='ivar'>@width</span>
@@ -1255,29 +1489,29 @@ ARGV color is given, A is just ignored).</p>
       <pre class="lines">
 
 
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29</pre>
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/image.rb', line 10</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/image.rb', line 38</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid__load'>_load</span><span class='lparen'>(</span><span class='id identifier rubyid_path_or_url'>path_or_url</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_raw_img'>raw_img</span> <span class='op'>=</span> <span class='backtick'>`</span><span class='tstring_content'>new Image()</span><span class='tstring_end'>`</span></span>
@@ -1298,6 +1532,117 @@ ARGV color is given, A is just ignored).</p>
     });
   </span><span class='tstring_end'>}</span></span>
   <span class='kw'>return</span> <span class='id identifier rubyid_img'>img</span><span class='comma'>,</span> <span class='id identifier rubyid_img_promise'>img_promise</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="hsl2rgb-class_method">
+  
+    .<strong>hsl2rgb</strong>(h, s, l)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Convert HSL to RGB (DXOpal original; not in DXRuby) h: 0-359 s: 0-100 l: 0-100</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/image.rb', line 13</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_hsl2rgb'>hsl2rgb</span><span class='lparen'>(</span><span class='id identifier rubyid_h'>h</span><span class='comma'>,</span> <span class='id identifier rubyid_s'>s</span><span class='comma'>,</span> <span class='id identifier rubyid_l'>l</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_l'>l</span> <span class='op'>&lt;</span> <span class='int'>50</span>
+    <span class='id identifier rubyid_max'>max</span> <span class='op'>=</span> <span class='float'>2.55</span> <span class='op'>*</span> <span class='lparen'>(</span><span class='id identifier rubyid_l'>l</span> <span class='op'>+</span> <span class='id identifier rubyid_l'>l</span><span class='op'>*</span><span class='lparen'>(</span><span class='id identifier rubyid_s'>s</span><span class='op'>/</span><span class='float'>100.0</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_min'>min</span> <span class='op'>=</span> <span class='float'>2.55</span> <span class='op'>*</span> <span class='lparen'>(</span><span class='id identifier rubyid_l'>l</span> <span class='op'>-</span> <span class='id identifier rubyid_l'>l</span><span class='op'>*</span><span class='lparen'>(</span><span class='id identifier rubyid_s'>s</span><span class='op'>/</span><span class='float'>100.0</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_max'>max</span> <span class='op'>=</span> <span class='float'>2.55</span> <span class='op'>*</span> <span class='lparen'>(</span><span class='id identifier rubyid_l'>l</span> <span class='op'>+</span> <span class='lparen'>(</span><span class='int'>100</span><span class='op'>-</span><span class='id identifier rubyid_l'>l</span><span class='rparen'>)</span><span class='op'>*</span><span class='lparen'>(</span><span class='id identifier rubyid_s'>s</span><span class='op'>/</span><span class='float'>100.0</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_min'>min</span> <span class='op'>=</span> <span class='float'>2.55</span> <span class='op'>*</span> <span class='lparen'>(</span><span class='id identifier rubyid_l'>l</span> <span class='op'>-</span> <span class='lparen'>(</span><span class='int'>100</span><span class='op'>-</span><span class='id identifier rubyid_l'>l</span><span class='rparen'>)</span><span class='op'>*</span><span class='lparen'>(</span><span class='id identifier rubyid_s'>s</span><span class='op'>/</span><span class='float'>100.0</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='kw'>case</span> <span class='id identifier rubyid_h'>h</span>
+  <span class='kw'>when</span> <span class='int'>0</span><span class='op'>...</span><span class='int'>60</span>
+    <span class='lbracket'>[</span><span class='id identifier rubyid_max'>max</span><span class='comma'>,</span> <span class='lparen'>(</span><span class='id identifier rubyid_h'>h</span><span class='op'>/</span><span class='float'>60.0</span><span class='rparen'>)</span><span class='op'>*</span><span class='lparen'>(</span><span class='id identifier rubyid_max'>max</span><span class='op'>-</span><span class='id identifier rubyid_min'>min</span><span class='rparen'>)</span> <span class='op'>+</span> <span class='id identifier rubyid_min'>min</span><span class='comma'>,</span> <span class='id identifier rubyid_min'>min</span><span class='rbracket'>]</span>
+  <span class='kw'>when</span> <span class='int'>60</span><span class='op'>...</span><span class='int'>120</span>
+    <span class='lbracket'>[</span><span class='lparen'>(</span><span class='lparen'>(</span><span class='int'>120</span><span class='op'>-</span><span class='id identifier rubyid_h'>h</span><span class='rparen'>)</span><span class='op'>/</span><span class='float'>60.0</span><span class='rparen'>)</span><span class='op'>*</span><span class='lparen'>(</span><span class='id identifier rubyid_max'>max</span><span class='op'>-</span><span class='id identifier rubyid_min'>min</span><span class='rparen'>)</span> <span class='op'>+</span> <span class='id identifier rubyid_min'>min</span><span class='comma'>,</span> <span class='id identifier rubyid_max'>max</span><span class='comma'>,</span> <span class='id identifier rubyid_min'>min</span><span class='rbracket'>]</span>
+  <span class='kw'>when</span> <span class='int'>120</span><span class='op'>...</span><span class='int'>180</span>
+    <span class='lbracket'>[</span><span class='id identifier rubyid_min'>min</span><span class='comma'>,</span> <span class='id identifier rubyid_max'>max</span><span class='comma'>,</span> <span class='lparen'>(</span><span class='lparen'>(</span><span class='id identifier rubyid_h'>h</span><span class='op'>-</span><span class='int'>120</span><span class='rparen'>)</span><span class='op'>/</span><span class='float'>60.0</span><span class='rparen'>)</span><span class='op'>*</span><span class='lparen'>(</span><span class='id identifier rubyid_max'>max</span><span class='op'>-</span><span class='id identifier rubyid_min'>min</span><span class='rparen'>)</span> <span class='op'>+</span> <span class='id identifier rubyid_min'>min</span><span class='rbracket'>]</span>
+  <span class='kw'>when</span> <span class='int'>180</span><span class='op'>...</span><span class='int'>240</span>
+    <span class='lbracket'>[</span><span class='id identifier rubyid_min'>min</span><span class='comma'>,</span> <span class='lparen'>(</span><span class='lparen'>(</span><span class='int'>240</span><span class='op'>-</span><span class='id identifier rubyid_h'>h</span><span class='rparen'>)</span><span class='op'>/</span><span class='float'>60.0</span><span class='rparen'>)</span><span class='op'>*</span><span class='lparen'>(</span><span class='id identifier rubyid_max'>max</span><span class='op'>-</span><span class='id identifier rubyid_min'>min</span><span class='rparen'>)</span> <span class='op'>+</span> <span class='id identifier rubyid_min'>min</span><span class='comma'>,</span> <span class='id identifier rubyid_max'>max</span><span class='rbracket'>]</span>
+  <span class='kw'>when</span> <span class='int'>240</span><span class='op'>...</span><span class='int'>300</span>
+    <span class='lbracket'>[</span><span class='lparen'>(</span><span class='lparen'>(</span><span class='id identifier rubyid_h'>h</span><span class='op'>-</span><span class='int'>240</span><span class='rparen'>)</span><span class='op'>/</span><span class='float'>60.0</span><span class='rparen'>)</span><span class='op'>*</span><span class='lparen'>(</span><span class='id identifier rubyid_max'>max</span><span class='op'>-</span><span class='id identifier rubyid_min'>min</span><span class='rparen'>)</span> <span class='op'>+</span> <span class='id identifier rubyid_min'>min</span><span class='comma'>,</span> <span class='id identifier rubyid_min'>min</span><span class='comma'>,</span> <span class='id identifier rubyid_max'>max</span><span class='rbracket'>]</span>
+  <span class='kw'>else</span>
+    <span class='lbracket'>[</span><span class='id identifier rubyid_max'>max</span><span class='comma'>,</span> <span class='id identifier rubyid_min'>min</span><span class='comma'>,</span> <span class='lparen'>(</span><span class='lparen'>(</span><span class='int'>360</span><span class='op'>-</span><span class='id identifier rubyid_h'>h</span><span class='rparen'>)</span><span class='op'>/</span><span class='float'>60.0</span><span class='rparen'>)</span><span class='op'>*</span><span class='lparen'>(</span><span class='id identifier rubyid_max'>max</span><span class='op'>-</span><span class='id identifier rubyid_min'>min</span><span class='rparen'>)</span> <span class='op'>+</span> <span class='id identifier rubyid_min'>min</span><span class='rbracket'>]</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="load-class_method">
+  
+    .<strong>load</strong>(path_or_url)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+62
+63
+64</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/image.rb', line 62</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_load'>load</span><span class='lparen'>(</span><span class='id identifier rubyid_path_or_url'>path_or_url</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='int'>1</span><span class='comma'>,</span> <span class='int'>1</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_load'>load</span><span class='lparen'>(</span><span class='id identifier rubyid_path_or_url'>path_or_url</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1336,19 +1681,19 @@ ARGV color is given, A is just ignored).</p>
       <pre class="lines">
 
 
-116
-117
-118
-119
-120
-121
-122
-123
-124
-125</pre>
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/image.rb', line 116</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/image.rb', line 175</span>
 
 <span class='kw'>def</span> <span class='op'>[]</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='id identifier rubyid_y'>y</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_ctx'>ctx</span> <span class='op'>=</span> <span class='ivar'>@ctx</span>
@@ -1391,15 +1736,15 @@ ARGV color is given, A is just ignored).</p>
       <pre class="lines">
 
 
-128
-129
-130</pre>
+187
+188
+189</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/image.rb', line 128</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/image.rb', line 187</span>
 
 <span class='kw'>def</span> <span class='op'>[]=</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='id identifier rubyid_y'>y</span><span class='comma'>,</span> <span class='id identifier rubyid_color'>color</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_box_fill'>box_fill</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='id identifier rubyid_y'>y</span><span class='comma'>,</span> <span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='id identifier rubyid_y'>y</span><span class='comma'>,</span> <span class='id identifier rubyid_color'>color</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_box_fill'>box_fill</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='id identifier rubyid_y'>y</span><span class='comma'>,</span> <span class='id identifier rubyid_x'>x</span><span class='op'>+</span><span class='int'>1</span><span class='comma'>,</span> <span class='id identifier rubyid_y'>y</span><span class='op'>+</span><span class='int'>1</span><span class='comma'>,</span> <span class='id identifier rubyid_color'>color</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1432,14 +1777,14 @@ ARGV color is given, A is just ignored).</p>
       <pre class="lines">
 
 
-286
-287
-288
-289
-290</pre>
+345
+346
+347
+348
+349</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/image.rb', line 286</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/image.rb', line 345</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid__draw_raw_image'>_draw_raw_image</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='id identifier rubyid_y'>y</span><span class='comma'>,</span> <span class='id identifier rubyid_raw_img'>raw_img</span><span class='rparen'>)</span>
   <span class='backtick'>%x{</span><span class='tstring_content'>
@@ -1477,12 +1822,12 @@ ARGV color is given, A is just ignored).</p>
       <pre class="lines">
 
 
-293
-294
-295</pre>
+352
+353
+354</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/image.rb', line 293</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/image.rb', line 352</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid__image_data'>_image_data</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='op'>=</span><span class='int'>0</span><span class='comma'>,</span> <span class='id identifier rubyid_y'>y</span><span class='op'>=</span><span class='int'>0</span><span class='comma'>,</span> <span class='id identifier rubyid_w'>w</span><span class='op'>=</span><span class='ivar'>@width</span><span class='comma'>,</span> <span class='id identifier rubyid_h'>h</span><span class='op'>=</span><span class='ivar'>@height</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='backtick'>`</span><span class='embexpr_beg'>#{</span><span class='ivar'>@ctx</span><span class='embexpr_end'>}</span><span class='tstring_content'>.getImageData(x, y, w, h)</span><span class='tstring_end'>`</span></span>
@@ -1518,12 +1863,12 @@ ARGV color is given, A is just ignored).</p>
       <pre class="lines">
 
 
-298
-299
-300</pre>
+357
+358
+359</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/image.rb', line 298</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/image.rb', line 357</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid__put_image_data'>_put_image_data</span><span class='lparen'>(</span><span class='id identifier rubyid_image_data'>image_data</span><span class='comma'>,</span> <span class='id identifier rubyid_x'>x</span><span class='op'>=</span><span class='int'>0</span><span class='comma'>,</span> <span class='id identifier rubyid_y'>y</span><span class='op'>=</span><span class='int'>0</span><span class='rparen'>)</span>
   <span class='backtick'>`</span><span class='embexpr_beg'>#{</span><span class='ivar'>@ctx</span><span class='embexpr_end'>}</span><span class='tstring_content'>.putImageData(image_data, x, y)</span><span class='tstring_end'>`</span></span>
@@ -1559,16 +1904,16 @@ ARGV color is given, A is just ignored).</p>
       <pre class="lines">
 
 
-42
-43
-44
-45
-46
-47
-48</pre>
+101
+102
+103
+104
+105
+106
+107</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/image.rb', line 42</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/image.rb', line 101</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid__resize'>_resize</span><span class='lparen'>(</span><span class='id identifier rubyid_w'>w</span><span class='comma'>,</span> <span class='id identifier rubyid_h'>h</span><span class='rparen'>)</span>
   <span class='ivar'>@width</span><span class='comma'>,</span> <span class='ivar'>@height</span> <span class='op'>=</span> <span class='id identifier rubyid_w'>w</span><span class='comma'>,</span> <span class='id identifier rubyid_h'>h</span>
@@ -1608,27 +1953,27 @@ ARGV color is given, A is just ignored).</p>
       <pre class="lines">
 
 
-304
-305
-306
-307
-308
-309
-310
-311
-312
-313
-314
-315</pre>
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/image.rb', line 304</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/image.rb', line 363</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid__rgb'>_rgb</span><span class='lparen'>(</span><span class='id identifier rubyid_color'>color</span><span class='rparen'>)</span>
   <span class='kw'>case</span> <span class='id identifier rubyid_color'>color</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span>
-  <span class='kw'>when</span> <span class='int'>4</span>
-    <span class='comment'># Just ignore alpha
-</span>    <span class='id identifier rubyid_rgb'>rgb</span> <span class='op'>=</span> <span class='id identifier rubyid_color'>color</span><span class='lbracket'>[</span><span class='int'>1</span><span class='comma'>,</span> <span class='int'>3</span><span class='rbracket'>]</span>
+  <span class='kw'>when</span> <span class='int'>4</span>    <span class='comment'># Just ignore alpha
+</span>
+    <span class='id identifier rubyid_rgb'>rgb</span> <span class='op'>=</span> <span class='id identifier rubyid_color'>color</span><span class='lbracket'>[</span><span class='int'>1</span><span class='comma'>,</span> <span class='int'>3</span><span class='rbracket'>]</span>
   <span class='kw'>when</span> <span class='int'>3</span>
     <span class='id identifier rubyid_rgb'>rgb</span> <span class='op'>=</span> <span class='id identifier rubyid_color'>color</span>
   <span class='kw'>else</span>
@@ -1653,8 +1998,7 @@ ARGV color is given, A is just ignored).</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Return a string like &#39;rgba(255, 255, 255, 128)&#39; `color` is 3 or 4
-numbers</p>
+<p>Return a string like &#39;rgba(255, 255, 255, 128)&#39; `color` is 3 or 4 numbers</p>
 
 
   </div>
@@ -1668,12 +2012,12 @@ numbers</p>
       <pre class="lines">
 
 
-319
-320
-321</pre>
+378
+379
+380</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/image.rb', line 319</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/image.rb', line 378</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid__rgba'>_rgba</span><span class='lparen'>(</span><span class='id identifier rubyid_color'>color</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>rgba(</span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span> <span class='id identifier rubyid__rgba_ary'>_rgba_ary</span><span class='lparen'>(</span><span class='id identifier rubyid_color'>color</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>, </span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
@@ -1709,30 +2053,30 @@ numbers</p>
       <pre class="lines">
 
 
-324
-325
-326
-327
-328
-329
-330
-331
-332
-333
-334
-335</pre>
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/image.rb', line 324</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/image.rb', line 383</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid__rgba_ary'>_rgba_ary</span><span class='lparen'>(</span><span class='id identifier rubyid_color'>color</span><span class='rparen'>)</span>
   <span class='kw'>case</span> <span class='id identifier rubyid_color'>color</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span>
-  <span class='kw'>when</span> <span class='int'>4</span>
-    <span class='comment'># color is ARGB in DXRuby, so move A to the last
-</span>    <span class='id identifier rubyid_color'>color</span><span class='lbracket'>[</span><span class='int'>1</span><span class='comma'>,</span> <span class='int'>3</span><span class='rbracket'>]</span> <span class='op'>+</span> <span class='lbracket'>[</span><span class='id identifier rubyid_color'>color</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='op'>/</span><span class='float'>255.0</span><span class='rbracket'>]</span>
-  <span class='kw'>when</span> <span class='int'>3</span>
-    <span class='comment'># Complement 255 as alpha 
-</span>    <span class='id identifier rubyid_color'>color</span> <span class='op'>+</span> <span class='lbracket'>[</span><span class='float'>1.0</span><span class='rbracket'>]</span>
+  <span class='kw'>when</span> <span class='int'>4</span>    <span class='comment'># color is ARGB in DXRuby, so move A to the last
+</span>
+    <span class='id identifier rubyid_color'>color</span><span class='lbracket'>[</span><span class='int'>1</span><span class='comma'>,</span> <span class='int'>3</span><span class='rbracket'>]</span> <span class='op'>+</span> <span class='lbracket'>[</span><span class='id identifier rubyid_color'>color</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='op'>/</span><span class='float'>255.0</span><span class='rbracket'>]</span>
+  <span class='kw'>when</span> <span class='int'>3</span>    <span class='comment'># Complement 255 as alpha 
+</span>
+    <span class='id identifier rubyid_color'>color</span> <span class='op'>+</span> <span class='lbracket'>[</span><span class='float'>1.0</span><span class='rbracket'>]</span>
   <span class='kw'>else</span>
     <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>invalid color: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_color'>color</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
   <span class='kw'>end</span>
@@ -1768,26 +2112,26 @@ numbers</p>
       <pre class="lines">
 
 
-164
-165
-166
-167
-168
-169
-170
-171
-172
-173</pre>
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/image.rb', line 164</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/image.rb', line 223</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_box'>box</span><span class='lparen'>(</span><span class='id identifier rubyid_x1'>x1</span><span class='comma'>,</span> <span class='id identifier rubyid_y1'>y1</span><span class='comma'>,</span> <span class='id identifier rubyid_x2'>x2</span><span class='comma'>,</span> <span class='id identifier rubyid_y2'>y2</span><span class='comma'>,</span> <span class='id identifier rubyid_color'>color</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_ctx'>ctx</span> <span class='op'>=</span> <span class='ivar'>@ctx</span>
   <span class='backtick'>%x{</span><span class='tstring_content'>
     ctx.beginPath();
     ctx.strokeStyle = </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid__rgba'>_rgba</span><span class='lparen'>(</span><span class='id identifier rubyid_color'>color</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
-    ctx.rect(x1, y1, x2-x1+1, y2-y1+1); 
+    ctx.rect(x1+0.5, y1+0.5, x2-x1, y2-y1); 
     ctx.stroke(); 
   </span><span class='tstring_end'>}</span></span>
   <span class='kw'>return</span> <span class='kw'>self</span>
@@ -1823,25 +2167,25 @@ numbers</p>
       <pre class="lines">
 
 
-176
-177
-178
-179
-180
-181
-182
-183
-184</pre>
+235
+236
+237
+238
+239
+240
+241
+242
+243</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/image.rb', line 176</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/image.rb', line 235</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_box_fill'>box_fill</span><span class='lparen'>(</span><span class='id identifier rubyid_x1'>x1</span><span class='comma'>,</span> <span class='id identifier rubyid_y1'>y1</span><span class='comma'>,</span> <span class='id identifier rubyid_x2'>x2</span><span class='comma'>,</span> <span class='id identifier rubyid_y2'>y2</span><span class='comma'>,</span> <span class='id identifier rubyid_color'>color</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_ctx'>ctx</span> <span class='op'>=</span> <span class='ivar'>@ctx</span>
   <span class='backtick'>%x{</span><span class='tstring_content'>
     ctx.beginPath();
     ctx.fillStyle = </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid__rgba'>_rgba</span><span class='lparen'>(</span><span class='id identifier rubyid_color'>color</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
-    ctx.fillRect(x1, y1, x2-x1+1, y2-y1+1); 
+    ctx.fillRect(x1, y1, x2-x1, y2-y1); 
   </span><span class='tstring_end'>}</span></span>
   <span class='kw'>return</span> <span class='kw'>self</span>
 <span class='kw'>end</span></pre>
@@ -1876,26 +2220,26 @@ numbers</p>
       <pre class="lines">
 
 
-187
-188
-189
-190
-191
-192
-193
-194
-195
-196</pre>
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/image.rb', line 187</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/image.rb', line 246</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_circle'>circle</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='id identifier rubyid_y'>y</span><span class='comma'>,</span> <span class='id identifier rubyid_r'>r</span><span class='comma'>,</span> <span class='id identifier rubyid_color'>color</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_ctx'>ctx</span> <span class='op'>=</span> <span class='ivar'>@ctx</span>
   <span class='backtick'>%x{</span><span class='tstring_content'>
     ctx.beginPath();
     ctx.strokeStyle = </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid__rgba'>_rgba</span><span class='lparen'>(</span><span class='id identifier rubyid_color'>color</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
-    ctx.arc(x, y, r, 0, Math.PI*2, false)
+    ctx.arc(x+0.5, y+0.5, r, 0, Math.PI*2, false)
     ctx.stroke();
   </span><span class='tstring_end'>}</span></span>
   <span class='kw'>return</span> <span class='kw'>self</span>
@@ -1931,19 +2275,19 @@ numbers</p>
       <pre class="lines">
 
 
-199
-200
-201
-202
-203
-204
-205
-206
-207
-208</pre>
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/image.rb', line 199</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/image.rb', line 258</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_circle_fill'>circle_fill</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='id identifier rubyid_y'>y</span><span class='comma'>,</span> <span class='id identifier rubyid_r'>r</span><span class='comma'>,</span> <span class='id identifier rubyid_color'>color</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_ctx'>ctx</span> <span class='op'>=</span> <span class='ivar'>@ctx</span>
@@ -1986,12 +2330,12 @@ numbers</p>
       <pre class="lines">
 
 
-245
-246
-247</pre>
+304
+305
+306</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/image.rb', line 245</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/image.rb', line 304</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_clear'>clear</span>
   <span class='id identifier rubyid_fill'>fill</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='int'>0</span><span class='comma'>,</span> <span class='int'>0</span><span class='comma'>,</span> <span class='int'>0</span><span class='comma'>,</span> <span class='int'>0</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -2027,25 +2371,25 @@ numbers</p>
       <pre class="lines">
 
 
-133
-134
-135
-136
-137
-138
-139
-140
-141
-142
-143
-144
-145
-146
-147
-148</pre>
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/image.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/image.rb', line 192</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_compare'>compare</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='id identifier rubyid_y'>y</span><span class='comma'>,</span> <span class='id identifier rubyid_color'>color</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_ctx'>ctx</span> <span class='op'>=</span> <span class='ivar'>@ctx</span>
@@ -2094,15 +2438,15 @@ numbers</p>
       <pre class="lines">
 
 
-51
-52
-53
-54
-55
-56</pre>
+110
+111
+112
+113
+114
+115</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/image.rb', line 51</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/image.rb', line 110</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_draw'>draw</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='id identifier rubyid_y'>y</span><span class='comma'>,</span> <span class='id identifier rubyid_image'>image</span><span class='rparen'>)</span>
   <span class='backtick'>%x{</span><span class='tstring_content'>
@@ -2130,33 +2474,33 @@ numbers</p>
       <pre class="lines">
 
 
-78
-79
-80
-81
-82
-83
-84
-85
-86
-87
-88
-89
-90
-91
-92
-93
-94
-95
-96
-97
-98
-99
-100
-101</pre>
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/image.rb', line 78</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/image.rb', line 137</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_draw_ex'>draw_ex</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='id identifier rubyid_y'>y</span><span class='comma'>,</span> <span class='id identifier rubyid_image'>image</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_scale_x'>scale_x</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:scale_x</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='int'>1</span>
@@ -2213,19 +2557,19 @@ numbers</p>
       <pre class="lines">
 
 
-104
-105
-106
-107
-108
-109
-110
-111
-112
-113</pre>
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/image.rb', line 104</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/image.rb', line 163</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_draw_font'>draw_font</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='id identifier rubyid_y'>y</span><span class='comma'>,</span> <span class='id identifier rubyid_string'>string</span><span class='comma'>,</span> <span class='id identifier rubyid_font'>font</span><span class='comma'>,</span> <span class='id identifier rubyid_color'>color</span><span class='op'>=</span><span class='lbracket'>[</span><span class='int'>255</span><span class='comma'>,</span><span class='int'>255</span><span class='comma'>,</span><span class='int'>255</span><span class='rbracket'>]</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_ctx'>ctx</span> <span class='op'>=</span> <span class='ivar'>@ctx</span>
@@ -2258,8 +2602,7 @@ numbers</p>
 <ul><li>
 <p>angle: Rotation angle (radian)</p>
 </li><li>
-<p>center_x, center_y: Rotation center in the `image` (default: center of the
-`image`)</p>
+<p>center_x, center_y: Rotation center in the `image` (default: center of the `image`)</p>
 </li></ul>
 
 
@@ -2274,12 +2617,12 @@ numbers</p>
       <pre class="lines">
 
 
-69
-70
-71</pre>
+128
+129
+130</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/image.rb', line 69</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/image.rb', line 128</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_draw_rot'>draw_rot</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='id identifier rubyid_y'>y</span><span class='comma'>,</span> <span class='id identifier rubyid_image'>image</span><span class='comma'>,</span> <span class='id identifier rubyid_angle'>angle</span><span class='comma'>,</span> <span class='id identifier rubyid_center_x'>center_x</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_center_y'>center_y</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_draw_ex'>draw_ex</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='id identifier rubyid_y'>y</span><span class='comma'>,</span> <span class='id identifier rubyid_image'>image</span><span class='comma'>,</span> <span class='label'>angle:</span> <span class='id identifier rubyid_angle'>angle</span><span class='comma'>,</span> <span class='label'>center_x:</span> <span class='id identifier rubyid_center_x'>center_x</span><span class='comma'>,</span> <span class='label'>center_y:</span> <span class='id identifier rubyid_center_y'>center_y</span><span class='rparen'>)</span>
@@ -2305,8 +2648,7 @@ numbers</p>
 <ul><li>
 <p>scale_x, scale_y: scaling factor (eg. 1.5)</p>
 </li><li>
-<p>center_x, center_y: scaling center (in other words, the point which does
-not move by this scaling. Default: image center)</p>
+<p>center_x, center_y: scaling center (in other words, the point which does not move by this scaling. Default: image center)</p>
 </li></ul>
 
 
@@ -2321,12 +2663,12 @@ not move by this scaling. Default: image center)</p>
       <pre class="lines">
 
 
-62
-63
-64</pre>
+121
+122
+123</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/image.rb', line 62</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/image.rb', line 121</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_draw_scale'>draw_scale</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='id identifier rubyid_y'>y</span><span class='comma'>,</span> <span class='id identifier rubyid_image'>image</span><span class='comma'>,</span> <span class='id identifier rubyid_scale_x'>scale_x</span><span class='comma'>,</span> <span class='id identifier rubyid_scale_y'>scale_y</span><span class='comma'>,</span> <span class='id identifier rubyid_center_x'>center_x</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_center_y'>center_y</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_draw_ex'>draw_ex</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='id identifier rubyid_y'>y</span><span class='comma'>,</span> <span class='id identifier rubyid_image'>image</span><span class='comma'>,</span> <span class='label'>scale_x:</span> <span class='id identifier rubyid_scale_x'>scale_x</span><span class='comma'>,</span> <span class='label'>scale_y:</span> <span class='id identifier rubyid_scale_y'>scale_y</span><span class='comma'>,</span> <span class='label'>center_x:</span> <span class='id identifier rubyid_center_x'>center_x</span><span class='comma'>,</span> <span class='label'>center_y:</span> <span class='id identifier rubyid_center_y'>center_y</span><span class='rparen'>)</span>
@@ -2362,12 +2704,12 @@ not move by this scaling. Default: image center)</p>
       <pre class="lines">
 
 
-240
-241
-242</pre>
+299
+300
+301</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/image.rb', line 240</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/image.rb', line 299</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_fill'>fill</span><span class='lparen'>(</span><span class='id identifier rubyid_color'>color</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_box_fill'>box_fill</span><span class='lparen'>(</span><span class='int'>0</span><span class='comma'>,</span> <span class='int'>0</span><span class='comma'>,</span> <span class='ivar'>@width</span><span class='op'>-</span><span class='int'>1</span><span class='comma'>,</span> <span class='ivar'>@height</span><span class='op'>-</span><span class='int'>1</span><span class='comma'>,</span> <span class='id identifier rubyid_color'>color</span><span class='rparen'>)</span>
@@ -2403,31 +2745,171 @@ not move by this scaling. Default: image center)</p>
       <pre class="lines">
 
 
-151
-152
-153
-154
-155
-156
-157
-158
-159
-160
-161</pre>
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/image.rb', line 151</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/image.rb', line 210</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_line'>line</span><span class='lparen'>(</span><span class='id identifier rubyid_x1'>x1</span><span class='comma'>,</span> <span class='id identifier rubyid_y1'>y1</span><span class='comma'>,</span> <span class='id identifier rubyid_x2'>x2</span><span class='comma'>,</span> <span class='id identifier rubyid_y2'>y2</span><span class='comma'>,</span> <span class='id identifier rubyid_color'>color</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_ctx'>ctx</span> <span class='op'>=</span> <span class='ivar'>@ctx</span>
   <span class='backtick'>%x{</span><span class='tstring_content'>
     ctx.beginPath();
     ctx.strokeStyle = </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid__rgba'>_rgba</span><span class='lparen'>(</span><span class='id identifier rubyid_color'>color</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
-    ctx.moveTo(x1, y1); 
-    ctx.lineTo(x2, y2); 
+    ctx.moveTo(x1+0.5, y1+0.5); 
+    ctx.lineTo(x2+0.5, y2+0.5); 
     ctx.stroke(); 
   </span><span class='tstring_end'>}</span></span>
   <span class='kw'>return</span> <span class='kw'>self</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="load-instance_method">
+  
+    #<strong>load</strong>(path_or_url)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/image.rb', line 66</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_load'>load</span><span class='lparen'>(</span><span class='id identifier rubyid_path_or_url'>path_or_url</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_raw_img'>raw_img</span> <span class='op'>=</span> <span class='backtick'>`</span><span class='tstring_content'>new Image()</span><span class='tstring_end'>`</span></span>
+  <span class='ivar'>@promise</span> <span class='op'>=</span> <span class='backtick'>%x{</span><span class='tstring_content'>
+    new Promise(function(resolve, reject) {
+      raw_img.onload = function() {
+        self.$_resize(raw_img.width, raw_img.height);
+        self.$_draw_raw_image(0, 0, raw_img);
+        self.loaded = </span><span class='embexpr_beg'>#{</span><span class='kw'>true</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+        resolve();
+      };
+      raw_img.src = path_or_url;
+    });
+  </span><span class='tstring_end'>}</span></span>
+  <span class='kw'>return</span> <span class='kw'>self</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="loaded?-instance_method">
+  
+    #<strong>loaded?</strong>  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+60</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/image.rb', line 60</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_loaded?'>loaded?</span><span class='semicolon'>;</span> <span class='id identifier rubyid_loaded'>loaded</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="onload-instance_method">
+  
+    #<strong>onload</strong>(&amp;block)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+82
+83
+84
+85
+86
+87
+88</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/image.rb', line 82</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_onload'>onload</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='backtick'>%x{</span><span class='tstring_content'>
+    </span><span class='embexpr_beg'>#{</span><span class='ivar'>@promise</span><span class='embexpr_end'>}</span><span class='tstring_content'>.then(function(response){
+      </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_block'>block</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>
+    });
+  </span><span class='tstring_end'>}</span></span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -2463,23 +2945,23 @@ not move by this scaling. Default: image center)</p>
       <pre class="lines">
 
 
-270
-271
-272
-273
-274
-275
-276
-277
-278
-279
-280
-281
-282
-283</pre>
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/image.rb', line 270</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/image.rb', line 329</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_set_color_key'>set_color_key</span><span class='lparen'>(</span><span class='id identifier rubyid_color'>color</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_r'>r</span><span class='comma'>,</span> <span class='id identifier rubyid_g'>g</span><span class='comma'>,</span> <span class='id identifier rubyid_b'>b</span><span class='comma'>,</span> <span class='id identifier rubyid__'>_</span> <span class='op'>=</span> <span class='id identifier rubyid__rgba_ary'>_rgba_ary</span><span class='lparen'>(</span><span class='id identifier rubyid_color'>color</span><span class='rparen'>)</span>
@@ -2526,15 +3008,15 @@ not move by this scaling. Default: image center)</p>
       <pre class="lines">
 
 
-250
-251
-252
-253
-254
-255</pre>
+309
+310
+311
+312
+313
+314</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/image.rb', line 250</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/image.rb', line 309</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_slice'>slice</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='id identifier rubyid_y'>y</span><span class='comma'>,</span> <span class='id identifier rubyid_width'>width</span><span class='comma'>,</span> <span class='id identifier rubyid_height'>height</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_newimg'>newimg</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="" title="DXOpal::Image (class)">Image</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="#initialize-instance_method" title="DXOpal::Image#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_width'>width</span><span class='comma'>,</span> <span class='id identifier rubyid_height'>height</span><span class='rparen'>)</span>
@@ -2573,18 +3055,18 @@ not move by this scaling. Default: image center)</p>
       <pre class="lines">
 
 
-258
-259
-260
-261
-262
-263
-264
-265
-266</pre>
+317
+318
+319
+320
+321
+322
+323
+324
+325</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/image.rb', line 258</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/image.rb', line 317</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_slice_tiles'>slice_tiles</span><span class='lparen'>(</span><span class='id identifier rubyid_xcount'>xcount</span><span class='comma'>,</span> <span class='id identifier rubyid_ycount'>ycount</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_tile_w'>tile_w</span> <span class='op'>=</span> <span class='ivar'>@width</span> <span class='op'>/</span> <span class='id identifier rubyid_xcount'>xcount</span>
@@ -2626,32 +3108,32 @@ not move by this scaling. Default: image center)</p>
       <pre class="lines">
 
 
-211
-212
-213
-214
-215
-216
-217
-218
-219
-220
-221
-222
-223</pre>
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/image.rb', line 211</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/image.rb', line 270</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_triangle'>triangle</span><span class='lparen'>(</span><span class='id identifier rubyid_x1'>x1</span><span class='comma'>,</span> <span class='id identifier rubyid_y1'>y1</span><span class='comma'>,</span> <span class='id identifier rubyid_x2'>x2</span><span class='comma'>,</span> <span class='id identifier rubyid_y2'>y2</span><span class='comma'>,</span> <span class='id identifier rubyid_x3'>x3</span><span class='comma'>,</span> <span class='id identifier rubyid_y3'>y3</span><span class='comma'>,</span> <span class='id identifier rubyid_color'>color</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_ctx'>ctx</span> <span class='op'>=</span> <span class='ivar'>@ctx</span>
   <span class='backtick'>%x{</span><span class='tstring_content'>
     ctx.beginPath();
     ctx.strokeStyle = </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid__rgba'>_rgba</span><span class='lparen'>(</span><span class='id identifier rubyid_color'>color</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
-    ctx.moveTo(x1, y1);
-    ctx.lineTo(x2, y2);
-    ctx.lineTo(x3, y3);
-    ctx.lineTo(x1, y1);
+    ctx.moveTo(x1+0.5, y1+0.5);
+    ctx.lineTo(x2+0.5, y2+0.5);
+    ctx.lineTo(x3+0.5, y3+0.5);
+    ctx.lineTo(x1+0.5, y1+0.5);
     ctx.stroke();
   </span><span class='tstring_end'>}</span></span>
   <span class='kw'>return</span> <span class='kw'>self</span>
@@ -2687,21 +3169,21 @@ not move by this scaling. Default: image center)</p>
       <pre class="lines">
 
 
-226
-227
-228
-229
-230
-231
-232
-233
-234
-235
-236
-237</pre>
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/image.rb', line 226</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/image.rb', line 285</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_triangle_fill'>triangle_fill</span><span class='lparen'>(</span><span class='id identifier rubyid_x1'>x1</span><span class='comma'>,</span> <span class='id identifier rubyid_y1'>y1</span><span class='comma'>,</span> <span class='id identifier rubyid_x2'>x2</span><span class='comma'>,</span> <span class='id identifier rubyid_y2'>y2</span><span class='comma'>,</span> <span class='id identifier rubyid_x3'>x3</span><span class='comma'>,</span> <span class='id identifier rubyid_y3'>y3</span><span class='comma'>,</span> <span class='id identifier rubyid_color'>color</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_ctx'>ctx</span> <span class='op'>=</span> <span class='ivar'>@ctx</span>
@@ -2725,9 +3207,9 @@ not move by this scaling. Default: image center)</p>
 </div>
 
       <div id="footer">
-  Generated on Sat Sep 29 15:56:48 2018 by
+  Generated on Fri Mar  6 17:38:37 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.16 (ruby-2.5.1).
+  0.9.20 (ruby-2.7.0).
 </div>
 
     </div>

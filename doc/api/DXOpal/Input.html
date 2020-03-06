@@ -6,7 +6,7 @@
 <title>
   Module: DXOpal::Input
   
-    &mdash; Documentation by YARD 0.9.16
+    &mdash; Documentation by YARD 0.9.20
   
 </title>
 
@@ -78,7 +78,9 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>opal/dxopal/input.rb</dd>
+    <dd>lib/dxopal/input.rb<span class="defines">,<br />
+  lib/dxopal/input/key_codes.rb</span>
+</dd>
   </dl>
   
 </div>
@@ -87,9 +89,11 @@
 <p class="children">
   
     
-      <strong class="modules">Modules:</strong> <span class='object_link'><a href="Input/MouseCodes.html" title="DXOpal::Input::MouseCodes (module)">MouseCodes</a></span>
+      <strong class="modules">Modules:</strong> <span class='object_link'><a href="Input/KeyCodes.html" title="DXOpal::Input::KeyCodes (module)">KeyCodes</a></span>, <span class='object_link'><a href="Input/MouseCodes.html" title="DXOpal::Input::MouseCodes (module)">MouseCodes</a></span>
     
   
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Input/Touch.html" title="DXOpal::Input::Touch (class)">Touch</a></span>
     
   
 </p>
@@ -214,6 +218,30 @@
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#_init_touch_events-class_method" title="_init_touch_events (class method)">.<strong>_init_touch_events</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>(internal) initialize touch events.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#_on_tick-class_method" title="_on_tick (class method)">.<strong>_on_tick</strong>  &#x21d2; Object </a>
     
 
@@ -239,6 +267,28 @@
   <span class="summary_signature">
     
       <a href="#_pressing_keys-class_method" title="_pressing_keys (class method)">.<strong>_pressing_keys</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#_update_touch_info-class_method" title="_update_touch_info (class method)">.<strong>_update_touch_info</strong>  &#x21d2; Object </a>
     
 
     
@@ -469,8 +519,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Return position of mouse cursor (0, 0) is the top-left corner of the
-canvas.</p>
+<p>Return position of mouse cursor (0, 0) is the top-left corner of the canvas.</p>
 </div></span>
   
 </li>
@@ -496,6 +545,176 @@ canvas.</p>
 
   
     <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#new_touches-class_method" title="new_touches (class method)">.<strong>new_touches</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns newly created touches.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#touch_down%3F-class_method" title="touch_down? (class method)">.<strong>touch_down?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Return true if the touch is being pressed.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#touch_push%3F-class_method" title="touch_push? (class method)">.<strong>touch_push?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Return true if the touch is pressed in the last tick.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#touch_release%3F-class_method" title="touch_release? (class method)">.<strong>touch_release?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Return true if the touch is released in the last tick.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#touch_x-class_method" title="touch_x (class method)">.<strong>touch_x</strong>  &#x21d2; Object </a>
+    
+
+    
+      (also: touch_pos_x)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Return position of touch (0, 0) is the top-left corner of the canvas.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#touch_y-class_method" title="touch_y (class method)">.<strong>touch_y</strong>  &#x21d2; Object </a>
+    
+
+    
+      (also: touch_pos_y)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#touches-class_method" title="touches (class method)">.<strong>touches</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns current touches as an array of Input::Touch.</p>
+</div></span>
   
 </li>
 
@@ -595,22 +814,30 @@ canvas.</p>
 24
 25
 26
-27</pre>
+27
+28
+29
+30
+31</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/input.rb', line 15</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/input.rb', line 15</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid__init'>_init</span><span class='lparen'>(</span><span class='id identifier rubyid_canvas'>canvas</span><span class='rparen'>)</span>
   <span class='cvar'>@@tick</span> <span class='op'>=</span> <span class='int'>0</span>
   <span class='cvar'>@@pressing_keys</span> <span class='op'>=</span> <span class='backtick'>`</span><span class='tstring_content'>new Object()</span><span class='tstring_end'>`</span></span>
   <span class='cvar'>@@mouse_info</span> <span class='op'>=</span> <span class='backtick'>`</span><span class='tstring_content'>{x: 0, y: 0}</span><span class='tstring_end'>`</span></span>
   <span class='cvar'>@@pressing_mouse_buttons</span> <span class='op'>=</span> <span class='backtick'>`</span><span class='tstring_content'>new Object()</span><span class='tstring_end'>`</span></span>
+  <span class='cvar'>@@touch_info</span> <span class='op'>=</span> <span class='backtick'>`</span><span class='tstring_content'>{x: 0, y: 0}</span><span class='tstring_end'>`</span></span>
+  <span class='cvar'>@@pressing_touch</span> <span class='op'>=</span> <span class='backtick'>`</span><span class='tstring_content'>new Object()</span><span class='tstring_end'>`</span></span>
 
+  <span class='cvar'>@@canvas</span> <span class='op'>=</span> <span class='id identifier rubyid_canvas'>canvas</span>
   <span class='id identifier rubyid_rect'>rect</span> <span class='op'>=</span> <span class='backtick'>`</span><span class='tstring_content'>canvas.getBoundingClientRect()</span><span class='tstring_end'>`</span></span>
   <span class='cvar'>@@canvas_x</span> <span class='op'>=</span> <span class='backtick'>`</span><span class='tstring_content'>rect.left + window.pageXOffset</span><span class='tstring_end'>`</span></span>
   <span class='cvar'>@@canvas_y</span> <span class='op'>=</span> <span class='backtick'>`</span><span class='tstring_content'>rect.top  + window.pageYOffset</span><span class='tstring_end'>`</span></span>
 
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid__init_mouse_events'>_init_mouse_events</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid__init_touch_events'>_init_touch_events</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_keyevent_target'>keyevent_target</span> <span class='op'>=</span> <span class='backtick'>`</span><span class='tstring_content'>window</span><span class='tstring_end'>`</span></span> <span class='kw'>unless</span> <span class='const'><span class='object_link'><a href="" title="DXOpal::Input (module)">Input</a></span></span><span class='period'>.</span><span class='id identifier rubyid_keyevent_target'><span class='object_link'><a href="#keyevent_target-class_method" title="DXOpal::Input.keyevent_target (method)">keyevent_target</a></span></span>
 <span class='kw'>end</span></pre>
     </td>
@@ -644,11 +871,6 @@ canvas.</p>
       <pre class="lines">
 
 
-115
-116
-117
-118
-119
 120
 121
 122
@@ -669,10 +891,15 @@ canvas.</p>
 137
 138
 139
-140</pre>
+140
+141
+142
+143
+144
+145</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/input.rb', line 115</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/input.rb', line 120</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid__init_mouse_events'>_init_mouse_events</span>
   <span class='backtick'>%x{</span><span class='tstring_content'>
@@ -696,6 +923,133 @@ canvas.</p>
         if ((ev.buttons &amp; k) == 0 &amp;&amp; </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@pressing_mouse_buttons</span><span class='embexpr_end'>}</span><span class='tstring_content'>[k]) {
           </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@pressing_mouse_buttons</span><span class='embexpr_end'>}</span><span class='tstring_content'>[k] = -</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@tick</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
         }
+      }
+    });
+  </span><span class='tstring_end'>}</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="_init_touch_events-class_method">
+  
+    .<strong>_init_touch_events</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>(internal) initialize touch events</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/input.rb', line 183</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid__init_touch_events'>_init_touch_events</span>
+  <span class='cvar'>@@touches</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+  <span class='cvar'>@@new_touches</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='backtick'>%x{</span><span class='tstring_content'>
+    </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@canvas</span><span class='embexpr_end'>}</span><span class='tstring_content'>.addEventListener(&#39;touchmove&#39;, function(ev){
+      ev.preventDefault();
+      ev.stopPropagation();
+      </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@touch_info</span><span class='embexpr_end'>}</span><span class='tstring_content'>.x = ev.changedTouches[0].pageX - </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@canvas_x</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+      </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@touch_info</span><span class='embexpr_end'>}</span><span class='tstring_content'>.y = ev.changedTouches[0].pageY - </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@canvas_y</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+      for (var touch of ev.changedTouches) {
+        const id = touch.identifier;
+        const x = touch.pageX - </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@canvas_x</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+        const y = touch.pageY - </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@canvas_y</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+        </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@touches</span><span class='lbracket'>[</span><span class='backtick'>`</span><span class='tstring_content'>id</span><span class='tstring_end'>`</span></span><span class='rbracket'>]</span><span class='op'>&amp;.</span><span class='id identifier rubyid__move'>_move</span><span class='lparen'>(</span><span class='backtick'>`</span><span class='tstring_content'>x</span><span class='tstring_end'>`</span></span><span class='comma'>,</span> <span class='backtick'>`</span><span class='tstring_content'>y</span><span class='tstring_end'>`</span></span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>
+      }
+    });
+    </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@canvas</span><span class='embexpr_end'>}</span><span class='tstring_content'>.addEventListener(&#39;touchstart&#39;, function(ev){
+      ev.preventDefault();
+      ev.stopPropagation();
+      </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@touch_info</span><span class='embexpr_end'>}</span><span class='tstring_content'>.x = ev.changedTouches[0].pageX - </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@canvas_x</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+      </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@touch_info</span><span class='embexpr_end'>}</span><span class='tstring_content'>.y = ev.changedTouches[0].pageY - </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@canvas_y</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+      </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@pressing_touch</span><span class='embexpr_end'>}</span><span class='tstring_content'>[0] = </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@tick</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+      for (var touch of ev.changedTouches) {
+        const id = touch.identifier;
+        const x = touch.pageX - </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@canvas_x</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+        const y = touch.pageY - </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@canvas_y</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+        </span><span class='embexpr_beg'>#{</span>
+          <span class='id identifier rubyid_new_touch'>new_touch</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Input/Touch.html" title="DXOpal::Input::Touch (class)">Touch</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Input/Touch.html#initialize-instance_method" title="DXOpal::Input::Touch#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='backtick'>`</span><span class='tstring_content'>id</span><span class='tstring_end'>`</span></span><span class='comma'>,</span> <span class='backtick'>`</span><span class='tstring_content'>x</span><span class='tstring_end'>`</span></span><span class='comma'>,</span> <span class='backtick'>`</span><span class='tstring_content'>y</span><span class='tstring_end'>`</span></span><span class='rparen'>)</span>
+          <span class='cvar'>@@touches</span><span class='lbracket'>[</span><span class='backtick'>`</span><span class='tstring_content'>id</span><span class='tstring_end'>`</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_new_touch'>new_touch</span>
+          <span class='cvar'>@@new_touches</span><span class='period'>.</span><span class='id identifier rubyid_push'>push</span><span class='lparen'>(</span><span class='id identifier rubyid_new_touch'>new_touch</span><span class='rparen'>)</span>
+        <span class='embexpr_end'>}</span><span class='tstring_content'>
+      }
+    });
+    </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@canvas</span><span class='embexpr_end'>}</span><span class='tstring_content'>.addEventListener(&#39;touchend&#39;, function(ev){
+      ev.preventDefault();
+      ev.stopPropagation();
+      </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@touch_info</span><span class='embexpr_end'>}</span><span class='tstring_content'>.x = ev.changedTouches[0].pageX - </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@canvas_x</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+      </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@touch_info</span><span class='embexpr_end'>}</span><span class='tstring_content'>.y = ev.changedTouches[0].pageY - </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@canvas_y</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+      </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@pressing_touch</span><span class='embexpr_end'>}</span><span class='tstring_content'>[0] = -</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@tick</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+      for (var touch of ev.changedTouches) {
+        const id = touch.identifier;
+        </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@touches</span><span class='lbracket'>[</span><span class='backtick'>`</span><span class='tstring_content'>id</span><span class='tstring_end'>`</span></span><span class='rbracket'>]</span><span class='op'>&amp;.</span><span class='id identifier rubyid__released'>_released</span><span class='lparen'>(</span><span class='cvar'>@@tick</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>
       }
     });
   </span><span class='tstring_end'>}</span></span>
@@ -731,15 +1085,17 @@ canvas.</p>
       <pre class="lines">
 
 
-30
-31
-32</pre>
+34
+35
+36
+37</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/input.rb', line 30</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/input.rb', line 34</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid__on_tick'>_on_tick</span>
   <span class='cvar'>@@tick</span> <span class='op'>+=</span> <span class='int'>1</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid__update_touch_info'>_update_touch_info</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -764,9 +1120,41 @@ canvas.</p>
 12</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/input.rb', line 12</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/input.rb', line 12</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid__pressing_keys'>_pressing_keys</span><span class='semicolon'>;</span> <span class='cvar'>@@pressing_keys</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="_update_touch_info-class_method">
+  
+    .<strong>_update_touch_info</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+230
+231
+232
+233</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/input.rb', line 230</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid__update_touch_info'>_update_touch_info</span>  <span class='comment'># Clear old data
+</span>
+  <span class='cvar'>@@touches</span><span class='period'>.</span><span class='id identifier rubyid_delete_if'>delete_if</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='id identifier rubyid_t'>t</span><span class='op'>|</span> <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_released?'>released?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid__released_at'>_released_at</span> <span class='op'>&lt;</span> <span class='cvar'>@@tick</span><span class='op'>-</span><span class='int'>1</span><span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -811,12 +1199,12 @@ canvas.</p>
       <pre class="lines">
 
 
-55
-56
-57</pre>
+60
+61
+62</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/input.rb', line 55</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/input.rb', line 60</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_key_down?'>key_down?</span><span class='lparen'>(</span><span class='id identifier rubyid_code'>code</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='backtick'>`</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@pressing_keys</span><span class='embexpr_end'>}</span><span class='tstring_content'>[code] &gt; 0</span><span class='tstring_end'>`</span></span>
@@ -865,12 +1253,12 @@ canvas.</p>
       <pre class="lines">
 
 
-60
-61
-62</pre>
+65
+66
+67</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/input.rb', line 60</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/input.rb', line 65</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_key_push?'>key_push?</span><span class='lparen'>(</span><span class='id identifier rubyid_code'>code</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='backtick'>`</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@pressing_keys</span><span class='embexpr_end'>}</span><span class='tstring_content'>[code] == </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@tick</span><span class='embexpr_end'>}</span><span class='tstring_content'>-1</span><span class='tstring_end'>`</span></span>
@@ -919,12 +1307,12 @@ canvas.</p>
       <pre class="lines">
 
 
-65
-66
-67</pre>
+70
+71
+72</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/input.rb', line 65</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/input.rb', line 70</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_key_release?'>key_release?</span><span class='lparen'>(</span><span class='id identifier rubyid_code'>code</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='backtick'>`</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@pressing_keys</span><span class='embexpr_end'>}</span><span class='tstring_content'>[code] == -(</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@tick</span><span class='embexpr_end'>}</span><span class='tstring_content'>-1)</span><span class='tstring_end'>`</span></span>
@@ -960,10 +1348,10 @@ canvas.</p>
       <pre class="lines">
 
 
-108</pre>
+113</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/input.rb', line 108</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/input.rb', line 113</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_keyevent_target'>keyevent_target</span><span class='semicolon'>;</span> <span class='cvar'>@@keyevent_target</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -985,9 +1373,7 @@ canvas.</p>
     
 <p>Set DOM element to receive keydown/keyup event</p>
 
-<p>By default, `window` is set to this (i.e. all key events are stolen by
-DXOpal.) If canvas element is set to this, only key events happend on
-canvas are processed by DXOpal.</p>
+<p>By default, `window` is set to this (i.e. all key events are stolen by DXOpal.) If canvas element is set to this, only key events happend on canvas are processed by DXOpal.</p>
 
 
   </div>
@@ -1001,11 +1387,6 @@ canvas are processed by DXOpal.</p>
       <pre class="lines">
 
 
-90
-91
-92
-93
-94
 95
 96
 97
@@ -1016,10 +1397,15 @@ canvas are processed by DXOpal.</p>
 102
 103
 104
-105</pre>
+105
+106
+107
+108
+109
+110</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/input.rb', line 90</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/input.rb', line 95</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_keyevent_target='>keyevent_target=</span><span class='lparen'>(</span><span class='id identifier rubyid_target'>target</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='cvar'>@@keyevent_target</span>
@@ -1081,14 +1467,16 @@ canvas are processed by DXOpal.</p>
       <pre class="lines">
 
 
-156
-157
-158</pre>
+161
+162
+163
+164</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/input.rb', line 156</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/input.rb', line 161</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_mouse_down?'>mouse_down?</span><span class='lparen'>(</span><span class='id identifier rubyid_mouse_code'>mouse_code</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>missing argument of `mouse_down?&#39;</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_mouse_code'>mouse_code</span>
   <span class='kw'>return</span> <span class='backtick'>`</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@pressing_mouse_buttons</span><span class='embexpr_end'>}</span><span class='tstring_content'>[mouse_code] &gt; 0</span><span class='tstring_end'>`</span></span>
 <span class='kw'>end</span></pre>
     </td>
@@ -1135,14 +1523,16 @@ canvas are processed by DXOpal.</p>
       <pre class="lines">
 
 
-161
-162
-163</pre>
+167
+168
+169
+170</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/input.rb', line 161</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/input.rb', line 167</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_mouse_push?'>mouse_push?</span><span class='lparen'>(</span><span class='id identifier rubyid_mouse_code'>mouse_code</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>missing argument of `mouse_push?&#39;</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_mouse_code'>mouse_code</span>
   <span class='kw'>return</span> <span class='backtick'>`</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@pressing_mouse_buttons</span><span class='embexpr_end'>}</span><span class='tstring_content'>[mouse_code] == -(</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@tick</span><span class='embexpr_end'>}</span><span class='tstring_content'>-1)</span><span class='tstring_end'>`</span></span>
 <span class='kw'>end</span></pre>
     </td>
@@ -1189,14 +1579,16 @@ canvas are processed by DXOpal.</p>
       <pre class="lines">
 
 
-166
-167
-168</pre>
+173
+174
+175
+176</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/input.rb', line 166</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/input.rb', line 173</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_mouse_release?'>mouse_release?</span><span class='lparen'>(</span><span class='id identifier rubyid_mouse_code'>mouse_code</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>missing argument of `mouse_release?&#39;</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_mouse_code'>mouse_code</span>
   <span class='kw'>return</span> <span class='backtick'>`</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@pressing_mouse_buttons</span><span class='embexpr_end'>}</span><span class='tstring_content'>[mouse_code] == -(</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@tick</span><span class='embexpr_end'>}</span><span class='tstring_content'>-1)</span><span class='tstring_end'>`</span></span>
 <span class='kw'>end</span></pre>
     </td>
@@ -1234,12 +1626,12 @@ canvas are processed by DXOpal.</p>
       <pre class="lines">
 
 
-144
-145
-146</pre>
+149
+150
+151</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/input.rb', line 144</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/input.rb', line 149</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_mouse_x'>mouse_x</span>
   <span class='kw'>return</span> <span class='backtick'>`</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@mouse_info</span><span class='embexpr_end'>}</span><span class='tstring_content'>.x</span><span class='tstring_end'>`</span></span>
@@ -1268,15 +1660,342 @@ canvas are processed by DXOpal.</p>
       <pre class="lines">
 
 
-147
-148
-149</pre>
+152
+153
+154</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/input.rb', line 147</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/input.rb', line 152</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_mouse_y'>mouse_y</span>
   <span class='kw'>return</span> <span class='backtick'>`</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@mouse_info</span><span class='embexpr_end'>}</span><span class='tstring_content'>.y</span><span class='tstring_end'>`</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="new_touches-class_method">
+  
+    .<strong>new_touches</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns newly created touches</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+307
+308
+309
+310
+311</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/input.rb', line 307</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_new_touches'>new_touches</span>
+  <span class='id identifier rubyid_ret'>ret</span> <span class='op'>=</span> <span class='cvar'>@@new_touches</span>
+  <span class='cvar'>@@new_touches</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_ret'>ret</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="touch_down?-class_method">
+  
+    .<strong>touch_down?</strong>  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Return true if the touch is being pressed</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+253
+254
+255</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/input.rb', line 253</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_touch_down?'>touch_down?</span>
+  <span class='kw'>return</span> <span class='backtick'>`</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@pressing_touch</span><span class='embexpr_end'>}</span><span class='tstring_content'>[0] &gt; 0</span><span class='tstring_end'>`</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="touch_push?-class_method">
+  
+    .<strong>touch_push?</strong>  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Return true if the touch is pressed in the last tick</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+258
+259
+260</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/input.rb', line 258</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_touch_push?'>touch_push?</span>
+  <span class='kw'>return</span> <span class='backtick'>`</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@pressing_touch</span><span class='embexpr_end'>}</span><span class='tstring_content'>[0] == -(</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@tick</span><span class='embexpr_end'>}</span><span class='tstring_content'>-1)</span><span class='tstring_end'>`</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="touch_release?-class_method">
+  
+    .<strong>touch_release?</strong>  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Return true if the touch is released in the last tick</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+263
+264
+265</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/input.rb', line 263</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_touch_release?'>touch_release?</span>
+  <span class='kw'>return</span> <span class='backtick'>`</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@pressing_touch</span><span class='embexpr_end'>}</span><span class='tstring_content'>[0] == -(</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@tick</span><span class='embexpr_end'>}</span><span class='tstring_content'>-1)</span><span class='tstring_end'>`</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="touch_x-class_method">
+  
+    .<strong>touch_x</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='touch_pos_x-class_method'>touch_pos_x</span></span>
+    </span>
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Return position of touch (0, 0) is the top-left corner of the canvas</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+241
+242
+243</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/input.rb', line 241</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_touch_x'>touch_x</span>
+  <span class='kw'>return</span> <span class='backtick'>`</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@touch_info</span><span class='embexpr_end'>}</span><span class='tstring_content'>.x</span><span class='tstring_end'>`</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="touch_y-class_method">
+  
+    .<strong>touch_y</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='touch_pos_y-class_method'>touch_pos_y</span></span>
+    </span>
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+244
+245
+246</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/input.rb', line 244</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_touch_y'>touch_y</span>
+  <span class='kw'>return</span> <span class='backtick'>`</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@touch_info</span><span class='embexpr_end'>}</span><span class='tstring_content'>.y</span><span class='tstring_end'>`</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="touches-class_method">
+  
+    .<strong>touches</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns current touches as an array of Input::Touch</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+302
+303
+304</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/input.rb', line 302</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_touches'>touches</span>
+  <span class='cvar'>@@touches</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1309,15 +2028,15 @@ canvas are processed by DXOpal.</p>
       <pre class="lines">
 
 
-35
-36
-37
-38
-39
-40</pre>
+40
+41
+42
+43
+44
+45</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/input.rb', line 35</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/input.rb', line 40</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_x'>x</span><span class='lparen'>(</span><span class='id identifier rubyid_pad_number'>pad_number</span><span class='op'>=</span><span class='int'>0</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_ret'>ret</span> <span class='op'>=</span> <span class='int'>0</span>
@@ -1356,15 +2075,15 @@ canvas are processed by DXOpal.</p>
       <pre class="lines">
 
 
-43
-44
-45
-46
-47
-48</pre>
+48
+49
+50
+51
+52
+53</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/input.rb', line 43</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/input.rb', line 48</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_y'>y</span><span class='lparen'>(</span><span class='id identifier rubyid_pad_number'>pad_number</span><span class='op'>=</span><span class='int'>0</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_ret'>ret</span> <span class='op'>=</span> <span class='int'>0</span>
@@ -1382,9 +2101,9 @@ canvas are processed by DXOpal.</p>
 </div>
 
       <div id="footer">
-  Generated on Sat Sep 29 15:56:47 2018 by
+  Generated on Fri Mar  6 17:38:37 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.16 (ruby-2.5.1).
+  0.9.20 (ruby-2.7.0).
 </div>
 
     </div>

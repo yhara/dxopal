@@ -6,7 +6,7 @@
 <title>
   Class: DXOpal::Sprite
   
-    &mdash; Documentation by YARD 0.9.16
+    &mdash; Documentation by YARD 0.9.20
   
 </title>
 
@@ -87,14 +87,14 @@
   
   <dl>
       <dt>Extended by:</dt>
-      <dd>CollisionCheck::ClassMethods</dd>
+      <dd><span class='object_link'><a href="Sprite/CollisionCheck/ClassMethods.html" title="DXOpal::Sprite::CollisionCheck::ClassMethods (module)">CollisionCheck::ClassMethods</a></span></dd>
   </dl>
   
   
   
   <dl>
       <dt>Includes:</dt>
-      <dd>CollisionCheck, Physics</dd>
+      <dd><span class='object_link'><a href="Sprite/CollisionCheck.html" title="DXOpal::Sprite::CollisionCheck (module)">CollisionCheck</a></span>, <span class='object_link'><a href="Sprite/Physics.html" title="DXOpal::Sprite::Physics (module)">Physics</a></span></dd>
   </dl>
   
   
@@ -104,11 +104,23 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>opal/dxopal/sprite.rb</dd>
+    <dd>lib/dxopal/sprite.rb<span class="defines">,<br />
+  lib/dxopal/sprite/collision_area.rb,<br /> lib/dxopal/sprite/collision_check.rb,<br /> lib/dxopal/sprite/physics.rb</span>
+</dd>
   </dl>
   
 </div>
 
+<h2>Defined Under Namespace</h2>
+<p class="children">
+  
+    
+      <strong class="modules">Modules:</strong> <span class='object_link'><a href="Sprite/CollisionArea.html" title="DXOpal::Sprite::CollisionArea (module)">CollisionArea</a></span>, <span class='object_link'><a href="Sprite/CollisionCheck.html" title="DXOpal::Sprite::CollisionCheck (module)">CollisionCheck</a></span>, <span class='object_link'><a href="Sprite/Physics.html" title="DXOpal::Sprite::Physics (module)">Physics</a></span>
+    
+  
+    
+  
+</p>
 
 
 
@@ -191,8 +203,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Set blend type (Any of :alpha(default), :add) (:none, :add2 and :sub are
-not implemented yet; Pull request is welcome).</p>
+<p>Set blend type (Any of :alpha(default), :add) (:none, :add2 and :sub are not implemented yet; Pull request is welcome).</p>
 </div></span>
   
 </li>
@@ -418,6 +429,16 @@ not implemented yet; Pull request is welcome).</p>
 
 
 
+  
+  
+  <h3 class="inherited">Attributes included from <span class='object_link'><a href="Sprite/Physics.html" title="DXOpal::Sprite::Physics (module)">Physics</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Sprite/Physics.html#_matter_body-instance_method" title="DXOpal::Sprite::Physics#_matter_body (method)">#_matter_body</a></span></p>
+
+  
+  
+  <h3 class="inherited">Attributes included from <span class='object_link'><a href="Sprite/CollisionCheck.html" title="DXOpal::Sprite::CollisionCheck (module)">CollisionCheck</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Sprite/CollisionCheck.html#_collision_area-instance_method" title="DXOpal::Sprite::CollisionCheck#_collision_area (method)">#_collision_area</a></span>, <span class='object_link'><a href="Sprite/CollisionCheck.html#collision-instance_method" title="DXOpal::Sprite::CollisionCheck#collision (method)">#collision</a></span>, <span class='object_link'><a href="Sprite/CollisionCheck.html#collision_enable-instance_method" title="DXOpal::Sprite::CollisionCheck#collision_enable (method)">#collision_enable</a></span>, <span class='object_link'><a href="Sprite/CollisionCheck.html#collision_sync-instance_method" title="DXOpal::Sprite::CollisionCheck#collision_sync (method)">#collision_sync</a></span></p>
+
 
   
     <h2>
@@ -426,6 +447,100 @@ not implemented yet; Pull request is welcome).</p>
     </h2>
 
     <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#_add_matter_body-class_method" title="_add_matter_body (class method)">.<strong>_add_matter_body</strong>(body, type, sprite, info)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#_matter_engine-class_method" title="_matter_engine (class method)">.<strong>_matter_engine</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>(internal) Matter.Engine instance.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#_matter_runner-class_method" title="_matter_runner (class method)">.<strong>_matter_runner</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>(internal) Matter.Runner instance.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#_matter_sprites-class_method" title="_matter_sprites (class method)">.<strong>_matter_sprites</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>(internal).</p>
+</div></span>
+  
+</li>
+
       
         <li class="public ">
   <span class="summary_signature">
@@ -470,6 +585,54 @@ not implemented yet; Pull request is welcome).</p>
   
     <span class="summary_desc"><div class='inline'>
 <p>Draw each of the given sprites (unless it is vanished).</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#matter_enabled%3F-class_method" title="matter_enabled? (class method)">.<strong>matter_enabled?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Return true if `physical_body=` is ever called.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#matter_tick-class_method" title="matter_tick (class method)">.<strong>matter_tick</strong>(time)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Call Matter.Runner.tick - time: time given by requestAnimationFrame.</p>
 </div></span>
   
 </li>
@@ -652,7 +815,37 @@ not implemented yet; Pull request is welcome).</p>
 
   
   
-  <div id="constructor_details" class="method_details_list">
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Sprite/CollisionCheck/ClassMethods.html" title="DXOpal::Sprite::CollisionCheck::ClassMethods (module)">CollisionCheck::ClassMethods</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Sprite/CollisionCheck/ClassMethods.html#check-instance_method" title="DXOpal::Sprite::CollisionCheck::ClassMethods#check (method)">check</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Sprite/Physics.html" title="DXOpal::Sprite::Physics (module)">Physics</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Sprite/Physics.html#_move_matter_body-instance_method" title="DXOpal::Sprite::Physics#_move_matter_body (method)">#_move_matter_body</a></span>, <span class='object_link'><a href="Sprite/Physics.html#_move_to_matter_body-instance_method" title="DXOpal::Sprite::Physics#_move_to_matter_body (method)">#_move_to_matter_body</a></span>, <span class='object_link'><a href="Sprite/Physics.html#physical_body=-instance_method" title="DXOpal::Sprite::Physics#physical_body= (method)">#physical_body=</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Sprite/CollisionCheck.html" title="DXOpal::Sprite::CollisionCheck (module)">CollisionCheck</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Sprite/CollisionCheck.html#===-instance_method" title="DXOpal::Sprite::CollisionCheck#=== (method)">#===</a></span>, <span class='object_link'><a href="Sprite/CollisionCheck.html#_collidable%3F-instance_method" title="DXOpal::Sprite::CollisionCheck#_collidable? (method)">#_collidable?</a></span>, <span class='object_link'><a href="Sprite/CollisionCheck.html#_collides%3F-instance_method" title="DXOpal::Sprite::CollisionCheck#_collides? (method)">#_collides?</a></span>, <span class='object_link'><a href="Sprite/CollisionCheck.html#_init_collision_info-instance_method" title="DXOpal::Sprite::CollisionCheck#_init_collision_info (method)">#_init_collision_info</a></span>, <span class='object_link'><a href="Sprite/CollisionCheck.html#check-instance_method" title="DXOpal::Sprite::CollisionCheck#check (method)">#check</a></span>, <span class='object_link'><a href="Sprite/CollisionCheck.html#hit-instance_method" title="DXOpal::Sprite::CollisionCheck#hit (method)">#hit</a></span>, <span class='object_link'><a href="Sprite/CollisionCheck.html#shot-instance_method" title="DXOpal::Sprite::CollisionCheck#shot (method)">#shot</a></span></p>
+<div id="constructor_details" class="method_details_list">
   <h2>Constructor Details</h2>
   
     <div class="method_details first">
@@ -697,7 +890,7 @@ not implemented yet; Pull request is welcome).</p>
 47</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/sprite.rb', line 34</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/sprite.rb', line 34</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='op'>=</span><span class='int'>0</span><span class='comma'>,</span> <span class='id identifier rubyid_y'>y</span><span class='op'>=</span><span class='int'>0</span><span class='comma'>,</span> <span class='id identifier rubyid_image'>image</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='ivar'>@x</span><span class='comma'>,</span> <span class='ivar'>@y</span><span class='comma'>,</span> <span class='ivar'>@image</span> <span class='op'>=</span> <span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='id identifier rubyid_y'>y</span><span class='comma'>,</span> <span class='id identifier rubyid_image'>image</span>
@@ -756,7 +949,7 @@ not implemented yet; Pull request is welcome).</p>
 59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/sprite.rb', line 57</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/sprite.rb', line 57</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_alpha'>alpha</span>
   <span class='ivar'>@alpha</span>
@@ -799,7 +992,7 @@ not implemented yet; Pull request is welcome).</p>
 53</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/sprite.rb', line 51</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/sprite.rb', line 51</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_angle'>angle</span>
   <span class='ivar'>@angle</span>
@@ -823,8 +1016,7 @@ not implemented yet; Pull request is welcome).</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Set blend type (Any of :alpha(default), :add) (:none, :add2 and :sub are
-not implemented yet; Pull request is welcome)</p>
+<p>Set blend type (Any of :alpha(default), :add) (:none, :add2 and :sub are not implemented yet; Pull request is welcome)</p>
 
 
   </div>
@@ -843,7 +1035,7 @@ not implemented yet; Pull request is welcome)</p>
 62</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/sprite.rb', line 60</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/sprite.rb', line 60</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_blend'>blend</span>
   <span class='ivar'>@blend</span>
@@ -886,7 +1078,7 @@ not implemented yet; Pull request is welcome)</p>
 57</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/sprite.rb', line 55</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/sprite.rb', line 55</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_center_x'>center_x</span>
   <span class='ivar'>@center_x</span>
@@ -929,7 +1121,7 @@ not implemented yet; Pull request is welcome)</p>
 57</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/sprite.rb', line 55</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/sprite.rb', line 55</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_center_y'>center_y</span>
   <span class='ivar'>@center_y</span>
@@ -972,7 +1164,7 @@ not implemented yet; Pull request is welcome)</p>
 55</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/sprite.rb', line 53</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/sprite.rb', line 53</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_scale_x'>scale_x</span>
   <span class='ivar'>@scale_x</span>
@@ -1015,7 +1207,7 @@ not implemented yet; Pull request is welcome)</p>
 55</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/sprite.rb', line 53</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/sprite.rb', line 53</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_scale_y'>scale_y</span>
   <span class='ivar'>@scale_y</span>
@@ -1058,7 +1250,7 @@ not implemented yet; Pull request is welcome)</p>
 50</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/sprite.rb', line 48</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/sprite.rb', line 48</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_visible'>visible</span>
   <span class='ivar'>@visible</span>
@@ -1101,7 +1293,7 @@ not implemented yet; Pull request is welcome)</p>
 64</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/sprite.rb', line 62</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/sprite.rb', line 62</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_x'>x</span>
   <span class='ivar'>@x</span>
@@ -1144,7 +1336,7 @@ not implemented yet; Pull request is welcome)</p>
 64</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/sprite.rb', line 62</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/sprite.rb', line 62</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_y'>y</span>
   <span class='ivar'>@y</span>
@@ -1187,7 +1379,7 @@ not implemented yet; Pull request is welcome)</p>
 50</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/sprite.rb', line 48</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/sprite.rb', line 48</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_z'>z</span>
   <span class='ivar'>@z</span>
@@ -1205,7 +1397,162 @@ not implemented yet; Pull request is welcome)</p>
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="clean-class_method">
+  <h3 class="signature first" id="_add_matter_body-class_method">
+  
+    .<strong>_add_matter_body</strong>(body, type, sprite, info)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+54
+55
+56
+57</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/sprite/physics.rb', line 54</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid__add_matter_body'>_add_matter_body</span><span class='lparen'>(</span><span class='id identifier rubyid_body'>body</span><span class='comma'>,</span> <span class='id identifier rubyid_type'>type</span><span class='comma'>,</span> <span class='id identifier rubyid_sprite'>sprite</span><span class='comma'>,</span> <span class='id identifier rubyid_info'>info</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid__matter_sprites'>_matter_sprites</span><span class='lbracket'>[</span><span class='backtick'>`</span><span class='tstring_content'>body.id</span><span class='tstring_end'>`</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='id identifier rubyid_type'>type</span><span class='comma'>,</span> <span class='id identifier rubyid_sprite'>sprite</span><span class='comma'>,</span> <span class='id identifier rubyid_info'>info</span><span class='rbracket'>]</span>
+  <span class='backtick'>`</span><span class='tstring_content'>Matter.World.addBody(</span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="" title="DXOpal::Sprite (class)">Sprite</a></span></span><span class='period'>.</span><span class='id identifier rubyid__matter_engine'><span class='object_link'><a href="#_matter_engine-class_method" title="DXOpal::Sprite._matter_engine (method)">_matter_engine</a></span></span><span class='embexpr_end'>}</span><span class='tstring_content'>.world, body)</span><span class='tstring_end'>`</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="_matter_engine-class_method">
+  
+    .<strong>_matter_engine</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>(internal) Matter.Engine instance</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+40
+41
+42</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/sprite/physics.rb', line 40</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid__matter_engine'>_matter_engine</span>
+  <span class='ivar'>@matter_engine</span> <span class='op'>||=</span> <span class='backtick'>`</span><span class='tstring_content'>Matter.Engine.create()</span><span class='tstring_end'>`</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="_matter_runner-class_method">
+  
+    .<strong>_matter_runner</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>(internal) Matter.Runner instance</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+45
+46
+47</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/sprite/physics.rb', line 45</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid__matter_runner'>_matter_runner</span>
+  <span class='ivar'>@matter_runner</span> <span class='op'>||=</span> <span class='backtick'>`</span><span class='tstring_content'>Matter.Runner.create()</span><span class='tstring_end'>`</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="_matter_sprites-class_method">
+  
+    .<strong>_matter_sprites</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>(internal)</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+50
+51
+52</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/sprite/physics.rb', line 50</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid__matter_sprites'>_matter_sprites</span>
+  <span class='ivar'>@matter_bodies</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="clean-class_method">
   
     .<strong>clean</strong>(sprites)  &#x21d2; <tt>Object</tt> 
   
@@ -1237,7 +1584,7 @@ not implemented yet; Pull request is welcome)</p>
 24</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/sprite.rb', line 20</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/sprite.rb', line 20</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_clean'>clean</span><span class='lparen'>(</span><span class='id identifier rubyid_sprites'>sprites</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_sprites'>sprites</span><span class='period'>.</span><span class='id identifier rubyid_reject!'>reject!</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_sprite'>sprite</span><span class='op'>|</span>
@@ -1283,13 +1630,143 @@ not implemented yet; Pull request is welcome)</p>
 32</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/sprite.rb', line 27</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/sprite.rb', line 27</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_draw'>draw</span><span class='lparen'>(</span><span class='id identifier rubyid_sprites'>sprites</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_sprites'>sprites</span><span class='period'>.</span><span class='id identifier rubyid_flatten'>flatten</span><span class='period'>.</span><span class='id identifier rubyid_sort_by'>sort_by</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:z</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_sprite'>sprite</span><span class='op'>|</span>
     <span class='kw'>next</span> <span class='kw'>if</span> <span class='id identifier rubyid_sprite'>sprite</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbol'>:vanished?</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_sprite'>sprite</span><span class='period'>.</span><span class='id identifier rubyid_vanished?'>vanished?</span>
     <span class='id identifier rubyid_sprite'>sprite</span><span class='period'>.</span><span class='id identifier rubyid_draw'>draw</span>
   <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="matter_enabled?-class_method">
+  
+    .<strong>matter_enabled?</strong>  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Return true if `physical_body=` is ever called</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+60
+61
+62
+63
+64</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/sprite/physics.rb', line 60</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_matter_enabled?'>matter_enabled?</span>  <span class='comment'># Note: we cannot use `!!` here because @matter_engine may be a JS object,
+</span>  <span class='comment'># which does not have Ruby&#39;s `!@` method
+</span>
+  <span class='ivar'>@matter_engine</span> <span class='op'>?</span> <span class='kw'>true</span> <span class='op'>:</span> <span class='kw'>false</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="matter_tick-class_method">
+  
+    .<strong>matter_tick</strong>(time)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Call Matter.Runner.tick</p>
+<ul><li>
+<p>time: time given by requestAnimationFrame</p>
+</li></ul>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/sprite/physics.rb', line 68</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_matter_tick'>matter_tick</span><span class='lparen'>(</span><span class='id identifier rubyid_time'>time</span><span class='rparen'>)</span>
+  <span class='backtick'>%x{</span><span class='tstring_content'>
+    Matter.Runner.tick(</span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="" title="DXOpal::Sprite (class)">Sprite</a></span></span><span class='period'>.</span><span class='id identifier rubyid__matter_runner'><span class='object_link'><a href="#_matter_runner-class_method" title="DXOpal::Sprite._matter_runner (method)">_matter_runner</a></span></span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="" title="DXOpal::Sprite (class)">Sprite</a></span></span><span class='period'>.</span><span class='id identifier rubyid__matter_engine'><span class='object_link'><a href="#_matter_engine-class_method" title="DXOpal::Sprite._matter_engine (method)">_matter_engine</a></span></span><span class='embexpr_end'>}</span><span class='tstring_content'>, time);
+    Matter.Composite.allBodies(</span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="" title="DXOpal::Sprite (class)">Sprite</a></span></span><span class='period'>.</span><span class='id identifier rubyid__matter_engine'><span class='object_link'><a href="#_matter_engine-class_method" title="DXOpal::Sprite._matter_engine (method)">_matter_engine</a></span></span><span class='embexpr_end'>}</span><span class='tstring_content'>.world).forEach((body) =&gt; {
+      var [type, sprite, info] = </span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="" title="DXOpal::Sprite (class)">Sprite</a></span></span><span class='period'>.</span><span class='id identifier rubyid__matter_sprites'><span class='object_link'><a href="#_matter_sprites-class_method" title="DXOpal::Sprite._matter_sprites (method)">_matter_sprites</a></span></span><span class='lbracket'>[</span><span class='backtick'>`</span><span class='tstring_content'>body.id</span><span class='tstring_end'>`</span></span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+      switch(type) {
+      case &quot;rectangle&quot;:
+        var [width, height] = info;
+        sprite[&#39;$_move_to_matter_body&#39;](body.position.x, body.position.y);
+        sprite[&#39;$angle=&#39;](body.angle / Math.PI * 180);
+        break;
+      default:
+        `</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>unknown type: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_type'>type</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='embexpr_end'>}</span><span class='tstring_content'>`
+      }
+    });
+  </span><span class='tstring_end'>}</span></span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1331,7 +1808,7 @@ not implemented yet; Pull request is welcome)</p>
 17</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/sprite.rb', line 11</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/sprite.rb', line 11</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_update'>update</span><span class='lparen'>(</span><span class='id identifier rubyid_sprites'>sprites</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_sprites'>sprites</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_sprite'>sprite</span><span class='op'>|</span>
@@ -1388,7 +1865,7 @@ not implemented yet; Pull request is welcome)</p>
 98</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/sprite.rb', line 90</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/sprite.rb', line 90</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_draw'>draw</span>
   <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>image not set to Sprite</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='ivar'>@image</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
@@ -1422,7 +1899,7 @@ not implemented yet; Pull request is welcome)</p>
 74</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/sprite.rb', line 74</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/sprite.rb', line 74</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_image'>image</span><span class='semicolon'>;</span> <span class='ivar'>@image</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -1457,7 +1934,7 @@ not implemented yet; Pull request is welcome)</p>
 84</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/sprite.rb', line 75</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/sprite.rb', line 75</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_image='>image=</span><span class='lparen'>(</span><span class='id identifier rubyid_img'>img</span><span class='rparen'>)</span>
   <span class='ivar'>@image</span> <span class='op'>=</span> <span class='id identifier rubyid_img'>img</span>
@@ -1492,7 +1969,7 @@ not implemented yet; Pull request is welcome)</p>
 86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/sprite.rb', line 86</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/sprite.rb', line 86</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_vanish'>vanish</span><span class='semicolon'>;</span> <span class='ivar'>@vanished</span> <span class='op'>=</span> <span class='kw'>true</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -1540,7 +2017,7 @@ not implemented yet; Pull request is welcome)</p>
 87</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/sprite.rb', line 87</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/sprite.rb', line 87</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_vanished?'>vanished?</span><span class='semicolon'>;</span> <span class='ivar'>@vanished</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -1553,9 +2030,9 @@ not implemented yet; Pull request is welcome)</p>
 </div>
 
       <div id="footer">
-  Generated on Sat Sep 29 15:56:48 2018 by
+  Generated on Fri Mar  6 17:38:38 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.16 (ruby-2.5.1).
+  0.9.20 (ruby-2.7.0).
 </div>
 
     </div>

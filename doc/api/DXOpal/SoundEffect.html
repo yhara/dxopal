@@ -6,7 +6,7 @@
 <title>
   Class: DXOpal::SoundEffect
   
-    &mdash; Documentation by YARD 0.9.16
+    &mdash; Documentation by YARD 0.9.20
   
 </title>
 
@@ -98,34 +98,12 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>opal/dxopal/sound_effect.rb</dd>
+    <dd>lib/dxopal/sound_effect.rb</dd>
   </dl>
   
 </div>
 
-<h2>Overview</h2><div class="docstring">
-  <div class="discussion">
-    
-<p>User-generated sound</p>
-
-<p>Example:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_v'>v</span> <span class='op'>=</span> <span class='int'>80</span>
-<span class='const'>SoundEffect</span><span class='period'>.</span><span class='id identifier rubyid_register'><span class='object_link'><a href="RemoteResource.html#register-class_method" title="DXOpal::RemoteResource.register (method)">register</a></span></span><span class='lparen'>(</span><span class='symbol'>:sound1</span><span class='comma'>,</span> <span class='int'>4000</span><span class='comma'>,</span> <span class='const'>WAVE_RECT</span><span class='comma'>,</span> <span class='int'>5000</span><span class='rparen'>)</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_v'>v</span> <span class='op'>=</span> <span class='id identifier rubyid_v'>v</span> <span class='op'>-</span> <span class='float'>0.03</span>
-  <span class='lbracket'>[</span><span class='id identifier rubyid_rand'>rand</span><span class='lparen'>(</span><span class='int'>300</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='id identifier rubyid_v'>v</span><span class='rbracket'>]</span>
-<span class='kw'>end</span>
-</code></pre>
-
-<p>This will generate a sound with WebAudio.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-
-</div><h2>Defined Under Namespace</h2>
+<h2>Defined Under Namespace</h2>
 <p class="children">
   
     
@@ -173,8 +151,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>time : Total number of ticks   When resolution=1000(default), `time` is
-equivalent to the    total length of the sound in milliseconds.</p>
+<p>time : Total number of ticks   When resolution=1000(default), `time` is equivalent to the    total length of the sound in milliseconds.</p>
 </div></span>
   
 </li>
@@ -266,8 +243,7 @@ equivalent to the    total length of the sound in milliseconds.</p>
 total length of the sound in milliseconds.
 </code></pre>
 
-<p>wave_type : Type of wave form resolution : Number of ticks per second block
-: Should return [freq(0~44100), volume(0~255)]</p>
+<p>wave_type : Type of wave form resolution : Number of ticks per second block : Should return [freq(0~44100), volume(0~255)]</p>
 
 
   </div>
@@ -337,7 +313,7 @@ total length of the sound in milliseconds.
 81</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/sound_effect.rb', line 28</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/sound_effect.rb', line 28</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid__load'>_load</span><span class='lparen'>(</span><span class='id identifier rubyid_time'>time</span><span class='comma'>,</span> <span class='id identifier rubyid_wave_type'>wave_type</span><span class='op'>=</span><span class='const'>WAVE_RECT</span><span class='comma'>,</span> <span class='id identifier rubyid_resolution'>resolution</span><span class='op'>=</span><span class='int'>1000</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_snd'>snd</span> <span class='op'>=</span> <span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>(soundeffect)</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
@@ -424,7 +400,7 @@ total length of the sound in milliseconds.
 85</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'opal/dxopal/sound_effect.rb', line 83</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/sound_effect.rb', line 83</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_add'>add</span><span class='lparen'>(</span><span class='id identifier rubyid_wave_type'>wave_type</span><span class='op'>=</span><span class='const'>WAVE_RECT</span><span class='comma'>,</span> <span class='id identifier rubyid_resolution'>resolution</span><span class='op'>=</span><span class='int'>1000</span><span class='rparen'>)</span>
   <span class='const'>TODO</span>
@@ -439,9 +415,9 @@ total length of the sound in milliseconds.
 </div>
 
       <div id="footer">
-  Generated on Sat Sep 29 15:56:48 2018 by
+  Generated on Fri Mar  6 17:38:37 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.16 (ruby-2.5.1).
+  0.9.20 (ruby-2.7.0).
 </div>
 
     </div>
