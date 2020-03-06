@@ -23,7 +23,7 @@ end
 
 desc "Rebuild API reference"
 task :api do
-  sh "yard doc -o doc/api/ opal/**/*.rb"
+  sh "yard doc -o doc/api/ lib/**/*.rb lib/**/**/*.rb"
 end
 
 desc "git ci, git tag and git push"
