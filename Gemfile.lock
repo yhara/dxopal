@@ -25,7 +25,7 @@ GEM
       ast (~> 2.2)
     puma (4.3.5)
       nio4r (~> 2.0)
-    rack (2.1.1)
+    rack (2.2.3)
     rake (13.0.1)
     sourcemap (0.1.1)
     sprockets (3.7.2)
