@@ -135,9 +135,11 @@ module DXOpal
         document.addEventListener('mouseup', function(ev){
           #{@@mouse_info}.x = ev.pageX - #{@@canvas_x};
           #{@@mouse_info}.y = ev.pageY - #{@@canvas_y};
+          // ev.button => ev.buttons
+          table = { 0: 1, 1: 4, 2: 2, 3: 8, 4: 16 };
           for (var k=1; k<=16; k<<=1) {
-            if ((ev.buttons & k) == 0 && #{@@pressing_mouse_buttons}[k]) {
-              #{@@pressing_mouse_buttons}[k] = -#{@@tick};
+            if (#{@@pressing_mouse_buttons}[k]) {
+              #{@@pressing_mouse_buttons}[table[ev.button]] = -#{@@tick};
             }
           }
         });
