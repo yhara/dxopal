@@ -5,9 +5,7 @@ desc "Build dxopal.js"
 task :build => ["build/dxopal.js"]
 
 desc "Build dxopal.js and dxopal.min.js"
-task :build_min => ["build/dxopal.min.js", "starter-kit/dxopal.min.js"]
-
-file "starter-kit/dxopal.min.js" => "build/dxopal.min.js" do |t| cp t.source, t.name end
+task :build_min => "build/dxopal.min.js"
 
 file "build/dxopal.min.js" => "build/dxopal.js" do |t|
   sh "uglifyjs #{t.source} -o #{t.name}"
@@ -42,14 +40,4 @@ task :release do
   sh "git tag '#{v}'"
   sh "git push origin master --tags"
   sh "gem push dxopal-#{DXOpal::VERSION}.gem"
-
-  #cd "starter-kit" do
-  #  sh "git status"
-  #  print "ok? [y/n] "
-  #  if $stdin.gets.chomp == "y"
-  #    sh "git ci dxopal.min.js -m 'v#{DXOpal::VERSION}'"
-  #    sh "git tag 'v#{DXOpal::VERSION}'"
-  #    sh "git push origin master --tags"
-  #  end
-  #end
 end
