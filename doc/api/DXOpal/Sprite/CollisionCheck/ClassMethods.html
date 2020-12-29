@@ -6,15 +6,15 @@
 <title>
   Module: DXOpal::Sprite::CollisionCheck::ClassMethods
   
-    &mdash; Documentation by YARD 0.9.20
+    &mdash; Documentation by YARD 0.9.26
   
 </title>
 
-  <link rel="stylesheet" href="../../../css/style.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../../../css/style.css" type="text/css" />
 
-  <link rel="stylesheet" href="../../../css/common.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../../../css/common.css" type="text/css" />
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
   pathId = "DXOpal::Sprite::CollisionCheck::ClassMethods";
   relpath = '../../../';
 </script>
@@ -120,7 +120,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Run collision checking for set of sprites - offences: Sprite or [Sprite] - defences: Sprite or [Sprite] - shot: method name - hit: method name.</p>
+</div></span>
   
 </li>
 
@@ -143,7 +145,36 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Run collision checking for set of sprites</p>
+<ul><li>
+<p>offences: Sprite or [Sprite]</p>
+</li><li>
+<p>defences: Sprite or [Sprite]</p>
+</li><li>
+<p>shot: method name</p>
+</li><li>
+<p>hit: method name</p>
+</li></ul>
+
+<p>This method has two modes.</p>
+<ul><li>
+<p>If `offences` and `defences` are the same, collision check will be performed on each pair from the array. Method `hit` is called on the each sprite, with the other sprite as an argument.</p>
+</li><li>
+<p>Otherwise, collision check will be performed on each pair of offence sprite and defence sprite. In this case, method `shot` is called on the offence sprite and method `hit` is called on the defence sprite, with the other sprite as an argument.</p>
+</li></ul>
+
+<p>TODO: return true if any collition is detected TODO: skip collision checking if shot/hit returned `:discard`</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
@@ -189,9 +220,9 @@
   <span class='id identifier rubyid_offences'>offences</span> <span class='op'>=</span> <span class='const'>Array</span><span class='lparen'>(</span><span class='id identifier rubyid_offences'>offences</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_defences'>defences</span> <span class='op'>=</span> <span class='const'>Array</span><span class='lparen'>(</span><span class='id identifier rubyid_defences'>defences</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_i'>i</span> <span class='op'>=</span> <span class='id identifier rubyid_j'>j</span> <span class='op'>=</span> <span class='int'>0</span>  <span class='comment'># trick to use i, j in the `#{}`
-</span>  <span class='kw'>if</span> <span class='id identifier rubyid_offences'>offences</span><span class='period'>.</span><span class='id identifier rubyid_equal?'>equal?</span><span class='lparen'>(</span><span class='id identifier rubyid_defences'>defences</span><span class='rparen'>)</span>    <span class='comment'># any-vs-any mode
-</span>
-    <span class='id identifier rubyid_sprites'>sprites</span> <span class='op'>=</span> <span class='id identifier rubyid_offences'>offences</span><span class='period'>.</span><span class='id identifier rubyid_select'>select</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_x'>x</span><span class='op'>|</span> <span class='id identifier rubyid_x'>x</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../../Sprite.html" title="DXOpal::Sprite (class)">Sprite</a></span></span><span class='rparen'>)</span><span class='rbrace'>}</span>
+</span>  <span class='kw'>if</span> <span class='id identifier rubyid_offences'>offences</span><span class='period'>.</span><span class='id identifier rubyid_equal?'>equal?</span><span class='lparen'>(</span><span class='id identifier rubyid_defences'>defences</span><span class='rparen'>)</span>
+    <span class='comment'># any-vs-any mode
+</span>    <span class='id identifier rubyid_sprites'>sprites</span> <span class='op'>=</span> <span class='id identifier rubyid_offences'>offences</span><span class='period'>.</span><span class='id identifier rubyid_select'>select</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_x'>x</span><span class='op'>|</span> <span class='id identifier rubyid_x'>x</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../../Sprite.html" title="DXOpal::Sprite (class)">Sprite</a></span></span><span class='rparen'>)</span><span class='rbrace'>}</span>
     <span class='id identifier rubyid_n'>n</span> <span class='op'>=</span> <span class='id identifier rubyid_sprites'>sprites</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span>
     <span class='backtick'>%x{</span><span class='tstring_content'>
       for (var i=0; i&lt;n; i++) {
@@ -227,9 +258,9 @@
 </div>
 
       <div id="footer">
-  Generated on Fri Mar  6 17:38:37 2020 by
+  Generated on Tue Dec 29 11:37:23 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.20 (ruby-2.7.0).
+  0.9.26 (ruby-2.7.0).
 </div>
 
     </div>

@@ -6,15 +6,15 @@
 <title>
   Class: DXOpal::RemoteResource
   
-    &mdash; Documentation by YARD 0.9.20
+    &mdash; Documentation by YARD 0.9.26
   
 </title>
 
-  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../css/style.css" type="text/css" />
 
-  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../css/common.css" type="text/css" />
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
   pathId = "DXOpal::RemoteResource";
   relpath = '../';
 </script>
@@ -99,7 +99,20 @@
   
 </div>
 
-<div id="subclasses">
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>A base class for resources acquired through JS Promises. Provides `&lt;klass&gt;.register` and `&lt;<a href="name">klass></a>`. A subclass must impelment `&lt;klass&gt;._load`.</p>
+
+<p>TODO: better name? (SoundEffect is not actually &#39;remote&#39;)</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><div id="subclasses">
   <h2>Direct Known Subclasses</h2>
   <p class="children"><span class='object_link'><a href="Image.html" title="DXOpal::Image (class)">Image</a></span>, <span class='object_link'><a href="Sound.html" title="DXOpal::Sound (class)">Sound</a></span></p>
 </div>
@@ -113,7 +126,18 @@
     <dl class="constants">
       
         <dt id="resources-classvariable" class="">@@resources =
-          
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>List of registered resources (Contains path_or_url)</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
         </dt>
         <dd><pre class="code"><span class='const'>Hash</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_h'>h</span><span class='comma'>,</span><span class='id identifier rubyid_k'>k</span><span class='op'>|</span> <span class='id identifier rubyid_h'>h</span><span class='lbracket'>[</span><span class='id identifier rubyid_k'>k</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rbrace'>}</span></pre></dd>
       
@@ -613,9 +637,9 @@
 </div>
 
       <div id="footer">
-  Generated on Fri Mar  6 17:38:37 2020 by
+  Generated on Tue Dec 29 11:37:24 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.20 (ruby-2.7.0).
+  0.9.26 (ruby-2.7.0).
 </div>
 
     </div>

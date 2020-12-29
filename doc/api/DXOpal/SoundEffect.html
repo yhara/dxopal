@@ -6,15 +6,15 @@
 <title>
   Class: DXOpal::SoundEffect
   
-    &mdash; Documentation by YARD 0.9.20
+    &mdash; Documentation by YARD 0.9.26
   
 </title>
 
-  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../css/style.css" type="text/css" />
 
-  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../css/common.css" type="text/css" />
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
   pathId = "DXOpal::SoundEffect";
   relpath = '../';
 </script>
@@ -103,7 +103,29 @@
   
 </div>
 
-<h2>Defined Under Namespace</h2>
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>User-generated sound</p>
+
+<p>Example:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_v'>v</span> <span class='op'>=</span> <span class='int'>80</span>
+<span class='const'>SoundEffect</span><span class='period'>.</span><span class='id identifier rubyid_register'><span class='object_link'><a href="RemoteResource.html#register-class_method" title="DXOpal::RemoteResource.register (method)">register</a></span></span><span class='lparen'>(</span><span class='symbol'>:sound1</span><span class='comma'>,</span> <span class='int'>4000</span><span class='comma'>,</span> <span class='const'>WAVE_RECT</span><span class='comma'>,</span> <span class='int'>5000</span><span class='rparen'>)</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_v'>v</span> <span class='op'>=</span> <span class='id identifier rubyid_v'>v</span> <span class='op'>-</span> <span class='float'>0.03</span>
+  <span class='lbracket'>[</span><span class='id identifier rubyid_rand'>rand</span><span class='lparen'>(</span><span class='int'>300</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='id identifier rubyid_v'>v</span><span class='rbracket'>]</span>
+<span class='kw'>end</span>
+</code></pre>
+
+<p>This will generate a sound with WebAudio.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><h2>Defined Under Namespace</h2>
 <p class="children">
   
     
@@ -415,9 +437,9 @@ total length of the sound in milliseconds.
 </div>
 
       <div id="footer">
-  Generated on Fri Mar  6 17:38:37 2020 by
+  Generated on Tue Dec 29 11:37:24 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.20 (ruby-2.7.0).
+  0.9.26 (ruby-2.7.0).
 </div>
 
     </div>

@@ -6,15 +6,15 @@
 <title>
   Module: DXOpal::Window
   
-    &mdash; Documentation by YARD 0.9.20
+    &mdash; Documentation by YARD 0.9.26
   
 </title>
 
-  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../css/style.css" type="text/css" />
 
-  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../css/common.css" type="text/css" />
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
   pathId = "DXOpal::Window";
   relpath = '../';
 </script>
@@ -959,9 +959,9 @@
       <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 116</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid__init'>_init</span>
-  <span class='id identifier rubyid_canvas'>canvas</span> <span class='op'>=</span> <span class='backtick'>`</span><span class='tstring_content'>document.getElementById(&quot;dxopal-canvas&quot;)</span><span class='tstring_end'>`</span></span>  <span class='comment'># If user did not change Window.width/Window.height, set the canvas size here
-</span>
-  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_width'>width</span> <span class='op'>=</span> <span class='cvar'>@@width</span>
+  <span class='id identifier rubyid_canvas'>canvas</span> <span class='op'>=</span> <span class='backtick'>`</span><span class='tstring_content'>document.getElementById(&quot;dxopal-canvas&quot;)</span><span class='tstring_end'>`</span></span>
+  <span class='comment'># If user did not change Window.width/Window.height, set the canvas size here
+</span>  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_width'>width</span> <span class='op'>=</span> <span class='cvar'>@@width</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_height'>height</span> <span class='op'>=</span> <span class='cvar'>@@height</span>
   <span class='id identifier rubyid_img'>img</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Image.html" title="DXOpal::Image (class)">Image</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Image.html#initialize-instance_method" title="DXOpal::Image#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_width'>width</span><span class='comma'>,</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_height'>height</span><span class='comma'>,</span> <span class='label'>canvas:</span> <span class='id identifier rubyid_canvas'>canvas</span><span class='rparen'>)</span>
   <span class='const'><span class='object_link'><a href="Input.html" title="DXOpal::Input (module)">Input</a></span></span><span class='period'>.</span><span class='id identifier rubyid__init'><span class='object_link'><a href="Input.html#_init-class_method" title="DXOpal::Input._init (method)">_init</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_canvas'>canvas</span><span class='rparen'>)</span>
@@ -2100,9 +2100,9 @@
 </div>
 
       <div id="footer">
-  Generated on Fri Mar  6 17:38:37 2020 by
+  Generated on Tue Dec 29 11:37:23 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.20 (ruby-2.7.0).
+  0.9.26 (ruby-2.7.0).
 </div>
 
     </div>

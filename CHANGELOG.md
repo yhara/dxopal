@@ -1,5 +1,6 @@
-## HEAD
+## v1.5.2 (2020-12-29)
 
+- Upgrade opal to 1.0 (#37)
 - fix: `mouse_release?` returns wrong value (#44)
 
 ## v1.5.1 (2020-02-01)

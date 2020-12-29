@@ -6,15 +6,15 @@
 <title>
   Module: DXOpal::Input
   
-    &mdash; Documentation by YARD 0.9.20
+    &mdash; Documentation by YARD 0.9.26
   
 </title>
 
-  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../css/style.css" type="text/css" />
 
-  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../css/common.css" type="text/css" />
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
   pathId = "DXOpal::Input";
   relpath = '../';
 </script>
@@ -896,7 +896,9 @@
 142
 143
 144
-145</pre>
+145
+146
+147</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/dxopal/input.rb', line 120</span>
@@ -919,9 +921,11 @@
     document.addEventListener(&#39;mouseup&#39;, function(ev){
       </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@mouse_info</span><span class='embexpr_end'>}</span><span class='tstring_content'>.x = ev.pageX - </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@canvas_x</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
       </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@mouse_info</span><span class='embexpr_end'>}</span><span class='tstring_content'>.y = ev.pageY - </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@canvas_y</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+      // ev.button =&gt; ev.buttons
+      table = { 0: 1, 1: 4, 2: 2, 3: 8, 4: 16 };
       for (var k=1; k&lt;=16; k&lt;&lt;=1) {
-        if ((ev.buttons &amp; k) == 0 &amp;&amp; </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@pressing_mouse_buttons</span><span class='embexpr_end'>}</span><span class='tstring_content'>[k]) {
-          </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@pressing_mouse_buttons</span><span class='embexpr_end'>}</span><span class='tstring_content'>[k] = -</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@tick</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+        if (</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@pressing_mouse_buttons</span><span class='embexpr_end'>}</span><span class='tstring_content'>[k]) {
+          </span><span class='embexpr_beg'>#{</span><span class='cvar'>@@pressing_mouse_buttons</span><span class='embexpr_end'>}</span><span class='tstring_content'>[table[ev.button]] = -</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@tick</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
         }
       }
     });
@@ -958,8 +962,6 @@
       <pre class="lines">
 
 
-183
-184
 185
 186
 187
@@ -1003,10 +1005,12 @@
 225
 226
 227
-228</pre>
+228
+229
+230</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/dxopal/input.rb', line 183</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/input.rb', line 185</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid__init_touch_events'>_init_touch_events</span>
   <span class='cvar'>@@touches</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
@@ -1143,17 +1147,17 @@
       <pre class="lines">
 
 
-230
-231
 232
-233</pre>
+233
+234
+235</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/dxopal/input.rb', line 230</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/input.rb', line 232</span>
 
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid__update_touch_info'>_update_touch_info</span>  <span class='comment'># Clear old data
-</span>
-  <span class='cvar'>@@touches</span><span class='period'>.</span><span class='id identifier rubyid_delete_if'>delete_if</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='id identifier rubyid_t'>t</span><span class='op'>|</span> <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_released?'>released?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid__released_at'>_released_at</span> <span class='op'>&lt;</span> <span class='cvar'>@@tick</span><span class='op'>-</span><span class='int'>1</span><span class='rbrace'>}</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid__update_touch_info'>_update_touch_info</span>
+  <span class='comment'># Clear old data
+</span>  <span class='cvar'>@@touches</span><span class='period'>.</span><span class='id identifier rubyid_delete_if'>delete_if</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='id identifier rubyid_t'>t</span><span class='op'>|</span> <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_released?'>released?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid__released_at'>_released_at</span> <span class='op'>&lt;</span> <span class='cvar'>@@tick</span><span class='op'>-</span><span class='int'>1</span><span class='rbrace'>}</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1467,13 +1471,13 @@
       <pre class="lines">
 
 
-161
-162
 163
-164</pre>
+164
+165
+166</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/dxopal/input.rb', line 161</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/input.rb', line 163</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_mouse_down?'>mouse_down?</span><span class='lparen'>(</span><span class='id identifier rubyid_mouse_code'>mouse_code</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>missing argument of `mouse_down?&#39;</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_mouse_code'>mouse_code</span>
@@ -1523,13 +1527,13 @@
       <pre class="lines">
 
 
-167
-168
 169
-170</pre>
+170
+171
+172</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/dxopal/input.rb', line 167</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/input.rb', line 169</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_mouse_push?'>mouse_push?</span><span class='lparen'>(</span><span class='id identifier rubyid_mouse_code'>mouse_code</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>missing argument of `mouse_push?&#39;</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_mouse_code'>mouse_code</span>
@@ -1579,13 +1583,13 @@
       <pre class="lines">
 
 
-173
-174
 175
-176</pre>
+176
+177
+178</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/dxopal/input.rb', line 173</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/input.rb', line 175</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_mouse_release?'>mouse_release?</span><span class='lparen'>(</span><span class='id identifier rubyid_mouse_code'>mouse_code</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>missing argument of `mouse_release?&#39;</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_mouse_code'>mouse_code</span>
@@ -1626,12 +1630,12 @@
       <pre class="lines">
 
 
-149
-150
-151</pre>
+151
+152
+153</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/dxopal/input.rb', line 149</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/input.rb', line 151</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_mouse_x'>mouse_x</span>
   <span class='kw'>return</span> <span class='backtick'>`</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@mouse_info</span><span class='embexpr_end'>}</span><span class='tstring_content'>.x</span><span class='tstring_end'>`</span></span>
@@ -1660,12 +1664,12 @@
       <pre class="lines">
 
 
-152
-153
-154</pre>
+154
+155
+156</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/dxopal/input.rb', line 152</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/input.rb', line 154</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_mouse_y'>mouse_y</span>
   <span class='kw'>return</span> <span class='backtick'>`</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@mouse_info</span><span class='embexpr_end'>}</span><span class='tstring_content'>.y</span><span class='tstring_end'>`</span></span>
@@ -1701,14 +1705,14 @@
       <pre class="lines">
 
 
-307
-308
 309
 310
-311</pre>
+311
+312
+313</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/dxopal/input.rb', line 307</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/input.rb', line 309</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_new_touches'>new_touches</span>
   <span class='id identifier rubyid_ret'>ret</span> <span class='op'>=</span> <span class='cvar'>@@new_touches</span>
@@ -1759,12 +1763,12 @@
       <pre class="lines">
 
 
-253
-254
-255</pre>
+255
+256
+257</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/dxopal/input.rb', line 253</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/input.rb', line 255</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_touch_down?'>touch_down?</span>
   <span class='kw'>return</span> <span class='backtick'>`</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@pressing_touch</span><span class='embexpr_end'>}</span><span class='tstring_content'>[0] &gt; 0</span><span class='tstring_end'>`</span></span>
@@ -1813,12 +1817,12 @@
       <pre class="lines">
 
 
-258
-259
-260</pre>
+260
+261
+262</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/dxopal/input.rb', line 258</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/input.rb', line 260</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_touch_push?'>touch_push?</span>
   <span class='kw'>return</span> <span class='backtick'>`</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@pressing_touch</span><span class='embexpr_end'>}</span><span class='tstring_content'>[0] == -(</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@tick</span><span class='embexpr_end'>}</span><span class='tstring_content'>-1)</span><span class='tstring_end'>`</span></span>
@@ -1867,12 +1871,12 @@
       <pre class="lines">
 
 
-263
-264
-265</pre>
+265
+266
+267</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/dxopal/input.rb', line 263</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/input.rb', line 265</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_touch_release?'>touch_release?</span>
   <span class='kw'>return</span> <span class='backtick'>`</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@pressing_touch</span><span class='embexpr_end'>}</span><span class='tstring_content'>[0] == -(</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@tick</span><span class='embexpr_end'>}</span><span class='tstring_content'>-1)</span><span class='tstring_end'>`</span></span>
@@ -1912,12 +1916,12 @@
       <pre class="lines">
 
 
-241
-242
-243</pre>
+243
+244
+245</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/dxopal/input.rb', line 241</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/input.rb', line 243</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_touch_x'>touch_x</span>
   <span class='kw'>return</span> <span class='backtick'>`</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@touch_info</span><span class='embexpr_end'>}</span><span class='tstring_content'>.x</span><span class='tstring_end'>`</span></span>
@@ -1946,12 +1950,12 @@
       <pre class="lines">
 
 
-244
-245
-246</pre>
+246
+247
+248</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/dxopal/input.rb', line 244</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/input.rb', line 246</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_touch_y'>touch_y</span>
   <span class='kw'>return</span> <span class='backtick'>`</span><span class='embexpr_beg'>#{</span><span class='cvar'>@@touch_info</span><span class='embexpr_end'>}</span><span class='tstring_content'>.y</span><span class='tstring_end'>`</span></span>
@@ -1987,12 +1991,12 @@
       <pre class="lines">
 
 
-302
-303
-304</pre>
+304
+305
+306</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/dxopal/input.rb', line 302</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/input.rb', line 304</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_touches'>touches</span>
   <span class='cvar'>@@touches</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span>
@@ -2101,9 +2105,9 @@
 </div>
 
       <div id="footer">
-  Generated on Fri Mar  6 17:38:37 2020 by
+  Generated on Tue Dec 29 11:37:22 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.20 (ruby-2.7.0).
+  0.9.26 (ruby-2.7.0).
 </div>
 
     </div>

@@ -6,15 +6,15 @@
 <title>
   Module: DXOpal::Sprite::Physics
   
-    &mdash; Documentation by YARD 0.9.20
+    &mdash; Documentation by YARD 0.9.26
   
 </title>
 
-  <link rel="stylesheet" href="../../css/style.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" />
 
-  <link rel="stylesheet" href="../../css/common.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" />
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
   pathId = "DXOpal::Sprite::Physics";
   relpath = '../../';
 </script>
@@ -88,7 +88,20 @@
   
 </div>
 
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Experimental Matter.js (physics engine) support</p>
 
+<p>You need to load matter.js in advance to using these features.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
 
 
 
@@ -198,7 +211,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Create Matter Body and register it to the World - type: :rectangle, etc.</p>
+</div></span>
   
 </li>
 
@@ -224,7 +239,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns the value of attribute _matter_body</p>
+<p>Returns the value of attribute _matter_body.</p>
 
 
   </div>
@@ -284,9 +299,9 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/dxopal/sprite/physics.rb', line 27</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid__move_matter_body'>_move_matter_body</span>  <span class='comment'># TODO: support non-default center_x, center_y
-</span>
-  <span class='backtick'>`</span><span class='tstring_content'>Matter.Body.setPosition(</span><span class='embexpr_beg'>#{</span><span class='ivar'>@_matter_body</span><span class='embexpr_end'>}</span><span class='tstring_content'>,
+<span class='kw'>def</span> <span class='id identifier rubyid__move_matter_body'>_move_matter_body</span>
+  <span class='comment'># TODO: support non-default center_x, center_y
+</span>  <span class='backtick'>`</span><span class='tstring_content'>Matter.Body.setPosition(</span><span class='embexpr_beg'>#{</span><span class='ivar'>@_matter_body</span><span class='embexpr_end'>}</span><span class='tstring_content'>,
      Matter.Vector.create(</span><span class='embexpr_beg'>#{</span><span class='ivar'>@x</span><span class='op'>+</span><span class='ivar'>@center_x</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='ivar'>@y</span><span class='op'>+</span><span class='ivar'>@center_y</span><span class='embexpr_end'>}</span><span class='tstring_content'>))</span><span class='tstring_end'>`</span></span>
 <span class='kw'>end</span></pre>
     </td>
@@ -335,7 +350,21 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Create Matter Body and register it to the World</p>
+<ul><li>
+<p>type: :rectangle, etc.</p>
+</li></ul>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
@@ -387,9 +416,9 @@
 </div>
 
       <div id="footer">
-  Generated on Fri Mar  6 17:38:37 2020 by
+  Generated on Tue Dec 29 11:37:23 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.20 (ruby-2.7.0).
+  0.9.26 (ruby-2.7.0).
 </div>
 
     </div>
