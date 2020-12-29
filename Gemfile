@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
 
-gem 'opal', '0.11.4'
+gem 'opal'
 gem 'opal-sprockets'
+gem 'c_lexer'
 gem 'rake'
 gem 'yard'
 gem 'puma'
