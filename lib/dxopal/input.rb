@@ -93,7 +93,7 @@ module DXOpal
     # stolen by DXOpal.) If canvas element is set to this, only key events
     # happend on canvas are processed by DXOpal.
     def self.keyevent_target=(target)
-      if @@keyevent_target
+      if keyevent_target
         %x{
           #{@@keyevent_target}.removeEventListener('keydown', #{ON_KEYDOWN_});
           #{@@keyevent_target}.removeEventListener('keyup', #{ON_KEYUP_});
@@ -110,7 +110,10 @@ module DXOpal
     end
 
     # Return DOM element set by `keyevent_target=`
-    def self.keyevent_target; @@keyevent_target; end
+    def self.keyevent_target
+      return nil unless class_variable_defined?(:@@keyevent_target)
+      @@keyevent_target
+    end
 
     #
     # Mouse
