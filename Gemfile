@@ -4,6 +4,6 @@ gem 'opal'
 gem 'opal-sprockets'
 gem 'rake'
 gem 'yard'
-gem 'puma'
+gem 'webrick'
 
 gem 'dxopal', path: '.'
