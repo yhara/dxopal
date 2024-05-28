@@ -45,6 +45,7 @@ module DXOpal
       %x{
         var context = #{Sound.audio_context};
         source = context.createBufferSource();
+        source.loop = true;
         source.buffer = #{@decoded};
         source.connect(context.destination);
         source.start(0); 
