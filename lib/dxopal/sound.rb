@@ -48,6 +48,7 @@ module DXOpal
         source.buffer = #{@decoded};
         source.connect(context.destination);
         source.start(0); 
+        source.loop = true;
       }
       @source = source
     end
