@@ -38,14 +38,17 @@ module DXOpal
     end
     attr_accessor :decoded
 
-    # Play this sound once
-    def play
+    # Play this sound
+    def play(loop_ = false)
       raise "Sound #{path_or_url} is not loaded yet" unless @decoded
       source = nil
       %x{
         var context = #{Sound.audio_context};
         source = context.createBufferSource();
         source.buffer = #{@decoded};
+        if (#{loop_}) {
+          source.loop = true;
+        }
         source.connect(context.destination);
         source.start(0); 
       }
