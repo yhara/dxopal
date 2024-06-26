@@ -8,7 +8,7 @@ desc "Build dxopal.js and dxopal.min.js"
 task :build_min => "build/dxopal.min.js"
 
 file "build/dxopal.min.js" => "build/dxopal.js" do |t|
-  sh "uglifyjs #{t.source} -o #{t.name}"
+  sh "terser #{t.source} -o #{t.name}"
 end
 
 file "build/dxopal.js" => Dir["lib/**/*.rb"] do |t|
