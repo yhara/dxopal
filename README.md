@@ -12,7 +12,7 @@ see https://yhara.github.io/dxopal/
 - `rake build` to make build/dxopal.js
 - `rake build_min` to make build/dxopal.min.js (You need `npm install -g terser`)
 - `rake api` to build yardoc
-- `rake server` to preview website
+- `bundle exec dxopal server` to preview website
 
 ## License
 
