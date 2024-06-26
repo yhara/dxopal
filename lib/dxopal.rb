@@ -1,3 +1,4 @@
+# backtick_javascript: true
 require 'opal'
 require 'console'; def console; $console; end
 
