@@ -5,7 +5,7 @@ require 'opal/sprockets'
 opal_server = Opal::Sprockets::Server.new{|s|
   # Let javascript_include_tag to serve compiled version of lib/dxopal.rb
   s.append_path 'lib'
-  s.main = 'dxopal.rb'
+  s.main = 'dxopal'
   # Serve static files
   s.public_root = __dir__
   # Just serve static ./index.html

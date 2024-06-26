@@ -7,6 +7,13 @@ has similar API to [DXRuby](http://dxruby.osdn.jp/)
 
 see https://yhara.github.io/dxopal/
 
+## Development
+
+- `rake build` to make build/dxopal.js
+- `rake build_min` to make build/dxopal.min.js (You need `npm install -g terser`)
+- `rake api` to build yardoc
+- `bundle exec dxopal server` to preview website
+
 ## License
 
 MIT (including images and sounds under examples/)

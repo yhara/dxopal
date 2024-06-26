@@ -29,7 +29,8 @@ module DXOpal
       already_running = !!@@block
       @@block = block
       return if already_running
-      `window`.JS.requestAnimationFrame{|time| _loop(time) }
+      self_ = self
+      `window`.JS.requestAnimationFrame{|time| self_._loop(time) }
     end
 
     # (DXOpal original) Pause & resume
@@ -61,7 +62,8 @@ module DXOpal
       if @@fps_ct >= frame_msec
         @@fps_ct -= frame_msec
       else
-        `window`.JS.requestAnimationFrame{|time| _loop(time) }
+        self_ = self
+        `window`.JS.requestAnimationFrame{|time| self_._loop(time) }
         return
       end
 
@@ -110,7 +112,8 @@ module DXOpal
         end
       end
 
-      `window`.JS.requestAnimationFrame{|time| _loop(time) }
+      self_ = self
+      `window`.JS.requestAnimationFrame{|time| self_._loop(time) }
     end
 
     def self._init
