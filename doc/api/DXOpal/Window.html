@@ -6,7 +6,7 @@
 <title>
   Module: DXOpal::Window
   
-    &mdash; Documentation by YARD 0.9.26
+    &mdash; Documentation by YARD 0.9.36
   
 </title>
 
@@ -694,7 +694,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Set window height and resize the canvas Set `nil` to maximize canvas.</p>
+<p>Set window height and resize the canvas Set ‘nil` to maximize canvas.</p>
 </div></span>
   
 </li>
@@ -878,7 +878,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Set window width and resize the canvas Set `nil` to maximize canvas.</p>
+<p>Set window width and resize the canvas Set ‘nil` to maximize canvas.</p>
 </div></span>
   
 </li>
@@ -919,10 +919,10 @@
       <pre class="lines">
 
 
-127</pre>
+130</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 127</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 130</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid__img'>_img</span><span class='semicolon'>;</span> <span class='cvar'>@@img</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -945,18 +945,18 @@
       <pre class="lines">
 
 
-116
-117
-118
 119
 120
 121
 122
 123
-124</pre>
+124
+125
+126
+127</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 116</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 119</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid__init'>_init</span>
   <span class='id identifier rubyid_canvas'>canvas</span> <span class='op'>=</span> <span class='backtick'>`</span><span class='tstring_content'>document.getElementById(&quot;dxopal-canvas&quot;)</span><span class='tstring_end'>`</span></span>
@@ -998,7 +998,6 @@
       <pre class="lines">
 
 
-52
 53
 54
 55
@@ -1060,10 +1059,13 @@
 111
 112
 113
-114</pre>
+114
+115
+116
+117</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 52</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 53</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid__loop'>_loop</span><span class='lparen'>(</span><span class='id identifier rubyid_timestamp'>timestamp</span><span class='rparen'>)</span>
   <span class='cvar'>@@img</span> <span class='op'>||=</span> <span class='id identifier rubyid__init'>_init</span>
@@ -1077,7 +1079,8 @@
   <span class='kw'>if</span> <span class='cvar'>@@fps_ct</span> <span class='op'>&gt;=</span> <span class='id identifier rubyid_frame_msec'>frame_msec</span>
     <span class='cvar'>@@fps_ct</span> <span class='op'>-=</span> <span class='id identifier rubyid_frame_msec'>frame_msec</span>
   <span class='kw'>else</span>
-    <span class='backtick'>`</span><span class='tstring_content'>window</span><span class='tstring_end'>`</span></span><span class='period'>.</span><span class='const'>JS</span><span class='period'>.</span><span class='id identifier rubyid_requestAnimationFrame'>requestAnimationFrame</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_time'>time</span><span class='op'>|</span> <span class='id identifier rubyid__loop'>_loop</span><span class='lparen'>(</span><span class='id identifier rubyid_time'>time</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+    <span class='id identifier rubyid_self_'>self_</span> <span class='op'>=</span> <span class='kw'>self</span>
+    <span class='backtick'>`</span><span class='tstring_content'>window</span><span class='tstring_end'>`</span></span><span class='period'>.</span><span class='const'>JS</span><span class='period'>.</span><span class='id identifier rubyid_requestAnimationFrame'>requestAnimationFrame</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_time'>time</span><span class='op'>|</span> <span class='id identifier rubyid_self_'>self_</span><span class='period'>.</span><span class='id identifier rubyid__loop'>_loop</span><span class='lparen'>(</span><span class='id identifier rubyid_time'>time</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
     <span class='kw'>return</span>
   <span class='kw'>end</span>
 
@@ -1126,7 +1129,8 @@
     <span class='kw'>end</span>
   <span class='kw'>end</span>
 
-  <span class='backtick'>`</span><span class='tstring_content'>window</span><span class='tstring_end'>`</span></span><span class='period'>.</span><span class='const'>JS</span><span class='period'>.</span><span class='id identifier rubyid_requestAnimationFrame'>requestAnimationFrame</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_time'>time</span><span class='op'>|</span> <span class='id identifier rubyid__loop'>_loop</span><span class='lparen'>(</span><span class='id identifier rubyid_time'>time</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_self_'>self_</span> <span class='op'>=</span> <span class='kw'>self</span>
+  <span class='backtick'>`</span><span class='tstring_content'>window</span><span class='tstring_end'>`</span></span><span class='period'>.</span><span class='const'>JS</span><span class='period'>.</span><span class='id identifier rubyid_requestAnimationFrame'>requestAnimationFrame</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_time'>time</span><span class='op'>|</span> <span class='id identifier rubyid_self_'>self_</span><span class='period'>.</span><span class='id identifier rubyid__loop'>_loop</span><span class='lparen'>(</span><span class='id identifier rubyid_time'>time</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1148,10 +1152,10 @@
       <pre class="lines">
 
 
-151</pre>
+154</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 151</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 154</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_bgcolor'>bgcolor</span><span class='semicolon'>;</span> <span class='cvar'>@@bgcolor</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -1174,10 +1178,10 @@
       <pre class="lines">
 
 
-152</pre>
+155</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 152</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 155</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_bgcolor='>bgcolor=</span><span class='lparen'>(</span><span class='id identifier rubyid_col'>col</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='cvar'>@@bgcolor</span> <span class='op'>=</span> <span class='id identifier rubyid_col'>col</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -1200,12 +1204,12 @@
       <pre class="lines">
 
 
-154
-155
-156</pre>
+157
+158
+159</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 154</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 157</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_draw'>draw</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='id identifier rubyid_y'>y</span><span class='comma'>,</span> <span class='id identifier rubyid_image'>image</span><span class='comma'>,</span> <span class='id identifier rubyid_z'>z</span><span class='op'>=</span><span class='int'>0</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_enqueue_draw'>enqueue_draw</span><span class='lparen'>(</span><span class='id identifier rubyid_z'>z</span><span class='comma'>,</span> <span class='symbol'>:image</span><span class='comma'>,</span> <span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='id identifier rubyid_y'>y</span><span class='comma'>,</span> <span class='id identifier rubyid_image'>image</span><span class='rparen'>)</span>
@@ -1230,12 +1234,12 @@
       <pre class="lines">
 
 
-184
-185
-186</pre>
+187
+188
+189</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 184</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 187</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_draw_box'>draw_box</span><span class='lparen'>(</span><span class='id identifier rubyid_x1'>x1</span><span class='comma'>,</span> <span class='id identifier rubyid_y1'>y1</span><span class='comma'>,</span> <span class='id identifier rubyid_x2'>x2</span><span class='comma'>,</span> <span class='id identifier rubyid_y2'>y2</span><span class='comma'>,</span> <span class='id identifier rubyid_color'>color</span><span class='comma'>,</span> <span class='id identifier rubyid_z'>z</span><span class='op'>=</span><span class='int'>0</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_enqueue_draw'>enqueue_draw</span><span class='lparen'>(</span><span class='id identifier rubyid_z'>z</span><span class='comma'>,</span> <span class='symbol'>:box</span><span class='comma'>,</span> <span class='id identifier rubyid_x1'>x1</span><span class='comma'>,</span> <span class='id identifier rubyid_y1'>y1</span><span class='comma'>,</span> <span class='id identifier rubyid_x2'>x2</span><span class='comma'>,</span> <span class='id identifier rubyid_y2'>y2</span><span class='comma'>,</span> <span class='id identifier rubyid_color'>color</span><span class='rparen'>)</span>
@@ -1260,12 +1264,12 @@
       <pre class="lines">
 
 
-188
-189
-190</pre>
+191
+192
+193</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 188</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 191</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_draw_box_fill'>draw_box_fill</span><span class='lparen'>(</span><span class='id identifier rubyid_x1'>x1</span><span class='comma'>,</span> <span class='id identifier rubyid_y1'>y1</span><span class='comma'>,</span> <span class='id identifier rubyid_x2'>x2</span><span class='comma'>,</span> <span class='id identifier rubyid_y2'>y2</span><span class='comma'>,</span> <span class='id identifier rubyid_color'>color</span><span class='comma'>,</span> <span class='id identifier rubyid_z'>z</span><span class='op'>=</span><span class='int'>0</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_enqueue_draw'>enqueue_draw</span><span class='lparen'>(</span><span class='id identifier rubyid_z'>z</span><span class='comma'>,</span> <span class='symbol'>:box_fill</span><span class='comma'>,</span> <span class='id identifier rubyid_x1'>x1</span><span class='comma'>,</span> <span class='id identifier rubyid_y1'>y1</span><span class='comma'>,</span> <span class='id identifier rubyid_x2'>x2</span><span class='comma'>,</span> <span class='id identifier rubyid_y2'>y2</span><span class='comma'>,</span> <span class='id identifier rubyid_color'>color</span><span class='rparen'>)</span>
@@ -1290,12 +1294,12 @@
       <pre class="lines">
 
 
-192
-193
-194</pre>
+195
+196
+197</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 192</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 195</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_draw_circle'>draw_circle</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='id identifier rubyid_y'>y</span><span class='comma'>,</span> <span class='id identifier rubyid_r'>r</span><span class='comma'>,</span> <span class='id identifier rubyid_color'>color</span><span class='comma'>,</span> <span class='id identifier rubyid_z'>z</span><span class='op'>=</span><span class='int'>0</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_enqueue_draw'>enqueue_draw</span><span class='lparen'>(</span><span class='id identifier rubyid_z'>z</span><span class='comma'>,</span> <span class='symbol'>:circle</span><span class='comma'>,</span> <span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='id identifier rubyid_y'>y</span><span class='comma'>,</span> <span class='id identifier rubyid_r'>r</span><span class='comma'>,</span> <span class='id identifier rubyid_color'>color</span><span class='rparen'>)</span>
@@ -1320,12 +1324,12 @@
       <pre class="lines">
 
 
-196
-197
-198</pre>
+199
+200
+201</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 196</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 199</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_draw_circle_fill'>draw_circle_fill</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='id identifier rubyid_y'>y</span><span class='comma'>,</span> <span class='id identifier rubyid_r'>r</span><span class='comma'>,</span> <span class='id identifier rubyid_color'>color</span><span class='comma'>,</span> <span class='id identifier rubyid_z'>z</span><span class='op'>=</span><span class='int'>0</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_enqueue_draw'>enqueue_draw</span><span class='lparen'>(</span><span class='id identifier rubyid_z'>z</span><span class='comma'>,</span> <span class='symbol'>:circle_fill</span><span class='comma'>,</span> <span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='id identifier rubyid_y'>y</span><span class='comma'>,</span> <span class='id identifier rubyid_r'>r</span><span class='comma'>,</span> <span class='id identifier rubyid_color'>color</span><span class='rparen'>)</span>
@@ -1350,12 +1354,12 @@
       <pre class="lines">
 
 
-166
-167
-168</pre>
+169
+170
+171</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 166</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 169</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_draw_ex'>draw_ex</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='id identifier rubyid_y'>y</span><span class='comma'>,</span> <span class='id identifier rubyid_image'>image</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_enqueue_draw'>enqueue_draw</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:z</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='int'>0</span><span class='comma'>,</span> <span class='symbol'>:draw_ex</span><span class='comma'>,</span> <span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='id identifier rubyid_y'>y</span><span class='comma'>,</span> <span class='id identifier rubyid_image'>image</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
@@ -1380,14 +1384,14 @@
       <pre class="lines">
 
 
-170
-171
-172
 173
-174</pre>
+174
+175
+176
+177</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 170</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 173</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_draw_font'>draw_font</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='id identifier rubyid_y'>y</span><span class='comma'>,</span> <span class='id identifier rubyid_string'>string</span><span class='comma'>,</span> <span class='id identifier rubyid_font'>font</span><span class='comma'>,</span> <span class='id identifier rubyid_option'>option</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_z'>z</span> <span class='op'>=</span> <span class='id identifier rubyid_option'>option</span><span class='lbracket'>[</span><span class='symbol'>:z</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='int'>0</span>
@@ -1414,12 +1418,12 @@
       <pre class="lines">
 
 
-180
-181
-182</pre>
+183
+184
+185</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 180</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 183</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_draw_line'>draw_line</span><span class='lparen'>(</span><span class='id identifier rubyid_x1'>x1</span><span class='comma'>,</span> <span class='id identifier rubyid_y1'>y1</span><span class='comma'>,</span> <span class='id identifier rubyid_x2'>x2</span><span class='comma'>,</span> <span class='id identifier rubyid_y2'>y2</span><span class='comma'>,</span> <span class='id identifier rubyid_color'>color</span><span class='comma'>,</span> <span class='id identifier rubyid_z'>z</span><span class='op'>=</span><span class='int'>0</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_enqueue_draw'>enqueue_draw</span><span class='lparen'>(</span><span class='id identifier rubyid_z'>z</span><span class='comma'>,</span> <span class='symbol'>:line</span><span class='comma'>,</span> <span class='id identifier rubyid_x1'>x1</span><span class='comma'>,</span> <span class='id identifier rubyid_y1'>y1</span><span class='comma'>,</span> <span class='id identifier rubyid_x2'>x2</span><span class='comma'>,</span> <span class='id identifier rubyid_y2'>y2</span><span class='comma'>,</span> <span class='id identifier rubyid_color'>color</span><span class='rparen'>)</span>
@@ -1444,13 +1448,13 @@
       <pre class="lines">
 
 
-46
 47
 48
-49</pre>
+49
+50</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 46</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 47</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_draw_pause_screen'>draw_pause_screen</span>
   <span class='const'><span class='object_link'><a href="" title="DXOpal::Window (module)">Window</a></span></span><span class='period'>.</span><span class='id identifier rubyid_draw_box_fill'><span class='object_link'><a href="#draw_box_fill-class_method" title="DXOpal::Window.draw_box_fill (method)">draw_box_fill</a></span></span><span class='lparen'>(</span><span class='int'>0</span><span class='comma'>,</span> <span class='int'>0</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="" title="DXOpal::Window (module)">Window</a></span></span><span class='period'>.</span><span class='id identifier rubyid_width'><span class='object_link'><a href="#width-class_method" title="DXOpal::Window.width (method)">width</a></span></span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="" title="DXOpal::Window (module)">Window</a></span></span><span class='period'>.</span><span class='id identifier rubyid_height'><span class='object_link'><a href="#height-class_method" title="DXOpal::Window.height (method)">height</a></span></span><span class='comma'>,</span> <span class='const'>C_BLACK</span><span class='rparen'>)</span>
@@ -1476,12 +1480,12 @@
       <pre class="lines">
 
 
-176
-177
-178</pre>
+179
+180
+181</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 176</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 179</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_draw_pixel'>draw_pixel</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='id identifier rubyid_y'>y</span><span class='comma'>,</span> <span class='id identifier rubyid_color'>color</span><span class='comma'>,</span> <span class='id identifier rubyid_z'>z</span><span class='op'>=</span><span class='int'>0</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_enqueue_draw'>enqueue_draw</span><span class='lparen'>(</span><span class='id identifier rubyid_z'>z</span><span class='comma'>,</span> <span class='symbol'>:pixel</span><span class='comma'>,</span> <span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='id identifier rubyid_y'>y</span><span class='comma'>,</span> <span class='id identifier rubyid_color'>color</span><span class='rparen'>)</span>
@@ -1506,12 +1510,12 @@
       <pre class="lines">
 
 
-162
-163
-164</pre>
+165
+166
+167</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 162</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 165</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_draw_rot'>draw_rot</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='id identifier rubyid_y'>y</span><span class='comma'>,</span> <span class='id identifier rubyid_image'>image</span><span class='comma'>,</span> <span class='id identifier rubyid_angle'>angle</span><span class='comma'>,</span> <span class='id identifier rubyid_center_x'>center_x</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_center_y'>center_y</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_z'>z</span><span class='op'>=</span><span class='int'>0</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_enqueue_draw'>enqueue_draw</span><span class='lparen'>(</span><span class='id identifier rubyid_z'>z</span><span class='comma'>,</span> <span class='symbol'>:image_rot</span><span class='comma'>,</span> <span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='id identifier rubyid_y'>y</span><span class='comma'>,</span> <span class='id identifier rubyid_image'>image</span><span class='comma'>,</span> <span class='id identifier rubyid_angle'>angle</span><span class='comma'>,</span> <span class='id identifier rubyid_center_x'>center_x</span><span class='comma'>,</span> <span class='id identifier rubyid_center_y'>center_y</span><span class='rparen'>)</span>
@@ -1536,12 +1540,12 @@
       <pre class="lines">
 
 
-158
-159
-160</pre>
+161
+162
+163</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 158</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 161</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_draw_scale'>draw_scale</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='id identifier rubyid_y'>y</span><span class='comma'>,</span> <span class='id identifier rubyid_image'>image</span><span class='comma'>,</span> <span class='id identifier rubyid_scale_x'>scale_x</span><span class='comma'>,</span> <span class='id identifier rubyid_scale_y'>scale_y</span><span class='comma'>,</span> <span class='id identifier rubyid_center_x'>center_x</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_center_y'>center_y</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_z'>z</span><span class='op'>=</span><span class='int'>0</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_enqueue_draw'>enqueue_draw</span><span class='lparen'>(</span><span class='id identifier rubyid_z'>z</span><span class='comma'>,</span> <span class='symbol'>:image_scale</span><span class='comma'>,</span> <span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='id identifier rubyid_y'>y</span><span class='comma'>,</span> <span class='id identifier rubyid_image'>image</span><span class='comma'>,</span> <span class='id identifier rubyid_scale_x'>scale_x</span><span class='comma'>,</span> <span class='id identifier rubyid_scale_y'>scale_y</span><span class='comma'>,</span> <span class='id identifier rubyid_center_x'>center_x</span><span class='comma'>,</span> <span class='id identifier rubyid_center_y'>center_y</span><span class='rparen'>)</span>
@@ -1566,12 +1570,12 @@
       <pre class="lines">
 
 
-200
-201
-202</pre>
+203
+204
+205</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 200</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 203</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_draw_triangle'>draw_triangle</span><span class='lparen'>(</span><span class='id identifier rubyid_x1'>x1</span><span class='comma'>,</span> <span class='id identifier rubyid_y1'>y1</span><span class='comma'>,</span> <span class='id identifier rubyid_x2'>x2</span><span class='comma'>,</span> <span class='id identifier rubyid_y2'>y2</span><span class='comma'>,</span> <span class='id identifier rubyid_x3'>x3</span><span class='comma'>,</span> <span class='id identifier rubyid_y3'>y3</span><span class='comma'>,</span> <span class='id identifier rubyid_color'>color</span><span class='comma'>,</span> <span class='id identifier rubyid_z'>z</span><span class='op'>=</span><span class='int'>0</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_enqueue_draw'>enqueue_draw</span><span class='lparen'>(</span><span class='id identifier rubyid_z'>z</span><span class='comma'>,</span> <span class='symbol'>:triangle</span><span class='comma'>,</span> <span class='id identifier rubyid_x1'>x1</span><span class='comma'>,</span> <span class='id identifier rubyid_y1'>y1</span><span class='comma'>,</span> <span class='id identifier rubyid_x2'>x2</span><span class='comma'>,</span> <span class='id identifier rubyid_y2'>y2</span><span class='comma'>,</span> <span class='id identifier rubyid_x3'>x3</span><span class='comma'>,</span> <span class='id identifier rubyid_y3'>y3</span><span class='comma'>,</span> <span class='id identifier rubyid_color'>color</span><span class='rparen'>)</span>
@@ -1596,12 +1600,12 @@
       <pre class="lines">
 
 
-204
-205
-206</pre>
+207
+208
+209</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 204</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 207</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_draw_triangle_fill'>draw_triangle_fill</span><span class='lparen'>(</span><span class='id identifier rubyid_x1'>x1</span><span class='comma'>,</span> <span class='id identifier rubyid_y1'>y1</span><span class='comma'>,</span> <span class='id identifier rubyid_x2'>x2</span><span class='comma'>,</span> <span class='id identifier rubyid_y2'>y2</span><span class='comma'>,</span> <span class='id identifier rubyid_x3'>x3</span><span class='comma'>,</span> <span class='id identifier rubyid_y3'>y3</span><span class='comma'>,</span> <span class='id identifier rubyid_color'>color</span><span class='comma'>,</span> <span class='id identifier rubyid_z'>z</span><span class='op'>=</span><span class='int'>0</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_enqueue_draw'>enqueue_draw</span><span class='lparen'>(</span><span class='id identifier rubyid_z'>z</span><span class='comma'>,</span> <span class='symbol'>:triangle_fill</span><span class='comma'>,</span> <span class='id identifier rubyid_x1'>x1</span><span class='comma'>,</span> <span class='id identifier rubyid_y1'>y1</span><span class='comma'>,</span> <span class='id identifier rubyid_x2'>x2</span><span class='comma'>,</span> <span class='id identifier rubyid_y2'>y2</span><span class='comma'>,</span> <span class='id identifier rubyid_x3'>x3</span><span class='comma'>,</span> <span class='id identifier rubyid_y3'>y3</span><span class='comma'>,</span> <span class='id identifier rubyid_color'>color</span><span class='rparen'>)</span>
@@ -1637,12 +1641,12 @@
       <pre class="lines">
 
 
-209
-210
-211</pre>
+212
+213
+214</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 209</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 212</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_enqueue_draw'>enqueue_draw</span><span class='lparen'>(</span><span class='id identifier rubyid_z'>z</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
   <span class='cvar'>@@draw_queue</span><span class='period'>.</span><span class='id identifier rubyid_push'>push</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='id identifier rubyid_z'>z</span><span class='comma'>,</span> <span class='cvar'>@@draw_queue</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -1667,10 +1671,10 @@
       <pre class="lines">
 
 
-129</pre>
+132</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 129</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 132</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_fps'>fps</span><span class='semicolon'>;</span> <span class='cvar'>@@fps</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -1693,10 +1697,10 @@
       <pre class="lines">
 
 
-130</pre>
+133</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 130</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 133</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_fps='>fps=</span><span class='lparen'>(</span><span class='id identifier rubyid_w'>w</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='cvar'>@@fps</span> <span class='op'>=</span> <span class='id identifier rubyid_w'>w</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -1719,10 +1723,10 @@
       <pre class="lines">
 
 
-141</pre>
+144</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 141</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 144</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_height'>height</span><span class='semicolon'>;</span> <span class='cvar'>@@height</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -1742,7 +1746,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Set window height and resize the canvas Set `nil` to maximize canvas</p>
+<p>Set window height and resize the canvas Set ‘nil` to maximize canvas</p>
 
 
   </div>
@@ -1756,15 +1760,15 @@
       <pre class="lines">
 
 
-144
-145
-146
 147
 148
-149</pre>
+149
+150
+151
+152</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 144</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 147</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_height='>height=</span><span class='lparen'>(</span><span class='id identifier rubyid_h'>h</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_canvas'>canvas</span> <span class='op'>=</span> <span class='backtick'>`</span><span class='tstring_content'>document.getElementById(&quot;dxopal-canvas&quot;)</span><span class='tstring_end'>`</span></span>
@@ -1855,7 +1859,8 @@
 30
 31
 32
-33</pre>
+33
+34</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 28</span>
@@ -1864,7 +1869,8 @@
   <span class='id identifier rubyid_already_running'>already_running</span> <span class='op'>=</span> <span class='op'>!</span><span class='op'>!</span><span class='cvar'>@@block</span>
   <span class='cvar'>@@block</span> <span class='op'>=</span> <span class='id identifier rubyid_block'>block</span>
   <span class='kw'>return</span> <span class='kw'>if</span> <span class='id identifier rubyid_already_running'>already_running</span>
-  <span class='backtick'>`</span><span class='tstring_content'>window</span><span class='tstring_end'>`</span></span><span class='period'>.</span><span class='const'>JS</span><span class='period'>.</span><span class='id identifier rubyid_requestAnimationFrame'>requestAnimationFrame</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_time'>time</span><span class='op'>|</span> <span class='id identifier rubyid__loop'>_loop</span><span class='lparen'>(</span><span class='id identifier rubyid_time'>time</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_self_'>self_</span> <span class='op'>=</span> <span class='kw'>self</span>
+  <span class='backtick'>`</span><span class='tstring_content'>window</span><span class='tstring_end'>`</span></span><span class='period'>.</span><span class='const'>JS</span><span class='period'>.</span><span class='id identifier rubyid_requestAnimationFrame'>requestAnimationFrame</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_time'>time</span><span class='op'>|</span> <span class='id identifier rubyid_self_'>self_</span><span class='period'>.</span><span class='id identifier rubyid__loop'>_loop</span><span class='lparen'>(</span><span class='id identifier rubyid_time'>time</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1897,14 +1903,14 @@
       <pre class="lines">
 
 
-36
 37
 38
 39
-40</pre>
+40
+41</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 36</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 37</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_pause'>pause</span>
   <span class='cvar'>@@paused</span> <span class='op'>=</span> <span class='kw'>true</span>
@@ -1953,10 +1959,10 @@
       <pre class="lines">
 
 
-41</pre>
+42</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 41</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 42</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_paused?'>paused?</span><span class='semicolon'>;</span> <span class='cvar'>@@paused</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -1979,10 +1985,10 @@
       <pre class="lines">
 
 
-131</pre>
+134</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 131</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 134</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_real_fps'>real_fps</span><span class='semicolon'>;</span> <span class='cvar'>@@real_fps</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -2005,13 +2011,13 @@
       <pre class="lines">
 
 
-42
 43
 44
-45</pre>
+45
+46</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 42</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 43</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_resume'>resume</span>
   <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Window.resume is called before Window.loop</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='cvar'>@@block</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
@@ -2037,10 +2043,10 @@
       <pre class="lines">
 
 
-132</pre>
+135</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 132</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 135</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_width'>width</span><span class='semicolon'>;</span> <span class='cvar'>@@width</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -2060,7 +2066,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Set window width and resize the canvas Set `nil` to maximize canvas</p>
+<p>Set window width and resize the canvas Set ‘nil` to maximize canvas</p>
 
 
   </div>
@@ -2074,15 +2080,15 @@
       <pre class="lines">
 
 
-135
-136
-137
 138
 139
-140</pre>
+140
+141
+142
+143</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 135</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/window.rb', line 138</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_width='>width=</span><span class='lparen'>(</span><span class='id identifier rubyid_w'>w</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_canvas'>canvas</span> <span class='op'>=</span> <span class='backtick'>`</span><span class='tstring_content'>document.getElementById(&quot;dxopal-canvas&quot;)</span><span class='tstring_end'>`</span></span>
@@ -2100,9 +2106,9 @@
 </div>
 
       <div id="footer">
-  Generated on Tue Dec 29 11:37:23 2020 by
-  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.26 (ruby-2.7.0).
+  Generated on Tue Jul  9 22:42:33 2024 by
+  <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.36 (ruby-3.2.2).
 </div>
 
     </div>

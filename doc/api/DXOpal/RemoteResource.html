@@ -6,7 +6,7 @@
 <title>
   Class: DXOpal::RemoteResource
   
-    &mdash; Documentation by YARD 0.9.26
+    &mdash; Documentation by YARD 0.9.36
   
 </title>
 
@@ -102,9 +102,9 @@
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
     
-<p>A base class for resources acquired through JS Promises. Provides `&lt;klass&gt;.register` and `&lt;<a href="name">klass></a>`. A subclass must impelment `&lt;klass&gt;._load`.</p>
+<p>A base class for resources acquired through JS Promises. Provides ‘&lt;klass&gt;.register` and `&lt;<a href="name">klass&gt;</a>`. A subclass must impelment `&lt;klass&gt;._load`.</p>
 
-<p>TODO: better name? (SoundEffect is not actually &#39;remote&#39;)</p>
+<p>TODO: better name? (SoundEffect is not actually ‘remote’)</p>
 
 
   </div>
@@ -162,6 +162,22 @@
   <div class="discussion">
     
 <p>Contains instances of Image, Sound</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='const'>Hash</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_h'>h</span><span class='comma'>,</span><span class='id identifier rubyid_k'>k</span><span class='op'>|</span> <span class='id identifier rubyid_h'>h</span><span class='lbracket'>[</span><span class='id identifier rubyid_k'>k</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rbrace'>}</span></pre></dd>
+      
+        <dt id="loaded-classvariable" class="">@@loaded =
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>‘true` if the resource is loaded</p>
 
 
   </div>
@@ -272,7 +288,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Load actual content (defined on subclasses) Return `[instance, promise]`.</p>
+<p>Load actual content (defined on subclasses) Return ‘[instance, promise]`.</p>
 </div></span>
   
 </li>
@@ -297,6 +313,30 @@
   
     <span class="summary_desc"><div class='inline'>
 <p>Called from Window.load_resources.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#_update_loading_status-class_method" title="_update_loading_status (class method)">.<strong>_update_loading_status</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Update loading status if ‘dxopal-loading` is defined.</p>
 </div></span>
   
 </li>
@@ -383,16 +423,16 @@
       <pre class="lines">
 
 
-28
-29
 30
 31
 32
 33
-34</pre>
+34
+35
+36</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/dxopal/remote_resource.rb', line 28</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/remote_resource.rb', line 30</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='op'>[]</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_ret'>ret</span> <span class='op'>=</span> <span class='cvar'>@@instances</span><span class='lbracket'>[</span><span class='id identifier rubyid__klass_name'>_klass_name</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -432,12 +472,12 @@
       <pre class="lines">
 
 
-63
-64
-65</pre>
+69
+70
+71</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/dxopal/remote_resource.rb', line 63</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/remote_resource.rb', line 69</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid__klass_name'>_klass_name</span>
   <span class='kw'>return</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>::</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_last'>last</span>
@@ -459,7 +499,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Load actual content (defined on subclasses) Return `[instance, promise]`</p>
+<p>Load actual content (defined on subclasses) Return ‘[instance, promise]`</p>
 
 
   </div>
@@ -473,12 +513,12 @@
       <pre class="lines">
 
 
-58
-59
-60</pre>
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/dxopal/remote_resource.rb', line 58</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/remote_resource.rb', line 64</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid__load'>_load</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>override me</span><span class='tstring_end'>&quot;</span></span>
@@ -514,8 +554,6 @@
       <pre class="lines">
 
 
-37
-38
 39
 40
 41
@@ -531,10 +569,16 @@
 51
 52
 53
-54</pre>
+54
+55
+56
+57
+58
+59
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/dxopal/remote_resource.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/remote_resource.rb', line 39</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid__load_resources'>_load_resources</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='cvar'>@@resources</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_klass_name'>klass_name</span><span class='comma'>,</span> <span class='id identifier rubyid_items'>items</span><span class='op'>|</span>
@@ -543,7 +587,11 @@
       <span class='kw'>if</span> <span class='op'>!</span><span class='cvar'>@@promises</span><span class='lbracket'>[</span><span class='id identifier rubyid_klass_name'>klass_name</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span>
         <span class='id identifier rubyid_instance'>instance</span><span class='comma'>,</span> <span class='id identifier rubyid_promise'>promise</span> <span class='op'>=</span> <span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid__load'>_load</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block2'>block2</span><span class='rparen'>)</span>
         <span class='cvar'>@@instances</span><span class='lbracket'>[</span><span class='id identifier rubyid_klass_name'>klass_name</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_instance'>instance</span>
-        <span class='cvar'>@@promises</span><span class='lbracket'>[</span><span class='id identifier rubyid_klass_name'>klass_name</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_promise'>promise</span>
+        <span class='cvar'>@@loaded</span><span class='lbracket'>[</span><span class='id identifier rubyid_klass_name'>klass_name</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>false</span>
+        <span class='cvar'>@@promises</span><span class='lbracket'>[</span><span class='id identifier rubyid_klass_name'>klass_name</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_promise'>promise</span><span class='period'>.</span><span class='const'>JS</span><span class='period'>.</span><span class='id identifier rubyid_then'>then</span><span class='lbrace'>{</span> 
+          <span class='cvar'>@@loaded</span><span class='lbracket'>[</span><span class='id identifier rubyid_klass_name'>klass_name</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>true</span>
+          <span class='const'><span class='object_link'><a href="" title="DXOpal::RemoteResource (class)">RemoteResource</a></span></span><span class='period'>.</span><span class='id identifier rubyid__update_loading_status'><span class='object_link'><a href="#_update_loading_status-class_method" title="DXOpal::RemoteResource._update_loading_status (method)">_update_loading_status</a></span></span>
+        <span class='rbrace'>}</span>
       <span class='kw'>end</span>
     <span class='kw'>end</span>
   <span class='kw'>end</span>
@@ -553,6 +601,89 @@
       </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_block'>block</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='embexpr_end'>}</span><span class='tstring_content'>
     });
   </span><span class='tstring_end'>}</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="_update_loading_status-class_method">
+  
+    .<strong>_update_loading_status</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Update loading status if ‘dxopal-loading` is defined.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/remote_resource.rb', line 74</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid__update_loading_status'>_update_loading_status</span>
+  <span class='id identifier rubyid_done'>done</span> <span class='op'>=</span> <span class='kw'>true</span>
+  <span class='id identifier rubyid_report'>report</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>DXOpal loading...\n</span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span>
+    <span class='cvar'>@@promises</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_klass_name'>klass_name</span><span class='comma'>,</span> <span class='id identifier rubyid_promises'>promises</span><span class='op'>|</span>
+      <span class='id identifier rubyid_n_total'>n_total</span> <span class='op'>=</span> <span class='cvar'>@@resources</span><span class='lbracket'>[</span><span class='id identifier rubyid_klass_name'>klass_name</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span>
+      <span class='id identifier rubyid_n_loaded'>n_loaded</span> <span class='op'>=</span> <span class='cvar'>@@loaded</span><span class='lbracket'>[</span><span class='id identifier rubyid_klass_name'>klass_name</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span><span class='lparen'>(</span><span class='kw'>true</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_done'>done</span> <span class='op'>=</span> <span class='kw'>false</span> <span class='kw'>if</span> <span class='id identifier rubyid_n_loaded'>n_loaded</span> <span class='op'>&lt;</span> <span class='id identifier rubyid_n_total'>n_total</span>
+      <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_klass_name'>klass_name</span><span class='embexpr_end'>}</span><span class='tstring_content'>: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_n_loaded'>n_loaded</span><span class='embexpr_end'>}</span><span class='tstring_content'>/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_n_total'>n_total</span><span class='embexpr_end'>}</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span>
+    <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span>
+  <span class='id identifier rubyid_div'>div</span> <span class='op'>=</span> <span class='backtick'>`</span><span class='tstring_content'>document.getElementById(&#39;dxopal-loading&#39;)</span><span class='tstring_end'>`</span></span>
+  <span class='kw'>if</span> <span class='backtick'>`</span><span class='tstring_content'>div</span><span class='tstring_end'>`</span></span>
+    <span class='backtick'>%x{</span><span class='tstring_content'>
+      let pre = div.firstChild;
+      if (!pre) {
+        pre = document.createElement(&#39;pre&#39;);
+        div.appendChild(pre);
+      }
+      pre.textContent = </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_report'>report</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+      if (</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_done'>done</span><span class='embexpr_end'>}</span><span class='tstring_content'>) {
+        div.style.display = &#39;none&#39;;
+      }
+    </span><span class='tstring_end'>}</span></span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -574,12 +705,12 @@
       <pre class="lines">
 
 
-17
-18
-19</pre>
+19
+20
+21</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/dxopal/remote_resource.rb', line 17</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/remote_resource.rb', line 19</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_add_class'>add_class</span><span class='lparen'>(</span><span class='id identifier rubyid_subklass'>subklass</span><span class='rparen'>)</span>
   <span class='cvar'>@@klasses</span><span class='lbracket'>[</span><span class='id identifier rubyid_subklass'>subklass</span><span class='period'>.</span><span class='id identifier rubyid__klass_name'>_klass_name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_subklass'>subklass</span>
@@ -615,13 +746,13 @@
       <pre class="lines">
 
 
-22
-23
 24
-25</pre>
+25
+26
+27</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/dxopal/remote_resource.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'lib/dxopal/remote_resource.rb', line 24</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_register'>register</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='cvar'>@@resources</span><span class='lbracket'>[</span><span class='id identifier rubyid__klass_name'>_klass_name</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
@@ -637,9 +768,9 @@
 </div>
 
       <div id="footer">
-  Generated on Tue Dec 29 11:37:24 2020 by
-  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.26 (ruby-2.7.0).
+  Generated on Tue Jul  9 22:42:34 2024 by
+  <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.36 (ruby-3.2.2).
 </div>
 
     </div>

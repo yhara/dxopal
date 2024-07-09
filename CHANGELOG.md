@@ -1,3 +1,10 @@
+## v1.6.0 (2024-07-09)
+
+- Upgrade Opal to 1.8.2 (#53)
+- feat: "Now Loading" (#54)
+- feat: `Sound#play(true)` to enable looping (#51)
+- fix: NameError with newer Opal (#46)
+
 ## v1.5.2 (2020-12-29)
 
 - Upgrade opal to 1.0 (#37)
