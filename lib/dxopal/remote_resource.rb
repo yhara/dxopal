@@ -11,6 +11,8 @@ module DXOpal
     @@promises = Hash.new{|h,k| h[k] = {}}
     # Contains instances of Image, Sound
     @@instances = Hash.new{|h,k| h[k] = {}}
+    # `true` if the resource is loaded
+    @@loaded = Hash.new{|h,k| h[k] = {}}
 
     # Subclasses of RemoteResource
     @@klasses = {}
@@ -41,7 +43,11 @@ module DXOpal
           if !@@promises[klass_name][name]
             instance, promise = klass._load(*args, &block2)
             @@instances[klass_name][name] = instance
-            @@promises[klass_name][name] = promise
+            @@loaded[klass_name][name] = false
+            @@promises[klass_name][name] = promise.JS.then{ 
+              @@loaded[klass_name][name] = true
+              RemoteResource._update_loading_status
+            }
           end
         end
       end
@@ -62,6 +68,32 @@ module DXOpal
     # Return a string like "Image" or "Sound"
     def self._klass_name
       return self.name.split(/::/).last
+    end
+
+    # Update loading status if `dxopal-loading` is defined.
+    def self._update_loading_status
+      done = true
+      report = "DXOpal loading...\n" +
+        @@promises.map{|klass_name, promises|
+          n_total = @@resources[klass_name].count
+          n_loaded = @@loaded[klass_name].values.count(true)
+          done = false if n_loaded < n_total
+          "#{klass_name}: #{n_loaded}/#{n_total}\n"
+        }.join
+      div = `document.getElementById('dxopal-loading')`
+      if `div`
+        %x{
+          let pre = div.firstChild;
+          if (!pre) {
+            pre = document.createElement('pre');
+            div.appendChild(pre);
+          }
+          pre.textContent = #{report};
+          if (#{done}) {
+            div.style.display = 'none';
+          }
+        }
+      end
     end
   end
 end
