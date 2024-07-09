@@ -24,6 +24,11 @@ task :api do
   sh "yard doc -o doc/api/ lib/**/*.rb lib/**/**/*.rb"
 end
 
+desc "Run server"
+task :server do
+  sh "bundle exec rackup -p 9292"
+end
+
 desc "git ci, git tag and git push"
 task :release do
   sh "git diff HEAD"

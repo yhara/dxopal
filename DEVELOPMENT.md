@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-- Ruby (tested with 2.5.1)
+- Ruby (tested with 3.2.2)
 - Node.js (to minify .js)
 
 ## Setup
@@ -11,8 +11,8 @@
 $ git clone https://github.com/yhara/dxopal
 $ cd dxopal
 $ bundle install
-$ npm install uglify-es -g
-$ bundle exec rackup
+$ npm install terser -g
+$ rake server
 $ open http://localhost:9292/
 ```
 
@@ -28,7 +28,7 @@ $ git clone https://github.com/yhara/dxopal-starter-kit
     $ rake build
     $ rake build_min  # Build and minify
 
-(If some error is printed by build_min, make sure you have installed uglify-es)
+(If some error is printed by build_min, make sure you have installed terser)
 
 ## Documents
 
