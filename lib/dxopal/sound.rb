@@ -35,6 +35,8 @@ module DXOpal
 
     def initialize(path_or_url)
       @path_or_url = path_or_url  # Used in error message
+      @gain_node = Sound.audio_context.JS.createGain()
+      set_volume(230)
     end
     attr_accessor :decoded
 
@@ -49,7 +51,9 @@ module DXOpal
         if (#{loop_}) {
           source.loop = true;
         }
-        source.connect(context.destination);
+        source
+          .connect(#{@gain_node})
+          .connect(context.destination);
         source.start(0); 
       }
       @source = source
@@ -60,6 +64,15 @@ module DXOpal
       return unless @decoded 
       return unless @source
       @source.JS.stop()
+    end
+
+    # TODO: support for volume change using 'time' parameter
+    def set_volume(volume, time=0)
+      %x{
+        var normalized = (volume > 255 ? 255 : volume) / 255;
+        var db = (normalized - 1) * 96;
+        #{@gain_node}.gain.value = Math.pow(10, db / 20);
+      }
     end
   end
 end
