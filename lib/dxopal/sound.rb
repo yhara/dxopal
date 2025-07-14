@@ -42,7 +42,7 @@ module DXOpal
 
     # Play this sound
     def play(loop_ = false)
-      raise "Sound #{path_or_url} is not loaded yet" unless @decoded
+      raise "Sound #{@path_or_url} is not loaded yet" unless @decoded
       source = nil
       %x{
         var context = #{Sound.audio_context};
