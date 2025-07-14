@@ -44,12 +44,13 @@ module DXOpal
 
     desc "server", "Start local server"
     option "port", aliases: :p, type: :numeric, default: 7521
+    option "bind_address", aliases: :b, type: :string, default: 'localhost'
     def server
       puts "Starting DXOpal Server"
-      puts "(Open http://localhost:#{options[:port]}/index.html in the browser)"
+      puts "(Open http://#{options[:bind_address]}:#{options[:port]}/index.html in the browser)"
       puts "---"
       app = Rack::CommonLogger.new(Rack::Directory.new(Dir.pwd))
-      Rack::Server.start(app: app, Port: options[:port])
+      Rack::Server.start(app: app, BindAddress: options[:bind_address], Port: options[:port])
     end
   end
 end
