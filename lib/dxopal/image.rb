@@ -63,6 +63,28 @@ module DXOpal
       return new(1, 1).load(path_or_url, x, y, width, height)
     end
 
+    # Load image and automatically divides into xcount and ycount, and return Array of Images.
+    def self.load_tiles(path, xcount, ycount)
+      images = (xcount * ycount).times.map { Image.new }
+      first_img = images[0]
+      first_img.load(path)
+      first_img.onload do
+        width = first_img.width
+        height = first_img.height
+        w_a_img = width / xcount
+        h_a_img = height / ycount
+
+        (1..ycount).each do |y_index|
+          (1..xcount).each do |x_index|
+            top = (y_index - 1) * h_a_img
+            left = (x_index - 1) * w_a_img
+            images[x_index - 1 + (y_index - 1) * xcount].load(path, left, top, w_a_img, h_a_img)
+          end
+        end
+      end
+      return images
+    end
+
     def load(path_or_url, x=nil, y=nil, width=nil, height=nil)
       raw_img = `new Image()`
       @promise = %x{
