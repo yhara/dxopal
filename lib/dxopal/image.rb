@@ -59,17 +59,24 @@ module DXOpal
     attr_accessor :promise, :loaded
     def loaded?; loaded; end
 
-    def self.load(path_or_url)
-      return new(1, 1).load(path_or_url)
+    def self.load(path_or_url, x=nil, y=nil, width=nil, height=nil)
+      return new(1, 1).load(path_or_url, x, y, width, height)
     end
 
-    def load(path_or_url)
+    def load(path_or_url, x=nil, y=nil, width=nil, height=nil)
       raw_img = `new Image()`
       @promise = %x{
         new Promise(function(resolve, reject) {
           raw_img.onload = function() {
             self.$_resize(raw_img.width, raw_img.height);
             self.$_draw_raw_image(0, 0, raw_img);
+            if (#{width || false} && #{height || false}) {
+              x = x || 0
+              y = y || 0
+              let imageData = self.$_image_data(#{x}, #{y}, #{width}, #{height});
+              self.$_resize(#{width}, #{height});
+              self.$_put_image_data(imageData, 0, 0);
+            }
             self.loaded = #{true};
             resolve();
           };
