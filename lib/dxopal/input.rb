@@ -171,7 +171,7 @@ module DXOpal
     # Return true if the mouse button is pressed in the last tick
     def self.mouse_push?(mouse_code)
       raise "missing argument of `mouse_push?'" unless mouse_code
-      return `#{@@pressing_mouse_buttons}[mouse_code] == -(#{@@tick}-1)`
+      return `#{@@pressing_mouse_buttons}[mouse_code] == #{@@tick}-1`
     end
 
     # Return true if the mouse button is released in the last tick
@@ -261,7 +261,7 @@ module DXOpal
 
     # Return true if the touch is pressed in the last tick
     def self.touch_push?
-      return `#{@@pressing_touch}[0] == -(#{@@tick}-1)`
+      return `#{@@pressing_touch}[0] == #{@@tick}-1`
     end
 
     # Return true if the touch is released in the last tick
